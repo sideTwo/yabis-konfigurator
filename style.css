@@ -1,0 +1,123 @@
+@font-face { font-family: "Archivo"; src: url(schrift/archivo.woff2) format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+:root {
+  --grund: #ECEAE5; --flaeche: #E1DED7; --papier: #F7F6F3;
+  --tinte: #1E2125; --text-2: #57554F; --leise: #87837B; --haar: rgba(30,33,37,.2);
+  --kupfer: #B4532B; --kupfer-d: #8F3E1D;
+  --kopf: 64px; --steuerung: 236px; --rand: clamp(12px, 2.4vw, 32px);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--grund); color: var(--tinte); font: 400 16px/1.5 "Archivo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--kupfer); outline-offset: 2px; }
+h2, p, ol { margin: 0; }
+.klein { font-size: 13px; color: var(--text-2); }
+
+/* Kopf */
+.kopf { position: sticky; top: 0; z-index: 20; height: var(--kopf); display: flex; align-items: center; gap: 24px; padding: 0 var(--rand); background: var(--grund); border-bottom: 1px solid var(--haar); }
+.marke { display: flex; align-items: baseline; gap: 6px; text-decoration: none; color: inherit; font-weight: 500; white-space: nowrap; }
+.marke b { font-weight: 700; font-stretch: 110%; letter-spacing: -.03em; font-size: 19px; }
+.marke span { margin-left: 8px; padding-left: 10px; border-left: 1px solid var(--haar); color: var(--kupfer); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.bereiche { display: flex; gap: 4px; margin: 0 auto; }
+.bereiche button { min-height: 40px; padding: 0 16px; border: 1px solid transparent; background: none; font-weight: 600; }
+.bereiche button[aria-current="true"] { border-color: var(--tinte); background: var(--papier); }
+.bereiche button:hover { border-color: var(--haar); }
+.merk-knopf { display: inline-flex; align-items: center; gap: 10px; min-height: 40px; padding: 0 14px; border: 1px solid var(--tinte); background: none; font-weight: 600; }
+.merk-knopf span { display: inline-grid; place-items: center; min-width: 24px; height: 24px; padding: 0 6px; background: var(--kupfer); color: #fff; font-size: 13px; }
+
+/* Bühne: genau 16:9, so groß wie möglich */
+.arbeitsflaeche { display: grid; grid-template-rows: 1fr auto; height: calc(100svh - var(--kopf)); }
+.buehne { position: relative; align-self: center; justify-self: center; aspect-ratio: 16 / 9; width: min(100vw - 2 * var(--rand), (100svh - var(--kopf) - var(--steuerung) - 24px) * 16 / 9); margin: 12px auto; background: var(--flaeche); overflow: hidden; }
+.buehne canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.buehne__ort { position: absolute; left: 16px; top: 14px; display: grid; padding: 8px 12px; background: var(--papier); border: 1px solid var(--haar); }
+.buehne__ort span { font-weight: 700; font-stretch: 108%; letter-spacing: -.02em; font-size: 18px; }
+.buehne__ort small { font-size: 12.5px; color: var(--text-2); }
+.buehne__hinweis { position: absolute; right: 12px; bottom: 10px; padding: 3px 8px; background: rgba(247,246,243,.85); font-size: 11.5px; color: var(--text-2); }
+.buehne.fliegt .stellen, .buehne.fliegt .buehne__ort { opacity: 0; transition: opacity .2s; }
+
+/* Klickstellen am Haus */
+.stellen { position: absolute; inset: 0; }
+.stelle { position: absolute; transform: translate(-14px, -14px); display: flex; align-items: center; gap: 10px; padding: 0; border: 0; background: none; text-align: left; }
+.stelle i { position: relative; width: 28px; height: 28px; border-radius: 50%; background: var(--kupfer); box-shadow: 0 0 0 6px rgba(180,83,43,.25); flex: none; }
+.stelle i::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--kupfer); animation: puls 2.2s ease-out infinite; }
+@keyframes puls { from { transform: scale(.7); opacity: 1; } to { transform: scale(1.8); opacity: 0; } }
+.stelle span { display: grid; padding: 6px 10px; background: var(--papier); border: 1px solid var(--tinte); }
+.stelle b { font-weight: 700; font-size: 15px; }
+.stelle small { font-size: 12px; color: var(--text-2); }
+.stelle:hover span { background: var(--tinte); color: var(--grund); }
+.stelle:hover small { color: var(--grund); }
+
+/* Steuerung unter der Bühne */
+.steuerung { min-height: var(--steuerung); padding: 14px var(--rand) 18px; border-top: 1px solid var(--haar); background: var(--papier); }
+.zeile { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; }
+.gruppe { display: flex; align-items: center; gap: 6px; }
+.gruppe > span { margin-right: 4px; font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--text-2); }
+.chip { min-height: 36px; padding: 0 12px; border: 1px solid var(--haar); background: var(--grund); font-size: 14px; font-weight: 600; }
+.chip[aria-pressed="true"] { border-color: var(--tinte); background: var(--tinte); color: var(--grund); }
+.fuge { width: 30px; height: 30px; border: 1px solid var(--haar); padding: 0; }
+.fuge[aria-pressed="true"] { outline: 2px solid var(--kupfer); outline-offset: 2px; }
+.muster { display: flex; gap: 10px; margin-top: 12px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+.karte { flex: none; display: grid; grid-template-columns: 64px 1fr; gap: 0 10px; align-items: center; width: 236px; padding: 6px; border: 1px solid var(--haar); background: var(--grund); text-align: left; }
+.karte[aria-pressed="true"] { border-color: var(--kupfer); box-shadow: inset 0 0 0 1px var(--kupfer); background: #fff; }
+.karte .vorschau { grid-row: span 2; width: 64px; height: 64px; background-size: cover; background-position: center; }
+.karte b { font-size: 14.5px; line-height: 1.2; }
+.karte small { font-size: 12px; color: var(--text-2); }
+.unten { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; margin-top: 12px; }
+.knopf { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 20px; border: 1.5px solid var(--tinte); background: none; font-weight: 600; text-decoration: none; }
+.knopf--kupfer { background: var(--kupfer); border-color: var(--kupfer); color: #fff; }
+.knopf--kupfer:hover { background: var(--tinte); border-color: var(--tinte); }
+.knopf--rand:hover { background: var(--tinte); color: var(--grund); }
+.knopf--leise { border-color: var(--haar); }
+.bestaetigt { font-size: 14px; color: var(--kupfer); font-weight: 600; }
+
+/* Startauswahl am Haus */
+.start { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.start button { display: grid; gap: 2px; padding: 16px 18px; border: 1px solid var(--haar); background: var(--grund); text-align: left; }
+.start button:hover { border-color: var(--tinte); background: #fff; }
+.start b { font-size: 20px; font-weight: 700; font-stretch: 108%; letter-spacing: -.03em; }
+.start small { color: var(--text-2); }
+.start__kopf { margin-bottom: 12px; font-size: 15px; color: var(--text-2); }
+
+/* Merkliste */
+.merkliste { position: fixed; z-index: 40; top: 0; right: 0; bottom: 0; width: min(440px, 100vw); overflow-y: auto; padding: 18px 22px 28px; background: var(--papier); border-left: 1px solid var(--tinte); box-shadow: -24px 0 60px rgba(30,33,37,.18); }
+.merkliste__kopf { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.merkliste h2 { font-size: 24px; font-weight: 700; font-stretch: 108%; letter-spacing: -.03em; }
+.schliessen { width: 44px; height: 44px; border: 1px solid var(--haar); background: none; font-size: 24px; }
+.merkliste__liste { list-style: none; padding: 0; display: grid; gap: 10px; }
+.posten { display: grid; grid-template-columns: 56px 1fr auto; gap: 4px 12px; padding: 10px; border: 1px solid var(--haar); background: var(--grund); }
+.posten .vorschau { grid-row: span 3; width: 56px; height: 56px; background-size: cover; }
+.posten b { font-size: 14.5px; }
+.posten small { font-size: 12.5px; color: var(--text-2); }
+.posten label { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.posten input { width: 72px; min-height: 36px; padding: 0 8px; border: 1px solid var(--haar); background: #fff; }
+.posten .weg { grid-row: 1; grid-column: 3; width: 32px; height: 32px; border: 0; background: none; font-size: 18px; color: var(--text-2); }
+.merkliste__leer { margin: 6px 0 14px; color: var(--text-2); }
+.anfrage { display: grid; gap: 12px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--tinte); }
+.anfrage fieldset { margin: 0; padding: 0; border: 0; display: grid; gap: 6px; }
+.anfrage legend { margin-bottom: 6px; font-weight: 600; }
+.anfrage label { display: grid; gap: 4px; font-size: 14px; font-weight: 600; }
+.lieferung label { display: flex; align-items: center; gap: 8px; font-weight: 400; }
+.anfrage input:not([type="radio"]) { min-height: 44px; padding: 0 10px; border: 1px solid var(--haar); background: #fff; }
+.lieferung input[name="plz"] { width: 90px; min-height: 36px; }
+.anfrage__knoepfe { display: grid; gap: 8px; }
+.fehler { color: #A3271B; font-size: 14px; }
+
+@media (max-width: 860px) {
+  :root { --kopf: auto; }
+  .kopf { position: static; height: auto; flex-wrap: wrap; gap: 8px 12px; padding-top: 10px; padding-bottom: 10px; }
+  .marke span { display: none; }
+  .bereiche { order: 3; width: 100%; margin: 0; overflow-x: auto; }
+  .bereiche button { flex: none; padding: 0 12px; }
+  .merk-knopf { margin-left: auto; }
+  .arbeitsflaeche { display: block; height: auto; }
+  .buehne { width: 100%; margin: 0; }
+  .buehne__ort { left: 8px; top: 8px; padding: 5px 8px; }
+  .buehne__ort span { font-size: 15px; }
+  .stelle span { display: none; }
+  .stelle i { width: 22px; height: 22px; }
+  .start { grid-template-columns: 1fr 1fr; }
+  .karte { width: 200px; }
+  .gruppe { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) { .stelle i::after { animation: none; } }
