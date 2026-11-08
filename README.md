@@ -1,22 +1,57 @@
-# Yabi’s Fliesenwelt – Konfigurator (Prototyp)
+# Yabi’s Fliesenwelt – Konfigurator und Produktkatalog
 
-Haus → Bereich wählen (Außen, Innen, Bad, Vinyl) → Flug in den Raum → Muster live auf Boden und Wänden →
-Merkliste mit m² → Anfrage per WhatsApp oder E-Mail. Kein Kauf per Klick, Yabi’s schreibt das Angebot.
+Prototyp für die Auswahl von Badfliesen und unverbindliche Angebotsanfragen.
+Der aktuelle Bad-Konfigurator zeigt eine stumme Kamerafahrt, vier Boden- und vier
+Wanddekore sowie getrennte Einstellungen für Format, Verlegung, Fugenfarbe,
+Fläche und Verschnitt. Die Auswahl kann als Bild gespeichert und als Anfrage
+per WhatsApp oder E-Mail vorbereitet werden. Der Nutzer versendet den Entwurf selbst.
 
-Vorschau: https://bilal-altu.github.io/yabis-konfigurator/ (noindex)
+## Lokal starten
 
-## Aufbau
-- `js/daten.js` – Räume (Flächen mit 4 Bildecken und Maßen in cm, Möbel-Aussparungen), Flüge (Raumgraph), Produkte
-- `js/flaechen.js` – WebGL: Homografie Bild → Fläche, Fliesen in Format/Verband/Fuge, Licht aus dem Raumbild
-- `js/flug.js` – kürzester Weg durchs Haus (Wohnzimmer ist Knoten), Clips vor/rückwärts, sonst Platzhalter-Zoom
-- `js/app.js` – Oberfläche, Merkliste, Anfrage
+Voraussetzung: Node.js. Es sind keine zusätzlichen npm-Pakete erforderlich.
 
-## Echte Bilder einsetzen
-1. ChatGPT-Bilder nach `ANLEITUNG-BILDER.md` als `bilder/raeume/<raum>.png` (1920 × 1080) ablegen,
-   in `js/daten.js` die `bild`-Pfade umstellen und je Fläche die 4 Ecken messen (statt `kasten(...)`).
-2. Kling-Clips als `bilder/kling/flug-<von>-<nach>.mp4` ablegen, `bash _quelle/flug-bilder.sh` ausführen,
-   Bildzahlen bei `FLUEGE` eintragen.
-3. Platzhalter-Bilder: `node _quelle/platzhalter.mjs`. Screenshots: `node _dev/schirm.mjs <png> <url> [b] [h] [handy] [js] [ms]`.
+```sh
+node _dev/server.cjs
+```
 
-## Offen
-Vinyl-Fotos (bis dahin erzeugte Platzhalter-Maserung), Produktdaten der ~500 Varianten, Preise, Pflege.
+Danach öffnen:
+
+- Bad-Konfigurator: http://127.0.0.1:8765/konfigurator-neu/index.html
+- Produktkatalog mit Anfragekorb: http://127.0.0.1:8765/katalog.html
+- Früherer Prototyp mit weiteren Räumen: http://127.0.0.1:8765/index.html
+
+Der Server lauscht lokal auf `127.0.0.1:8765` und unterstützt Video-Range-Requests.
+
+## Aktueller Bad-Konfigurator
+
+- `konfigurator-neu/index.html` und `bad.css`: Oberfläche und Anfrageformular.
+- `konfigurator-neu/bad-film.js`: Auswahl, Kamera, Mengenberechnung, Speicherung
+  im Browser sowie Bildexport und Anfrageentwürfe.
+- `konfigurator-neu/materialien.js`: Boden- und Wanddekore mit Farbvarianten.
+- `konfigurator-neu/fugen-live.js`: perspektivische Fliesenraster und Flächenmasken.
+- `konfigurator-neu/source-joints.js`: gemessene Originalfugen der Kamerafahrt.
+- `konfigurator-neu/assets/`: lokale Filme, Raumbilder und Materialmuster.
+
+`katalog.html`, `katalog.css` und `js/katalog.js` enthalten den zusätzlichen
+Produktkatalog. Der ältere Raum-Prototyp liegt im Projektstamm unter `index.html`,
+`style.css` und `js/`.
+
+## Grenzen des Prototyps
+
+Die Raumdarstellung und Dekore sind Beispiele; die neuen Farbausführungen basieren
+auf vorhandenen Beispielmaterialien. Sie sind keine verbindliche Zuordnung zu
+lieferbaren Katalogartikeln. Die Vorschau ersetzt kein Aufmaß und keine
+Verlegeplanung. Artikelnummern, verfügbare Formate, Verpackungseinheiten, Mengen
+und Preise müssen im Angebot bestätigt werden.
+
+Es gibt keinen Checkout und keine Online-Bezahlung. Benötigte Produkt- und
+Materialdaten sind in `ANFRAGE-YABIS.md` beschrieben. Die unter `_quelle/`
+gesammelten Katalogdaten sind unvollständig.
+
+## Entwicklungsdateien
+
+Die Skripte unter `_dev/` und `_quelle/` unterstützen die Aufbereitung von
+Filmen, Fugenmessungen, Materialmustern und Raumdaten. Die fertigen Laufzeitmedien
+sind bereits enthalten. Für erneute Medienaufbereitung wird FFmpeg benötigt.
+Temporäre Renderdateien, lokale Zugangsdaten und Prüfscreenshots werden nicht
+versioniert. `robots.txt` und die Seiten enthalten Ausschlüsse für Suchmaschinen.

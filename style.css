@@ -20,6 +20,8 @@ h2, p, ol { margin: 0; }
 .marke b { font-weight: 700; font-stretch: 110%; letter-spacing: -.03em; font-size: 19px; }
 .marke span { margin-left: 8px; padding-left: 10px; border-left: 1px solid var(--haar); color: var(--kupfer); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
 .bereiche { display: flex; gap: 4px; margin: 0 auto; }
+.katalog-link { color: var(--kupfer); font-weight: 600; white-space: nowrap; }
+@media (max-width: 700px) { .kopf { gap: 8px; } .katalog-link { font-size: 12px; } }
 .bereiche button { min-height: 40px; padding: 0 16px; border: 1px solid transparent; background: none; font-weight: 600; }
 .bereiche button[aria-current="true"] { border-color: var(--tinte); background: var(--papier); }
 .bereiche button:hover { border-color: var(--haar); }

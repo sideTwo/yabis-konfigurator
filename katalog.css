@@ -1,0 +1,43 @@
+.katalog-link { color: var(--kupfer); font-weight: 600; white-space: nowrap; }
+.katalog-seite { height:auto; }
+.katalog-kopf { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:24px 5%; border-bottom:1px solid var(--haar); }
+.katalog-kopf nav { display:flex; flex-wrap:wrap; gap:24px; }
+.katalog-seite a { color:inherit; text-underline-offset:5px; }
+.katalog-seite main { max-width:1400px; margin:auto; padding:0 5%; }
+.katalog-seite section { padding:64px 0; scroll-margin-top:20px; }
+.katalog-intro { display:grid; grid-template-columns:1.2fr 1fr; align-items:stretch; gap:60px; }
+.augenbraue { font-size:11px; letter-spacing:.16em; font-weight:700; color:var(--kupfer); margin-bottom:18px; }
+.katalog-seite h1 { font-size:clamp(42px,5.5vw,78px); line-height:1.04; font-weight:500; letter-spacing:-.055em; margin:0 0 24px; }
+.katalog-seite h2 { font-size:clamp(28px,3vw,42px); line-height:1.12; letter-spacing:-.035em; font-weight:500; margin-bottom:20px; }
+.katalog-intro p:not(.augenbraue) { max-width:470px; color:var(--text-2); margin-bottom:28px; }
+.katalog-seite .knopf { display:inline-block; text-decoration:none; text-align:center; }
+.intro-material { background:linear-gradient(0deg,rgba(30,33,37,.8),transparent 75%),url('bilder/muster/stein-grau.webp') center/cover; min-height:340px; display:flex; flex-direction:column; justify-content:flex-end; padding:32px; color:white; }
+.intro-material span { font-size:12px; text-transform:uppercase; letter-spacing:.16em; margin-bottom:auto; }
+.intro-material p { color:white!important; font-size:28px; margin:40px 0 12px!important; }
+.demo-hinweis { padding:16px 20px; border:1px solid var(--haar); font-size:13px; color:var(--text-2); }
+.abschnitt-kopf { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; }
+.abschnitt-kopf>span { font-size:13px; color:var(--text-2); }
+.filter { display:flex; gap:20px; align-items:end; margin:12px 0 28px; }
+.katalog-seite label { display:grid; gap:8px; font-size:13px; }
+.filter label:first-child { flex:1; }
+.katalog-seite input,.katalog-seite select,.katalog-seite textarea { font:inherit; border:1px solid var(--haar); border-radius:0; padding:12px; background:var(--papier); color:var(--tinte); min-width:0; width:100%; }
+#treffer { font-size:13px; padding-bottom:12px; white-space:nowrap; }
+.produkt-raster { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+.produkt-karte { background:var(--papier); padding:16px; }
+.produkt-textur { height:190px; background-size:cover; background-position:center; margin:-16px -16px 20px; }
+.produkt-karte h3 { margin:12px 0 6px; font-size:20px; font-weight:500; }
+.produkt-karte small { color:var(--text-2); }
+.produkt-karte form { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:20px; }
+.produkt-karte button { grid-column:1/-1; }
+#anfragekorb { border-top:1px solid var(--haar); }
+.korb-posten { display:grid; grid-template-columns:2fr 1fr auto; gap:20px; align-items:center; border-bottom:1px solid var(--haar); padding:24px 0; }
+.korb-posten small { display:block; color:var(--text-2); }
+#korb-status { color:var(--kupfer); margin-top:16px; }
+.kontakt { display:grid; grid-template-columns:1fr 1.4fr; gap:70px; border-top:1px solid var(--haar); }
+.kontakt p:not(.augenbraue) { margin-bottom:20px; color:var(--text-2); }
+#kontaktformular { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.breit { grid-column:1/-1; }
+.kontakt-aktionen { display:flex; gap:12px; flex-wrap:wrap; }
+.katalog-seite footer { padding:28px 5%; border-top:1px solid var(--haar); font-size:12px; }
+@media(max-width:850px) { .katalog-intro,.kontakt { grid-template-columns:1fr; gap:30px; } .produkt-raster { grid-template-columns:repeat(2,minmax(0,1fr)); } .katalog-kopf { align-items:flex-start; flex-direction:column; } }
+@media(max-width:540px) { .produkt-raster { grid-template-columns:1fr; } .filter { flex-wrap:wrap; } .filter label:first-child { flex-basis:100%; } .katalog-seite section { padding:36px 0; } .korb-posten { grid-template-columns:1fr 1fr; } .korb-posten>div { grid-column:1/-1; } #kontaktformular { grid-template-columns:1fr; } .katalog-kopf nav { gap:16px; font-size:13px; } }

@@ -1,7 +1,9 @@
 # Bilder und Flüge für den Yabi’s-Konfigurator
 
-Du brauchst **5 Standbilder (ChatGPT)** und **7 Flüge (Kling)**. Alles im Querformat **16:9**.
-Fertige Dateien bitte genau so benennen und in `yabis-konfigurator/bilder/kling/` legen.
+Du brauchst **5 Standbilder (ChatGPT)** und **7 Flüge (Artlist)**. Alles im Querformat **16:9**.
+Die Standbilder bitte genau so benennen und in `yabis-konfigurator/bilder/raeume/` legen;
+die Artlist-Flüge kommen nach `yabis-konfigurator/bilder/artlist/`. So passen die Pfade zu `js/daten.js`
+und zum Clip-Import des Konfigurators.
 
 ---
 
@@ -68,10 +70,11 @@ middle of the floor. Camera 1.6 m high, 20 mm lens, straight verticals. No peopl
 
 ---
 
-## Teil 2 – Sieben Flüge in Kling
+## Teil 2 – Sieben Flüge in Artlist
 
-Immer **Startbild + Endbild** setzen (Funktion „Start- und Endbild“), etwa **5 Sekunden**,
-mindestens 1080p. Die Bilder genau so verwenden, wie sie aus Teil 1 kommen, nicht nachbearbeiten.
+In Artlist ein Modell mit **Start- und Endbild** wählen. Immer beide Bilder setzen,
+etwa **5 Sekunden**, mindestens **1080p** und **16:9** einstellen, als MP4 exportieren.
+Die Bilder genau so verwenden, wie sie aus Teil 1 kommen, nicht nachbearbeiten.
 
 | Datei | Startbild | Endbild | Prompt |
 |---|---|---|---|

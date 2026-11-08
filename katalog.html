@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Produktkatalog & Anfrage | Yabi’s Fliesenwelt</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Fliesen und Vinyl auswählen, Mengen zusammenstellen und ein individuelles Angebot anfragen.">
+  <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="katalog.css">
+</head>
+<body class="katalog-seite">
+  <header class="katalog-kopf"><a class="marke" href="katalog.html"><b>Yabi’s</b> Fliesenwelt</a><nav aria-label="Hauptnavigation"><a href="index.html">Räume gestalten ↗</a><a href="#kontakt">Schnellanfrage</a><a href="#anfragekorb">Anfragekorb <span data-anzahl>0</span></a></nav></header>
+  <main>
+    <section class="katalog-intro"><div><p class="augenbraue">FLIESEN · VINYL · PERSÖNLICHE BERATUNG</p><h1>Ihr Boden.<br>Ihr nächstes Projekt.</h1><p>Material auswählen, Menge angeben, Angebot erhalten. Für Ihr Zuhause und für große Vorhaben.</p><a class="knopf knopf--kupfer" href="#produkte">Produkte entdecken ↓</a></div><div class="intro-material"><span>Material erleben</span><p>Lieber im Raum ansehen?</p><a href="index.html">Zum Raumkonfigurator ↗</a></div></section>
+    <p class="demo-hinweis">Prototyp mit Beispielmustern. Das bestätigte Sortiment, Artikelnummern und Verfügbarkeiten werden noch ergänzt. Preise auf Anfrage.</p>
+    <section id="produkte" aria-labelledby="produkte-titel"><div class="abschnitt-kopf"><div><p class="augenbraue">DAS PASSENDE MATERIAL</p><h2 id="produkte-titel">Produktkatalog</h2></div><a href="https://wa.me/c/491786787724" target="_blank" rel="noopener">WhatsApp-Katalog ↗</a></div>
+      <div class="filter"><label>Suche<input type="search" id="suche" placeholder="Zum Beispiel Steinoptik"></label><label>Bereich<select id="bereich"><option value="">Alle Bereiche</option><option value="innen">Innenfliesen</option><option value="bad">Badfliesen</option><option value="aussen">Außenfliesen</option><option value="vinyl">Vinyl</option></select></label><p id="treffer" role="status"></p></div>
+      <div id="produktliste" class="produkt-raster"></div>
+    </section>
+    <section id="anfragekorb" aria-labelledby="korb-titel"><div class="abschnitt-kopf"><div><p class="augenbraue">ALLES AN EINEM ORT</p><h2 id="korb-titel">Ihr Anfragekorb</h2></div><span>Unverbindlich · Ohne Bezahlung</span></div><p>Die Auswahl aus dem Konfigurator erscheint ebenfalls hier. Bitte tragen Sie Ihre tatsächliche Fläche ein. Mengen enthalten keinen automatisch hinzugefügten Verschnitt.</p><div id="korb"></div><p id="korb-status" role="status"></p></section>
+    <section id="kontakt" class="kontakt" aria-labelledby="kontakt-titel"><div><p class="augenbraue">DIREKT ZUM ANGEBOT</p><h2 id="kontakt-titel">Kleines Bad.<br>Großes Bauvorhaben.</h2><p>Sie wissen schon, was Sie brauchen? Schreiben Sie uns Artikel, Mengen und Lieferwunsch direkt ins Nachrichtenfeld – auch ohne Produktauswahl.</p><p>Wir bereiten Ihre Anfrage für WhatsApp oder Ihr E-Mail-Programm vor. Dort prüfen und versenden Sie sie selbst.</p></div>
+    <form id="kontaktformular"><label>Ich frage an als<select name="kundentyp"><option>Privatkunde</option><option>Gewerbe / Großhandel</option></select></label><label>Firma (optional)<input name="firma" autocomplete="organization"></label><label>Ihr Name<input name="name" autocomplete="name" required></label><label>E-Mail oder Telefonnummer<input name="rueckkontakt" required></label><label>Abholung oder Lieferung<select name="weg"><option>Abholung</option><option>Lieferung</option></select></label><label>Liefer-PLZ (bei Lieferung)<input name="plz" inputmode="numeric" maxlength="5"></label><label class="breit">Ihre Nachricht<textarea name="nachricht" rows="4" placeholder="Artikel, gewünschte Menge, Termin oder Fragen zum Projekt"></textarea></label><p id="kontakt-fehler" class="breit" role="alert"></p><div class="breit kontakt-aktionen"><button class="knopf knopf--kupfer" type="submit" value="whatsapp">In WhatsApp öffnen ↗</button><button class="knopf knopf--rand" type="submit" value="mail">E-Mail vorbereiten ↗</button></div></form></section>
+  </main><footer>Yabi’s Fliesenwelt · Katalog-Prototyp · Individuelle Angebote auf Anfrage</footer>
+  <script src="js/daten.js"></script><script src="js/katalog.js"></script>
+</body></html>

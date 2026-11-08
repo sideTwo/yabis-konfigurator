@@ -1,0 +1,214 @@
+- banner:
+  - button "Zurück":
+  - heading "Katalog" [level=2]:
+    - generic: Katalog
+  - button "Dein Einkaufswagen":
+  - button "Kataloglink":
+- generic: Yabis Fliesenwelt
+- generic "🤎 Yabis Fliesen Welt Fliesen für jeden Stil – für jedes Zuhause. ✨ Premium-Qualität | Individuelle Beratung 📍 Duisburg":
+  - img "🤎"
+  - text: Yabis Fliesen Welt Fliesen für jeden Stil – für jedes Zuhause.
+  - img "✨"
+  - text: Premium-Qualität | Individuelle Beratung
+  - img "📍"
+  - text: Duisburg
+- gridcell "Poliert 60x120 ✨":
+  - generic "Poliert 60x120✨":
+    - text: Poliert 60x120
+    - img "✨"
+- button "Alle anzeigen"
+- button "Onice Supreme Marfil Pul Edle cremefarbene Fliese mit warmer Gold-/Bronzäderung. Hochglänzend, sehr ruhige Fläche mit einem markanten Diagonalverlauf – ideal für Küche, Bad oder als Wand-/Boden-Highlight. Große Platte, moderne Marmoroptik 44,90 €":
+  - gridcell "Onice Supreme Marfil Pul":
+    - generic "Onice Supreme Marfil Pul"
+  - generic: Edle cremefarbene Fliese mit warmer Gold-/Bronzäderung. Hochglänzend, sehr ruhige Fläche mit einem markanten Diagonalverlauf – ideal für Küche, Bad oder als Wand-/Boden-Highlight. Große Platte, moderne Marmoroptik
+  - generic: 44,90 €
+  - button "1 Artikel hinzufügen":
+- button "Taj Mahal beige Warme Beige-Fliese mit feiner, welliger Maserung. Hochglänzend und edel – wirkt natürlich, aber hochwertig. Gut für Bad, Küche oder als große Wand-/Bodenfläche. 44,90 €":
+  - gridcell "Taj Mahal beige":
+    - generic "Taj Mahal beige"
+  - generic: Warme Beige-Fliese mit feiner, welliger Maserung. Hochglänzend und edel – wirkt natürlich, aber hochwertig. Gut für Bad, Küche oder als große Wand-/Bodenfläche.
+  - generic: 44,90 €
+  - button "1 Artikel hinzufügen":
+- button "Tau Mainstone Dunkle, polierte Fliese in Schwarz mit gold- und beigefarbenen Adern. Kräftig und edel – starker Blickfang für Bad, Küche oder als Akzentwand. 44,90 €":
+  - gridcell "Tau Mainstone":
+    - generic "Tau Mainstone"
+  - generic: Dunkle, polierte Fliese in Schwarz mit gold- und beigefarbenen Adern. Kräftig und edel – starker Blickfang für Bad, Küche oder als Akzentwand.
+  - generic: 44,90 €
+  - button "1 Artikel hinzufügen":
+- gridcell "Matt 60x120":
+  - generic: Matt 60x120
+- button "Alle anzeigen"
+- button "Byblos Gris Kühleres Hellgrau mit klareren, etwas kräftigeren weißen Adern. Mehr Zeichnung, etwas graphischer und kühler. 39,90 €":
+  - gridcell "Byblos Gris":
+    - generic "Byblos Gris"
+  - generic: Kühleres Hellgrau mit klareren, etwas kräftigeren weißen Adern. Mehr Zeichnung, etwas graphischer und kühler.
+  - generic: 39,90 €
+  - button "1 Artikel hinzufügen":
+- button "Bercy Terra Warme, sandfarbene Fliese mit ruhiger, natürlicher Oberfläche. Mediterranes Feeling ohne aufdringliche Maserung. Perfekt für Wohnbereiche, Bad, Küche oder Terrasse. Hell, freundlich und vielseitig kombinierbar. 39,90 €":
+  - gridcell "Bercy Terra":
+    - generic "Bercy Terra"
+  - generic: Warme, sandfarbene Fliese mit ruhiger, natürlicher Oberfläche. Mediterranes Feeling ohne aufdringliche Maserung. Perfekt für Wohnbereiche, Bad, Küche oder Terrasse. Hell, freundlich und vielseitig kombinierbar.
+  - generic: 39,90 €
+  - button "1 Artikel hinzufügen":
+- button "Habitat Perla Großformatige Feinsteinzeugfliese in ruhigem, hellgrauem Beton-Look. Matte, leicht strukturierte Oberfläche – modern, schlicht und zeitlos. Ideal für Wohnräume, Küche, Bad und große Flächen. Wirkt ruhig und hochwertig, ohne unruhige Maserung. Robust, pflegeleicht und für Boden + Wand geeignet. 39,90 €":
+  - gridcell "Habitat Perla":
+    - generic "Habitat Perla"
+  - generic: Großformatige Feinsteinzeugfliese in ruhigem, hellgrauem Beton-Look. Matte, leicht strukturierte Oberfläche – modern, schlicht und zeitlos. Ideal für Wohnräume, Küche, Bad und große Flächen. Wirkt ruhig und hochwertig, ohne unruhige Maserung. Robust, pflegeleicht und für Boden + Wand geeignet.
+  - generic: 39,90 €
+  - button "1 Artikel hinzufügen":
+- gridcell "Lappato (Teilpoliert) ✨":
+  - generic "Lappato (Teilpoliert)✨":
+    - text: Lappato (Teilpoliert)
+    - img "✨"
+- button "Alle anzeigen"
+- button "Alcala Blanco Helle, feinkörnige Fliese in Creme-/Off-White. Sehr ruhige Fläche mit dezenter Steinoptik – hell, modern und pflegeleicht. Gut für Boden und Wand. 39,90 €":
+  - gridcell "Alcala Blanco":
+    - generic "Alcala Blanco"
+  - generic: Helle, feinkörnige Fliese in Creme-/Off-White. Sehr ruhige Fläche mit dezenter Steinoptik – hell, modern und pflegeleicht. Gut für Boden und Wand.
+  - generic: 39,90 €
+  - button "1 Artikel hinzufügen":
+- button "Nordic Slate Pearl Lebendige, rustikale Steinoptik in Beige mit hellen Auswaschungen. Natürlich und charaktervoll – wirkt wie alter Naturstein. Gut für Landhaus, Loft oder als Akzentfläche. 39,90 €":
+  - gridcell "Nordic Slate Pearl":
+    - generic "Nordic Slate Pearl"
+  - generic: Lebendige, rustikale Steinoptik in Beige mit hellen Auswaschungen. Natürlich und charaktervoll – wirkt wie alter Naturstein. Gut für Landhaus, Loft oder als Akzentfläche.
+  - generic: 39,90 €
+  - button "1 Artikel hinzufügen":
+- button "Bianco Mare Edle Marmoroptik in strahlendem Weiß mit feinen, natürlichen grauen Adern. Polierte Oberfläche, großes Format. Wirkt hell, modern und hochwertig – ideal für Wohnzimmer, Bad und Küche. 39,90 €":
+  - gridcell "Bianco Mare":
+    - generic "Bianco Mare"
+  - generic: Edle Marmoroptik in strahlendem Weiß mit feinen, natürlichen grauen Adern. Polierte Oberfläche, großes Format. Wirkt hell, modern und hochwertig – ideal für Wohnzimmer, Bad und Küche.
+  - generic: 39,90 €
+  - button "1 Artikel hinzufügen":
+- gridcell "120x120 matt ⭐ ️":
+  - generic "120x120 matt ⭐️":
+    - text: 120x120 matt
+    - img "⭐"
+    - text: ️
+- button "Alle anzeigen"
+- button "Concept Pearl Große, matte Fliese in warmem Beige-Grau mit feiner, unregelmäßiger Stein- bzw. Betonoptik. Die Oberfläche wirkt ruhig und gleichmäßig, mit einer dezenten körnigen Textur, die das Licht weich und unauffällig bricht. 47,90 €":
+  - gridcell "Concept Pearl":
+    - generic "Concept Pearl"
+  - generic: Große, matte Fliese in warmem Beige-Grau mit feiner, unregelmäßiger Stein- bzw. Betonoptik. Die Oberfläche wirkt ruhig und gleichmäßig, mit einer dezenten körnigen Textur, die das Licht weich und unauffällig bricht.
+  - generic: 47,90 €
+  - button "1 Artikel hinzufügen":
+- button "Aeterna crosscut Große, matte Fliese in hellem Cremebeige mit weicher, unregelmäßiger Steinoptik. Die Oberfläche wirkt leicht wolkig und natürlich gefleckt, ohne starke Adern – hell, warm und ruhig. 47,90 €":
+  - gridcell "Aeterna crosscut":
+    - generic "Aeterna crosscut"
+  - generic: Große, matte Fliese in hellem Cremebeige mit weicher, unregelmäßiger Steinoptik. Die Oberfläche wirkt leicht wolkig und natürlich gefleckt, ohne starke Adern – hell, warm und ruhig.
+  - generic: 47,90 €
+  - button "1 Artikel hinzufügen":
+- button "Sense Pearl Große, matte Fliese in hellem Greige mit weicher Steinoptik. Die Oberfläche zeigt dezente Wolkenverläufe und feine, unregelmäßige Linien – natürlich, hell und ruhig, ohne aufdringliche Aderung. 47,90 €":
+  - gridcell "Sense Pearl":
+    - generic "Sense Pearl"
+  - generic: Große, matte Fliese in hellem Greige mit weicher Steinoptik. Die Oberfläche zeigt dezente Wolkenverläufe und feine, unregelmäßige Linien – natürlich, hell und ruhig, ohne aufdringliche Aderung.
+  - generic: 47,90 €
+  - button "1 Artikel hinzufügen":
+- gridcell "120x120 Poliert ✨":
+  - generic "120x120 Poliert✨":
+    - text: 120x120 Poliert
+    - img "✨"
+- button "Alle anzeigen"
+- button "Saigon white Große, glänzende Fliese in Weiß mit markanter Marmoroptik. Die Oberfläche zeigt kräftige, unregelmäßige Adern in Grau bis Anthrazit – hell, kontrastreich und elegant. 52,90 €":
+  - gridcell "Saigon white":
+    - generic "Saigon white"
+  - generic: Große, glänzende Fliese in Weiß mit markanter Marmoroptik. Die Oberfläche zeigt kräftige, unregelmäßige Adern in Grau bis Anthrazit – hell, kontrastreich und elegant.
+  - generic: 52,90 €
+  - button "1 Artikel hinzufügen":
+- button "Caleternal white Große, glänzende Fliese in Weiß-Creme mit weicher Onyx- bzw. Marmoroptik. Die Oberfläche zeigt fließende, wolkige Verläufe in hellen Beigetönen – hell, luminös und elegant. 52,90 €":
+  - gridcell "Caleternal white":
+    - generic "Caleternal white"
+  - generic: Große, glänzende Fliese in Weiß-Creme mit weicher Onyx- bzw. Marmoroptik. Die Oberfläche zeigt fließende, wolkige Verläufe in hellen Beigetönen – hell, luminös und elegant.
+  - generic: 52,90 €
+  - button "1 Artikel hinzufügen":
+- button "Sena cream Große, glänzende Fliese in warmem Beige mit lebhafter Travertin- bzw. Marmoroptik. Die Oberfläche zeigt weiche, wolkige Verläufe und organische Strukturen in hellen und dunkleren Beigetönen – natürlich, bewegt und elegant. 54,90 €":
+  - gridcell "Sena cream":
+    - generic "Sena cream"
+  - generic: Große, glänzende Fliese in warmem Beige mit lebhafter Travertin- bzw. Marmoroptik. Die Oberfläche zeigt weiche, wolkige Verläufe und organische Strukturen in hellen und dunkleren Beigetönen – natürlich, bewegt und elegant.
+  - generic: 54,90 €
+  - button "1 Artikel hinzufügen":
+- gridcell "Vinyl 🤎":
+  - generic "Vinyl🤎":
+    - text: Vinyl
+    - img "🤎"
+- button "Alle anzeigen"
+- button "Seine Kingsize Plak Dieser Vinylboden überzeugt mit seiner hellen, modernen Holzstruktur und schafft eine warme, freundliche Atmosphäre in jedem Raum. Die natürliche Maserung sorgt für eine authentische Optik, während die dezenten Farbtöne vielseitig kombinierbar sind. Ideal für Wohnräume, Küchen oder Büros – pflegeleicht, robust und zeitlos schön. 34,95 €":
+  - gridcell "Seine Kingsize Plak":
+    - generic "Seine Kingsize Plak"
+  - generic: Dieser Vinylboden überzeugt mit seiner hellen, modernen Holzstruktur und schafft eine warme, freundliche Atmosphäre in jedem Raum. Die natürliche Maserung sorgt für eine authentische Optik, während die dezenten Farbtöne vielseitig kombinierbar sind. Ideal für Wohnräume, Küchen oder Büros – pflegeleicht, robust und zeitlos schön.
+  - generic: 34,95 €
+  - button "1 Artikel hinzufügen":
+- button "Elba Helle Holzoptik mit sanften Grau- und Beigetönen für eine natürliche und moderne Raumwirkung. Die authentische Maserung sorgt für eine warme Atmosphäre und passt ideal zu skandinavischen sowie zeitlosen Wohnkonzepten. Robust, pflegeleicht und vielseitig einsetzbar. 34,90 €":
+  - gridcell "Elba":
+    - generic "Elba"
+  - generic: Helle Holzoptik mit sanften Grau- und Beigetönen für eine natürliche und moderne Raumwirkung. Die authentische Maserung sorgt für eine warme Atmosphäre und passt ideal zu skandinavischen sowie zeitlosen Wohnkonzepten. Robust, pflegeleicht und vielseitig einsetzbar.
+  - generic: 34,90 €
+  - button "1 Artikel hinzufügen":
+- button "Fischgrät 7230 Dieser Vinylboden überzeugt mit einem klassischen Fischgrätmuster und einer warmen, natürlichen Holzoptik. Die feine Maserung und die harmonischen Braun- und Beigetöne verleihen jedem Raum eine elegante und wohnliche Atmosphäre. Das zeitlose Design sorgt für einen hochwertigen Look und passt perfekt zu modernen, klassischen oder skandinavischen Einrichtungsstilen. Pflegeleicht, langlebig und ideal für Wohn- und Gewerberäume. 34,95 €":
+  - gridcell "Fischgrät 7230":
+    - generic "Fischgrät 7230"
+  - generic: Dieser Vinylboden überzeugt mit einem klassischen Fischgrätmuster und einer warmen, natürlichen Holzoptik. Die feine Maserung und die harmonischen Braun- und Beigetöne verleihen jedem Raum eine elegante und wohnliche Atmosphäre. Das zeitlose Design sorgt für einen hochwertigen Look und passt perfekt zu modernen, klassischen oder skandinavischen Einrichtungsstilen. Pflegeleicht, langlebig und ideal für Wohn- und Gewerberäume.
+  - generic: 34,95 €
+  - button "1 Artikel hinzufügen":
+- gridcell "Alle Artikel":
+  - generic: Alle Artikel
+- button "Alle anzeigen" [active]
+- button "Elba Helle Holzoptik mit sanften Grau- und Beigetönen für eine natürliche und moderne Raumwirkung. Die authentische Maserung sorgt für eine warme Atmosphäre und passt ideal zu skandinavischen sowie zeitlosen Wohnkonzepten. Robust, pflegeleicht und vielseitig einsetzbar. 34,90 €":
+  - gridcell "Elba":
+    - generic "Elba"
+  - generic: Helle Holzoptik mit sanften Grau- und Beigetönen für eine natürliche und moderne Raumwirkung. Die authentische Maserung sorgt für eine warme Atmosphäre und passt ideal zu skandinavischen sowie zeitlosen Wohnkonzepten. Robust, pflegeleicht und vielseitig einsetzbar.
+  - generic: 34,90 €
+  - button "1 Artikel hinzufügen":
+- button "Aeterna crosscut Große, matte Fliese in hellem Cremebeige mit weicher, unregelmäßiger Steinoptik. Die Oberfläche wirkt leicht wolkig und natürlich gefleckt, ohne starke Adern – hell, warm und ruhig. 47,90 €":
+  - gridcell "Aeterna crosscut":
+    - generic "Aeterna crosscut"
+  - generic: Große, matte Fliese in hellem Cremebeige mit weicher, unregelmäßiger Steinoptik. Die Oberfläche wirkt leicht wolkig und natürlich gefleckt, ohne starke Adern – hell, warm und ruhig.
+  - generic: 47,90 €
+  - button "1 Artikel hinzufügen":
+- button "Byblos Gris Kühleres Hellgrau mit klareren, etwas kräftigeren weißen Adern. Mehr Zeichnung, etwas graphischer und kühler. 39,90 €":
+  - gridcell "Byblos Gris":
+    - generic "Byblos Gris"
+  - generic: Kühleres Hellgrau mit klareren, etwas kräftigeren weißen Adern. Mehr Zeichnung, etwas graphischer und kühler.
+  - generic: 39,90 €
+  - button "1 Artikel hinzufügen":
+- button "Bercy Terra Warme, sandfarbene Fliese mit ruhiger, natürlicher Oberfläche. Mediterranes Feeling ohne aufdringliche Maserung. Perfekt für Wohnbereiche, Bad, Küche oder Terrasse. Hell, freundlich und vielseitig kombinierbar. 39,90 €":
+  - gridcell "Bercy Terra":
+    - generic "Bercy Terra"
+  - generic: Warme, sandfarbene Fliese mit ruhiger, natürlicher Oberfläche. Mediterranes Feeling ohne aufdringliche Maserung. Perfekt für Wohnbereiche, Bad, Küche oder Terrasse. Hell, freundlich und vielseitig kombinierbar.
+  - generic: 39,90 €
+  - button "1 Artikel hinzufügen":
+- button "Alcala beige Hochwertiges Feinsteinzeug mit lebendiger, leicht strukturierter Steinoptik. Sanfter Beige-/Sandton mit dezenten Wolken und feinen Einschlüssen – wirkt ruhig, natürlich und hochwertig. Ideal für Wohnräume, Bad, Küche oder als durchgehender Boden- und Wandbelag. Pflegeleicht, robust und zeitlos. Perfekt für moderne, warme und natürliche Raumkonzepte. 39,90 €":
+  - gridcell "Alcala beige":
+    - generic "Alcala beige"
+  - generic: Hochwertiges Feinsteinzeug mit lebendiger, leicht strukturierter Steinoptik. Sanfter Beige-/Sandton mit dezenten Wolken und feinen Einschlüssen – wirkt ruhig, natürlich und hochwertig. Ideal für Wohnräume, Bad, Küche oder als durchgehender Boden- und Wandbelag. Pflegeleicht, robust und zeitlos. Perfekt für moderne, warme und natürliche Raumkonzepte.
+  - generic: 39,90 €
+  - button "1 Artikel hinzufügen":
+- button "Terra beige Helle, warme Beige-Fliese mit sehr dezenten, natürlichen Marmoradern. Matt-steinige Oberfläche, ruhig und elegant. Ideal für moderne Wohnräume, Bäder und große Flächen – wirkt hell, hochwertig und zeitlos. 39,90 €":
+  - gridcell "Terra beige":
+    - generic "Terra beige"
+  - generic: Helle, warme Beige-Fliese mit sehr dezenten, natürlichen Marmoradern. Matt-steinige Oberfläche, ruhig und elegant. Ideal für moderne Wohnräume, Bäder und große Flächen – wirkt hell, hochwertig und zeitlos.
+  - generic: 39,90 €
+  - button "1 Artikel hinzufügen":
+- button "Saigon white Große, glänzende Fliese in Weiß mit markanter Marmoroptik. Die Oberfläche zeigt kräftige, unregelmäßige Adern in Grau bis Anthrazit – hell, kontrastreich und elegant. 52,90 €":
+  - gridcell "Saigon white":
+    - generic "Saigon white"
+  - generic: Große, glänzende Fliese in Weiß mit markanter Marmoroptik. Die Oberfläche zeigt kräftige, unregelmäßige Adern in Grau bis Anthrazit – hell, kontrastreich und elegant.
+  - generic: 52,90 €
+  - button "1 Artikel hinzufügen":
+- button "Habitat Perla Großformatige Feinsteinzeugfliese in ruhigem, hellgrauem Beton-Look. Matte, leicht strukturierte Oberfläche – modern, schlicht und zeitlos. Ideal für Wohnräume, Küche, Bad und große Flächen. Wirkt ruhig und hochwertig, ohne unruhige Maserung. Robust, pflegeleicht und für Boden + Wand geeignet. 39,90 €":
+  - gridcell "Habitat Perla":
+    - generic "Habitat Perla"
+  - generic: Großformatige Feinsteinzeugfliese in ruhigem, hellgrauem Beton-Look. Matte, leicht strukturierte Oberfläche – modern, schlicht und zeitlos. Ideal für Wohnräume, Küche, Bad und große Flächen. Wirkt ruhig und hochwertig, ohne unruhige Maserung. Robust, pflegeleicht und für Boden + Wand geeignet.
+  - generic: 39,90 €
+  - button "1 Artikel hinzufügen":
+- button "Fischgrät 7230 Dieser Vinylboden überzeugt mit einem klassischen Fischgrätmuster und einer warmen, natürlichen Holzoptik. Die feine Maserung und die harmonischen Braun- und Beigetöne verleihen jedem Raum eine elegante und wohnliche Atmosphäre. Das zeitlose Design sorgt für einen hochwertigen Look und passt perfekt zu modernen, klassischen oder skandinavischen Einrichtungsstilen. Pflegeleicht, langlebig und ideal für Wohn- und Gewerberäume. 34,95 €":
+  - gridcell "Fischgrät 7230":
+    - generic "Fischgrät 7230"
+  - generic: Dieser Vinylboden überzeugt mit einem klassischen Fischgrätmuster und einer warmen, natürlichen Holzoptik. Die feine Maserung und die harmonischen Braun- und Beigetöne verleihen jedem Raum eine elegante und wohnliche Atmosphäre. Das zeitlose Design sorgt für einen hochwertigen Look und passt perfekt zu modernen, klassischen oder skandinavischen Einrichtungsstilen. Pflegeleicht, langlebig und ideal für Wohn- und Gewerberäume.
+  - generic: 34,95 €
+  - button "1 Artikel hinzufügen":
+- button "Eiche 6501 Dieser Vinylboden überzeugt durch seine helle, natürliche Holzoptik mit feiner Maserung und dezenten Aststrukturen. Die sanften Beige- und Holztöne schaffen eine freundliche, warme Atmosphäre und lassen Räume offen und einladend wirken. Dank seines zeitlosen Designs passt der Boden perfekt zu modernen, klassischen und skandinavischen Wohnstilen. Pflegeleicht, strapazierfähig und vielseitig einsetzbar in Wohn- und Gewerberäumen. 34,95 €":
+  - gridcell "Eiche 6501":
+    - generic "Eiche 6501"
+  - generic: Dieser Vinylboden überzeugt durch seine helle, natürliche Holzoptik mit feiner Maserung und dezenten Aststrukturen. Die sanften Beige- und Holztöne schaffen eine freundliche, warme Atmosphäre und lassen Räume offen und einladend wirken. Dank seines zeitlosen Designs passt der Boden perfekt zu modernen, klassischen und skandinavischen Wohnstilen. Pflegeleicht, strapazierfähig und vielseitig einsetzbar in Wohn- und Gewerberäumen.
+  - generic: 34,95 €
+  - button "1 Artikel hinzufügen":

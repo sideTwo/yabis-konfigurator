@@ -1,2 +1,21 @@
 _dev/schirm/
 bilder/kling/*.mp4
+
+# Local credentials and dependencies
+.env
+.env.*
+!.env.example
+node_modules/
+*.log
+
+# Temporary renders, pixel buffers and visual inspection captures
+_dev/*.png
+_dev/*.jpg
+_dev/*.rgb
+_dev/*.gray
+konfigurator-neu/*.png
+konfigurator-neu/vorschau.jpg
+
+# OS files
+Thumbs.db
+.DS_Store

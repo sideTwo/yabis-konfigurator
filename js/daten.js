@@ -84,7 +84,7 @@
   };
 
   // Flüge: Kanten des Hauses. Gewicht 3 für Flüge von außen, damit innen der Weg durchs Wohnzimmer gewinnt.
-  // bilder: Anzahl Einzelbilder in bilder/fluege/<name>/000.webp … (0 = noch kein Kling-Clip, Platzhalter-Übergang)
+  // bilder: Anzahl Einzelbilder in bilder/fluege/<name>/000.webp … (0 = noch kein Artlist-Clip, Platzhalter-Übergang)
   const FLUEGE = [
     { von: "haus", nach: "terrasse", gewicht: 3, bilder: 0 },
     { von: "haus", nach: "wohnzimmer", gewicht: 3, bilder: 0 },
@@ -121,5 +121,5 @@
     { id: "vinyl-eiche-grau", name: "Vinyl Eiche grau", platzhalter: true, bereiche: ["vinyl"], textur: "holz:#A9A39A:#7E776D", oberflaeche: "Planke", glanz: 0.05, formate: [[20, 120], [23, 150]], verbaende: ["wild"], fuge: "keine" },
   ];
 
-  global.YK = { W, H, RAEUME, FLUEGE, BEREICHE, PRODUKTE, FUGEN, VERBAENDE, TELEFON: "4915146353821", MAIL: "info@yabisfliesenwelt.de" };
+  global.YK = { W, H, RAEUME, FLUEGE, BEREICHE, PRODUKTE, FUGEN, VERBAENDE, TELEFON: "491786787724", MAIL: "info@yabisfliesenwelt.de" };
 })(typeof window !== "undefined" ? window : globalThis);
