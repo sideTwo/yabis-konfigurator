@@ -1,10 +1,10 @@
 /* Aligned room photographs; independent floor/wall masks preserve the room.
-   Light, texture, grout and reflections are baked into each material plate. */
+   Material lighting is photographic; grout is projected separately. */
 (() => {
   'use strict';
   const shop = window.YabisShop;
   const $ = id => document.getElementById(id);
-  const key = 'yabis-still-v1', format = [60, 120];
+  const key = 'yabis-still-v1', grid = window.YabisTileGrid;
   const renderer = window.YabisRoomPreview;
   const canvas = $('room-preview'), ctx = canvas.getContext('2d');
   const plates = new Map();
@@ -12,6 +12,10 @@
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(key)) || {}; } catch {}
   const state = {floor: shop.find(saved.floor)?.id || 'habitat-perla', wall: shop.find(saved.wall)?.id || 'habitat-perla', wallHeight: saved.wallHeight === 'full' ? 'full' : '120'};
+  for (const surface of ['floor','wall']) {
+    state[`${surface}Format`] = grid.format(saved[`${surface}Format`]);
+    state[`${surface}Grout`] = Object.hasOwn(grid.grouts,saved[`${surface}Grout`]) ? saved[`${surface}Grout`] : 'light';
+  }
   const linked = shop.find(new URLSearchParams(location.search).get('product'));
   if (linked) state.floor = linked.id;
   const heightName = () => state.wallHeight === 'full' ? 'Raumhoch' : '1,20 m · Dusche raumhoch';
@@ -30,13 +34,17 @@
     const wallImage = plates.get(imageKey(state.wall, state.wallHeight));
     if (!base || !floorImage || !wallImage) return;
     renderer.render(ctx, {base, floor: floorImage, wall: wallImage, wallHeight: state.wallHeight});
+    grid.draw(ctx, state, renderer, base);
     canvas.hidden = false; $('room-fallback').hidden = true;
     $('stage').setAttribute('aria-busy', 'false'); $('image-status').hidden = true; $('save-image').disabled = false;
-    canvas.setAttribute('aria-label', `Badezimmer: Boden ${shop.find(state.floor).name}, Wand ${shop.find(state.wall).name}, ${heightName()}`);
+    canvas.setAttribute('aria-label', `Badezimmer: Boden ${shop.find(state.floor).name}, ${state.floorFormat.join(' × ')} cm, Fuge ${grid.grouts[state.floorGrout].label}; Wand ${shop.find(state.wall).name}, ${state.wallFormat.join(' × ')} cm, Fuge ${grid.grouts[state.wallGrout].label}, ${heightName()}`);
   }
   function updateSelection() {
     for (const surface of ['floor', 'wall']) {
       $(`${surface}-name`).textContent = shop.find(state[surface]).name;
+      $(`${surface}-format`).value = state[`${surface}Format`].join(',');
+      $(`${surface}-grout`).value = state[`${surface}Grout`];
+      $(`${surface}-spec`).textContent = `${state[`${surface}Format`].join(' × ')} cm · ${grid.grouts[state[`${surface}Grout`]].label}`;
       for (const button of $(`${surface}-materials`).querySelectorAll('button'))
         button.setAttribute('aria-pressed', String(button.dataset.product === state[surface]));
     }
@@ -52,13 +60,19 @@
       const texture = document.createElement('a'); texture.href = `../${p.texture}`; texture.target = '_blank'; texture.rel = 'noopener'; texture.textContent = 'Verwendetes Herstellermuster ↗';
       text.append(name, link, texture); block.append(image, text); $('product-sources').append(block);
     }
-    $('cart-status').textContent = ''; $('to-cart').hidden = true; draw(); save();
+    updateQuantities(); draw(); save();
   }
   $('wall-height').addEventListener('change', () => {
     state.wallHeight = $('wall-height').value === 'full' ? 'full' : '120';
     updateSelection();
   });
   for (const surface of ['floor', 'wall']) {
+    $(`${surface}-format`).addEventListener('change', () => {
+      state[`${surface}Format`] = grid.format($(`${surface}-format`).value); updateSelection();
+    });
+    $(`${surface}-grout`).addEventListener('change', () => {
+      state[`${surface}Grout`] = $(`${surface}-grout`).value; updateSelection();
+    });
     for (const p of shop.products) {
       const button = document.createElement('button'); button.type = 'button'; button.className = 'material'; button.dataset.product = p.id;
       button.setAttribute('aria-label', `${surface === 'floor' ? 'Boden' : 'Wand'}: ${p.name}`);
@@ -79,7 +93,7 @@
     for (const surface of ['floor', 'wall']) {
       const included = $(`include-${surface}`).checked;
       $(`${surface}-area`).disabled = !included; $(`${surface}-waste`).disabled = !included;
-      const q = shop.calculate($(`${surface}-area`).value, $(`${surface}-waste`).value, format);
+      const q = shop.calculate($(`${surface}-area`).value, $(`${surface}-waste`).value, state[`${surface}Format`]);
       $(`${surface}-quantity`).textContent = !included ? 'Wird nicht angefragt.' : q ? `${shop.de(q.total)} m² inkl. Verschnitt · rechnerisch ${q.pieces} Fliesen` : 'Bitte Ihre Fläche eintragen.';
     }
     $('cart-status').textContent = ''; $('to-cart').hidden = true; save();
@@ -92,7 +106,7 @@
     const selected = ['floor','wall'].filter(s => $(`include-${s}`).checked);
     if (!selected.length) { $('cart-status').textContent = 'Bitte Boden oder Wand für die Anfrage auswählen.'; return; }
     try {
-      const items = selected.map(surface => shop.item({product: state[surface], area: Number($(`${surface}-area`).value), waste: Number($(`${surface}-waste`).value), format, surface: surface === 'floor' ? 'Boden (ohne Duschwanne)' : 'Wand', pattern: 'Kreuzfuge', grout: 'Grau', wallHeight: surface === 'wall' ? state.wallHeight : null}));
+      const items = selected.map(surface => shop.item({product: state[surface], area: Number($(`${surface}-area`).value), waste: Number($(`${surface}-waste`).value), format: state[`${surface}Format`], surface: surface === 'floor' ? 'Boden (ohne Duschwanne)' : 'Wand', pattern: 'Kreuzfuge', grout: grid.grouts[state[`${surface}Grout`]].label, wallHeight: surface === 'wall' ? state.wallHeight : null}));
       shop.add(items);
       $('cart-status').textContent = `${items.length === 2 ? 'Boden und Wand wurden' : 'Ihre Auswahl wurde'} in den Anfragekorb übernommen.`; $('to-cart').hidden = false;
     } catch (error) { $('cart-status').textContent = error.message; }
@@ -101,7 +115,7 @@
     canvas.toBlob(blob => {
       if (!blob) return;
       const url = URL.createObjectURL(blob), a = document.createElement('a'); a.href = url;
-      a.download = `Yabis-Bad-Boden-${state.floor}-Wand-${state.wall}-${state.wallHeight === '120' ? '120cm' : 'raumhoch'}.png`; a.click();
+      a.download = `Yabis-Bad-Boden-${state.floor}-${state.floorFormat.join('x')}-${state.floorGrout}-Wand-${state.wall}-${state.wallFormat.join('x')}-${state.wallGrout}-${state.wallHeight === '120' ? '120cm' : 'raumhoch'}.png`; a.click();
       setTimeout(() => URL.revokeObjectURL(url), 10000);
     }, 'image/png');
   });
@@ -114,7 +128,7 @@
   }
   Promise.all([
     loadImage('assets/konfiguration/basis-weiss.png').then(image => { base = image; }),
-    ...shop.products.flatMap(p => ['120', 'full'].map(wallHeight => loadImage(`assets/konfiguration/${p.id}-${wallHeight}.png`).then(image => { plates.set(imageKey(p.id, wallHeight), image); })))
+    ...shop.products.flatMap(p => ['120', 'full'].map(wallHeight => loadImage(`assets/konfiguration-fugenlos/${p.id}-${wallHeight}.png`).then(image => { plates.set(imageKey(p.id, wallHeight), image); })))
   ]).then(draw).catch(() => {
     $('image-status').textContent = 'Ein Materialbild konnte nicht geladen werden. Bitte die Seite neu laden.';
     $('stage').setAttribute('aria-busy', 'false');

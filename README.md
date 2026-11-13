@@ -12,7 +12,8 @@ können vom Originalprodukt abweichen. Es entsteht keine verbindliche Bestellung
 Prototyp für die Auswahl von Badfliesen und unverbindliche Angebotsanfragen.
 Das aktive Badstudio nutzt die freigegebene feste Badperspektive und acht
 mit KI erstellte Materialansichten. Vier Wand- und vier Bodenmaterialien sind
-unabhängig wählbar, dazu 1,20 m oder raumhohe Wandfliesen: 32 Kombinationen.
+unabhängig wählbar, dazu 1,20 m oder raumhohe Wandfliesen. Für jede Fläche sind
+Fliesenformat und Fugenfarbe separat wählbar und sofort in der Vorschau sichtbar.
 Bei 1,20 m bleiben die oberen Wände neutral weiß gestrichen, mit Abschlussprofil.
 Die Dusche ist in beiden Fällen vollständig gefliest.
 Beide Flächen lassen sich in den gemeinsamen Anfragekorb des Produktkatalogs
@@ -50,8 +51,9 @@ ist mit dem gemeinsamen Anfragekorb verbunden.
   getrennte Boden-/Wandauswahl, Mengen und Verschnitt, Anfragekorb und PNG-Export.
 - `konfigurator-neu/standbild-renderer.js`: getrennte, kalibrierte Boden- und Wandmasken,
   weiße gestrichene Flächen sowie die Aussparung für das vor den Boden ragende WC.
-- `konfigurator-neu/assets/konfiguration/`: je vier Materialansichten für 1,20 m und
-  raumhoch, plus die auf neutrales Weiß korrigierte Basis. Der Boden verwendet
+- `konfigurator-neu/assets/konfiguration-fugenlos/`: acht fotografische Materialflächen
+  ohne fest eingebrannte Fliesenfugen. Die vorherigen Bilder bleiben unter
+  `assets/konfiguration/` erhalten, einschließlich der neutral weißen Basis. Der Boden verwendet
   immer dieselbe Materialansicht, unabhängig von Wandmodell und Fliesenhöhe.
 - `_quelle/yabis-auswahl-2026-11-12.json` und
   `_quelle/yabis-herstellerbilder-2026-11-12.json`: Zuordnung zu den Katalogartikeln
@@ -62,9 +64,15 @@ WC rechts. Die flächenbündige Betätigungsplatte folgt der Nutzervorlage: zwei
 aneinanderliegende rechteckige Tasten mit gleicher Fliesenoberfläche.
 Die WC-Spiegelung im Duschglas ist entfernt. Die vorherigen Entwürfe bleiben erhalten.
 
-Format 60 × 120 cm, Kreuzfuge und graue Fugen sind in den Bildern fest gerendert.
-Die Bildvorschau bietet für Format und Fuge keine veränderlichen Regler. Die
-Wandhöhe ist umschaltbar; sie wird pro Wandposition in den Anfragekorb und den
+- `konfigurator-neu/tile-grid.js`: perspektivisches Fugenraster in einem
+  Zentimetermodell. Jede Raumebene verwendet eine durchgehende Projektionsmatrix,
+  damit Längsfugen an Querreihen nicht verspringen. Die 1,20-m-Abschlusskante dient
+  als Höhenanker; Raumtiefe und Breite sind Modellannahmen, kein vermessenes Bad.
+
+60 × 120, 60 × 60 und 120 × 120 cm sowie vier Fugenfarben sind für Boden und Wand
+getrennt wählbar. Andere Formate als 60 × 120 cm werden ausdrücklich als
+Formatwunsch übergeben. Die Vorschau zeigt Kreuzfugen mit 3 mm Breite.
+Wandhöhe, Format und Fugenfarbe werden pro Position in den Anfragekorb und den
 Anfragetext übernommen. Die geflieste Wandfläche einschließlich Dusche wird
 manuell eingetragen; gestrichene Flächen werden nicht automatisch berechnet.
 Flächen und Verschnitt lassen sich getrennt angeben. Die alten Filme bleiben erhalten.
@@ -137,7 +145,7 @@ Es gibt keinen Checkout und keine Online-Bezahlung. Benötigte Produkt- und
 Materialdaten sind in `ANFRAGE-YABIS.md` beschrieben. Die unter `_quelle/`
 gesammelten Katalogdaten sind unvollständig.
 
-Prüfungen: `node --test --test-isolation=none tests/material-motion.test.cjs tests/shop-core.test.cjs`.
+Prüfungen: `node --test --test-isolation=none tests/material-motion.test.cjs tests/shop-core.test.cjs tests/tile-grid.test.cjs tests/standbild.test.cjs`.
 Die Startseite `index.html` führt zum neuen Anfrage-Shop.
 
 ## Entwicklungsdateien
