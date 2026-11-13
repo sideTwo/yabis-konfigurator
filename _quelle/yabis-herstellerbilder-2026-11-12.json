@@ -1,0 +1,62 @@
+{
+  "geprueft_am": "2026-11-12",
+  "abgleich": "Serienname, Farbname, Hersteller und Format mit den Yabis-Originalfotos und Artikeldaten abgeglichen. Hersteller-Artikelnummern sind Referenzen, keine bestätigten Yabis-Bestellnummern.",
+  "produkte": [
+    {
+      "id": "habitat-perla",
+      "hersteller": "Prissmacer",
+      "hersteller_referenz": "0172500375670",
+      "seite": "https://www.prissmacer.es/fr/serie/ess-habitat/",
+      "bildquelle": "https://www.prissmacer.es/wp-content/uploads/2026/10/HABITAT-PERLA-60x120-1.jpg",
+      "originaldatei": "bilder/katalog/hersteller/habitat-perla.jpg",
+      "pixel": [
+        1500,
+        760
+      ],
+      "bearbeitung": "Keine"
+    },
+    {
+      "id": "bercy-terra",
+      "hersteller": "Prissmacer",
+      "hersteller_referenz": "0172500014875",
+      "seite": "https://www.prissmacer.es/serie/ess-bercy/",
+      "bildquelle": "https://www.prissmacer.es/wp-content/uploads/2023/11/BERCY_TERRA_60x120.jpg",
+      "originaldatei": "bilder/katalog/hersteller/bercy-terra.jpg",
+      "pixel": [
+        1500,
+        750
+      ],
+      "bearbeitung": "Keine; Grundfliese Terra, nicht Dec. Terra oder Nude"
+    },
+    {
+      "id": "bianco-mare",
+      "hersteller": "Prissmacer",
+      "hersteller_referenz": "1050000050242",
+      "seite": "https://www.prissmacer.es/serie/lab-bianco-mare/",
+      "bildquelle": "https://www.prissmacer.es/wp-content/uploads/2024/02/LAB-BIANCO-MARE-60X120.jpg",
+      "originaldatei": "bilder/katalog/hersteller/bianco-mare.jpg",
+      "pixel": [
+        3402,
+        1701
+      ],
+      "bearbeitung": "Keine",
+      "offen": "Muster Bianco, nicht Gold. Yabis nennt Lappato in der Gruppe und poliert in der Beschreibung. Exakte Oberfläche und Variante müssen bestätigt werden; die Grafik bildet kein verbindliches Glanzverhalten ab."
+    },
+    {
+      "id": "taj-mahal-beige",
+      "hersteller": "Roca Tiles",
+      "hersteller_referenz": "F6E0E54041",
+      "seite": "https://www.rocatiles.com/export/products/taj-mahal-beige-pulido-F6E0E54041-en/",
+      "bildquelle": "https://www.rocatiles.com/wp-content/uploads/2025/10/F6E0E54041-scaled.jpg",
+      "originaldatei": "bilder/katalog/hersteller/taj-mahal-beige.jpg",
+      "pixel": [
+        2560,
+        1810
+      ],
+      "textur": "bilder/katalog/hersteller/taj-mahal-beige-textur.jpg",
+      "bearbeitung": "Weißer Bildrand entfernt: Ausschnitt x=0, y=265, Breite=2560, Höhe=1280; JPEG neu gespeichert. Keine Musterrekonstruktion."
+    }
+  ],
+  "darstellung": "Je Serie eine saubere Produktgrafik. Gelegentliche stabile 180-Grad-Drehungen, keine systematischen Spiegelungen. Echte wechselnde Druckgrafiken sind nicht vollständig abgebildet. Beleuchtung, Reflexe und Finish werden aus dem Originalfilm geschätzt; kein gemessenes Materialmodell und keine farbverbindliche Produktdarstellung. Keine KI-generierten Dekore.",
+  "topseller": "Keine explizite Kennzeichnung im geprüften Yabis-Katalog gefunden; keine Verkaufsrangfolge behauptet."
+}

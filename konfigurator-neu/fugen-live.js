@@ -1,6 +1,6 @@
-/* Real-time joint layout on the photographed material, including moving-camera masks.
-   The source provides the actual material, shadows and reflections; only narrow
-   old joints are repaired and the requested tile boundaries are shaded in place. */
+/* Material replacement on the original footage. Measured seams anchor the floor;
+   diffuse illumination and a finish-dependent reflection estimate are transferred
+   in linear light. This is compositing, not a measured BRDF or a full 3D relight. */
 (() => {
 'use strict';
 const W=1920,H=1080;
@@ -8,6 +8,16 @@ function solve(A,b){const m=A.map((r,i)=>[...r,b[i]]),n=b.length;for(let c=0;c<n
 function homography(from,to){const A=[],b=[];for(let i=0;i<4;i++){const [x,y]=from[i],[u,v]=to[i];A.push([x,y,1,0,0,0,-u*x,-u*y],[0,0,0,x,y,1,-v*x,-v*y]);b.push(u,v);}return [...solve(A,b),1];}
 const columnMajor=m=>new Float32Array([m[0],m[3],m[6],m[1],m[4],m[7],m[2],m[5],m[8]]);
 const interpolate=(keys,t)=>{let i=0;while(i<keys.length-2&&t>keys[i+1][0])i++;const [a,x]=keys[i],[b,y]=keys[i+1],f=Math.max(0,Math.min(1,(t-a)/(b-a)));return x.map((p,j)=>p.map((v,k)=>v+(y[j][k]-v)*f));};
+function intersection(a,b){
+ const [x,y,u,v]=a,[s,t,w,z]=b,dx=u-x,dy=v-y,ex=w-s,ey=z-t,d=dx*ey-dy*ex;
+ if(Math.abs(d)<1e-5)return null;
+ const f=((s-x)*ey-(t-y)*ex)/d;return [x+dx*f,y+dy*f];
+}
+function measuredFloorQuad(lines){
+ if(!Array.isArray(lines[0]))lines=Array.from({length:lines.length/4},(_,i)=>Array.from(lines.slice(i*4,i*4+4)));
+ const points=[intersection(lines[0],lines[5]),intersection(lines[0],lines[4]),intersection(lines[2],lines[4]),intersection(lines[2],lines[5])];
+ return points.every(p=>p&&p.every(Number.isFinite))?points:null;
+}
 const floorOutline=[
  [0,[[670,747],[770,660],[1030,656],[1105,666],[1134,723],[1201,723],[1200,855],[1270,1016],[1295,1018],[1305,1043],[650,1043],[670,850]]],
  [2.5,[[603,777],[737,674],[1040,670],[1120,680],[1158,760],[1292,760],[1288,980],[1341,1080],[1341,1080],[1341,1080],[565,1080],[603,973]]],
@@ -25,15 +35,20 @@ in vec2 a;void main(){gl_Position=vec4(a,0,1);}`;
 const FS=`#version 300 es
 precision highp float;
 uniform sampler2D photo;
+uniform sampler2D decor;
+uniform vec4 decorCrop;
+uniform int useDecor,rotateDecor;
 uniform vec2 viewport,tile,oldTile,oldOffset;
 uniform mat3 toWorld,toImage;
 uniform vec2 outline[12],fittings[13];uniform vec4 floorGuides[9];uniform int count,pass,isWall;
-uniform float stagger,albedo;
+uniform float stagger,albedo,roughness;
 uniform vec3 toneGain;
 uniform float toneGamma,toneSaturation,toneHighlights;
 uniform vec3 grout;
 out vec4 outputColor;
 float lum(vec3 c){return dot(c,vec3(.2126,.7152,.0722));}
+vec3 linearColor(vec3 c){return mix(c/12.92,pow((c+.055)/1.055,vec3(2.4)),step(vec3(.04045),c));}
+vec3 displayColor(vec3 c){c=max(c,vec3(0));return mix(c*12.92,1.055*pow(c,vec3(1./2.4))-.055,step(vec3(.0031308),c));}
 vec3 gradeMaterial(vec3 c){
   vec3 neutral=mix(vec3(lum(c)),c,toneSaturation);
   vec3 toned=clamp(pow(max(neutral,vec3(0)),vec3(toneGamma))*toneGain,0.,1.);
@@ -48,6 +63,34 @@ bool fixture(vec2 p){
   for(int i=2;i<5;i++)if(length(p-fittings[i])<10.)return true;
   for(int i=5;i<12;i++)if(segmentDistance(p,fittings[i],fittings[i+1])<4.5)return true;
   return false;
+}
+float fixtureCoverage(vec2 p){
+ float coverage=1.-smoothstep(3.5,7.,segmentDistance(p,fittings[0],fittings[1]));
+ for(int i=2;i<5;i++)coverage=max(coverage,1.-smoothstep(5.,9.,length(p-fittings[i])));
+ for(int i=5;i<12;i++)coverage=max(coverage,1.-smoothstep(2.,4.5,segmentDistance(p,fittings[i],fittings[i+1])));
+ return coverage;
+}
+float boundaryCoverage(vec2 p){
+ float distanceToEdge=10000.;
+ for(int i=0;i<12;i++){if(i>=count)break;int j=i==0?count-1:i-1;distanceToEdge=min(distanceToEdge,segmentDistance(p,outline[i],outline[j]));}
+ return smoothstep(0.,1.15*1920./viewport.x,distanceToEdge);
+}
+bool photographedJoint(vec2 image){
+ if(isWall==0){for(int i=0;i<9;i++)if(segmentDistance(image,floorGuides[i].xy,floorGuides[i].zw)<8.5)return true;return false;}
+ vec3 world=toWorld*vec3(image,1);vec2 p=world.xy/world.z;
+ vec2 nearest=round((p-oldOffset)/oldTile)*oldTile+oldOffset;
+ return length(project(vec2(nearest.x,p.y))-image)<8.5||length(project(vec2(p.x,nearest.y))-image)<8.5;
+}
+// A small, surface-constrained neighbourhood suppresses photographed grain and
+// old grout in the illumination, without sampling doors, vanity or ceiling.
+vec3 broadIllumination(vec2 image,vec3 centre){
+ vec3 result=linearColor(centre)*4.;float weight=4.;
+ for(int i=0;i<8;i++){
+   float angle=float(i)*.7853981634;
+   vec2 at=image+vec2(cos(angle),sin(angle))*18.;
+   if(inside(at)&&!photographedJoint(at)&&!(isWall==1&&fixture(at))){result+=linearColor(sampleAt(at));weight+=1.;}
+ }
+ return result/weight;
 }
 float jointCoverage(vec2 p,vec2 footprint){
   float row=floor(p.y/tile.y);
@@ -120,8 +163,46 @@ void main(){
   vec2 dpdy=(vec2(toWorld[1][0],toWorld[1][1])-p*toWorld[1][2])/q.z;
   vec2 pixel=max(abs(dpdx)*(1920./viewport.x)+abs(dpdy)*(1080./viewport.y),vec2(.001));
   if(!inside(image))discard;
-  if(isWall==1&&fixture(image))discard;
-  vec3 material=gradeMaterial(repair(image,p,original));
+  float fixtureMask=isWall==1?fixtureCoverage(image):0.;
+  if(fixtureMask>.999){outputColor=vec4(original,1);return;}
+  vec3 repaired=repair(image,p,original);
+  vec3 material=gradeMaterial(repaired);
+  vec3 lightingSample=(repaired*4.+sampleAt(image+vec2(12,0))+sampleAt(image-vec2(12,0))+sampleAt(image+vec2(0,12))+sampleAt(image-vec2(0,12)))/8.;
+  if(useDecor==1){
+    float row=floor(p.y/tile.y);
+    vec2 cell=vec2(p.x+fract(row*stagger)*tile.x,p.y)/tile;
+    vec2 uv=fract(cell),gradX=dpdx*(1920./viewport.x)/tile,gradY=dpdy*(1080./viewport.y)/tile;
+    // No checkerboard mirroring: that created artificial bookmatched zigzags.
+    // A stable 180-degree turn on occasional tiles preserves grain direction.
+    vec2 face=floor(cell);float turn=fract(sin(dot(face,vec2(12.9898,78.233)))*43758.5453)<.28?-1.:1.;
+    vec2 flip=vec2(turn);
+    uv=(uv-.5)*flip+.5;gradX*=flip;gradY*=flip;
+    if(rotateDecor==1){uv=vec2(uv.y,1.-uv.x);gradX=vec2(gradX.y,-gradX.x);gradY=vec2(gradY.y,-gradY.x);}
+    vec3 surfaceColor=textureGrad(decor,decorCrop.xy+uv*decorCrop.zw,gradX*decorCrop.zw,gradY*decorCrop.zw).rgb;
+    vec3 sourceLinear=linearColor(repaired);
+    vec3 broad=broadIllumination(image,repaired);
+    float broadY=max(lum(broad),.0005),sourceY=lum(sourceLinear);
+    // Reflections retain the colours of the photographed window and doors.
+    // This is an estimate from a single plate, not ground-truth light passes.
+    float highlight=smoothstep(isWall==0?.38:.66,isWall==0?.88:.98,lum(repaired));
+    vec3 specular=sourceLinear*highlight*(isWall==0?.76:.42);
+    float preserveContact=1.-smoothstep(.32,.72,sourceY/broadY);
+    float diffuseSource=mix(broadY,sourceY,preserveContact);
+    float diffuseY=max(.0001,diffuseSource-lum(specular));
+    float reference=max(lum(linearColor(vec3(albedo))),.015);
+    // Preserve real contact shadows instead of clamping them to a flat minimum.
+    float illumination=clamp(diffuseY/reference,.012,isWall==0?1.6:2.);
+    vec3 lightTint=clamp(broad/broadY,vec3(.72),vec3(1.28));
+    lightTint=mix(vec3(1),lightTint,isWall==0?.12:.20);
+    float specularResponse=mix(1.,.24,smoothstep(.25,.85,roughness));
+    vec3 diffuse=linearColor(surfaceColor)*illumination*lightTint;
+    vec3 exposed=diffuse+specular*specularResponse;
+    // The plate is already camera-tonemapped. A luminance shoulder avoids
+    // clipping the pattern away when replacing a dark tile with a pale one.
+    float exposedY=max(lum(exposed),.0001);
+    float compressedY=exposedY>.75?.75+.25*(1.-exp(-(exposedY-.75)/.25)):exposedY;
+    material=displayColor(exposed*(compressedY/exposedY));
+  }
   // Integrate the real joint width rather than widening subpixel lines to half
   // a pixel. Four geometric samples keep staggered T-junctions stable in motion.
   vec2 sx=dpdx*(1920./viewport.x)*.25,sy=dpdy*(1080./viewport.y)*.25;
@@ -129,11 +210,12 @@ void main(){
   float joint=(jointCoverage(p+sx+sy,footprint)+jointCoverage(p+sx-sy,footprint)+jointCoverage(p-sx+sy,footprint)+jointCoverage(p-sx-sy,footprint))*.25;
   vec3 broadLight=(sampleAt(image+vec2(16,0))+sampleAt(image-vec2(16,0))+sampleAt(image+vec2(0,16))+sampleAt(image-vec2(0,16)))*.25;
   broadLight=gradeMaterial(broadLight);
-  float light=clamp(pow(mix(lum(material),lum(broadLight),.8)/albedo,1.3),.12,1.3);
+  float light=clamp(pow((useDecor==1?lum(lightingSample):mix(lum(material),lum(broadLight),.8))/albedo,1.3),.12,1.3);
   vec3 jointColor=pow(pow(grout,vec3(2.2))*light,vec3(1./2.2));
   vec3 colorCast=mix(vec3(1),clamp(material/max(lum(material),.03),vec3(.8),vec3(1.2)),.20);
   jointColor*=colorCast*.9;
-  outputColor=vec4(mix(material,jointColor,joint),1);
+  vec3 composite=mix(material,jointColor,joint);
+  outputColor=vec4(mix(original,composite,boundaryCoverage(image)*(1.-fixtureMask)),1);
 }`;
 window.LiveJoints=function(canvas){
  const gl=canvas.getContext('webgl2',{alpha:false,antialias:true,preserveDrawingBuffer:true});
@@ -141,9 +223,20 @@ window.LiveJoints=function(canvas){
  const compile=(type,text)=>{const s=gl.createShader(type);gl.shaderSource(s,text);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;};
  const program=gl.createProgram();gl.attachShader(program,compile(gl.VERTEX_SHADER,VS));gl.attachShader(program,compile(gl.FRAGMENT_SHADER,FS));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));gl.useProgram(program);
  const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);const attr=gl.getAttribLocation(program,'a');gl.enableVertexAttribArray(attr);gl.vertexAttribPointer(attr,2,gl.FLOAT,false,0,0);
- const U={};for(const n of ['photo','viewport','tile','oldTile','oldOffset','toWorld','toImage','outline','count','pass','stagger','albedo','grout','isWall','fittings','floorGuides','toneGain','toneGamma','toneSaturation','toneHighlights'])U[n]=gl.getUniformLocation(program,['outline','fittings','floorGuides'].includes(n)?n+'[0]':n);
+ const U={};for(const n of ['photo','decor','decorCrop','useDecor','rotateDecor','viewport','tile','oldTile','oldOffset','toWorld','toImage','outline','count','pass','stagger','albedo','roughness','grout','isWall','fittings','floorGuides','toneGain','toneGamma','toneSaturation','toneHighlights'])U[n]=gl.getUniformLocation(program,['outline','fittings','floorGuides'].includes(n)?n+'[0]':n);
  const texture=gl.createTexture();gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.uniform1i(U.photo,0);
  const colors={hell:[.81,.78,.71],grau:[.52,.52,.50],dunkel:[.19,.21,.22]},offsets={kreuz:0,halb:.5,drittel:1/3};
+ const anisotropy=gl.getExtension('EXT_texture_filter_anisotropic');
+ const decorTextures=new Map();
+ const ready=Promise.all((window.BadMaterials?.products||[]).map(async model=>{
+   const img=new Image();img.src=model.texture||model.photo;await img.decode();
+   const tex=gl.createTexture();gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,tex);
+   gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR_MIPMAP_LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+   if(anisotropy)gl.texParameterf(gl.TEXTURE_2D,anisotropy.TEXTURE_MAX_ANISOTROPY_EXT,Math.min(8,gl.getParameter(anisotropy.MAX_TEXTURE_MAX_ANISOTROPY_EXT)));
+   gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,img);gl.generateMipmap(gl.TEXTURE_2D);decorTextures.set(model.id,tex);
+ }));
+ // A complete fallback sampler is needed even during the untouched photo pass.
+ gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,texture);gl.uniform1i(U.decor,1);gl.activeTexture(gl.TEXTURE0);
  function draw(source,state,time=5){
    if(source instanceof HTMLImageElement&&!source.naturalWidth)return;
    if(source instanceof HTMLVideoElement&&source.readyState<2)return;
@@ -171,12 +264,15 @@ window.LiveJoints=function(canvas){
      cleanup=measured[i].flatMap((line,j)=>line.map((value,k)=>value+(measured[next][j][k]-value)*fraction));
    }else cleanup=[...guides,[[0,-100],[1920,-100]],[[0,-200],[1920,-200]]].flatMap(line=>line.flatMap(p=>projectPoint(floorForward,projectPoint(floorEndInverse,p))));
    gl.uniform4fv(U.floorGuides,new Float32Array(cleanup));
+   const measuredQuad=measuredFloorQuad(cleanup);
    for(const plane of planes){
-     const polygon=interpolate(plane.outline,time),quad=interpolate(plane.quad,time),[w,h]=plane.size;
+     const polygon=interpolate(plane.outline,time),quad=plane.surface==='boden'&&measuredQuad?measuredQuad:interpolate(plane.quad,time),[w,h]=plane.size;
      const minX=Math.max(0,Math.min(...polygon.map(p=>p[0]))),maxX=Math.min(W,Math.max(...polygon.map(p=>p[0]))),minY=Math.max(0,Math.min(...polygon.map(p=>p[1]))),maxY=Math.min(H,Math.max(...polygon.map(p=>p[1])));
      if(maxX-minX<1||maxY-minY<1)continue;
      const world=plane.surface==='boden'?[[0,0],[w,0],[w,h],[0,h]]:[[0,h],[w,h],[w,0],[0,0]];
-     const settings=state.surfaces[plane.surface],size=settings.format.split(',').map(Number);
+     const settings=state.surfaces[plane.surface],format=settings.format.split(',').map(Number);
+     // Floor: long edge into the room. Walls: conventional landscape laying.
+     const size=plane.surface==='wand'?[format[1],format[0]]:format;
      gl.uniformMatrix3fv(U.toWorld,false,columnMajor(homography(quad,world)));gl.uniformMatrix3fv(U.toImage,false,columnMajor(homography(world,quad)));
      const points=new Float32Array(24);polygon.forEach((p,i)=>points.set(p,i*2));gl.uniform2fv(U.outline,points);gl.uniform1i(U.count,polygon.length);
      gl.uniform2f(U.tile,...size);gl.uniform1f(U.stagger,offsets[settings.pattern]||0);gl.uniform3f(U.grout,...colors[settings.grout]);
@@ -184,13 +280,17 @@ window.LiveJoints=function(canvas){
      gl.uniform2f(U.oldTile,...old.tile);gl.uniform2f(U.oldOffset,...old.offset);
      gl.uniform1i(U.isWall,plane.surface==='wand'?1:0);
      const grade=(plane.surface==='boden'?floorLook:wallLook)?.grade;
+     const look=plane.surface==='boden'?floorLook:wallLook,decorTexture=decorTextures.get(look?.id);
+     gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,decorTexture||texture);gl.activeTexture(gl.TEXTURE0);
+     gl.uniform1i(U.useDecor,decorTexture?1:0);gl.uniform1i(U.rotateDecor,plane.surface==='boden'&&look?.rotate?1:0);gl.uniform4f(U.decorCrop,...(look?.crop||[0,0,1,1]));
+     gl.uniform1f(U.roughness,look?.roughness??.65);
      gl.uniform3f(U.toneGain,...(grade?.gain||[1,1,1]));gl.uniform1f(U.toneGamma,grade?.gamma??1);gl.uniform1f(U.toneSaturation,grade?.saturation??1);gl.uniform1f(U.toneHighlights,grade?.highlights??0);
-     gl.uniform1f(U.albedo,grade?.albedo??(plane.surface==='boden'?(floorBase==='marmor'?.67:.35):(wallBase==='hell'?.62:.27)));
+     gl.uniform1f(U.albedo,grade?.albedo??(plane.surface==='boden'?(floorBase==='marmor'?.67:.50):(wallBase==='hell'?.62:.27)));
      const scale=canvas.width/W;gl.scissor(Math.floor(minX*scale),Math.floor((H-maxY)*scale),Math.ceil((maxX-minX)*scale),Math.ceil((maxY-minY)*scale));gl.drawArrays(gl.TRIANGLES,0,3);
    }
    gl.disable(gl.SCISSOR_TEST);
    canvas.dataset.frameTime=String(time);
  }
- return {draw};
+ return {draw,ready};
 };
 })();

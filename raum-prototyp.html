@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fliesen-Konfigurator | Yabi’s Fliesenwelt</title>
+<meta name="description" content="Fliesen und Vinyl im eigenen Raum ansehen: Bereich wählen, Muster durchklicken, Merkliste als Anfrage senden. Yabi’s Fliesenwelt, Duisburg-Rheinhausen.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ECEAE5">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="kopf">
+  <a class="marke" href="#haus" data-ziel="haus"><b>Yabi’s</b> Fliesenwelt <span>Konfigurator</span></a>
+  <nav class="bereiche" aria-label="Bereiche"></nav>
+  <a class="katalog-link" href="katalog.html">Produktkatalog</a>
+  <button class="merk-knopf" type="button" aria-controls="merkliste">Merkliste <span data-anzahl>0</span></button>
+</header>
+
+<main class="arbeitsflaeche">
+  <div class="buehne" aria-live="polite">
+    <canvas class="buehne__bild" aria-hidden="true"></canvas>
+    <canvas class="buehne__flaechen" aria-hidden="true"></canvas>
+    <div class="stellen"></div>
+    <p class="buehne__ort"><span data-raum>Ihr Haus</span><small data-bereich>Wählen Sie einen Bereich</small></p>
+    <p class="buehne__hinweis">Prototyp · Beispielmuster aus der Ausstellung</p>
+  </div>
+  <section class="steuerung" aria-label="Auswahl"></section>
+</main>
+
+<aside class="merkliste" id="merkliste" hidden aria-label="Merkliste">
+  <div class="merkliste__kopf"><h2>Ihre Merkliste</h2><button type="button" class="schliessen" aria-label="Merkliste schließen">×</button></div>
+  <ol class="merkliste__liste"></ol>
+  <p class="merkliste__leer">Noch nichts gemerkt. Wählen Sie ein Muster und tippen Sie auf „Auf die Merkliste“.</p>
+  <form class="anfrage">
+    <fieldset class="lieferung"><legend>Abholung oder Lieferung</legend>
+      <label><input type="radio" name="weg" value="Abholung" checked> Abholung im Laden</label>
+      <label><input type="radio" name="weg" value="Lieferung"> Lieferung, PLZ <input name="plz" inputmode="numeric" maxlength="5" placeholder="47228"></label>
+    </fieldset>
+    <label>Name<input name="name" autocomplete="name"></label>
+    <label>Telefon<input name="tel" autocomplete="tel" inputmode="tel"></label>
+    <p class="fehler" hidden></p>
+    <div class="anfrage__knoepfe">
+      <button type="submit" class="knopf knopf--kupfer" value="whatsapp">Angebot per WhatsApp anfragen</button>
+      <button type="submit" class="knopf knopf--rand" value="mail">Per E-Mail</button>
+      <button type="button" class="knopf knopf--leise" data-bild>Bild speichern</button>
+    </div>
+    <p class="klein">Kein Kauf, keine Bezahlung: Yabi’s meldet sich mit einem Angebot. WhatsApp 0178 6787724.</p>
+  </form>
+</aside>
+
+<script src="js/daten.js"></script>
+<script src="js/flaechen.js"></script>
+<script src="js/flug.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

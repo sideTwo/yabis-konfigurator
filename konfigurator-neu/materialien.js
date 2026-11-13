@@ -1,16 +1,21 @@
-// Example decors for the bathroom demo. `base` selects the matching filmed
-// material; grading changes only its tiled surfaces and retains photographed light.
-window.BadMaterials={
-  floor:[
-    {id:'stein',base:'stein',name:'Greige · Original',detail:'Steinoptik · Ruhig',swatch:'../bilder/muster/stein-grau.webp'},
-    {id:'marmor',base:'marmor',name:'Marmoroptik · Hell',detail:'Heller Stein · Geadert',swatch:'../bilder/muster/marmor-hell.webp'},
-    {id:'silber',base:'stein',name:'Steinoptik · Silbergrau',detail:'Kühles Grau · Matt',swatch:'assets/muster-silber.webp',grade:{gain:[1.04,1.06,1.08],gamma:.72,saturation:.2,highlights:.85,albedo:.48}},
-    {id:'mocca',base:'marmor',name:'Marmoroptik · Mocca',detail:'Warmes Braun · Geadert',swatch:'assets/muster-mocca.webp',grade:{gain:[.78,.57,.43],gamma:1.03,saturation:.55,highlights:.65,albedo:.42}}
-  ],
-  wall:[
-    {id:'original',base:'original',name:'Anthrazit · Dunkel',detail:'Steinoptik · Dunkel',swatch:'../bilder/muster/beton-dunkel.webp'},
-    {id:'hell',base:'hell',name:'Beige · Hell',detail:'Steinoptik · Warm',swatch:'../bilder/muster/marmor-hell.webp'},
-    {id:'warmgrau',base:'hell',name:'Steinoptik · Warmgrau',detail:'Dezentes Grau · Matt',swatch:'assets/muster-warmgrau.webp',grade:{gain:[.87,.9,.91],gamma:.98,saturation:.25,highlights:.8,albedo:.54}},
-    {id:'terracotta',base:'hell',name:'Steinoptik · Terrakotta',detail:'Warmer Erdton · Matt',swatch:'assets/muster-terracotta.webp',grade:{gain:[1.02,.68,.49],gamma:1.02,saturation:.35,highlights:.55,albedo:.48}}
-  ]
+// Yabis catalogue photos remain unchanged as product evidence. The room uses
+// matching manufacturer graphics, not the lighting baked into showroom photos.
+(() => {
+const products=[
+ {id:'habitat-perla',name:'Habitat Perla',detail:'Matt · 60 × 120 cm',finish:'Matt',group:'Matt 60x120',photo:'../bilder/katalog/originale/habitat-perla.jpg',source:'https://wa.me/p/38326039337010496/491786787724'},
+ {id:'bercy-terra',name:'Bercy Terra',detail:'Matt · 60 × 120 cm',finish:'Matt',group:'Matt 60x120',photo:'../bilder/katalog/originale/bercy-terra.jpg',source:'https://wa.me/p/28858001587119088/491786787724'},
+ {id:'taj-mahal-beige',name:'Taj Mahal beige',detail:'Poliert · 60 × 120 cm',finish:'Poliert',group:'Poliert 60x120',photo:'../bilder/katalog/originale/taj-mahal-beige.jpg',source:'https://wa.me/p/28610320668656655/491786787724'},
+ {id:'bianco-mare',name:'Bianco Mare',detail:'60 × 120 cm · Oberfläche bestätigen',finish:'Lappato / poliert – bestätigen',group:'Lappato (Teilpoliert)',photo:'../bilder/katalog/originale/bianco-mare.jpg',source:'https://wa.me/p/28637104212594347/491786787724'}
+];
+const manufacturers={
+ 'habitat-perla':{name:'Prissmacer',url:'https://www.prissmacer.es/fr/serie/ess-habitat/'},
+ 'bercy-terra':{name:'Prissmacer',url:'https://www.prissmacer.es/serie/ess-bercy/'},
+ 'bianco-mare':{name:'Prissmacer',url:'https://www.prissmacer.es/serie/lab-bianco-mare/'},
+ 'taj-mahal-beige':{name:'Roca Tiles',url:'https://www.rocatiles.com/export/products/taj-mahal-beige-pulido-F6E0E54041-en/'}
 };
+for(const product of products){
+ product.texture=`../bilder/katalog/hersteller/${product.id}${product.id==='taj-mahal-beige'?'-textur':''}.jpg`;
+ product.roughness=product.finish==='Matt'?.76:.24;product.crop=[0,0,1,1];product.rotate=true;product.manufacturer=manufacturers[product.id];
+}
+window.BadMaterials={products,floor:products.map(p=>({...p,base:'stein',swatch:p.texture,formats:['60,120']})),wall:products.map(p=>({...p,base:'hell',swatch:p.texture,formats:['60,120']})),checked:'2026-11-12',bestseller:null};
+})();

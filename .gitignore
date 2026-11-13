@@ -19,3 +19,9 @@ konfigurator-neu/vorschau.jpg
 # OS files
 Thumbs.db
 .DS_Store
+
+# Isolated Sites hosting checkout and deployment archives
+_sites/
+
+# Machine-specific image-generation audit files; runtime images stay in Git.
+_quelle/*generation*.json

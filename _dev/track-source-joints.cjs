@@ -78,4 +78,4 @@ for(const [name,polarity] of [['marmor',1],['original',-1]]){
  })));
  console.log(name,frames,'frames; final guides',results[name].at(-1));
 }
-fs.writeFileSync('konfigurator-neu/source-joints.js','/* Measured source seams, 24 fps. Used only for photo cleanup. */\nwindow.SourceJoints='+JSON.stringify(results)+';\n');
+fs.writeFileSync('konfigurator-neu/source-joints.js','/* Measured source seams, 24 fps. Used for photo cleanup and floor material tracking. */\nwindow.SourceJoints='+JSON.stringify(results)+';\n');

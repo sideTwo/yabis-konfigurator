@@ -1,0 +1,77 @@
+{
+  "quelle": "https://wa.me/c/491786787724",
+  "geprueft_am": "2026-11-12",
+  "topseller_status": "Keine ausdrückliche Topseller- oder Bestseller-Markierung in den angezeigten Produktgruppen oder ausgewählten Artikeln gefunden. Der Stern in 120x120 matt ist Teil des Gruppennamens, kein belegter Verkaufsrang.",
+  "auswahlgrund": "Vier unterschiedliche Originaldekore für die Badvorführung, keine Verkaufsrangfolge.",
+  "produkte": [
+    {
+      "id": "habitat-perla",
+      "name": "Habitat Perla",
+      "gruppe": "Matt 60x120",
+      "format_cm": [
+        60,
+        120
+      ],
+      "oberflaeche": "Matt",
+      "produktlink": "https://wa.me/p/38326039337010496/491786787724",
+      "originalfoto": "bilder/katalog/originale/habitat-perla.jpg",
+      "topseller": null,
+      "katalogrichtpreis_eur": 39.9,
+      "preis_erfasst_am": "2026-10-30",
+      "preiseinheit": null
+    },
+    {
+      "id": "bercy-terra",
+      "name": "Bercy Terra",
+      "gruppe": "Matt 60x120",
+      "format_cm": [
+        60,
+        120
+      ],
+      "oberflaeche": "Matt",
+      "produktlink": "https://wa.me/p/28858001587119088/491786787724",
+      "originalfoto": "bilder/katalog/originale/bercy-terra.jpg",
+      "topseller": null,
+      "katalogrichtpreis_eur": 39.9,
+      "preis_erfasst_am": "2026-10-30",
+      "preiseinheit": null
+    },
+    {
+      "id": "taj-mahal-beige",
+      "name": "Taj Mahal beige",
+      "gruppe": "Poliert 60x120 ✨",
+      "format_cm": [
+        60,
+        120
+      ],
+      "oberflaeche": "Poliert",
+      "produktlink": "https://wa.me/p/28610320668656655/491786787724",
+      "originalfoto": "bilder/katalog/originale/taj-mahal-beige.jpg",
+      "topseller": null,
+      "katalogrichtpreis_eur": 44.9,
+      "preis_erfasst_am": "2026-10-30",
+      "preiseinheit": null
+    },
+    {
+      "id": "bianco-mare",
+      "name": "Bianco Mare",
+      "gruppe": "Lappato (Teilpoliert) ✨",
+      "format_cm": [
+        60,
+        120
+      ],
+      "oberflaeche": "Lappato laut Gruppe; poliert laut Beschreibung – im Angebot bestätigen",
+      "formatquelle": "60x120 auf Etikett des Originalfotos",
+      "produktlink": "https://wa.me/p/28637104212594347/491786787724",
+      "originalfoto": "bilder/katalog/originale/bianco-mare.jpg",
+      "topseller": null,
+      "katalogrichtpreis_eur": 39.9,
+      "preis_erfasst_am": "2026-10-30",
+      "preiseinheit": null
+    }
+  ],
+  "hinweis": "Produktidentität und Originalfotos stammen aus dem Yabis-Katalog. Die Raumvorschau nutzt passende Herstellergrafiken; separate Quellenliste beachten. Preiseinheit, Lagerbestand, Bad-/Nassbereichseignung und Verpackungseinheiten nicht bestätigt. Darstellung nicht farbverbindlich.",
+  "herstellerbilder": "yabis-herstellerbilder-2026-11-12.json",
+  "preisquelle": "whatsapp-produkte-2026-10-30.json",
+  "kostenschaetzung": "Nur nach Auswahl durch den Nutzer: Planungsannahme Katalogbetrag je m², ausschließlich im Katalogformat 60 × 120 cm; keine bestätigte Preiseinheit und kein Angebot."
+}

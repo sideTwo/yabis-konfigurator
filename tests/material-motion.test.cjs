@@ -1,0 +1,8 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const code=fs.readFileSync(path.join(__dirname,'../konfigurator-neu/fugen-live.js'),'utf8'),context={window:{}};
+vm.runInNewContext(code.slice(0,code.indexOf('const VS='))+'window.geometry={measuredFloorQuad,homography};})();',context);
+vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../konfigurator-neu/source-joints.js'),'utf8'),context);
+const {measuredFloorQuad,homography}=context.window.geometry;
+function project(m,[x,y]){const z=m[6]*x+m[7]*y+m[8];return[(m[0]*x+m[1]*y+m[2])/z,(m[3]*x+m[4]*y+m[5])/z];}
+test('Gemessene Bodenpunkte sind in allen 242 Quellbildern gültig und zeitlich stabil',()=>{for(const frames of Object.values(context.window.SourceJoints)){let previous;for(const lines of frames){const q=measuredFloorQuad(lines.flat());assert.equal(q.length,4);assert.ok(q.every(p=>p.every(Number.isFinite)));assert.ok(q[2][1]>q[1][1]&&q[3][1]>q[0][1]);if(previous)for(let i=0;i<4;i++)assert.ok(Math.hypot(q[i][0]-previous[i][0],q[i][1]-previous[i][1])<8);previous=q;}}});
+test('Texturkoordinaten liegen auf den gemessenen Fugen statt interpolierten Näherungen',()=>{const world=[[0,0],[60,0],[60,120],[0,120]];for(const frames of Object.values(context.window.SourceJoints))for(const lines of frames){const q=measuredFloorQuad(lines.flat()),m=homography(q,world);for(let i=0;i<4;i++){const p=project(m,q[i]);assert.ok(Math.hypot(p[0]-world[i][0],p[1]-world[i][1])<1e-6);}const nested=measuredFloorQuad(lines);for(let i=0;i<4;i++)assert.ok(Math.hypot(q[i][0]-nested[i][0],q[i][1]-nested[i][1])<1e-8);}});
