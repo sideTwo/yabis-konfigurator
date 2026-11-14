@@ -1,7 +1,7 @@
 ((root,factory)=>{const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.YabisWebsite=api;})(typeof window==='object'?window:this,()=>{
  'use strict';
  const rooms={
-  bad:{name:'Badezimmer',title:'Das Bad. Ganz nach Ihnen.',kicker:'IHR PERSÖNLICHER RÜCKZUGSORT',copy:'Boden und Wand einzeln kombinieren. Materialien vergleichen und Ihre Idee mit in die Beratung nehmen.',image:'konfigurator-neu/assets/konfiguration/habitat-perla-120.png',alt:'Badansicht mit grauen Boden- und Wandfliesen'},
+  bad:{name:'Badezimmer',title:'Das Bad. Ganz nach Ihnen.',kicker:'IHR PERSÖNLICHER RÜCKZUGSORT',copy:'Boden und Wand einzeln kombinieren. Materialien vergleichen und Ihre Idee mit in die Beratung nehmen.',image:'assets/website/bad.webp',alt:'Badezimmer mit grauen Fliesen und weißen Wänden oberhalb der Fliesen'},
   wohnen:{name:'Wohnen & Vinyl',title:'Zuhause fängt am Boden an.',kicker:'WÄRME FÜR DEN ALLTAG',copy:'Holzoptik, ruhige Töne, ein neuer Look. Entdecken Sie den Boden, der zu Ihrem Leben passt.',image:'assets/website/wohnen.webp',alt:'Wohnzimmer mit natürlichem Boden in Holzoptik'},
   balkon:{name:'Balkon',title:'Ihr Lieblingsplatz. Draußen.',kicker:'EIN STÜCK MEHR ZUHAUSE',copy:'Ein neuer Boden für Ihren Platz im Freien. Wir besprechen Material, Aufbau und Eignung mit Ihnen.',image:'assets/website/balkon.webp',alt:'Balkon mit Steinoptik-Boden und Holzmöbeln'},
   kueche:{name:'Küchenwand',title:'Eine Wand. Viel Charakter.',kicker:'DIE KÜCHE WEITERDENKEN',copy:'Eine passende Rückwand verbindet Arbeitsfläche und Raum. Spielen Sie mit Farbe, Format und Oberfläche.',image:'assets/website/kueche.webp',alt:'Küche mit heller gefliester Rückwand und Arbeitsfläche in Holzoptik'},

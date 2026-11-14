@@ -13,7 +13,48 @@
   document.querySelectorAll('[data-house-room]').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.houseRoom,room=core.rooms[id];if(!room)return;houseRoom=id;showRoom(id);$('house-room-picture').src=room.image;$('house-room-picture').alt=room.alt;$('house-room-title').textContent=room.title;$('house-room-kicker').textContent=room.kicker;$('house-room-copy').textContent=room.copy;housePreview.showModal();}));
   $('house-room-project').onclick=()=>{form.elements.room.value=houseRoom;housePreview.close();$('kontakt').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});};
  }
- function showRoom(id){const room=core.rooms[id];if(!room)return;document.querySelectorAll('[data-room]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.room===id)));$('room-photo').src=room.image;$('room-photo').alt=room.alt;$('room-title').textContent=room.title;$('room-kicker').textContent=room.kicker;$('room-copy').textContent=room.copy;$('room-image-label').textContent=id==='bad'?'KI-Beispielansicht':'KI-Rauminspiration';$('room-action').href=id==='bad'?'konfigurator-neu/index.html':'#kontakt';$('room-action-label').textContent=id==='bad'?'Bad gestalten':'Projekt besprechen';$('room-availability').textContent=id==='bad'?'Fotorealistische Vorschau mit fester Perspektive. Muster und Farben können vom Original abweichen.':'Rauminspiration. Die Konfiguration dieser Raumansicht wird noch vorbereitet.';form.elements.room.value=id;}
+ const photo=$('room-photo'),picture=$('room-picture'),motion=matchMedia('(prefers-reduced-motion: reduce)');
+ let imageRequest=0,imageFade=null,outgoingPhoto=null;
+ function finishImageFade(){
+  if(imageFade){imageFade.cancel();imageFade=null;}
+  if(outgoingPhoto){outgoingPhoto.remove();outgoingPhoto=null;}
+ }
+ motion.addEventListener('change',finishImageFade);
+ async function showRoomImage(room){
+  const request=++imageRequest;
+  finishImageFade();$('room-image-status').textContent='';
+  if(photo.src===new URL(room.image,document.baseURI).href){photo.alt=room.alt;picture.setAttribute('aria-busy','false');return;}
+  picture.setAttribute('aria-busy','true');
+  const next=new Image();next.decoding='async';next.src=room.image;
+  try{await next.decode();}
+  catch{
+   if(request===imageRequest){picture.setAttribute('aria-busy','false');$('room-image-status').textContent='Die Ansicht für '+room.name+' konnte nicht geladen werden. Die vorherige Ansicht bleibt sichtbar.';}
+   return;
+  }
+  // A slow earlier image must never replace the room most recently selected.
+  if(request!==imageRequest)return;
+  if(!motion.matches&&typeof photo.animate==='function'){
+   outgoingPhoto=photo.cloneNode();outgoingPhoto.removeAttribute('id');outgoingPhoto.alt='';
+   outgoingPhoto.setAttribute('aria-hidden','true');outgoingPhoto.className='room-photo-previous';outgoingPhoto.loading='eager';
+   photo.before(outgoingPhoto);
+  }
+  photo.src=next.src;photo.alt=room.alt;picture.setAttribute('aria-busy','false');
+  if(outgoingPhoto){
+   imageFade=photo.animate([{opacity:0},{opacity:1}],{duration:420,easing:'cubic-bezier(.2,.65,.25,1)'});
+   imageFade.finished.then(()=>{if(request===imageRequest)finishImageFade();}).catch(()=>{});
+  }
+ }
+ function showRoom(id){
+  const room=core.rooms[id];if(!room)return;
+  document.querySelectorAll('[data-room]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.room===id)));
+  showRoomImage(room);
+  $('room-title').textContent=room.title;$('room-kicker').textContent=room.kicker;$('room-copy').textContent=room.copy;
+  $('room-image-label').textContent=id==='bad'?'KI-Beispielansicht':'KI-Rauminspiration';
+  $('room-action').href=id==='bad'?'konfigurator-neu/index.html':'#kontakt';
+  $('room-action-label').textContent=id==='bad'?'Bad gestalten':'Projekt besprechen';
+  $('room-availability').textContent=id==='bad'?'Fotorealistische Vorschau mit fester Perspektive. Muster und Farben können vom Original abweichen.':'Rauminspiration. Die Konfiguration dieser Raumansicht wird noch vorbereitet.';
+  form.elements.room.value=id;
+ }
  document.querySelectorAll('[data-room]').forEach(b=>b.onclick=()=>showRoom(b.dataset.room));
  const incoming=new URLSearchParams(location.search);showRoom(core.rooms[incoming.get('raum')]?incoming.get('raum'):'bad');if(incoming.get('idee'))form.elements.message.value=incoming.get('idee').slice(0,2000);
  function customer(){const trade=form.elements.customerType.value==='trade';$('company-field').hidden=!trade;form.elements.company.disabled=!trade;}
