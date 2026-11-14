@@ -113,7 +113,7 @@
  .hero-shop>p{grid-column:1/-1;grid-row:auto}
  .shop-main-link{grid-column:1/-1;grid-row:auto;min-height:48px;margin-top:3px}
  .shop-trade-link{margin-top:2px;padding-top:12px}.site-header{padding-inline:16px;gap:12px}
- .brand img{width:90px}.header-actions{gap:8px}.site-header .header-contact{font-size:10px}
+ .brand img{width:96px}.header-actions{gap:8px}.site-header .header-contact{font-size:10px}
  .house-room-close{right:10px;top:10px}
 }
 @media(prefers-reduced-motion:reduce){
