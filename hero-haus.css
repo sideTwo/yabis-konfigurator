@@ -6,15 +6,19 @@
 .house-heading>p{font-size:11px;line-height:1.8;color:#65736c;padding-top:18px;flex:none}
 .house-map{position:relative;width:min(100%,calc((100svh - 275px)*1.33333));max-width:900px;min-width:480px;margin:5px auto 0;isolation:isolate;aspect-ratio:4/3}
 .house-map>img{position:absolute;inset:8%;display:block;width:84%;height:84%;mix-blend-mode:multiply}
-/* Architectural callouts: understated border/line reveal, inspired by 21st.dev. */
-.house-spot{position:absolute;display:flex;align-items:center;min-height:44px;min-width:44px;padding:0;border:0;background:none;color:#394b41;font-family:Archivo,Arial,sans-serif;font-size:12px;font-weight:500;line-height:1.2;white-space:nowrap;transform:translateY(-50%);z-index:2;cursor:pointer;text-decoration:none}
-.spot-face{display:flex;align-items:center;min-height:44px;padding:10px 4px;background:linear-gradient(90deg,#f1f3f200,#f1f3f2 10%,#f1f3f2 90%,#f1f3f200);transition:color .25s,transform .35s cubic-bezier(.2,.75,.25,1)}
+/* Fixed text with a directional arrow, inspired by 21st.dev's Directional Text Button. */
+.house-spot{position:absolute;display:flex;align-items:center;min-height:44px;min-width:44px;padding:0;border:0;background:none;color:#394b41;font-family:Archivo,Arial,sans-serif;font-size:13px;font-weight:500;line-height:1.2;white-space:nowrap;transform:translateY(-50%);z-index:2;cursor:pointer;text-decoration:none}
+.spot-face{display:flex;align-items:center;gap:9px;min-height:44px;padding:7px 0;color:inherit;transition:color .25s}
 .spot-word{position:relative;display:block}
-.spot-word::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:1px;background:#9a7d49;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.75,.25,1)}
+.spot-arrow{position:relative;display:block;flex:none;width:23px;height:23px;border:1px solid #344c3a;border-radius:50%;overflow:hidden;background:#344c3a;color:#fff;transition:background .25s,border-color .25s,color .25s}
+.spot-arrow::before,.spot-arrow::after{content:"↗";position:absolute;inset:0;display:grid;place-items:center;font-size:15px;font-weight:400;line-height:1;transition:transform .38s cubic-bezier(.2,.75,.25,1),opacity .3s}
+.spot-arrow::after{transform:translate(-120%,120%);opacity:0}
 .house-spot:focus-visible{outline:2px solid #6c7e65;outline-offset:4px}
 .house-spot:focus-visible .spot-face{color:#826735}
-.house-spot:focus-visible .spot-word::after{transform:scaleX(1)}
-.house-spot:active .spot-face{transform:translateY(1px);color:#826735}
+.house-spot:focus-visible .spot-arrow,.house-spot:active .spot-arrow{background:#907442;border-color:#907442;color:#fff}
+.house-spot:focus-visible .spot-arrow::before{transform:translate(120%,-120%);opacity:0}
+.house-spot:focus-visible .spot-arrow::after{transform:translate(0,0);opacity:1}
+.house-spot:active .spot-face{color:#826735}
 .spot-balkon{left:1%;top:40%}
 .spot-wohnen{left:1%;top:72%}
 .spot-bad{right:1%;top:26%}
@@ -24,8 +28,10 @@
 .room-guide{fill:none;stroke:#65786b;stroke-width:1;stroke-opacity:.38;vector-effect:non-scaling-stroke;transition:stroke-opacity .3s,stroke .3s}
 .house-map:has(.spot-bad:focus-visible) .guide-bad,.house-map:has(.spot-balkon:focus-visible) .guide-balkon,.house-map:has(.spot-wohnen:focus-visible) .guide-wohnen,.house-map:has(.spot-kueche:focus-visible) .guide-kueche,.house-map:has(.spot-treppe:focus-visible) .guide-treppe{stroke:#9a7d49;stroke-opacity:.9;stroke-dasharray:1;animation:room-guide-reveal .55s cubic-bezier(.2,.75,.25,1)}
 @media(hover:hover) and (pointer:fine){
- .house-spot:hover .spot-face{color:#826735;transform:translateY(-1px)}
- .house-spot:hover .spot-word::after{transform:scaleX(1)}
+ .house-spot:hover .spot-face{color:#826735}
+ .house-spot:hover .spot-arrow{background:#907442;border-color:#907442;color:#fff}
+ .house-spot:hover .spot-arrow::before{transform:translate(120%,-120%);opacity:0}
+ .house-spot:hover .spot-arrow::after{transform:translate(0,0);opacity:1}
  .house-map:has(.spot-bad:hover) .guide-bad,.house-map:has(.spot-balkon:hover) .guide-balkon,.house-map:has(.spot-wohnen:hover) .guide-wohnen,.house-map:has(.spot-kueche:hover) .guide-kueche,.house-map:has(.spot-treppe:hover) .guide-treppe{stroke:#9a7d49;stroke-opacity:.9;stroke-dasharray:1;animation:room-guide-reveal .55s cubic-bezier(.2,.75,.25,1)}
 }
 @keyframes room-guide-reveal{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
@@ -91,7 +97,7 @@
  .shop-materials,.shop-shortcuts{display:none}
  .shop-main-link{grid-column:2;grid-row:2 / span 2;align-self:center;gap:30px;white-space:nowrap;font-size:12px;min-width:145px}
  .shop-trade-link{grid-column:1/-1;font-size:9px;margin-top:5px;padding-top:14px}
- .site-header .header-contact{font-size:11px}.house-spot{font-size:11px}.spot-face{padding:10px 3px}
+ .site-header .header-contact{font-size:11px}.house-spot{font-size:12px}.spot-face{padding:7px 0;gap:8px}
  .house-room-preview{width:calc(100% - 24px)}.house-room-picture{aspect-ratio:1.35}
  .house-room-details{padding:24px}.house-room-details h2{font-size:31px}
  .house-room-actions{gap:18px}.house-room-actions .button{width:100%;justify-content:center}
@@ -101,7 +107,8 @@
  .house-hero{padding:25px 16px 24px;gap:20px}
  .house-heading h1{font-size:31px;letter-spacing:-.04em}
  .house-heading .eyebrow{font-size:7px;letter-spacing:.12em}
- .house-map{width:100%;margin-top:18px}.house-spot{font-size:10px;min-height:44px}.spot-face{padding:10px 2px}
+ .house-map{width:100%;margin-top:18px}.house-spot{font-size:11px;min-height:44px}.spot-face{padding:7px 0;gap:6px}
+ .spot-arrow{width:20px;height:20px}.spot-arrow::before,.spot-arrow::after{font-size:13px}
  .house-caption{font-size:7px;gap:8px}.hero-shop{padding:20px;gap:12px}.hero-shop h2{font-size:24px}
  .hero-shop>p{grid-column:1/-1;grid-row:auto}
  .shop-main-link{grid-column:1/-1;grid-row:auto;min-height:48px;margin-top:3px}
@@ -110,7 +117,7 @@
  .house-room-close{right:10px;top:10px}
 }
 @media(prefers-reduced-motion:reduce){
- .house-spot,.spot-face,.spot-word::after,.room-guide,.shop-main-link{animation:none!important;transition:none!important}
+ .house-spot,.spot-face,.spot-arrow,.spot-arrow::before,.spot-arrow::after,.room-guide,.shop-main-link{animation:none!important;transition:none!important}
  .house-spot:hover .spot-face,.house-spot:active .spot-face,.shop-main-link:hover{transform:none}
  .house-room-preview[open],.house-room-preview[open]::backdrop{animation:none}
 }
