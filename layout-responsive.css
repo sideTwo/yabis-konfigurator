@@ -1,0 +1,159 @@
+/* Primary design targets: desktop fullscreen and phones.
+   Keep wide-screen content bounded instead of stretching every section. */
+:root{--desktop-content:1480px;--desktop-gutter:max(48px,calc((100% - var(--desktop-content))/2))}
+
+@media(min-width:1101px){
+ .main-site .site-header,.main-site .house-hero,.main-site .section-pad,
+ .main-site .intro-line,.main-site .last-word,.main-site .site-footer{
+  padding-inline:var(--desktop-gutter);
+ }
+ .main-site .site-header{height:96px}
+ .main-site .desktop-nav{font-size:14px;gap:32px}
+ .main-site .header-actions{gap:24px}
+ .main-site .house-hero{
+  grid-template-columns:minmax(0,1fr) clamp(300px,18vw,330px);
+  gap:clamp(32px,3vw,48px);padding-block:36px 28px;align-items:center;
+ }
+ .main-site .house-heading{gap:24px;align-items:center}
+ .main-site .house-heading h1{font-size:clamp(40px,2.8vw,52px)}
+ .main-site .house-heading .eyebrow{font-size:10px}
+ .main-site .house-heading>p{font-size:13px;padding-top:12px}
+ .main-site .house-map{
+  width:min(100%,960px,max(520px,calc((100svh - 310px)*1.33333)));
+  min-width:0;max-width:960px;margin:12px auto 0;
+ }
+ .main-site .house-spot{font-size:15px}
+ .main-site .spot-face{gap:10px}
+ .main-site .spot-arrow{width:26px;height:26px}
+ .main-site .spot-arrow::before,.main-site .spot-arrow::after{font-size:17px}
+ .main-site .house-caption{font-size:10px;padding-bottom:12px}
+ .main-site .hero-shop{padding:28px;border-radius:10px}
+ .main-site .hero-shop h2{font-size:34px}
+ .main-site .hero-shop>p{font-size:14px;line-height:1.8}
+ .main-site .shop-card-top .eyebrow{font-size:10px}
+ .main-site .shop-materials{padding-block:30px}
+ .main-site .shop-materials img{width:80px;height:86px}
+ .main-site .shop-main-link{font-size:14px;min-height:52px;transform:none}
+ .main-site .shop-shortcuts{font-size:11px;gap:13px}
+ .main-site .shop-trade-link{font-size:11px}
+ .main-site .section-pad{padding-block:88px}
+ .main-site .intro-line{font-size:12px;justify-content:space-between}
+ .main-site .eyebrow{font-size:10px}
+ .main-site .button,.main-site .text-link{font-size:14px}
+ .main-site .room-section .section-heading h2{font-size:52px}
+ .main-site .room-section .section-heading>p{font-size:15px;max-width:330px}
+ .main-site .room-section .room-menu button{font-size:14px;min-height:60px}
+ .main-site .room-section .room-menu button>span:first-child{font-size:10px}
+ .main-site .room-section .room-photo{aspect-ratio:16/9;max-height:680px}
+ .main-site .room-section .room-description p:not(.eyebrow){font-size:15px;max-width:660px}
+ .main-site .room-section .round-link{font-size:14px}
+ .main-site .room-section .room-availability{font-size:11px}
+ .main-site .material-note{column-gap:80px}
+ .main-site .material-note h2{font-size:48px}
+ .main-site .material-note>p{font-size:15px;max-width:520px}
+ .main-site .material-samples{gap:20px}
+ .main-site .material-samples figcaption{font-size:12px}
+ .main-site .trade-section{gap:clamp(64px,7vw,112px)}
+ .main-site .trade-copy>p:not(.eyebrow){font-size:15px;max-width:540px}
+ .main-site .trade-details h3{font-size:18px}
+ .main-site .trade-details p{font-size:14px;max-width:440px}
+ .main-site .showroom-section{gap:clamp(64px,7vw,112px)}
+ .main-site .showroom-photo{aspect-ratio:1;max-width:620px}
+ .main-site .showroom-copy>p:not(.eyebrow){font-size:15px;max-width:470px}
+ .main-site .showroom-copy address{font-size:15px}
+ .main-site .contact-section{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:80px;align-items:start}
+ .main-site .contact-heading>p:not(.eyebrow){font-size:15px;max-width:390px}
+ .main-site .contact-heading>.contact-note{font-size:12px!important}
+ .main-site #project-form{padding:36px}
+ .main-site label,.main-site legend{font-size:13px}
+ .main-site input,.main-site select,.main-site textarea{font-size:16px}
+ .main-site .form-grid{gap:22px}
+ .main-site .last-word{padding-block:48px}
+ .main-site .site-footer>div>a{font-size:14px}
+ .main-site .site-footer p{font-size:13px}
+
+ .shop-site .shop-header,.shop-site .service-bar,.shop-site footer{padding-inline:var(--desktop-gutter)}
+ .shop-site main{width:min(var(--desktop-content),calc(100% - 96px));max-width:none;margin-inline:auto}
+ .shop-site .hero{min-height:540px}
+ .shop-site .hero-copy{padding:60px 56px 48px 0}
+ .shop-site .hero h1{font-size:clamp(46px,3.6vw,62px)}
+ .shop-site .hero-copy>p:not(.eyebrow){font-size:16px;max-width:430px}
+ .shop-site .hero-actions{gap:22px}
+ .shop-site .products-section,.shop-site .cart-section{padding:80px 0}
+ .shop-site .product-grid{gap:24px}
+ .shop-site .product-card{padding:16px}
+ .shop-site .product-card h3{font-size:21px}
+ .shop-site .product-card p{font-size:13px}
+ .shop-site .product-card p.price-note{font-size:11px}
+ .shop-site .product-meta{font-size:11px}
+ .shop-site .button,.shop-site .text-link{font-size:14px}
+ .shop-site .studio-callout{margin-inline:0}
+ .shop-site .contact-section{padding:64px;gap:64px}
+ .shop-site .contact-copy>p:not(.eyebrow){font-size:15px}
+
+ .bath-site main{max-width:1920px;margin-inline:auto;grid-template-columns:minmax(0,1fr) 400px}
+ .bath-site .header{padding-inline:max(32px,calc((100% - 1856px)/2))}
+ .bath-site aside{padding:30px}
+ .bath-site .aside-heading h2{font-size:30px}
+ .bath-site .aside-heading>p{font-size:13px}
+ .bath-site .material strong{font-size:13px}
+ .bath-site .material small{font-size:11px}
+ .bath-site .surface-options select{font-size:12px;padding:12px 8px}
+ .bath-site .surface-options label,.bath-site .height-control{font-size:12px}
+ .bath-site .height-control select{font-size:14px}
+}
+
+@media(min-width:1101px) and (max-width:1439px){
+ .main-site .house-heading>p{display:none}
+ .main-site .hero-shop{padding:24px}
+ .main-site .hero-shop h2{font-size:31px}
+ .main-site .house-spot{font-size:14px}
+ .main-site .contact-section{gap:48px}
+ .shop-site .hero-actions{align-items:flex-start;flex-direction:column}
+ .shop-site .contact-section{padding:48px}
+ .bath-site main{grid-template-columns:minmax(0,1fr) 360px}
+ .bath-site aside{padding:24px}
+ .bath-site .surface-options select{font-size:11px}
+}
+
+@media(max-width:600px){
+ .main-site .house-heading h1{font-size:clamp(29px,8.2vw,35px);line-height:1.15}
+ .main-site .hero-shop>p{font-size:13px}
+ .main-site .shop-main-link{font-size:13px;min-height:52px}
+ .main-site .shop-trade-link{font-size:11px;line-height:1.7}
+ .main-site .house-caption{flex-wrap:wrap;gap:6px 12px;font-size:9px}
+ .main-site .house-caption>span{min-width:0}
+ .main-site .intro-line{font-size:10px;line-height:1.6}
+ .main-site .intro-line span{gap:8px;align-items:flex-start}
+ .main-site .intro-line span:before{flex:none;margin-top:6px}
+ .main-site .room-section .section-heading>p,
+ .main-site .room-section .room-description p:not(.eyebrow),
+ .main-site .material-note>p,.main-site .trade-copy>p:not(.eyebrow),
+ .main-site .showroom-copy>p:not(.eyebrow),.main-site .contact-heading>p:not(.eyebrow){font-size:14px}
+ .main-site .trade-details p{font-size:13px}
+ .main-site .button,.main-site .text-link{font-size:13px}
+ .main-site .room-section .room-menu button{min-height:50px;font-size:12px}
+ .main-site .room-section .room-photo{aspect-ratio:3/2}
+ .main-site .room-section .room-availability{font-size:10px}
+ .main-site .delivery-note,.main-site .form-note{font-size:11px}
+ .main-site .showroom-links .button{width:100%}
+ .main-site #project-form{border-radius:8px}
+ .main-site .site-footer>div>a{font-size:12px}
+ .shop-site .service-bar{font-size:9px;gap:12px;line-height:1.5}
+ .shop-site .product-meta{flex-wrap:wrap;gap:5px;font-size:9px}
+ .shop-site .product-card .button{min-height:48px;font-size:11px}
+ .shop-site .product-card p.price-note{font-size:10px}
+ .shop-site .product-card h3{overflow-wrap:anywhere}
+ .shop-site dialog{max-height:90svh}
+ .bath-site .hint{font-size:12px;line-height:1.7}
+ .bath-site .height-control{font-size:12px}
+ .bath-site .height-control select{font-size:16px}
+ .bath-site .surface-options{grid-template-columns:1fr;gap:14px}
+ .bath-site .surface-options select{font-size:16px;min-height:48px}
+ .bath-site aside{border-left:0}
+}
+@media(min-width:360px) and (max-width:600px){
+ .main-site .house-hero{padding-inline:20px}
+ .main-site .section-pad,.main-site .last-word,.main-site .site-footer,.main-site .intro-line{padding-inline:20px}
+ .main-site .house-spot{font-size:12px}
+}
