@@ -56,8 +56,8 @@
       const p = shop.find(id), block = document.createElement('div'); block.className = 'source-product';
       const image = new Image(); image.src = `../${p.photo}`; image.alt = `Originales Yabis-Katalogfoto: ${p.name}`; image.loading = 'lazy';
       const text = document.createElement('div'), name = document.createElement('strong'); name.textContent = p.name;
-      const link = document.createElement('a'); link.href = p.source; link.target = '_blank'; link.rel = 'noopener'; link.textContent = 'Yabis-Katalog ↗';
-      const texture = document.createElement('a'); texture.href = `../${p.texture}`; texture.target = '_blank'; texture.rel = 'noopener'; texture.textContent = 'Verwendetes Herstellermuster ↗';
+      const link = document.createElement('a'); link.href = p.source; link.target = '_blank'; link.rel = 'noopener'; link.textContent = 'Yabis-Katalog';
+      const texture = document.createElement('a'); texture.href = `../${p.texture}`; texture.target = '_blank'; texture.rel = 'noopener'; texture.textContent = 'Verwendetes Herstellermuster';
       text.append(name, link, texture); block.append(image, text); $('product-sources').append(block);
     }
     updateQuantities(); draw(); save();

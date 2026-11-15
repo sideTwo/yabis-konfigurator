@@ -1,5 +1,9 @@
 /* Shared visual language for the website, inquiry shop and bathroom studio. */
 :root{--page:#f1f3f2;--paper:#fffefb;--ink:#2a302e;--muted:#617066;--line:#d8dfd9;--green:#344c3a;--gold:#9a7d49;--dark:#262922}
+/* Draw interface arrows as vectors: iOS must never select an emoji font. */
+svg.ui-arrow{display:inline-block;width:1em;height:1em;min-width:1em;vertical-align:-.12em;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.main-site .mobile-quick>a,.main-site .contact-phone{column-gap:.35em}
+.bath-site .source-product a::after{content:"";display:inline-block;width:1em;height:1em;margin-left:.35em;vertical-align:-.12em;background:currentColor;-webkit-mask:url('assets/icons/arrow-up-right.svg') center/contain no-repeat;mask:url('assets/icons/arrow-up-right.svg') center/contain no-repeat}
 body.main-site,body.shop-site,body.bath-site{background:var(--page);color:var(--ink);font-family:Archivo,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 .main-site h1,.main-site h2,.main-site h3,.main-site .last-word p,.main-site .mobile-menu nav a,.shop-site h1,.shop-site h2,.shop-site h3,.bath-site h1,.bath-site h2{font-family:Archivo,Arial,sans-serif;font-weight:400;font-style:normal;letter-spacing:-.04em}
 .main-site em{font-style:normal}

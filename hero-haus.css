@@ -12,7 +12,7 @@
 .spot-face{display:flex;align-items:center;gap:9px;min-height:44px;padding:7px 0;color:inherit;transition:color .25s}
 .spot-word{position:relative;display:block}
 .spot-arrow{position:relative;display:block;flex:none;width:23px;height:23px;border:1px solid #344c3a;border-radius:50%;overflow:hidden;background:#344c3a;color:#fff;transition:background .25s,border-color .25s,color .25s}
-.spot-arrow::before,.spot-arrow::after{content:"↗";position:absolute;inset:0;display:grid;place-items:center;font-size:15px;font-weight:400;line-height:1;transition:transform .38s cubic-bezier(.2,.75,.25,1),opacity .3s}
+.spot-arrow::before,.spot-arrow::after{content:"";position:absolute;inset:4px;background:currentColor;-webkit-mask:url('assets/icons/arrow-up-right.svg') center/contain no-repeat;mask:url('assets/icons/arrow-up-right.svg') center/contain no-repeat;transition:transform .38s cubic-bezier(.2,.75,.25,1),opacity .3s}
 .spot-arrow::after{transform:translate(-120%,120%);opacity:0}
 .house-spot:focus-visible{outline:2px solid #6c7e65;outline-offset:4px}
 .house-spot:focus-visible .spot-face{color:#826735}
