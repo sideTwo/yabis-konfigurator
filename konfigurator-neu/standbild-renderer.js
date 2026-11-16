@@ -6,6 +6,10 @@
 })(typeof window === 'object' ? window : this, () => {
   'use strict';
   const width = 1672, height = 941;
+  // One canonical closed vanity is restored above every material combination.
+  const fixtureOcclusions = [
+    [[250,456],[453,456],[570,452],[572,453],[572,604],[463,670],[250,670]]
+  ];
   const floor = [
     [[135,941],[498,639],[707,639],[877,637],[923,641],[1008,721],[1274,721],[1274,698],[1672,941]]
   ];
@@ -48,7 +52,7 @@
     }
     ctx.drawImage(image, 0, 0, width, height); ctx.restore();
   }
-  function render(ctx, {base, floor: floorImage, wall, wallHeight}) {
+  function render(ctx, {base, floor: floorImage, wall, wallHeight, fixtures}) {
     ctx.clearRect(0, 0, width, height);
     ctx.drawImage(base, 0, 0, width, height);
     layer(ctx, wall, wallHeight === 'full' ? wallsFull : walls120);
@@ -56,6 +60,7 @@
     // projecting across the wall/floor junction. Avoid a seam through its bowl.
     layer(ctx, wall, floorOcclusions);
     layer(ctx, floorImage, floor, floorOcclusions);
+    if (fixtures) layer(ctx, fixtures, fixtureOcclusions);
   }
-  return {width, height, floor, walls120, wallsFull, floorOcclusions, render};
+  return {width, height, floor, walls120, wallsFull, floorOcclusions, fixtureOcclusions, render};
 });

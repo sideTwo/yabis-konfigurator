@@ -6,7 +6,7 @@
  const clips=Object.freeze({bad:null}); // Local MP4 only after visual approval; never call an AI service here.
  const focus={bad:'72% 40%',wohnen:'40% 64%',balkon:'37% 44%',kueche:'71% 59%',treppe:'58% 46%',eingang:'61% 79%'};
  let active=null;
- const poster=id=>id==='bad'?'assets/studio/bad-basis.webp':C.plate(id,C.materials[0]);
+ const poster=id=>id==='bad'?'assets/studio/bad-waschtisch-v2.webp':C.plate(id,C.materials[0]);
  function stop(){if(!active)return;const {dialog,timers,animations,video}=active;active=null;timers.forEach(clearTimeout);animations.forEach(a=>a.cancel());if(video){video.pause();video.removeAttribute('src');video.load();}if(dialog.open)dialog.close();dialog.remove();}
  function enter(link){
   if(active)return;

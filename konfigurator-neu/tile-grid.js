@@ -104,7 +104,7 @@
   }
   function eraseFixtures(ctx,room) {
     ctx.save();ctx.globalCompositeOperation='destination-out';ctx.fillStyle='#fff';ctx.strokeStyle='#fff';
-    path(ctx,[...room.floorOcclusions,
+    path(ctx,[...room.floorOcclusions,...(room.fixtureOcclusions||[]),
       [[247,456],[329,456],[331,408],[520,409],[522,449],[574,449],[574,576],[464,664],[248,664]],
       [[260,5],[441,147],[441,342],[260,288]],
       [[1513,375],[1619,366],[1619,458],[1513,457]],
