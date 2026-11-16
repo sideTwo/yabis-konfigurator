@@ -5,14 +5,6 @@
  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.close()));
  for(const d of [menu,preview])d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
  $('close-preview').onclick=()=>preview.close();
- const housePreview=$('house-room-preview');
- if(housePreview){
-  let houseRoom='wohnen';
-  $('close-house-room').onclick=()=>housePreview.close();
-  housePreview.addEventListener('click',e=>{if(e.target===housePreview){const r=housePreview.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)housePreview.close();}});
-  document.querySelectorAll('[data-house-room]').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.houseRoom,room=core.rooms[id];if(!room)return;houseRoom=id;showRoom(id);$('house-room-picture').src=room.image;$('house-room-picture').alt=room.alt;$('house-room-picture').dataset.focus=room.focus||'';$('house-room-title').textContent=room.title;$('house-room-kicker').textContent=room.kicker;$('house-room-copy').textContent=room.copy;housePreview.showModal();}));
-  $('house-room-project').onclick=()=>{form.elements.room.value=houseRoom;housePreview.close();$('kontakt').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});};
- }
  const photo=$('room-photo'),picture=$('room-picture'),motion=matchMedia('(prefers-reduced-motion: reduce)');
  let imageRequest=0,imageFade=null,outgoingPhoto=null;
  function finishImageFade(){
@@ -50,9 +42,9 @@
   showRoomImage(room);
   $('room-title').textContent=room.title;$('room-kicker').textContent=room.kicker;$('room-copy').textContent=room.copy;
   $('room-image-label').textContent=id==='bad'?'KI-Beispielansicht':'KI-Rauminspiration';
-  $('room-action').href=id==='bad'?'konfigurator-neu/index.html':'#kontakt';
-  $('room-action-label').textContent=id==='bad'?'Bad gestalten':'Projekt besprechen';
-  $('room-availability').textContent=id==='bad'?'Fotorealistische Vorschau mit fester Perspektive. Muster und Farben können vom Original abweichen.':'Rauminspiration. Die Konfiguration dieser Raumansicht wird noch vorbereitet.';
+  $('room-action').href=window.YabisStudio.href(id);
+  $('room-action-label').textContent='Im Raumstudio gestalten';
+  $('room-availability').textContent='Zwei ausgewählte Katalogartikel im Raumstudio vergleichen. KI-Vorschau; Muster, Farben und Eignung am Original prüfen.';
   form.elements.room.value=id;
  }
  document.querySelectorAll('[data-room]').forEach(b=>b.onclick=()=>showRoom(b.dataset.room));
