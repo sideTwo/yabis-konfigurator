@@ -7,6 +7,7 @@
  const active=room.separateWalls?['floor','wall']:[room.surface],motion=matchMedia('(prefers-reduced-motion: reduce)');
  let saved={};try{saved=JSON.parse(localStorage.getItem(key))||{};}catch{}
  const state=C.initial(id,saved,params.get('product'));
+ if(id==='kueche'&&['light','dark'].includes(params.get('fronten')))state.cabinetTone=params.get('fronten');
  for(const surface of ['floor','wall']){
   state[surface+'Format']=room.separateWalls?G.format(saved[surface+'Format']):[60,120];
   state[surface+'Grout']=room.separateWalls&&Object.hasOwn(G.grouts,saved[surface+'Grout'])?saved[surface+'Grout']:'light';
@@ -21,13 +22,13 @@
  document.querySelectorAll('[data-studio-room]').forEach(a=>{if(a.dataset.studioRoom===id)a.setAttribute('aria-current','page');});
  if(params.has('product')&&!C.materials.includes(params.get('product'))){$('linked-note').hidden=false;$('linked-note').textContent='Dieser Shopartikel ist noch nicht in der Studio-Auswahl. Hier vergleichen Sie Habitat Perla und Bercy Terra.';}
  $('height-control').hidden=!room.separateWalls;$('height-note').hidden=!room.separateWalls;
- $('room-fallback').src='../'+(id==='bad'?'assets/studio/bad-basis.webp':C.plate(id,state[room.surface]));
+ $('room-fallback').src='../'+(id==='bad'?'assets/studio/bad-basis.webp':C.plate(id,state[room.surface],state.cabinetTone));
  $('room-fallback').alt=room.name+' – realistische Gestaltungsvorschau';
  function snapshot(){const data={...state};for(const surface of active){for(const field of ['Area','Waste'])data[surface+field]=$(`${surface}-${field.toLowerCase()}`).value;data[surface+'Included']=$('include-'+surface).checked;}return data;}
  function save(){try{localStorage.setItem(key,JSON.stringify(snapshot()));}catch{}}
  function load(src){if(!cache.has(src))cache.set(src,new Promise((resolve,reject)=>{const image=new Image();image.decoding='async';image.onload=()=>resolve(image);image.onerror=()=>{cache.delete(src);reject(Error('Die Materialansicht konnte nicht geladen werden. Bitte erneut auswählen.'));};image.src=src;}));return cache.get(src);}
  const heightName=()=>state.wallHeight==='full'?'raumhoch':'1,20 m · Dusche raumhoch';
- function describe(){return active.map(surface=>`${room.separateWalls?(surface==='floor'?'Boden':'Wand'):room.surfaceName}: ${S.find(state[surface]).name}${room.separateWalls?' · '+state[surface+'Format'].join(' × ')+' cm · '+G.grouts[state[surface+'Grout']].label+(surface==='wall'?' · '+heightName():''):''}`).join(' / ');}
+ function describe(){return active.map(surface=>`${room.separateWalls?(surface==='floor'?'Boden':'Wand'):room.surfaceName}: ${S.find(state[surface]).name}${room.separateWalls?' · '+state[surface+'Format'].join(' × ')+' cm · '+G.grouts[state[surface+'Grout']].label+(surface==='wall'?' · '+heightName():''):''}`).join(' / ')+(id==='kueche'?' · Fronten: '+(state.cabinetTone==='dark'?'Anthrazit':'Hell'):'');}
  async function draw(){
   const request=++revision,selection={...state};ready=false;$('add-to-cart').disabled=true;$('save-image').disabled=true;
   $('stage').setAttribute('aria-busy','true');$('image-status').hidden=false;$('image-status').textContent='Materialansicht wird geladen …';
@@ -38,7 +39,7 @@
     if(request!==revision)return;
     canvas.width=R.width;canvas.height=R.height;R.render(ctx,{base,floor,wall,wallHeight:selection.wallHeight});G.draw(ctx,selection,R,base);
    }else{
-    const image=await load('../'+C.plate(id,selection[room.surface]));if(request!==revision)return;
+    const image=await load('../'+C.plate(id,selection[room.surface],selection.cabinetTone));if(request!==revision)return;
     canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;ctx.drawImage(image,0,0);
    }
    if(fade){fade.cancel();fade=null;}canvas.hidden=false;$('room-fallback').hidden=true;
@@ -53,6 +54,7 @@
   for(const product of new Set(active.map(surface=>state[surface]))){const p=S.find(product),block=document.createElement('div');block.className='source-product';const image=new Image();image.src='../'+p.photo;image.alt='Originalartikel '+p.name;image.loading='lazy';const text=document.createElement('div'),title=document.createElement('strong');title.textContent=p.name;text.append(title);for(const [label,href] of [['Yabis-WhatsApp-Katalog',p.source],['Herstellermuster ansehen','../'+p.texture]]){const link=document.createElement('a');link.textContent=label;link.href=href;link.target='_blank';link.rel='noopener';text.append(link);}block.append(image,text);$('product-sources').append(block);}
  }
  function update(){
+  if(id==='kueche')for(const tone of ['light','dark'])$('fronts-'+tone).setAttribute('aria-pressed',String(state.cabinetTone===tone));
   for(const surface of active){for(const button of $(`${surface}-materials`).querySelectorAll('button'))button.setAttribute('aria-pressed',String(button.dataset.product===state[surface]));$(`${surface}-format`).value=state[surface+'Format'].join(',');$(`${surface}-grout`).value=state[surface+'Grout'];}
   $('wall-height').value=state.wallHeight;$('height-note').textContent=state.wallHeight==='120'?'Darüber weiß gestrichen, mit Abschlussprofil. Dusche immer raumhoch.':'Alle Wandflächen bis zur Decke gefliest.';
   sources();quantities();draw();
@@ -70,6 +72,8 @@
   $(`${surface}-format`).addEventListener('change',()=>{state[surface+'Format']=G.format($(`${surface}-format`).value);update();});
   $(`${surface}-grout`).addEventListener('change',()=>{state[surface+'Grout']=$(`${surface}-grout`).value;update();});
  }
+ $('kitchen-fronts').hidden=id!=='kueche';
+ if(id==='kueche')for(const tone of ['light','dark'])$('fronts-'+tone).addEventListener('click',()=>{state.cabinetTone=tone;update();});
  $('wall-height').addEventListener('change',()=>{state.wallHeight=$('wall-height').value==='full'?'full':'120';update();});
  function quantities(){for(const surface of active){const included=$('include-'+surface).checked;$(`${surface}-area`).disabled=!included;$(`${surface}-waste`).disabled=!included;const q=S.calculate($(`${surface}-area`).value,$(`${surface}-waste`).value,state[surface+'Format']);$(`${surface}-quantity`).textContent=!included?'Wird nicht angefragt.':q?`${S.de(q.total)} m² inkl. Verschnitt · rechnerisch ${q.pieces} Fliesen`:'Bitte Ihre Fläche eintragen.';}$('cart-status').textContent='';$('to-cart').hidden=true;}
  function basket(){$('basket-count').textContent=S.getCart().length;}
@@ -79,6 +83,6 @@
   const selected=active.filter(surface=>$('include-'+surface).checked);if(!selected.length){$('cart-status').textContent='Bitte mindestens eine Fläche für Ihre Anfrage auswählen.';return;}
   try{const items=selected.map(surface=>S.item({product:state[surface],area:$(`${surface}-area`).value,waste:$(`${surface}-waste`).value,format:state[surface+'Format'],surface:room.separateWalls?(surface==='floor'?'Boden (ohne Duschwanne)':'Wand'):room.surfaceName,room:room.name,applicationNote:room.approval||'',pattern:'Kreuzfuge',grout:room.separateWalls?G.grouts[state[surface+'Grout']].label:'Hellgrau · Bildvariante',wallHeight:room.separateWalls&&surface==='wall'?state.wallHeight:null}));S.add(items);$('cart-status').textContent='Ihre Auswahl für '+room.name+' liegt im Anfragekorb.';$('to-cart').hidden=false;save();}catch(error){$('cart-status').textContent=error.message;}
  });
- $('save-image').addEventListener('click',()=>{if(!ready)return;canvas.toBlob(blob=>{if(!blob){$('image-status').hidden=false;$('image-status').textContent='Das Bild konnte nicht gespeichert werden.';return;}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`Yabis-${id}-${active.map(surface=>surface+'-'+state[surface]).join('-')}${room.separateWalls?'-'+state.wallHeight:''}.png`;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);},'image/png');});
+ $('save-image').addEventListener('click',()=>{if(!ready)return;canvas.toBlob(blob=>{if(!blob){$('image-status').hidden=false;$('image-status').textContent='Das Bild konnte nicht gespeichert werden.';return;}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`Yabis-${id}-${active.map(surface=>surface+'-'+state[surface]).join('-')}${room.separateWalls?'-'+state.wallHeight:''}${id==='kueche'?(state.cabinetTone==='dark'?'-fronten-anthrazit':'-fronten-hell'):''}.png`;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);},'image/png');});
  basket();update();
 })();
