@@ -10,7 +10,7 @@
   ['bad',.718,.4,'right'],
   ['treppe',.584,.459,'right'],
   ['kueche',.71,.592,'right'],
-  ['eingang',.61,.79,'right']
+  ['eingang',.61,.79,'left']
  ];
  let frame=0;
  function draw(){

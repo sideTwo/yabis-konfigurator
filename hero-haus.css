@@ -25,7 +25,7 @@
 .spot-bad{right:1%;top:26%}
 .spot-treppe{right:1%;top:48%}
 .spot-kueche{right:1%;top:71%}
-.spot-eingang{right:1%;top:89%}
+.spot-eingang{left:1%;right:auto;top:89%}
 .room-guides{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
 .room-guide{fill:none;stroke:#65786b;stroke-width:1;stroke-opacity:.38;vector-effect:non-scaling-stroke;transition:stroke-opacity .3s,stroke .3s}
 .house-map:has(.spot-bad:focus-visible) .guide-bad,.house-map:has(.spot-balkon:focus-visible) .guide-balkon,.house-map:has(.spot-wohnen:focus-visible) .guide-wohnen,.house-map:has(.spot-kueche:focus-visible) .guide-kueche,.house-map:has(.spot-treppe:focus-visible) .guide-treppe,.house-map:has(.spot-eingang:focus-visible) .guide-eingang{stroke:#9a7d49;stroke-opacity:.9;stroke-dasharray:1;animation:room-guide-reveal .55s cubic-bezier(.2,.75,.25,1)}
@@ -119,8 +119,11 @@
  .brand img{width:96px}.header-actions{gap:8px}.site-header .header-contact{font-size:10px}
  .house-room-close{right:10px;top:10px}
 }
+@media(max-width:430px){
+ .spot-eingang{top:92%}
+}
 @media(max-width:380px){
- .spot-eingang{top:93%}
+ .spot-eingang{top:95%}
  .house-map{margin-bottom:8px}
 }
 @media(prefers-reduced-motion:reduce){
