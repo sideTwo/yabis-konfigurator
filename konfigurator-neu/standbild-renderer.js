@@ -10,6 +10,11 @@
   const fixtureOcclusions = [
     [[250,456],[453,456],[570,452],[572,453],[572,604],[463,670],[250,670]]
   ];
+  // The frame and glazing stay fixed; the narrow reveals beside them are tile surfaces.
+  const windowOcclusions = [
+    [[709,100],[875,100],[875,635],[709,635]]
+  ];
+  const windowReveal120 = [[875,366],[888,366],[888,639],[875,639]];
   const floor = [
     [[135,941],[498,639],[707,639],[877,637],[923,641],[1008,721],[1274,721],[1274,698],[1672,941]]
   ];
@@ -20,14 +25,15 @@
   ];
   const walls120 = [
     [[0,231],[498,366],[498,639],[135,941],[0,941]],
-    [[498,366],[707,366],[707,639],[498,639]],
+    [[498,366],[709,366],[709,639],[498,639]],
     [[1275,338],[1672,234],[1672,941],[1275,698]],
-    ...shower
+    ...shower,
+    windowReveal120
   ];
   const wallsFull = [
     [[0,0],[424,0],[498,80],[498,639],[135,941],[0,941]],
-    [[498,80],[707,80],[707,639],[498,639]],
-    [[707,80],[888,80],[888,98],[707,98]],
+    [[498,80],[709,80],[709,639],[498,639]],
+    [[709,80],[888,80],[888,98],[709,98]],
     [[875,98],[888,98],[888,639],[875,639]],
     [[1275,0],[1672,0],[1672,941],[1275,698]],
     ...shower
@@ -36,6 +42,11 @@
     // Measured WC silhouette: its bowl projects in front of the floor plane.
     [[1350,601],[1428,599],[1450,600],[1468,605],[1485,610],[1501,615],[1518,620],[1550,630],[1578,640],[1589,647],[1585,653],[1614,661],[1616,666],[1616,680],[1615,700],[1613,720],[1610,740],[1606,760],[1602,780],[1597,800],[1594,812],[1500,814],[1450,813],[1400,805],[1380,798],[1350,784],[1330,762],[1320,743],[1311,721],[1303,701],[1296,681],[1292,671],[1289,660],[1287,639],[1287,621],[1288,614],[1291,609],[1307,604],[1330,602]]
   ];
+  // Share these exact masks with the grout renderer, including the 1.20 m reveal.
+  const backWalls = {
+    '120': [walls120[1], windowReveal120],
+    full: [wallsFull[1], wallsFull[2], wallsFull[3]]
+  };
   function trace(ctx, polygons) {
     for (const points of polygons) {
       ctx.moveTo(...points[0]);
@@ -59,8 +70,9 @@
     // The complete WC comes from one photographic plate, including the part
     // projecting across the wall/floor junction. Avoid a seam through its bowl.
     layer(ctx, wall, floorOcclusions);
+    layer(ctx, base, windowOcclusions);
     layer(ctx, floorImage, floor, floorOcclusions);
     if (fixtures) layer(ctx, fixtures, fixtureOcclusions);
   }
-  return {width, height, floor, walls120, wallsFull, floorOcclusions, fixtureOcclusions, render};
+  return {width, height, floor, walls120, wallsFull, floorOcclusions, fixtureOcclusions, windowOcclusions, backWalls, render};
 });

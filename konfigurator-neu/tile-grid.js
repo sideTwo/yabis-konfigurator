@@ -104,7 +104,7 @@
   }
   function eraseFixtures(ctx,room) {
     ctx.save();ctx.globalCompositeOperation='destination-out';ctx.fillStyle='#fff';ctx.strokeStyle='#fff';
-    path(ctx,[...room.floorOcclusions,...(room.fixtureOcclusions||[]),
+    path(ctx,[...room.floorOcclusions,...(room.fixtureOcclusions||[]),...(room.windowOcclusions||[]),
       [[247,456],[329,456],[331,408],[520,409],[522,449],[574,449],[574,576],[464,664],[248,664]],
       [[260,5],[441,147],[441,342],[260,288]],
       [[1513,375],[1619,366],[1619,458],[1513,457]],
@@ -126,7 +126,7 @@
     const full=state.wallHeight==='full',maxV=full?249:120;
     drawFace(c,planes.floor,room.floor,state.floorFormat,state.floorGrout,300);
     drawFace(c,planes.left,[full?room.wallsFull[0]:room.walls120[0]],state.wallFormat,state.wallGrout,maxV);
-    const backOutside=full?[room.wallsFull[1],room.wallsFull[2],room.wallsFull[3]]:[room.walls120[1]];
+    const backOutside=room.backWalls?.[full?'full':'120']||(full?[room.wallsFull[1],room.wallsFull[2],room.wallsFull[3]]:[room.walls120[1]]);
     drawFace(c,planes.back,backOutside,state.wallFormat,state.wallGrout,maxV);
     drawFace(c,planes.back,[
       [[888,80],[945,80],[945,639],[888,639]],[[945,80],[1008,80],[1008,100],[945,100]],
