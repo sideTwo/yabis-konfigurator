@@ -10,7 +10,7 @@
   let houseRoom='wohnen';
   $('close-house-room').onclick=()=>housePreview.close();
   housePreview.addEventListener('click',e=>{if(e.target===housePreview){const r=housePreview.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)housePreview.close();}});
-  document.querySelectorAll('[data-house-room]').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.houseRoom,room=core.rooms[id];if(!room)return;houseRoom=id;showRoom(id);$('house-room-picture').src=room.image;$('house-room-picture').alt=room.alt;$('house-room-title').textContent=room.title;$('house-room-kicker').textContent=room.kicker;$('house-room-copy').textContent=room.copy;housePreview.showModal();}));
+  document.querySelectorAll('[data-house-room]').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.houseRoom,room=core.rooms[id];if(!room)return;houseRoom=id;showRoom(id);$('house-room-picture').src=room.image;$('house-room-picture').alt=room.alt;$('house-room-picture').dataset.focus=room.focus||'';$('house-room-title').textContent=room.title;$('house-room-kicker').textContent=room.kicker;$('house-room-copy').textContent=room.copy;housePreview.showModal();}));
   $('house-room-project').onclick=()=>{form.elements.room.value=houseRoom;housePreview.close();$('kontakt').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});};
  }
  const photo=$('room-photo'),picture=$('room-picture'),motion=matchMedia('(prefers-reduced-motion: reduce)');
@@ -23,7 +23,7 @@
  async function showRoomImage(room){
   const request=++imageRequest;
   finishImageFade();$('room-image-status').textContent='';
-  if(photo.src===new URL(room.image,document.baseURI).href){photo.alt=room.alt;picture.setAttribute('aria-busy','false');return;}
+  if(photo.src===new URL(room.image,document.baseURI).href){photo.alt=room.alt;photo.dataset.focus=room.focus||'';picture.setAttribute('aria-busy','false');return;}
   picture.setAttribute('aria-busy','true');
   const next=new Image();next.decoding='async';next.src=room.image;
   try{await next.decode();}
@@ -38,7 +38,7 @@
    outgoingPhoto.setAttribute('aria-hidden','true');outgoingPhoto.className='room-photo-previous';outgoingPhoto.loading='eager';
    photo.before(outgoingPhoto);
   }
-  photo.src=next.src;photo.alt=room.alt;picture.setAttribute('aria-busy','false');
+  photo.src=next.src;photo.alt=room.alt;photo.dataset.focus=room.focus||'';picture.setAttribute('aria-busy','false');
   if(outgoingPhoto){
    imageFade=photo.animate([{opacity:0},{opacity:1}],{duration:420,easing:'cubic-bezier(.2,.65,.25,1)'});
    imageFade.finished.then(()=>{if(request===imageRequest)finishImageFade();}).catch(()=>{});

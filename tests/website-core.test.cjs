@@ -21,3 +21,10 @@ test('Lieferanfrage benötigt gültige PLZ und Ort',()=>{
 test('Unvollständige Kontaktdaten erzeugen keine Anfrage',()=>{
  for(const key of ['name','contact','message'])assert.throws(()=>inquiry({...base,[key]:'  '}),/Name, Rückkontakt/);
 });
+
+test('Außenfliesen-Anfrage übernimmt den Eingangsbereich statt eines Sammelbereichs',()=>{
+ const text=inquiry({...base,room:'eingang',message:'18 m² Außenfliesen für Hauseingang und Podest.'});
+ assert.match(text,/Bereich: Eingangsbereich \/ Außenfliesen/);
+ assert.match(text,/18 m² Außenfliesen/);
+ assert.doesNotMatch(text,/Bereich: Mehrere Bereiche/);
+});

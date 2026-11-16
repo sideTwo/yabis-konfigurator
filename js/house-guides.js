@@ -9,7 +9,8 @@
   ['wohnen',.399,.643,'left'],
   ['bad',.718,.4,'right'],
   ['treppe',.584,.459,'right'],
-  ['kueche',.71,.592,'right']
+  ['kueche',.71,.592,'right'],
+  ['eingang',.61,.79,'right']
  ];
  let frame=0;
  function draw(){
