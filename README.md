@@ -59,3 +59,14 @@ node -e "for(const f of require('fs').readdirSync('tests').filter(x=>x.endsWith(
 Katalog- und Herstellerzuordnungen: `_quelle/`. Neue Prompts, Bildoriginale,
 Kling-Testauftrag und Produktfreigabeliste: privater Kundenordner
 `_material/raumstudio/` außerhalb dieses öffentlichen Repos.
+
+## Badbilder für weitere Artikel vorbereiten
+
+Material und Fugen verwenden dieselben kalibrierten Flächen. Auch Wandstreifen
+hinter Glas und die Fensterlaibungen sind enthalten; Fenster, Keramik und
+Möbel werden gezielt geschützt. Badbilder mit falschen Pixelmaßen werden
+abgewiesen. Der optionale native Pixeltest vergleicht echte Zeichenausgaben
+und erzeugt eine Kontaktübersicht. Für neue Artikel genügt zunächst der
+Vergleich mit einer Referenz, ohne das komplette Sortiment neu zu rendern.
+
+Siehe [_dev/BAD-BILDPRUEFUNG.md](_dev/BAD-BILDPRUEFUNG.md).

@@ -16,7 +16,7 @@ test('Fensterrahmen und Glas stammen aus der Basis, ohne die konfigurierbaren La
  for(const wallHeight of ['120','full']){
   const calls=[],ctx={current:[],clearRect(){},save(){},restore(){},beginPath(){this.current=[];},moveTo(x,y){this.current.push([x,y]);},lineTo(x,y){this.current.push([x,y]);},closePath(){},clip(){},rect(){},drawImage(image){calls.push({image,clip:[...this.current]});}};
   R.render(ctx,{base:'fixed-window',wall:'selected-wall',floor:'selected-floor',wallHeight});
-  const window=calls.find(call=>call.image==='fixed-window'&&JSON.stringify(call.clip)===JSON.stringify(R.windowOcclusions[0]));assert.ok(window,'Fenster wird aus der Basis restauriert');
-  assert.equal(calls.at(-1).image,'selected-floor');
+  const window=calls.find(call=>call.image==='fixed-window'&&R.windowOcclusions[0].every(point=>call.clip.some(p=>p[0]===point[0]&&p[1]===point[1])));assert.ok(window,'Fenster wird aus der Basis restauriert');
+  assert.ok(calls.some(call=>call.image==='selected-floor'));assert.equal(calls.at(-1).image,'fixed-window');
  }
 });

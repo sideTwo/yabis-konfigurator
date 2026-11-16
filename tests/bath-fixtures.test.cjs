@@ -10,5 +10,5 @@ test('Geschlossener Waschtisch bleibt über allen Boden- und Wandvarianten ident
 });
 test('Frühere Renderer-Aufrufe ohne separate Möbel bleiben kompatibel',()=>{
  const images=[],ctx={clearRect(){},save(){},restore(){},beginPath(){},moveTo(){},lineTo(){},closePath(){},clip(){},rect(){},drawImage(image){images.push(image);}};
- R.render(ctx,{base:'base',floor:'floor',wall:'wall',wallHeight:'120'});assert.equal(images.at(-1),'floor');assert.ok(!images.includes(undefined));
+ R.render(ctx,{base:'base',floor:'floor',wall:'wall',wallHeight:'120'});assert.ok(images.includes('floor'));assert.ok(images.includes('wall'));assert.equal(images.at(-1),'base');assert.ok(!images.includes(undefined));
 });

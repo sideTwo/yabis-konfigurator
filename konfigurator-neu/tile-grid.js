@@ -102,39 +102,13 @@
     for(const joint of joints(plane,selectedFormat,maxV))strokeJoint(ctx,plane,joint,grouts[grout]?.rgb||grouts.grey.rgb);
     ctx.restore();
   }
-  function eraseFixtures(ctx,room) {
-    ctx.save();ctx.globalCompositeOperation='destination-out';ctx.fillStyle='#fff';ctx.strokeStyle='#fff';
-    path(ctx,[...room.floorOcclusions,...(room.fixtureOcclusions||[]),...(room.windowOcclusions||[]),
-      [[247,456],[329,456],[331,408],[520,409],[522,449],[574,449],[574,576],[464,664],[248,664]],
-      [[260,5],[441,147],[441,342],[260,288]],
-      [[1513,375],[1619,366],[1619,458],[1513,457]],
-      [[309,365],[353,365],[353,349],[404,349],[435,374],[435,394],[365,394],[363,404],[309,403]],
-      [[1004,0],[1012,0],[1012,725],[1004,725]],
-      [[1070,100],[1110,56],[1138,56],[1099,102]]
-    ]);ctx.fill();
-    ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=9;
-    ctx.beginPath();ctx.moveTo(1094,383);ctx.lineTo(1232,383);ctx.stroke();
-    for(const [x,y,r] of [[1026,406,8],[1065,406,8],[1097,407,7]]) {ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();}
-    ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(1065,414);
-    for(const p of [[1058,451],[1058,480],[1064,502],[1080,509],[1095,504],[1103,490],[1101,466],[1096,429],[1097,413]])ctx.lineTo(...p);
-    ctx.stroke();ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(923,640);ctx.lineTo(1008,722);ctx.lineTo(1275,722);ctx.stroke();
-    ctx.restore();
-  }
   function draw(ctx,state,room,base) {
     prepare(ctx,base);
     const c=overlay.getContext('2d');c.clearRect(0,0,1672,941);
-    const full=state.wallHeight==='full',maxV=full?249:120;
-    drawFace(c,planes.floor,room.floor,state.floorFormat,state.floorGrout,300);
-    drawFace(c,planes.left,[full?room.wallsFull[0]:room.walls120[0]],state.wallFormat,state.wallGrout,maxV);
-    const backOutside=room.backWalls?.[full?'full':'120']||(full?[room.wallsFull[1],room.wallsFull[2],room.wallsFull[3]]:[room.walls120[1]]);
-    drawFace(c,planes.back,backOutside,state.wallFormat,state.wallGrout,maxV);
-    drawFace(c,planes.back,[
-      [[888,80],[945,80],[945,639],[888,639]],[[945,80],[1008,80],[1008,100],[945,100]],
-      [[1008,80],[1168,80],[1168,633],[1008,633]]
-    ],state.wallFormat,state.wallGrout,249);
-    drawFace(c,planes.right,[full?room.wallsFull[4]:room.walls120[2]],state.wallFormat,state.wallGrout,maxV);
-    drawFace(c,planes.right,[[[1168,80],[1247,0],[1275,0],[1275,697],[1168,633]]],state.wallFormat,state.wallGrout,249);
-    eraseFixtures(c,room);ctx.drawImage(overlay,0,0);
+    if(typeof room.faces!=='function'||typeof room.groutOcclusions!=='function')throw Error('Badkalibrierung und Fugenrenderer passen nicht zusammen. Bitte Seite neu laden.');
+    for(const face of room.faces(state.wallHeight))drawFace(c,planes[face.plane],face.polygons,state[face.surface+'Format'],state[face.surface+'Grout'],face.maxV);
+    c.save();c.globalCompositeOperation='destination-out';c.fillStyle='#fff';c.beginPath();room.trace(c,room.groutOcclusions(state.wallHeight));c.fill();c.restore();
+    ctx.drawImage(overlay,0,0);
   }
   return {formats,grouts,format,homography,project,planes,joints,draw};
 });

@@ -33,7 +33,7 @@ function app(room='bad',{saved=new Map(),defer=false,product='',fronts=''}={}){
  const get=id=>{if(!elements.has(id))elements.set(id,new Element(id));return elements.get(id);};
  for(const surface of ['floor','wall']){get(surface+'-waste').value='10';}
  const window={YabisStudio:C,YabisRoomPreview:{width:1672,height:941,render(ctx,s){draws.push({...s});}},YabisTileGrid:{...grid,draw(ctx,s){draws.push(JSON.parse(JSON.stringify(s)));}},addEventListener(type,fn){events[type]=fn;},dispatchEvent(e){events[e.type]?.(e);}};
- class Image extends Element{set src(src){this._src=src;sources.push(src);if(defer)pending.push(this);else queueMicrotask(()=>this.onload?.());}get src(){return this._src;}}
+ class Image extends Element{set src(src){this._src=src;if(src.includes('assets/studio/bad-')){this.naturalWidth=1672;this.naturalHeight=941;}sources.push(src);if(defer)pending.push(this);else queueMicrotask(()=>this.onload?.());}get src(){return this._src;}}
  const context={window,document:{body:{dataset:{}},title:'',getElementById:get,createElement:tag=>new Element(tag),querySelectorAll(){return [];}},matchMedia:()=>({matches:false,addEventListener(){}}),localStorage:{getItem:k=>saved.get(k)||null,setItem:(k,v)=>saved.set(k,v)},location:{search:'?raum='+room+(product?'&product='+product:'')+(fronts?'&fronten='+fronts:'')},Image,URLSearchParams,URL:{createObjectURL:()=> 'blob:preview',revokeObjectURL(){}},setTimeout(){},CustomEvent:class{constructor(type){this.type=type;}},crypto:crypto.webcrypto};
  vm.runInNewContext(fs.readFileSync(path.join(root,'js/shop-core.js'),'utf8'),context);
  vm.runInNewContext(fs.readFileSync(path.join(root,'studio/studio.js'),'utf8'),context);
@@ -70,6 +70,12 @@ test('Bei einem fehlgeschlagenen Materialbild wird keine unsichtbare Konfigurati
  const a=app('wohnen',{defer:true});const initial=a.pending.find(image=>image._src.includes('wohnen-habitat-perla.webp'));initial.onload();await a.settle();
  a.get('floor-materials').children[1].click();const failing=a.pending.find(image=>image._src.includes('wohnen-bercy-terra.webp'));failing.onerror();await a.settle();
  assert.equal(a.get('add-to-cart').disabled,true);a.get('floor-area').value='10';a.get('request-selection').fire('submit');assert.equal(a.shop.getCart().length,0);assert.match(a.get('image-status').textContent,/erneut auswählen/);
+});
+test('Neue Badbilder mit falschen Abmessungen werden vor dem Rendern abgewiesen',async()=>{
+ const a=app('bad',{defer:true}),badImage=a.pending.find(image=>image._src.includes('bad-basis.webp'));
+ badImage.naturalWidth=1536;badImage.naturalHeight=1024;
+ for(const image of a.pending)image.onload?.();await a.settle();
+ assert.equal(a.get('add-to-cart').disabled,true);assert.match(a.get('image-status').textContent,/passt nicht zur Raumvorlage/);assert.equal(a.draws.length,0);
 });
 test('Helle und dunkle Küchenfronten lassen sich unabhängig von beiden Fliesen wählen und wiederherstellen',async()=>{
  for(const material of C.materials)for(const tone of ['light','dark'])assert.ok(fs.existsSync(path.join(root,C.plate('kueche',material,tone))));
