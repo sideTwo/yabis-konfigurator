@@ -119,6 +119,10 @@
  .brand img{width:96px}.header-actions{gap:8px}.site-header .header-contact{font-size:10px}
  .house-room-close{right:10px;top:10px}
 }
+@media(max-width:380px){
+ .spot-eingang{top:93%}
+ .house-map{margin-bottom:8px}
+}
 @media(prefers-reduced-motion:reduce){
  .house-spot,.spot-face,.spot-arrow,.spot-arrow::before,.spot-arrow::after,.room-guide,.shop-main-link{animation:none!important;transition:none!important}
  .house-spot:hover .spot-face,.house-spot:active .spot-face,.shop-main-link:hover{transform:none}
