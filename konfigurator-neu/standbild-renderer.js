@@ -1,7 +1,15 @@
 /* Fixed camera calibration. Material and grout renderers share these exact faces. */
 ((root,factory)=>{const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.YabisRoomPreview=api;})(typeof window==='object'?window:this,()=>{
  'use strict';
- const width=1672,height=941,calibration='bad-og-1672x941-v5';
+ const width=1672,height=941,calibration='bad-og-1672x941-v6';
+ // Photo calibration: one common room height, with floor/finish/ceiling datums.
+ // The AI reference is not a surveyed projective photograph. Its three datum
+ // lines must all agree with the centimetre grid before extrapolating courses.
+ const wallCalibration=Object.freeze({height:249,datum:120,planes:{
+  left:{finish:[[498,366],[135,268]],ceiling:[[424,0],[498,80]]},
+  back:{finish:[[498,366],[1168,366]],ceiling:[[498,80],[1168,80]]},
+  right:{finish:[[1168,366],[1672,234]],ceiling:[[1168,80],[1247,0]]}
+ }});
  const floor=[[[135,941],[498,639],[888,639],[923,641],[1008,721],[1275,721],[1275,698],[1672,941]]];
  const left120=[[0,231],[498,366],[498,639],[135,941],[0,941]];
  const leftFull=[[0,0],[424,0],[498,80],[498,639],[135,941],[0,941]];
@@ -74,5 +82,5 @@
   layer(ctx,base,fixedMasks(wallHeight));
   if(fixtures)layer(ctx,fixtures,fixtureOcclusions);
  }
- return {width,height,calibration,faces,floor,walls120,wallsFull,backWalls,floorOcclusions,fixtureOcclusions,windowOcclusions,reflectedWindow,fixedMasks,groutOcclusions,trace,render};
+ return {width,height,calibration,wallCalibration,faces,floor,walls120,wallsFull,backWalls,floorOcclusions,fixtureOcclusions,windowOcclusions,reflectedWindow,fixedMasks,groutOcclusions,trace,render};
 });

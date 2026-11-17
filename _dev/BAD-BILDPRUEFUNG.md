@@ -1,6 +1,6 @@
 # Neue Badmaterialien vor der Freischaltung prüfen
 
-Die feste Perspektive hat die Kalibrierung `bad-og-1672x941-v5`. Alle Badbilder
+Die feste Perspektive hat die Kalibrierung `bad-og-1672x941-v6`. Alle Badbilder
 müssen **1672 × 941 Pixel** haben. Automatisches Strecken eines anderen Formats
 ist verboten: Es verschiebt Fenster, Möbel und Flächenkanten. Die Studio-Seite
 weist falsche Abmessungen deshalb ab.
@@ -67,3 +67,8 @@ gehören zu den konfigurierbaren Flächen. Fensterrahmen, Glas und Fensterbank
 sind feste Bauteile. Exakte RGB-Unabhängigkeitsvergleiche lassen einen Pixel
 Rand für Antialiasing aus; Referenzpunkte und Fugen-Leckprüfung benutzen die
 ursprünglichen Masken einschließlich ihrer Ränder.
+
+Das metrische Wandraster wird am gemeinsamen Bodenraster sowie den drei
+Bildlinien Boden / 1,20-m-Abschluss / Decke kalibriert. Gleiche Welt-Höhen
+setzen sich um die Ecken fort; Anschnitte an der Decke sind relativ zur
+Raumhöhe gleich. Die KI-Raumvorlage ist kein vermessener Bestandsraum.

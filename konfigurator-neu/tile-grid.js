@@ -1,10 +1,10 @@
-/* Centimetre-based planar grids. One homography per physical room plane keeps
-   each grout joint straight through every tile row and every material choice. */
+/* One centimetre grid shared by floor and walls. Floor coordinates determine
+   every wall foot; three measured photo datums align floor, finish and ceiling. */
 ((root, factory) => {
-  const api = factory();
+  const api = factory(typeof module === 'object' && module.exports ? require('./standbild-renderer.js') : root.YabisRoomPreview);
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.YabisTileGrid = api;
-})(typeof window === 'object' ? window : this, () => {
+})(typeof window === 'object' ? window : this, room => {
   'use strict';
   const formats = [[60,120],[60,60],[120,120]];
   const grouts = {
@@ -40,15 +40,21 @@
     return [...solve(A,b),1];
   }
   function project(matrix,[x,y]) {
+    if(matrix.kind==='wall'){
+      const [px,floorY]=project(matrix.floor,matrix.axis==='back'?[x,0]:[matrix.side,x]);
+      const at=line=>line[0][1]+(px-line[0][0])*(line[1][1]-line[0][1])/(line[1][0]-line[0][0]);
+      const finishY=at(matrix.finish),ceilingY=at(matrix.ceiling);
+      return [px,y<=matrix.datum?floorY+(finishY-floorY)*y/matrix.datum:finishY+(ceilingY-finishY)*(y-matrix.datum)/(matrix.height-matrix.datum)];
+    }
     const z=matrix[6]*x+matrix[7]*y+matrix[8];
     return [(matrix[0]*x+matrix[1]*y+matrix[2])/z,(matrix[3]*x+matrix[4]*y+matrix[5])/z];
   }
-  const wallWorld=[[0,0],[300,0],[300,120],[0,120]];
+  if(!room?.wallCalibration)throw Error('Raum- und Fugenkalibrierung passen nicht zusammen. Bitte Seite neu laden.');
+  const floorMatrix=homography([[0,0],[300,0],[300,300],[0,300]],[[498,639],[1168,633],[1672,941],[135,941]]);
+  const wallPlane=(axis,maxU)=>({surface:'wall',maxU,maxV:room.wallCalibration.height,matrix:{kind:'wall',floor:floorMatrix,axis,side:axis==='right'?300:0,...room.wallCalibration.planes[axis],datum:room.wallCalibration.datum,height:room.wallCalibration.height}});
   const planes = {
-    floor:{surface:'floor',maxU:300,maxV:300,matrix:homography([[0,0],[300,0],[300,300],[0,300]],[[498,639],[1168,633],[1672,941],[135,941]])},
-    left:{surface:'wall',maxU:380,maxV:249,matrix:homography(wallWorld,[[498,639],[135,941],[135,268],[498,366]])},
-    back:{surface:'wall',maxU:300,maxV:249,matrix:homography(wallWorld,[[498,639],[1168,633],[1168,366],[498,366]])},
-    right:{surface:'wall',maxU:300,maxV:249,matrix:homography(wallWorld,[[1168,633],[1672,941],[1672,234],[1168,366]])}
+    floor:{surface:'floor',maxU:300,maxV:300,matrix:floorMatrix},
+    left:wallPlane('left',380),back:wallPlane('back',300),right:wallPlane('right',300)
   };
   function joints(plane, selectedFormat, maxV=plane.maxV) {
     const [short,long]=format(selectedFormat);

@@ -29,6 +29,31 @@ test('Wandfugen treffen sich höhengleich an den Raumecken',()=>{
     backLeft.forEach((n,j)=>near(n,left[j]));backRight.forEach((n,j)=>near(n,right[j]));
   }
 });
+
+test('Oberster Anschnitt hat über beide Seiten dieselbe reale Höhe unter der Decke',()=>{
+  const R=require('../konfigurator-neu/standbild-renderer.js'),h=R.wallCalibration.height,datum=R.wallCalibration.datum;
+  for(const name of ['left','back','right']){
+    const plane=G.planes[name],line=R.wallCalibration.planes[name].ceiling;
+    for(const u of [0,60,120,180,240,300]){
+      const ceiling=G.project(plane.matrix,[u,h]),finish=G.project(plane.matrix,[u,datum]),joint=G.project(plane.matrix,[u,240]);
+      const actualCeiling=line[0][1]+(ceiling[0]-line[0][0])*(line[1][1]-line[0][1])/(line[1][0]-line[0][0]);
+      near(ceiling[1],actualCeiling);near((joint[1]-ceiling[1])/(finish[1]-ceiling[1]),(h-240)/(h-datum));
+    }
+  }
+});
+
+test('Boden und Wand teilen dieselben metrischen Rasterpunkte an allen drei Fußkanten',()=>{
+  for(const u of [0,30,60,90,120,180,240,300])for(const [name,p]of [['back',[u,0]],['left',[0,u]],['right',[300,u]]]){
+    const floor=G.project(G.planes.floor.matrix,p),wall=G.project(G.planes[name].matrix,[u,0]);floor.forEach((n,j)=>near(n,wall[j]));
+  }
+});
+
+test('3-mm-Fuge bleibt relativ zur 60-cm-Reihe über jede Wandtiefe maßhaltig',()=>{
+  for(const name of ['left','back','right'])for(const u of [0,120,240,300])for(const h of [60,180]){
+    const m=G.planes[name].matrix,top=G.project(m,[u,h+.15]),bottom=G.project(m,[u,h-.15]),a=G.project(m,[u,h-30]),b=G.project(m,[u,h+30]);
+    near(Math.abs(top[1]-bottom[1])/Math.abs(a[1]-b[1]),.3/60);
+  }
+});
 test('Gespeicherte Formate werden geprüft und Farbauswahl bleibt definiert',()=>{
   assert.deepEqual(G.format('60,60'),[60,60]);assert.deepEqual(G.format([0,120]),[60,120]);
   assert.deepEqual(G.format(null),[60,120]);assert.equal(Object.keys(G.grouts).length,4);
