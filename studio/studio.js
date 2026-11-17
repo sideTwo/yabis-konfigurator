@@ -3,7 +3,7 @@
  'use strict';
  const $=id=>document.getElementById(id),S=window.YabisShop,C=window.YabisStudio,G=window.YabisTileGrid,R=window.YabisRoomPreview;
  const params=new URLSearchParams(location.search),id=C.roomId(params.get('raum')),room=C.rooms[id];
- const key='yabis-studio-v1-'+id,cache=new Map(),canvas=$('room-preview'),ctx=canvas.getContext('2d');
+ const imageVersion='format-1',key='yabis-studio-v1-'+id,cache=new Map(),canvas=$('room-preview'),ctx=canvas.getContext('2d');
  const active=room.separateWalls?['floor','wall']:[room.surface],motion=matchMedia('(prefers-reduced-motion: reduce)');
  let saved={};try{saved=JSON.parse(localStorage.getItem(key))||{};}catch{}
  const state=C.initial(id,saved,params.get('product'));
@@ -22,11 +22,11 @@
  document.querySelectorAll('[data-studio-room]').forEach(a=>{if(a.dataset.studioRoom===id)a.setAttribute('aria-current','page');});
  if(params.has('product')&&!C.materials.includes(params.get('product'))){$('linked-note').hidden=false;$('linked-note').textContent='Dieser Shopartikel ist noch nicht in der Studio-Auswahl. Hier vergleichen Sie Habitat Perla und Bercy Terra.';}
  $('height-control').hidden=!room.separateWalls;$('height-note').hidden=!room.separateWalls;
- $('room-fallback').src='../'+(id==='bad'?C.bathAssets.poster:C.plate(id,state[room.surface],state.cabinetTone));
+ $('room-fallback').src='../'+(id==='bad'?C.bathAssets.poster:C.plate(id,state[room.surface],state.cabinetTone))+'?v='+imageVersion;
  $('room-fallback').alt=room.name+' – realistische Gestaltungsvorschau';
  function snapshot(){const data={...state};for(const surface of active){for(const field of ['Area','Waste'])data[surface+field]=$(`${surface}-${field.toLowerCase()}`).value;data[surface+'Included']=$('include-'+surface).checked;}return data;}
  function save(){try{localStorage.setItem(key,JSON.stringify(snapshot()));}catch{}}
- function load(src){if(!cache.has(src))cache.set(src,new Promise((resolve,reject)=>{const image=new Image();image.decoding='async';image.onload=()=>{if(id==='bad'&&(image.naturalWidth!==R.width||image.naturalHeight!==R.height)){cache.delete(src);reject(Error('Diese Badansicht passt nicht zur Raumvorlage. Bitte ein Bild im freigegebenen Format verwenden.'));return;}resolve(image);};image.onerror=()=>{cache.delete(src);reject(Error('Die Materialansicht konnte nicht geladen werden. Bitte erneut auswählen.'));};image.src=src;}));return cache.get(src);}
+ function load(src){if(!cache.has(src))cache.set(src,new Promise((resolve,reject)=>{const image=new Image();image.decoding='async';image.onload=()=>{if(image.naturalWidth!==R.width||image.naturalHeight!==R.height){cache.delete(src);reject(Error('Diese Raumansicht passt nicht zur Raumvorlage. Bitte ein Bild im freigegebenen Format verwenden.'));return;}resolve(image);};image.onerror=()=>{cache.delete(src);reject(Error('Die Materialansicht konnte nicht geladen werden. Bitte erneut auswählen.'));};image.src=src+'?v='+imageVersion;}));return cache.get(src);}
  const heightName=()=>state.wallHeight==='full'?'raumhoch':'1,20 m · Dusche raumhoch';
  function describe(){return active.map(surface=>`${room.separateWalls?(surface==='floor'?'Boden':'Wand'):room.surfaceName}: ${S.find(state[surface]).name}${room.separateWalls?' · '+state[surface+'Format'].join(' × ')+' cm · '+G.grouts[state[surface+'Grout']].label+(surface==='wall'?' · '+heightName():''):''}`).join(' / ')+(id==='kueche'?' · Fronten: '+(state.cabinetTone==='dark'?'Anthrazit':'Hell'):'');}
  async function draw(){

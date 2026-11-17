@@ -19,7 +19,7 @@ test('Alle sechs Einstiege, Bilder und lokalen Studio-Assets sind vorhanden',()=
 function app(room='bad',{saved=new Map(),defer=false,product='',fronts=''}={}){
  const elements=new Map(),events={},sources=[],pending=[],draws=[];
  class Element{
-  constructor(id=''){this.id=id;this.value='';this.checked=true;this.disabled=false;this.hidden=false;this.dataset={};this.children=[];this.attributes={};this.events={};this.style={};this.naturalWidth=1536;this.naturalHeight=1024;}
+  constructor(id=''){this.id=id;this.value='';this.checked=true;this.disabled=false;this.hidden=false;this.dataset={};this.children=[];this.attributes={};this.events={};this.style={};this.naturalWidth=1672;this.naturalHeight=941;}
   addEventListener(type,fn){(this.events[type]??=[]).push(fn);}
   append(...nodes){this.children.push(...nodes);}
   replaceChildren(...nodes){this.children=[...nodes];}
@@ -33,7 +33,7 @@ function app(room='bad',{saved=new Map(),defer=false,product='',fronts=''}={}){
  const get=id=>{if(!elements.has(id))elements.set(id,new Element(id));return elements.get(id);};
  for(const surface of ['floor','wall']){get(surface+'-waste').value='10';}
  const window={YabisStudio:C,YabisRoomPreview:{width:1672,height:941,render(ctx,s){draws.push({...s});}},YabisTileGrid:{...grid,draw(ctx,s){draws.push(JSON.parse(JSON.stringify(s)));}},addEventListener(type,fn){events[type]=fn;},dispatchEvent(e){events[e.type]?.(e);}};
- class Image extends Element{set src(src){this._src=src;if(src.includes('assets/studio/bad-')){this.naturalWidth=1672;this.naturalHeight=941;}sources.push(src);if(defer)pending.push(this);else queueMicrotask(()=>this.onload?.());}get src(){return this._src;}}
+ class Image extends Element{set src(src){this._src=src;sources.push(src);if(defer)pending.push(this);else queueMicrotask(()=>this.onload?.());}get src(){return this._src;}}
  const context={window,document:{body:{dataset:{}},title:'',getElementById:get,createElement:tag=>new Element(tag),querySelectorAll(){return [];}},matchMedia:()=>({matches:false,addEventListener(){}}),localStorage:{getItem:k=>saved.get(k)||null,setItem:(k,v)=>saved.set(k,v)},location:{search:'?raum='+room+(product?'&product='+product:'')+(fronts?'&fronten='+fronts:'')},Image,URLSearchParams,URL:{createObjectURL:()=> 'blob:preview',revokeObjectURL(){}},setTimeout(){},CustomEvent:class{constructor(type){this.type=type;}},crypto:crypto.webcrypto};
  vm.runInNewContext(fs.readFileSync(path.join(root,'js/shop-core.js'),'utf8'),context);
  vm.runInNewContext(fs.readFileSync(path.join(root,'studio/studio.js'),'utf8'),context);
@@ -42,6 +42,7 @@ function app(room='bad',{saved=new Map(),defer=false,product='',fronts=''}={}){
 test('Jeder Raum wechselt das Bild und übernimmt nur seine tatsächlichen Flächen in den Korb',async()=>{
  for(const id of Object.keys(C.rooms)){
   const a=app(id);await a.settle();assert.equal(a.get('add-to-cart').disabled,false,id);
+  assert.equal(a.get('room-preview').width,1672,id);assert.equal(a.get('room-preview').height,941,id);
   const room=C.rooms[id],surface=room.surface;
   a.get(surface+'-materials').children[1].click();await a.settle();
   a.get(surface+'-area').value='12.5';a.get(surface+'-area').fire('input');
@@ -50,7 +51,7 @@ test('Jeder Raum wechselt das Bild und übernimmt nur seine tatsächlichen Fläc
   assert.equal(cart[0].raum,room.name);assert.equal(cart.find(x=>x.flaeche.includes(room.separateWalls?'Boden':room.surfaceName)).produkt,'bercy-terra');
   assert.match(a.shop.lines(cart),new RegExp('Bereich: '+room.name));assert.match(a.shop.lines(cart),/13,75 m²/);
   if(room.approval)assert.ok(a.shop.lines(cart).includes(room.approval));
-  if(id!=='bad'){assert.ok(a.draws.at(-1).endsWith(`${id}-bercy-terra.webp`));assert.equal(a.get((surface==='floor'?'wall':'floor')+'-area').disabled,true);}
+  if(id!=='bad'){assert.ok(a.draws.at(-1).split('?')[0].endsWith(`${id}-bercy-terra.webp`));assert.equal(a.get((surface==='floor'?'wall':'floor')+'-area').disabled,true);}
  }
 });
 test('Bad behält separate Formate, Fugen, Höhe und Mengen; andere Räume erben keine Bad-Einstellungen',async()=>{
@@ -63,29 +64,42 @@ test('Bad behält separate Formate, Fugen, Höhe und Mengen; andere Räume erben
 test('Eine verspätete Bildantwort überschreibt niemals die zuletzt gewählte Fliese',async()=>{
  const a=app('eingang',{defer:true});a.get('floor-materials').children[1].click();
  const latest=a.pending.find(image=>image._src.includes('eingang-bercy-terra.webp'));latest.onload();await a.settle();
- assert.ok(a.draws.at(-1).endsWith('eingang-bercy-terra.webp'));
- for(const image of a.pending.filter(image=>image._src.includes('eingang-habitat-perla.webp')))image.onload?.();await a.settle();assert.ok(a.draws.at(-1).endsWith('eingang-bercy-terra.webp'));
+ assert.ok(a.draws.at(-1).split('?')[0].endsWith('eingang-bercy-terra.webp'));
+ for(const image of a.pending.filter(image=>image._src.includes('eingang-habitat-perla.webp')))image.onload?.();await a.settle();assert.ok(a.draws.at(-1).split('?')[0].endsWith('eingang-bercy-terra.webp'));
 });
 test('Bei einem fehlgeschlagenen Materialbild wird keine unsichtbare Konfiguration angefragt',async()=>{
  const a=app('wohnen',{defer:true});const initial=a.pending.find(image=>image._src.includes('wohnen-habitat-perla.webp'));initial.onload();await a.settle();
  a.get('floor-materials').children[1].click();const failing=a.pending.find(image=>image._src.includes('wohnen-bercy-terra.webp'));failing.onerror();await a.settle();
  assert.equal(a.get('add-to-cart').disabled,true);a.get('floor-area').value='10';a.get('request-selection').fire('submit');assert.equal(a.shop.getCart().length,0);assert.match(a.get('image-status').textContent,/erneut auswählen/);
 });
-test('Neue Badbilder mit falschen Abmessungen werden vor dem Rendern abgewiesen',async()=>{
- const a=app('bad',{defer:true}),badImage=a.pending.find(image=>image._src.includes(C.bathAssets.base));
- badImage.naturalWidth=1536;badImage.naturalHeight=1024;
- for(const image of a.pending)image.onload?.();await a.settle();
- assert.equal(a.get('add-to-cart').disabled,true);assert.match(a.get('image-status').textContent,/passt nicht zur Raumvorlage/);assert.equal(a.draws.length,0);
+test('Raumbilder mit falschen Abmessungen werden vor dem Rendern abgewiesen',async()=>{
+ for(const id of Object.keys(C.rooms)){
+  const a=app(id,{defer:true}),wrong=a.pending.find(image=>image._src.includes('../assets/studio/'));
+  wrong.naturalWidth=1536;wrong.naturalHeight=1024;
+  for(const image of a.pending)image.onload?.();await a.settle();
+  assert.equal(a.get('add-to-cart').disabled,true,id);assert.match(a.get('image-status').textContent,/passt nicht zur Raumvorlage/);assert.equal(a.draws.length,0,id);
+ }
 });
 test('Helle und dunkle Küchenfronten lassen sich unabhängig von beiden Fliesen wählen und wiederherstellen',async()=>{
  for(const material of C.materials)for(const tone of ['light','dark'])assert.ok(fs.existsSync(path.join(root,C.plate('kueche',material,tone))));
  const a=app('kueche');await a.settle();assert.equal(a.get('kitchen-fronts').hidden,false);
  a.get('wall-materials').children[1].click();await a.settle();a.get('fronts-dark').click();await a.settle();
- assert.ok(a.draws.at(-1).endsWith('kueche-bercy-terra-dunkel.webp'));assert.match(a.get('combination').textContent,/Bercy Terra.*Anthrazit/);
+ assert.ok(a.draws.at(-1).split('?')[0].endsWith('kueche-bercy-terra-dunkel.webp'));assert.match(a.get('combination').textContent,/Bercy Terra.*Anthrazit/);
  a.get('wall-area').value='6';a.get('request-selection').fire('submit');const cart=a.shop.getCart();assert.equal(cart.length,1);assert.equal(cart[0].produkt,'bercy-terra');assert.equal(cart[0].flaeche,'Küchenrückwand');
- a.get('wall-materials').children[0].click();await a.settle();assert.ok(a.draws.at(-1).endsWith('kueche-habitat-perla-dunkel.webp'));
+ a.get('wall-materials').children[0].click();await a.settle();assert.ok(a.draws.at(-1).split('?')[0].endsWith('kueche-habitat-perla-dunkel.webp'));
  const restored=app('kueche',{saved:a.saved});await restored.settle();assert.equal(restored.get('fronts-dark').attributes['aria-pressed'],'true');
- restored.get('fronts-light').click();await restored.settle();assert.ok(restored.draws.at(-1).endsWith('kueche-habitat-perla.webp'));
- const linked=app('kueche',{fronts:'dark',product:'bercy-terra'});await linked.settle();assert.ok(linked.draws.at(-1).endsWith('kueche-bercy-terra-dunkel.webp'));
+ restored.get('fronts-light').click();await restored.settle();assert.ok(restored.draws.at(-1).split('?')[0].endsWith('kueche-habitat-perla.webp'));
+ const linked=app('kueche',{fronts:'dark',product:'bercy-terra'});await linked.settle();assert.ok(linked.draws.at(-1).split('?')[0].endsWith('kueche-bercy-terra-dunkel.webp'));
  assert.equal(app('bad').get('kitchen-fronts').hidden,true);assert.equal(C.initial('bad',{cabinetTone:'dark'}).cabinetTone,undefined);
+});
+
+const nativeCanvas=process.env.YABIS_CANVAS_PACKAGE;
+test('Alle aktiven Raumfotos und Küchenfronten haben exakt das Badformat', {skip:!nativeCanvas},async()=>{
+ const {loadImage}=require(nativeCanvas),files=new Set(Object.values(C.bathAssets));
+ for(const id of Object.keys(C.rooms))for(const material of C.materials){
+  files.add(id==='bad'?C.bathPlate(material):C.plate(id,material));
+  if(id==='kueche')files.add(C.plate(id,material,'dark'));
+ }
+ for(const file of files){const im=await loadImage(path.join(root,file));assert.equal(im.width,1672,file);assert.equal(im.height,941,file);}
+ assert.equal(files.size,16);
 });
