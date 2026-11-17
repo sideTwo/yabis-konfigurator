@@ -131,3 +131,7 @@
  .house-spot:hover .spot-face,.house-spot:active .spot-face,.shop-main-link:hover{transform:none}
  .house-room-preview[open],.house-room-preview[open]::backdrop{animation:none}
 }
+
+/* Fade only empty outer margins; keep the complete house/platform visible. */
+.house-map>img{-webkit-mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent),linear-gradient(to bottom,transparent,#000 1%,#000 99%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent),linear-gradient(to bottom,transparent,#000 1%,#000 99%,transparent);mask-composite:intersect}
+.house-ai-note{position:absolute;right:10%;bottom:8%;font-size:9px;line-height:1.4;color:#617066;pointer-events:none}

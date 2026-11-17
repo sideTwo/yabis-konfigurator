@@ -22,7 +22,7 @@
  document.querySelectorAll('[data-studio-room]').forEach(a=>{if(a.dataset.studioRoom===id)a.setAttribute('aria-current','page');});
  if(params.has('product')&&!C.materials.includes(params.get('product'))){$('linked-note').hidden=false;$('linked-note').textContent='Dieser Shopartikel ist noch nicht in der Studio-Auswahl. Hier vergleichen Sie Habitat Perla und Bercy Terra.';}
  $('height-control').hidden=!room.separateWalls;$('height-note').hidden=!room.separateWalls;
- $('room-fallback').src='../'+(id==='bad'?'assets/studio/bad-waschtisch-v2.webp':C.plate(id,state[room.surface],state.cabinetTone));
+ $('room-fallback').src='../'+(id==='bad'?C.bathAssets.poster:C.plate(id,state[room.surface],state.cabinetTone));
  $('room-fallback').alt=room.name+' – realistische Gestaltungsvorschau';
  function snapshot(){const data={...state};for(const surface of active){for(const field of ['Area','Waste'])data[surface+field]=$(`${surface}-${field.toLowerCase()}`).value;data[surface+'Included']=$('include-'+surface).checked;}return data;}
  function save(){try{localStorage.setItem(key,JSON.stringify(snapshot()));}catch{}}
@@ -35,7 +35,7 @@
   try{
    if(!ctx)throw Error('Die Bildvorschau wird von diesem Browser nicht unterstützt. Bitte nutzen Sie den Shop.');
    if(room.separateWalls){
-    const [base,floor,wall,fixtures]=await Promise.all([load('../assets/studio/bad-basis.webp'),load(`../assets/studio/bad-${selection.floor}-120.webp`),load(`../assets/studio/bad-${selection.wall}-${selection.wallHeight}.webp`),load('../assets/studio/bad-waschtisch-v2.webp')]);
+    const [base,floor,wall,fixtures]=await Promise.all([load('../'+C.bathAssets.base),load('../'+C.bathPlate(selection.floor)),load('../'+C.bathPlate(selection.wall)),load('../'+C.bathAssets.fixtures)]);
     if(request!==revision)return;
     canvas.width=R.width;canvas.height=R.height;R.render(ctx,{base,floor,wall,wallHeight:selection.wallHeight,fixtures});G.draw(ctx,selection,R,base);
    }else{

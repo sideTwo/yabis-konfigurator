@@ -7,9 +7,10 @@ test('Glasnahe Wandstreifen sind in beiden Höhen echte Material- und Fugenfläc
   assert.equal(contains(point,R.fixedMasks(mode)),false);assert.equal(contains(point,R.groutOcclusions(mode)),false);
  }
 });
-test('Fensterschwelle, Boden und rechte Wand teilen exakt dieselben Eckpunkte',()=>{
- const floor=R.floor[0],window=R.windowOcclusions[0];
- for(const point of [[709,639],[875,637]]){assert.ok(floor.some(p=>p[0]===point[0]&&p[1]===point[1]));assert.ok(window.some(p=>p[0]===point[0]&&p[1]===point[1]));}
+test('Wand unter dem OG-Fenster ist durchgehend; Boden und rechte Wand schließen bündig',()=>{
+ const floor=R.floor[0];
+ for(const mode of ['120','full'])for(const point of [[600,500],[750,500],[875,620],[985,500]]){assert.ok(contains(point,R.faces(mode).filter(f=>f.surface==='wall').flatMap(f=>f.polygons)));assert.equal(contains(point,R.fixedMasks(mode)),false);}
+ assert.ok(R.windowOcclusions.flat().every(p=>p[1]<=373));
  for(const mode of ['120','full']){const right=R.faces(mode).find(f=>f.id==='right-wall').polygons[0];for(const point of [[1275,698],[1672,941]]){assert.ok(floor.some(p=>p[0]===point[0]&&p[1]===point[1]));assert.ok(right.some(p=>p[0]===point[0]&&p[1]===point[1]));}}
 });
 test('Glas und Keramik sind geschützt; fliesenfarbene Drückerplatte bleibt materialabhängig',()=>{

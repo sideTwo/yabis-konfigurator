@@ -1,21 +1,24 @@
 # Neue Badmaterialien vor der Freischaltung prüfen
 
-Die feste Perspektive hat die Kalibrierung `bad-1672x941-v4`. Alle Badbilder
+Die feste Perspektive hat die Kalibrierung `bad-og-1672x941-v5`. Alle Badbilder
 müssen **1672 × 941 Pixel** haben. Automatisches Strecken eines anderen Formats
 ist verboten: Es verschiebt Fenster, Möbel und Flächenkanten. Die Studio-Seite
 weist falsche Abmessungen deshalb ab.
 
 ## Bildvorgaben
 
-Pro neuem Artikel zwei fotografische Materialansichten vorbereiten:
+Pro neuem Artikel genügt **eine** fotografische, fugenlose Materialansicht:
 
-- `assets/studio/bad-<artikel-id>-120.webp`: Wand bis 1,20 m, Dusche raumhoch;
-  obere Wand neutral weiß. Der Boden wird immer aus dieser Ansicht genommen.
-- `assets/studio/bad-<artikel-id>-full.webp`: Wand raumhoch.
+- `assets/studio/bad-og-<artikel-id>.webp`: Boden und alle Wandflächen raumhoch.
+  Beide Wandhöhen benutzen dieselbe Platte; der Renderer übernimmt bei 1,20 m
+  die weißen oberen Wände und das Abschlussprofil aus der festen Basis.
+- `bad-og-basis.webp`: feste Raumelemente, Fenster/Ausblick und weiße obere Wände.
+- `bad-og-vorschau.webp`: aus Produktionsrenderer und Standardauswahl erzeugtes
+  Vorschaubild, auch für Startseite, Ladezustand und Raumübergang.
 
-Beide Bilder auf die vorhandene Vorlage ausrichten. Kamera, Objektpositionen,
+Jede Materialansicht auf die vorhandene Vorlage ausrichten. Kamera, Objektpositionen,
 Raumkanten und Licht unverändert lassen. Keine eingebrannten Fugen; diese
-kommen aus `tile-grid.js`. Grundbild und korrigierten Waschtisch nicht für
+kommen aus `tile-grid.js`. Grundbild und feste Raumausstattung nicht für
 jeden Artikel neu erzeugen. Originale und Prompts bleiben im privaten Material.
 
 `standbild-renderer.js` enthält die einzige gemeinsame Beschreibung der
@@ -45,7 +48,8 @@ Referenz und jeweils mit sich selbst geprüft. Der Bericht nennt die Methode.
 Die Prüfung erzeugt echte Pixel mit dem Produktionscode und kontrolliert:
 
 - Bildabmessungen und Referenzpunkte an Wand, Boden, Fenster und Duschkanten;
-- alle drei Formate und vier Fugenfarben in beiden Wandhöhen;
+- alle drei Formate und vier Fugenfarben in beiden Wandhöhen; zusätzlich 48
+  Einzelwechsel, bei denen die jeweils andere Fläche exakt unverändert bleibt;
 - Fugen außerhalb der Flächen oder über geschützten Bauteilen;
 - voneinander unabhängige Wand- und Bodenwahl;
 - unveränderte Fenster, Keramik und Waschtisch in den Materialkombinationen.
@@ -57,3 +61,9 @@ iPhone/Safari prüfen. Native Canvas-Bilder sind keine Browser-Screenshots.
 
 Mit gesetztem `YABIS_CANVAS_PACKAGE` gehört die Pixelprüfung auch zur Testsuite;
 ohne das Entwicklungspaket wird nur dieser eine Test ausdrücklich übersprungen.
+
+Die neue Brüstung unter dem Fenster und die Wand unter seiner Glasreflexion
+gehören zu den konfigurierbaren Flächen. Fensterrahmen, Glas und Fensterbank
+sind feste Bauteile. Exakte RGB-Unabhängigkeitsvergleiche lassen einen Pixel
+Rand für Antialiasing aus; Referenzpunkte und Fugen-Leckprüfung benutzen die
+ursprünglichen Masken einschließlich ihrer Ränder.

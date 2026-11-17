@@ -4,15 +4,15 @@ const covered=(point,polygons)=>polygons.some(p=>inside(point,p));
 test('Beide Fensterkanten wechseln bei 1,20 m und raumhoher Fliese mit der Wand',()=>{
  for(const height of ['120','full']){
   const walls=height==='120'?R.walls120:R.wallsFull;
-  for(const point of [[708,500],[881,500],[881,620]]){assert.equal(covered(point,walls),true,height+' Wand '+point);assert.equal(covered(point,R.backWalls[height]),true,height+' Fugen '+point);}
+ for(const point of [[528,500],[708,500],[881,500],[881,620]]){assert.equal(covered(point,walls),true,height+' Wand '+point);assert.equal(covered(point,R.backWalls[height]),true,height+' Fugen '+point);}
  }
- assert.equal(covered([881,250],R.walls120),false,'Oberhalb 1,20 m bleibt die äußere Laibung weiß');
- assert.equal(covered([881,250],R.wallsFull),true);
+ assert.equal(covered([520,250],R.walls120),false,'Oberhalb 1,20 m bleibt die Wand neben dem Fenster weiß');
+ assert.equal(covered([520,250],R.wallsFull),true);
  assert.equal(covered([930,250],R.walls120),true,'In der Dusche bleibt die Wand raumhoch gefliest');
 });
 test('Fensterrahmen und Glas stammen aus der Basis, ohne die konfigurierbaren Laibungen zu sperren',()=>{
- assert.equal(covered([715,500],R.windowOcclusions),true);assert.equal(covered([800,500],R.windowOcclusions),true);
- for(const point of [[708,500],[881,500]])assert.equal(covered(point,R.windowOcclusions),false);
+ assert.equal(covered([715,200],R.windowOcclusions),true);assert.equal(covered([800,250],R.windowOcclusions),true);
+ for(const point of [[708,500],[881,500],[528,250]])assert.equal(covered(point,R.windowOcclusions),false);
  for(const wallHeight of ['120','full']){
   const calls=[],ctx={current:[],clearRect(){},save(){},restore(){},beginPath(){this.current=[];},moveTo(x,y){this.current.push([x,y]);},lineTo(x,y){this.current.push([x,y]);},closePath(){},clip(){},rect(){},drawImage(image){calls.push({image,clip:[...this.current]});}};
   R.render(ctx,{base:'fixed-window',wall:'selected-wall',floor:'selected-floor',wallHeight});

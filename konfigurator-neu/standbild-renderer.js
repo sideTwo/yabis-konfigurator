@@ -1,22 +1,20 @@
 /* Fixed camera calibration. Material and grout renderers share these exact faces. */
 ((root,factory)=>{const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.YabisRoomPreview=api;})(typeof window==='object'?window:this,()=>{
  'use strict';
- const width=1672,height=941,calibration='bad-1672x941-v4';
- const floor=[[[135,941],[498,639],[709,639],[875,637],[888,639],[923,641],[1008,721],[1275,721],[1275,698],[1672,941]]];
+ const width=1672,height=941,calibration='bad-og-1672x941-v5';
+ const floor=[[[135,941],[498,639],[888,639],[923,641],[1008,721],[1275,721],[1275,698],[1672,941]]];
  const left120=[[0,231],[498,366],[498,639],[135,941],[0,941]];
  const leftFull=[[0,0],[424,0],[498,80],[498,639],[135,941],[0,941]];
- const back120=[[498,366],[709,366],[709,639],[498,639]];
- const backFull=[[498,80],[709,80],[709,639],[498,639]];
- const lintel=[[709,80],[888,80],[888,98],[709,98]];
- const reveal120=[[875,366],[888,366],[888,639],[875,637]];
- const revealFull=[[875,98],[888,98],[888,639],[875,637]];
+ // The new window has a sill, so the entire wall beneath it is configurable.
+ const back120=[[498,366],[888,366],[888,639],[498,639]];
+ const backFull=[[498,80],[888,80],[888,639],[498,639]];
  const outerRight120=[[1275,338],[1672,234],[1672,941],[1275,698]];
  const outerRightFull=[[1275,0],[1672,0],[1672,941],[1275,698]];
  // Includes the tile visible THROUGH the left glass pane. Only its reflected
  // window and hardware are fixed, not the surrounding strip of background wall.
  const showerBack=[[888,80],[1168,80],[1168,633],[1008,633],[945,639],[888,639]];
  const showerRight=[[1168,80],[1247,0],[1275,0],[1275,697],[1168,633]];
- const backWalls={'120':[back120,reveal120],full:[backFull,lintel,revealFull]};
+ const backWalls={'120':[back120],full:[backFull]};
  const face=(id,surface,plane,polygons,maxV)=>({id,surface,plane,polygons,maxV});
  const faceSets={};
  for(const mode of ['120','full']){
@@ -34,8 +32,10 @@
  const walls120=faces('120').filter(f=>f.surface==='wall').flatMap(f=>f.polygons);
  const wallsFull=faces('full').filter(f=>f.surface==='wall').flatMap(f=>f.polygons);
  const fixtureOcclusions=[[[250,456],[453,456],[570,452],[572,453],[572,604],[463,670],[250,670]]];
- const windowOcclusions=[[[709,98],[875,98],[875,637],[709,639]]];
- const reflectedWindow=[[[958,100],[1006,100],[1006,637],[958,637]]];
+ // Window frame, glazing and the separate stone sill are fixed components.
+ // Nothing below y=373 is a fixed window strip any more.
+ const windowOcclusions=[[[530,116],[888,116],[888,365],[891,365],[891,373],[523,373],[523,365],[530,365]]];
+ const reflectedWindow=[[[958,100],[1006,100],[1006,367],[958,367]]];
  const floorOcclusions=[[[1350,601],[1428,599],[1450,600],[1468,605],[1485,610],[1501,615],[1518,620],[1550,630],[1578,640],[1589,647],[1585,653],[1614,661],[1616,666],[1616,680],[1615,700],[1613,720],[1610,740],[1606,760],[1602,780],[1597,800],[1594,812],[1500,814],[1450,813],[1400,805],[1380,798],[1350,784],[1330,762],[1320,743],[1311,721],[1303,701],[1296,681],[1292,671],[1289,660],[1287,639],[1287,621],[1288,614],[1291,609],[1307,604],[1330,602]]];
  const tray=[[[923,641],[1008,721],[1275,721],[1275,697],[1168,633],[1008,633],[945,639]]];
  const basin=[[[331,410],[516,411],[520,417],[516,449],[506,455],[340,455],[334,448]]];
@@ -58,13 +58,12 @@
  ];
  const trim120=[
   [[0,229],[498,364],[498,368],[0,233]],
-  [[498,363],[709,363],[709,368],[498,368]],
-  [[875,363],[888,363],[888,368],[875,368]],
+  [[498,363],[524,363],[524,368],[498,368]],
   [[1275,335],[1672,232],[1672,237],[1275,341]]
  ];
  // Fine hardware keeps the shading already present in the selected room plate.
  // Its generous grout exclusion must NOT copy a grey rectangular background.
- const fixedBase=[...windowOcclusions,...reflectedWindow,...floorOcclusions,...tray].map(positive);
+ const fixedBase=[...windowOcclusions,...reflectedWindow,...floorOcclusions,...tray,...basin,...mirror].map(positive);
  const fixedMasks=mode=>mode==='full'?fixedBase:[...fixedBase,...trim120.map(positive)];
  const groutOcclusions=mode=>[...fixedMasks(mode),...fixtureOcclusions,...basin,...tap,...hardware,...mirror,...flushplate].map(positive);
  function trace(ctx,polygons){for(const raw of polygons){const points=positive(raw);ctx.moveTo(...points[0]);for(const point of points.slice(1))ctx.lineTo(...point);ctx.closePath();}}
