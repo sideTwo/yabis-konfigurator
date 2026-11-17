@@ -37,7 +37,7 @@
    if(room.separateWalls){
     const [base,floor,wall,fixtures]=await Promise.all([load('../'+C.bathAssets.base),load('../'+C.bathPlate(selection.floor)),load('../'+C.bathPlate(selection.wall)),load('../'+C.bathAssets.fixtures)]);
     if(request!==revision)return;
-    canvas.width=R.width;canvas.height=R.height;R.render(ctx,{base,floor,wall,wallHeight:selection.wallHeight,fixtures});G.draw(ctx,selection,R,base);
+    canvas.width=R.width;canvas.height=R.height;R.render(ctx,{base,floor,wall,wallHeight:selection.wallHeight,fixtures,wallRegistration:C.bathRegistration(selection.wall)});G.draw(ctx,selection,R,base);
    }else{
     const image=await load('../'+C.plate(id,selection[room.surface],selection.cabinetTone));if(request!==revision)return;
     canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;ctx.drawImage(image,0,0);

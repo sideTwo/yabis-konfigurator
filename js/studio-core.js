@@ -3,6 +3,13 @@
  'use strict';
  const materials=Object.freeze(['habitat-perla','bercy-terra']);
  const bathAssets=Object.freeze({base:'assets/studio/bad-og-basis-glas.webp',fixtures:'assets/studio/bad-og-basis-glas.webp',poster:'assets/studio/bad-og-vorschau-glas.webp'});
+ // Photograph registration is separate from the metric tile grid. These are
+ // the actual source-image ceiling edges, not desired grout positions.
+ const bathRegistrations={
+  'habitat-perla':[[414,0],[493,83],[1168,80],[1247,0]],
+  'bercy-terra':[[390,0],[471,85],[1164,80],[1246,0]]
+ };
+ const bathRegistration=id=>bathRegistrations[id]||null;
  function bathPlate(product){const id=typeof product==='string'&&/^[a-z0-9][a-z0-9-]{0,79}$/.test(product)?product:materials[0];return `assets/studio/bad-og-${id}.webp`;}
  const rooms=Object.freeze({
   bad:{name:'Bad',title:'Ihr Bad. Ihre Kombination.',surface:'floor',surfaceName:'Boden',separateWalls:true,image:bathAssets.poster,note:'Wand und Boden unabhängig gestalten. Bei 1,20 m bleiben die oberen Wände weiß; die Dusche ist immer raumhoch gefliest.'},
@@ -18,5 +25,5 @@
  function plate(room,product,cabinetTone='light'){room=roomId(room);if(room==='bad')throw Error('Das Bad verwendet getrennte Flächen.');return `assets/studio/${room}-${materialId(product)}${room==='kueche'&&cabinetTone==='dark'?'-dunkel':''}.webp`;}
  function initial(room,saved={},product){room=roomId(room);const r=rooms[room],state={floor:materialId(saved.floor),wall:materialId(saved.wall),wallHeight:saved.wallHeight==='full'?'full':'120'};if(room==='kueche')state.cabinetTone=saved.cabinetTone==='dark'?'dark':'light';if(materials.includes(product))state[r.surface]=product;return state;}
  function motionAllowed({reduced=false,saveData=false}={}){return !reduced&&!saveData;}
- return {materials,bathAssets,bathPlate,rooms,roomId,materialId,href,plate,initial,motionAllowed};
+ return {materials,bathAssets,bathPlate,bathRegistration,rooms,roomId,materialId,href,plate,initial,motionAllowed};
 });

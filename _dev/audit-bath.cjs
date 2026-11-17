@@ -31,7 +31,7 @@ async function audit({repo=path.resolve(__dirname,'..'),output=path.join(repo,'_
   const extra=[[height==='full'?'wall':'fixed',[520,250]],[height==='full'?'wall':'fixed',[900,250]],[height==='full'?'wall':'fixed',[924,300]],[height==='full'?'wall':'fixed',[200,120]],[height==='full'?'wall':'fixed',[1450,100]]];
   for(const [owner,[x,y]]of [...anchors,...extra]){const i=(y*R.width+x)*4;anchorChecks++;if(colors[owner].some((v,j)=>Math.abs(data[i+j]-v)>2))issues.push({check:'edge-owner',height,point:[x,y],expected:owner,actual:[...data.slice(i,i+4)]});}
  }
- const photos=[],images={},interiorMasks=new WeakMap();let stableComparisons=0,independenceComparisons=0;
+ const photos=[],images={},interiorMasks=new WeakMap();let stableComparisons=0,independenceComparisons=0,ceilingMaterialChecks=0;
  // A rounded 255 mask pixel can still contain fractional edge coverage in Skia.
  // Compare exact RGB only one pixel inside each surface; geometry/grout checks
  // below continue to inspect the original masks, including all their edges.
@@ -44,8 +44,9 @@ async function audit({repo=path.resolve(__dirname,'..'),output=path.join(repo,'_
   const floorHashes=new Map(),wallHashes=new Map();let referenceFixed;
   for(const [floor,wall] of pairs){
    const c=make(),ctx=c.getContext('2d'),state={floor,wall,wallHeight:height,floorFormat:[60,120],wallFormat:[60,120],floorGrout:'dark',wallGrout:'dark'};
-   R.render(ctx,{base,fixtures,floor:assets[C.bathPlate(floor)],wall:assets[C.bathPlate(wall)],wallHeight:height});
+   R.render(ctx,{base,fixtures,floor:assets[C.bathPlate(floor)],wall:assets[C.bathPlate(wall)],wallHeight:height,wallRegistration:C.bathRegistration(wall)});
    const raw=pixels(c);
+   if(height==='full'&&wall==='bercy-terra')for(const [x,y]of [[445,35],[465,55],[485,75]]){const i=(y*R.width+x)*4;ceilingMaterialChecks++;if(raw[i]-raw[i+1]<12)issues.push({check:'untiled-ceiling-strip',point:[x,y],rgb:[...raw.slice(i,i+3)]});}
    for(const [surface,id,hashes,selectedMask]of [['floor',floor,floorHashes,floorMask],['wall',wall,wallHashes,wallMask]]){const value=digest(raw,selectedMask);if(hashes.has(id)){independenceComparisons++;if(hashes.get(id)!==value)issues.push({check:'surface-coupling',height,floor,wall,surface});}else hashes.set(id,value);}
    G.draw(ctx,state,R,base);const final=pixels(c),fixedHash=digest(final,fixed);if(!referenceFixed)referenceFixed=fixedHash;
    stableComparisons++;if(referenceFixed!==fixedHash)issues.push({check:'fixed-object-drift',height,floor,wall});
@@ -77,7 +78,7 @@ async function audit({repo=path.resolve(__dirname,'..'),output=path.join(repo,'_
  notes.push('Native Skia renders of the actual production canvas code; this is not a Safari or browser-layout screenshot.');
  notes.push('Exact 1672 × 941 assets required. Test newly generated material plates with this audit before activating them.');
  notes.push('Exact RGB independence hashes use a one-pixel interior margin to exclude fractional antialiasing at shared edges. Ownership anchors and grout leak checks use unmodified masks.');
- const report={calibration:R.calibration,passed:issues.length===0,materials:materialIds,sampling,assetDimensionsChecked:assetNames.length,photoCombinations:photos.length,anchorChecks,stableComparisons,independenceComparisons,groutVariants,independentGroutVariants,issues,notes};
+ const report={calibration:R.calibration,passed:issues.length===0,materials:materialIds,sampling,assetDimensionsChecked:assetNames.length,photoCombinations:photos.length,anchorChecks,ceilingMaterialChecks,stableComparisons,independenceComparisons,groutVariants,independentGroutVariants,issues,notes};
  fs.writeFileSync(path.join(output,'report.json'),JSON.stringify(report,null,2));return report;
 }
 module.exports={audit,anchors};

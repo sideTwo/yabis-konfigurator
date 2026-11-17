@@ -1,7 +1,7 @@
 /* Fixed camera calibration. Material and grout renderers share these exact faces. */
 ((root,factory)=>{const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.YabisRoomPreview=api;})(typeof window==='object'?window:this,()=>{
  'use strict';
- const width=1672,height=941,calibration='bad-og-1672x941-v8';
+ const width=1672,height=941,calibration='bad-og-1672x941-v9';
  // Photo calibration: one common room height, with floor/finish/ceiling datums.
  // The AI reference is not a surveyed projective photograph. Its three datum
  // lines must all agree with the centimetre grid before extrapolating courses.
@@ -79,9 +79,28 @@
  const groutOcclusions=mode=>[...fixedMasks(mode),...fixtureOcclusions,...basin,...tap,...hardware,...mirror,...flushplate].map(positive);
  function trace(ctx,polygons){for(const raw of polygons){const points=positive(raw);ctx.moveTo(...points[0]);for(const point of points.slice(1))ctx.lineTo(...point);ctx.closePath();}}
  function layer(ctx,image,polygons,holes=[]){if(!polygons.length)return;ctx.save();ctx.beginPath();trace(ctx,polygons);ctx.clip();if(holes.length){ctx.beginPath();ctx.rect(0,0,width,height);trace(ctx,holes);ctx.clip('evenodd');}ctx.drawImage(image,0,0,width,height);ctx.restore();}
- function render(ctx,{base,floor:floorImage,wall,wallHeight,fixtures}){
+ function lineAt(points,x){let a=points[0],b=points[1];for(let i=1;i<points.length-1;i++)if(x>=points[i][0]){a=points[i];b=points[i+1];}return a[1]+(x-a[0])*(b[1]-a[1])/(b[0]-a[0]);}
+ function registerCeiling(ctx,image,mode,sourceEdge){
+  if(!sourceEdge)return;
+  const polygons=faces(mode).filter(f=>f.surface==='wall'&&f.maxV===wallCalibration.height).flatMap(f=>f.polygons);
+  const targetEdge=[wallCalibration.planes.left.ceiling[0],wallCalibration.planes.left.ceiling[1],wallCalibration.planes.right.ceiling[0],wallCalibration.planes.right.ceiling[1]];
+  ctx.save();ctx.beginPath();trace(ctx,polygons);ctx.clip();
+  for(let x=0;x<width;x++){
+   const target=Math.max(0,lineAt(targetEdge,x)),source=Math.max(0,lineAt(sourceEdge,x)),gap=source+3-target;
+   if(gap<=0||source<=0||target>=height)continue;
+   // Sample only wall texture: keep the window/stone sill and shower head out
+   // of this narrow registration band. All canonical fixtures are restored below.
+   if(x>=1035&&x<=1150)continue;
+   let depth=96;if(x>=520&&x<=892)depth=Math.min(depth,110-target);
+   if(depth<=gap+1)continue;
+   ctx.drawImage(image,x,target+gap,1,depth-gap,x,target,1,depth);
+  }
+  ctx.restore();
+ }
+ function render(ctx,{base,floor:floorImage,wall,wallHeight,fixtures,wallRegistration}){
   ctx.clearRect(0,0,width,height);ctx.drawImage(base,0,0,width,height);
   for(const f of faces(wallHeight))layer(ctx,f.surface==='floor'?floorImage:wall,f.polygons);
+  registerCeiling(ctx,wall,wallHeight,wallRegistration);
   layer(ctx,base,fixedMasks(wallHeight));
   if(fixtures)layer(ctx,fixtures,fixtureOcclusions);
  }
