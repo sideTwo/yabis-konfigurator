@@ -72,7 +72,7 @@ test('Bei einem fehlgeschlagenen Materialbild wird keine unsichtbare Konfigurati
  assert.equal(a.get('add-to-cart').disabled,true);a.get('floor-area').value='10';a.get('request-selection').fire('submit');assert.equal(a.shop.getCart().length,0);assert.match(a.get('image-status').textContent,/erneut auswählen/);
 });
 test('Neue Badbilder mit falschen Abmessungen werden vor dem Rendern abgewiesen',async()=>{
- const a=app('bad',{defer:true}),badImage=a.pending.find(image=>image._src.includes('bad-og-basis.webp'));
+ const a=app('bad',{defer:true}),badImage=a.pending.find(image=>image._src.includes(C.bathAssets.base));
  badImage.naturalWidth=1536;badImage.naturalHeight=1024;
  for(const image of a.pending)image.onload?.();await a.settle();
  assert.equal(a.get('add-to-cart').disabled,true);assert.match(a.get('image-status').textContent,/passt nicht zur Raumvorlage/);assert.equal(a.draws.length,0);

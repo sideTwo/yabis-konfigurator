@@ -5,7 +5,7 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const anchors=[
  ['floor',[150,930]],['floor',[490,680]],['floor',[710,645]],['floor',[870,650]],['floor',[900,652]],['floor',[960,705]],['floor',[1005,728]],['floor',[1280,728]],['floor',[1450,900]],['floor',[1660,935]],
  ['wall',[20,500]],['wall',[140,800]],['wall',[200,700]],['wall',[50,300]],['wall',[600,630]],['wall',[700,625]],['wall',[708,500]],['wall',[881,500]],['wall',[881,620]],['wall',[600,500]],['wall',[800,400]],['wall',[985,500]],['wall',[980,620]],
- ['wall',[890,200]],['wall',[940,620]],['wall',[950,300]],['wall',[952,600]],['wall',[1018,120]],['wall',[1150,620]],['wall',[1100,300]],['wall',[1060,530]],['wall',[1050,90]],['wall',[1200,200]],['wall',[1260,650]],['wall',[1268,100]],['wall',[1280,500]],['wall',[1640,700]],['wall',[1640,910]],
+ ['wall',[930,200]],['wall',[940,620]],['wall',[950,300]],['wall',[952,600]],['wall',[1018,120]],['wall',[1150,620]],['wall',[1100,300]],['wall',[1060,530]],['wall',[1050,90]],['wall',[1200,200]],['wall',[1260,650]],['wall',[1268,100]],['wall',[1280,500]],['wall',[1640,700]],['wall',[1640,910]],
  ['fixed',[750,200]],['fixed',[540,200]],['fixed',[700,369]],['fixed',[985,300]],['fixed',[1450,700]],['fixed',[1100,680]],['vanity',[350,550]],['fixed',[800,20]]
 ];
 async function audit({repo=path.resolve(__dirname,'..'),output=path.join(repo,'_dev/schirm/bad-audit'),materials}={}){
@@ -28,7 +28,7 @@ async function audit({repo=path.resolve(__dirname,'..'),output=path.join(repo,'_
  let anchorChecks=0;
  for(const height of ['120','full']){
   const c=make();R.render(c.getContext('2d'),{base:solid.fixed,floor:solid.floor,wall:solid.wall,fixtures:solid.vanity,wallHeight:height});const data=pixels(c);
-  const extra=[[height==='full'?'wall':'fixed',[520,250]],[height==='full'?'wall':'fixed',[200,120]],[height==='full'?'wall':'fixed',[1450,100]]];
+  const extra=[[height==='full'?'wall':'fixed',[520,250]],[height==='full'?'wall':'fixed',[900,250]],[height==='full'?'wall':'fixed',[924,300]],[height==='full'?'wall':'fixed',[200,120]],[height==='full'?'wall':'fixed',[1450,100]]];
   for(const [owner,[x,y]]of [...anchors,...extra]){const i=(y*R.width+x)*4;anchorChecks++;if(colors[owner].some((v,j)=>Math.abs(data[i+j]-v)>2))issues.push({check:'edge-owner',height,point:[x,y],expected:owner,actual:[...data.slice(i,i+4)]});}
  }
  const photos=[],images={},interiorMasks=new WeakMap();let stableComparisons=0,independenceComparisons=0;

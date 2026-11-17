@@ -2,7 +2,7 @@
 ((root,factory)=>{const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.YabisStudio=api;})(typeof window==='object'?window:this,()=>{
  'use strict';
  const materials=Object.freeze(['habitat-perla','bercy-terra']);
- const bathAssets=Object.freeze({base:'assets/studio/bad-og-basis.webp',fixtures:'assets/studio/bad-og-basis.webp',poster:'assets/studio/bad-og-vorschau.webp'});
+ const bathAssets=Object.freeze({base:'assets/studio/bad-og-basis-glas.webp',fixtures:'assets/studio/bad-og-basis-glas.webp',poster:'assets/studio/bad-og-vorschau-glas.webp'});
  function bathPlate(product){const id=typeof product==='string'&&/^[a-z0-9][a-z0-9-]{0,79}$/.test(product)?product:materials[0];return `assets/studio/bad-og-${id}.webp`;}
  const rooms=Object.freeze({
   bad:{name:'Bad',title:'Ihr Bad. Ihre Kombination.',surface:'floor',surfaceName:'Boden',separateWalls:true,image:bathAssets.poster,note:'Wand und Boden unabhängig gestalten. Bei 1,20 m bleiben die oberen Wände weiß; die Dusche ist immer raumhoch gefliest.'},

@@ -1,6 +1,13 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),R=require('../konfigurator-neu/standbild-renderer.js');
 function inside([x,y],polygon){let found=false;for(let i=0,j=polygon.length-1;i<polygon.length;j=i++){const a=polygon[i],b=polygon[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])found=!found;}return found;}
 const contains=(point,polygons)=>polygons.some(p=>inside(point,p));
+
+test('Raumhohe Duschverfliesung endet bei halbhoher Wand genau an der äußeren Glaskante',()=>{
+ const walls=mode=>R.faces(mode).filter(f=>f.surface==='wall').flatMap(f=>f.polygons);
+ for(const p of [[900,200],[920,300],[924,250]]){assert.equal(contains(p,walls('120')),false);assert.equal(contains(p,walls('full')),true);}
+ for(const p of [[930,250],[950,500],[900,500]])assert.equal(contains(p,walls('120')),true);
+ assert.equal(R.showerGlassEdge,925);
+});
 test('Glasnahe Wandstreifen sind in beiden Höhen echte Material- und Fugenflächen',()=>{
  for(const mode of ['120','full'])for(const point of [[950,250],[950,500],[952,620]]){
   assert.ok(contains(point,R.faces(mode).filter(f=>f.surface==='wall').flatMap(f=>f.polygons)));

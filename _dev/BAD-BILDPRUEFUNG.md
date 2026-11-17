@@ -1,6 +1,6 @@
 # Neue Badmaterialien vor der Freischaltung prüfen
 
-Die feste Perspektive hat die Kalibrierung `bad-og-1672x941-v6`. Alle Badbilder
+Die feste Perspektive hat die Kalibrierung `bad-og-1672x941-v7`. Alle Badbilder
 müssen **1672 × 941 Pixel** haben. Automatisches Strecken eines anderen Formats
 ist verboten: Es verschiebt Fenster, Möbel und Flächenkanten. Die Studio-Seite
 weist falsche Abmessungen deshalb ab.
@@ -12,8 +12,8 @@ Pro neuem Artikel genügt **eine** fotografische, fugenlose Materialansicht:
 - `assets/studio/bad-og-<artikel-id>.webp`: Boden und alle Wandflächen raumhoch.
   Beide Wandhöhen benutzen dieselbe Platte; der Renderer übernimmt bei 1,20 m
   die weißen oberen Wände und das Abschlussprofil aus der festen Basis.
-- `bad-og-basis.webp`: feste Raumelemente, Fenster/Ausblick und weiße obere Wände.
-- `bad-og-vorschau.webp`: aus Produktionsrenderer und Standardauswahl erzeugtes
+- `bad-og-basis-glas.webp`: feste Raumelemente, Fenster/Ausblick und weiße obere Wände.
+- `bad-og-vorschau-glas.webp`: aus Produktionsrenderer und Standardauswahl erzeugtes
   Vorschaubild, auch für Startseite, Ladezustand und Raumübergang.
 
 Jede Materialansicht auf die vorhandene Vorlage ausrichten. Kamera, Objektpositionen,
@@ -72,3 +72,10 @@ Das metrische Wandraster wird am gemeinsamen Bodenraster sowie den drei
 Bildlinien Boden / 1,20-m-Abschluss / Decke kalibriert. Gleiche Welt-Höhen
 setzen sich um die Ecken fort; Anschnitte an der Decke sind relativ zur
 Raumhöhe gleich. Die KI-Raumvorlage ist kein vermessener Bestandsraum.
+
+Bei 1,20 m endet die raumhohe Duschverfliesung an der äußeren linken
+Glaskante (x = 925). Der Streifen zwischen Fenster und Glas ist oberhalb
+der Abschlusslinie weiß gestrichen; unterhalb bleibt er konfigurierbar.
+Bei raumhoher Wandwahl wird auch dieser Streifen vollständig gefliest.
+Die weiße Fläche stammt aus der neuen Glas-Basis, nicht aus einem festen
+grauen Fliesenstreifen. Rahmen, Fensterbank und Glas bleiben feste Bauteile.

@@ -1,7 +1,7 @@
 /* Fixed camera calibration. Material and grout renderers share these exact faces. */
 ((root,factory)=>{const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.YabisRoomPreview=api;})(typeof window==='object'?window:this,()=>{
  'use strict';
- const width=1672,height=941,calibration='bad-og-1672x941-v6';
+ const width=1672,height=941,calibration='bad-og-1672x941-v7';
  // Photo calibration: one common room height, with floor/finish/ceiling datums.
  // The AI reference is not a surveyed projective photograph. Its three datum
  // lines must all agree with the centimetre grid before extrapolating courses.
@@ -14,13 +14,14 @@
  const left120=[[0,231],[498,366],[498,639],[135,941],[0,941]];
  const leftFull=[[0,0],[424,0],[498,80],[498,639],[135,941],[0,941]];
  // The new window has a sill, so the entire wall beneath it is configurable.
- const back120=[[498,366],[888,366],[888,639],[498,639]];
- const backFull=[[498,80],[888,80],[888,639],[498,639]];
+ const showerGlassEdge=925;
+ const back120=[[498,366],[showerGlassEdge,366],[showerGlassEdge,639],[498,639]];
+ const backFull=[[498,80],[showerGlassEdge,80],[showerGlassEdge,639],[498,639]];
  const outerRight120=[[1275,338],[1672,234],[1672,941],[1275,698]];
  const outerRightFull=[[1275,0],[1672,0],[1672,941],[1275,698]];
  // Includes the tile visible THROUGH the left glass pane. Only its reflected
  // window and hardware are fixed, not the surrounding strip of background wall.
- const showerBack=[[888,80],[1168,80],[1168,633],[1008,633],[945,639],[888,639]];
+ const showerBack=[[showerGlassEdge,80],[1168,80],[1168,633],[1008,633],[945,639],[showerGlassEdge,639]];
  const showerRight=[[1168,80],[1247,0],[1275,0],[1275,697],[1168,633]];
  const backWalls={'120':[back120],full:[backFull]};
  const face=(id,surface,plane,polygons,maxV)=>({id,surface,plane,polygons,maxV});
@@ -67,6 +68,7 @@
  const trim120=[
   [[0,229],[498,364],[498,368],[0,233]],
   [[498,363],[524,363],[524,368],[498,368]],
+  [[889,364],[925,364],[925,368],[889,368]],
   [[1275,335],[1672,232],[1672,237],[1275,341]]
  ];
  // Fine hardware keeps the shading already present in the selected room plate.
@@ -82,5 +84,5 @@
   layer(ctx,base,fixedMasks(wallHeight));
   if(fixtures)layer(ctx,fixtures,fixtureOcclusions);
  }
- return {width,height,calibration,wallCalibration,faces,floor,walls120,wallsFull,backWalls,floorOcclusions,fixtureOcclusions,windowOcclusions,reflectedWindow,fixedMasks,groutOcclusions,trace,render};
+ return {width,height,calibration,wallCalibration,showerGlassEdge,faces,floor,walls120,wallsFull,backWalls,floorOcclusions,fixtureOcclusions,windowOcclusions,reflectedWindow,fixedMasks,groutOcclusions,trace,render};
 });
