@@ -2,14 +2,16 @@
    reflectance only; camera, joints, furnishings and illumination never move. */
 ((root,factory)=>{const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.YabisLivingFloor=api;})(typeof window==='object'?window:this,()=>{
  'use strict';
- const width=1672,height=941,calibration='wohnen-1672x941-v1';
+ const width=1672,height=941,calibration='wohnen-1672x941-v2';
  const base='assets/studio/wohnen-habitat-perla.webp';
  // Visible indoor floor, traced against the canonical photo. Furniture and
  // rug contours are occlusions, not regions of the material photograph.
  const floor=[
-  [[0,941],[1672,941],[1672,505],[1601,481],[1601,557],[1590,562],[1573,566],[1550,567],[1526,565],[1508,560],[1499,553],[1499,441],[1496,438],[1494,460],[1489,480],[1480,495],[1469,508],[1456,520],[1434,526],[1422,521],[1400,527],[1370,534],[1348,539],[1334,540],[1325,537],[1322,534],[1318,521],[1318,482],[1313,478],[1284,474],[1284,494],[1275,501],[1255,505],[1235,508],[1215,511],[1195,513],[1185,514],[1175,513],[1165,500],[1162,480],[1088,795],[174,678],[94,716],[0,701]],
-  [[955,442],[1078,445],[1104,428],[1106,434],[1126,439],[1146,442],[1163,440],[1163,480],[957,476]]
+  [[-2,943],[1674,943],[1674,505],[1601,481],[1601,557],[1590,562],[1573,566],[1550,567],[1526,565],[1508,560],[1499,553],[1499,441],[1496,438],[1494,460],[1489,480],[1480,495],[1469,508],[1456,520],[1434,526],[1422,521],[1400,527],[1370,534],[1348,539],[1334,540],[1325,537],[1323,532],[1323,510],[1323,477],[1315,475],[1286,472],[1286,491],[1275,500],[1255,504],[1235,507],[1215,510],[1195,512],[1185,513],[1175,512],[1165,500],[1162,480],[1088,795],[174,678],[94,716],[-2,701]],
+  [[705,417],[1078,441],[1104,428],[1106,434],[1126,439],[1146,442],[1163,440],[1163,480],[956,476],[955,442],[705,428]]
  ];
+ // The mug interrupts the narrow floor band behind the coffee table.
+ const occlusions=[[[768,407],[816,407],[818,413],[818,432],[814,444],[802,450],[788,450],[775,445],[769,435]]];
  // No second grid is painted or resampled: the existing photographic joints
  // stay at their exact source pixels, including their original perspective.
  // Linear-light reflectance ratios measured from clear tile patches in the
@@ -28,8 +30,9 @@
   const c=canvasFor(ctx);c.width=width;c.height=height;const g=c.getContext('2d',{willReadFrequently:true});
   g.drawImage(image,0,0);const source=g.getImageData(0,0,width,height);
   g.clearRect(0,0,width,height);g.fillStyle='#fff';g.beginPath();trace(g,floor);g.fill();
-  // A subpixel feather follows only the physical material edges.
-  g.globalCompositeOperation='destination-out';g.lineWidth=1.5;g.lineJoin='round';g.strokeStyle='#fff';g.beginPath();trace(g,floor);g.stroke();
+  // Fill antialiasing supplies the edge coverage. Stroking every component
+  // out of the mask would leave fixed pale rims and seams inside the floor.
+  g.globalCompositeOperation='destination-out';g.beginPath();trace(g,occlusions);g.fill();
   saved={source,mask:g.getImageData(0,0,width,height).data,outputs:new Map()};cache.set(image,saved);return saved;
  }
  function render(ctx,{image,material='habitat-perla'}={}){
@@ -43,5 +46,5 @@
   }
   ctx.putImageData(output,0,0);
  }
- return {width,height,calibration,base,floor,reflectance,render};
+ return {width,height,calibration,base,floor,occlusions,reflectance,render};
 });
