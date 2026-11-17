@@ -1,9 +1,9 @@
 /* Fixed photographic views. Only the selected room/material is loaded. */
 (() => {
  'use strict';
- const $=id=>document.getElementById(id),S=window.YabisShop,C=window.YabisStudio,G=window.YabisTileGrid,R=window.YabisRoomPreview;
+ const $=id=>document.getElementById(id),S=window.YabisShop,C=window.YabisStudio,G=window.YabisTileGrid,R=window.YabisRoomPreview,W=window.YabisLivingFloor;
  const params=new URLSearchParams(location.search),id=C.roomId(params.get('raum')),room=C.rooms[id];
- const imageVersion='format-1',key='yabis-studio-v1-'+id,cache=new Map(),canvas=$('room-preview'),ctx=canvas.getContext('2d');
+ const imageVersion='format-2',key='yabis-studio-v1-'+id,cache=new Map(),canvas=$('room-preview'),ctx=canvas.getContext('2d');
  const active=room.separateWalls?['floor','wall']:[room.surface],motion=matchMedia('(prefers-reduced-motion: reduce)');
  let saved={};try{saved=JSON.parse(localStorage.getItem(key))||{};}catch{}
  const state=C.initial(id,saved,params.get('product'));
@@ -22,7 +22,7 @@
  document.querySelectorAll('[data-studio-room]').forEach(a=>{if(a.dataset.studioRoom===id)a.setAttribute('aria-current','page');});
  if(params.has('product')&&!C.materials.includes(params.get('product'))){$('linked-note').hidden=false;$('linked-note').textContent='Dieser Shopartikel ist noch nicht in der Studio-Auswahl. Hier vergleichen Sie Habitat Perla und Bercy Terra.';}
  $('height-control').hidden=!room.separateWalls;$('height-note').hidden=!room.separateWalls;
- $('room-fallback').src='../'+(id==='bad'?C.bathAssets.poster:C.plate(id,state[room.surface],state.cabinetTone))+'?v='+imageVersion;
+ $('room-fallback').src='../'+(id==='bad'?C.bathAssets.poster:id==='wohnen'?W.base:C.plate(id,state[room.surface],state.cabinetTone))+'?v='+imageVersion;
  $('room-fallback').alt=room.name+' – realistische Gestaltungsvorschau';
  function snapshot(){const data={...state};for(const surface of active){for(const field of ['Area','Waste'])data[surface+field]=$(`${surface}-${field.toLowerCase()}`).value;data[surface+'Included']=$('include-'+surface).checked;}return data;}
  function save(){try{localStorage.setItem(key,JSON.stringify(snapshot()));}catch{}}
@@ -38,6 +38,9 @@
     const [base,floor,wall,fixtures]=await Promise.all([load('../'+C.bathAssets.base),load('../'+C.bathPlate(selection.floor)),load('../'+C.bathPlate(selection.wall)),load('../'+C.bathAssets.fixtures)]);
     if(request!==revision)return;
     canvas.width=R.width;canvas.height=R.height;R.render(ctx,{base,floor,wall,wallHeight:selection.wallHeight,fixtures,wallRegistration:C.bathRegistration(selection.wall)});G.draw(ctx,selection,R,base);
+   }else if(id==='wohnen'){
+    const image=await load('../'+W.base);if(request!==revision)return;
+    canvas.width=W.width;canvas.height=W.height;W.render(ctx,{image,material:selection.floor});
    }else{
     const image=await load('../'+C.plate(id,selection[room.surface],selection.cabinetTone));if(request!==revision)return;
     canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;ctx.drawImage(image,0,0);

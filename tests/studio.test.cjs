@@ -32,7 +32,7 @@ function app(room='bad',{saved=new Map(),defer=false,product='',fronts=''}={}){
  }
  const get=id=>{if(!elements.has(id))elements.set(id,new Element(id));return elements.get(id);};
  for(const surface of ['floor','wall']){get(surface+'-waste').value='10';}
- const window={YabisStudio:C,YabisRoomPreview:{width:1672,height:941,render(ctx,s){draws.push({...s});}},YabisTileGrid:{...grid,draw(ctx,s){draws.push(JSON.parse(JSON.stringify(s)));}},addEventListener(type,fn){events[type]=fn;},dispatchEvent(e){events[e.type]?.(e);}};
+ const window={YabisLivingFloor:{width:1672,height:941,base:'assets/studio/wohnen-habitat-perla.webp',render(ctx,s){draws.push({living:s.material,source:s.image.src});}},YabisStudio:C,YabisRoomPreview:{width:1672,height:941,render(ctx,s){draws.push({...s});}},YabisTileGrid:{...grid,draw(ctx,s){draws.push(JSON.parse(JSON.stringify(s)));}},addEventListener(type,fn){events[type]=fn;},dispatchEvent(e){events[e.type]?.(e);}};
  class Image extends Element{set src(src){this._src=src;sources.push(src);if(defer)pending.push(this);else queueMicrotask(()=>this.onload?.());}get src(){return this._src;}}
  const context={window,document:{body:{dataset:{}},title:'',getElementById:get,createElement:tag=>new Element(tag),querySelectorAll(){return [];}},matchMedia:()=>({matches:false,addEventListener(){}}),localStorage:{getItem:k=>saved.get(k)||null,setItem:(k,v)=>saved.set(k,v)},location:{search:'?raum='+room+(product?'&product='+product:'')+(fronts?'&fronten='+fronts:'')},Image,URLSearchParams,URL:{createObjectURL:()=> 'blob:preview',revokeObjectURL(){}},setTimeout(){},CustomEvent:class{constructor(type){this.type=type;}},crypto:crypto.webcrypto};
  vm.runInNewContext(fs.readFileSync(path.join(root,'js/shop-core.js'),'utf8'),context);
@@ -51,7 +51,7 @@ test('Jeder Raum wechselt das Bild und übernimmt nur seine tatsächlichen Fläc
   assert.equal(cart[0].raum,room.name);assert.equal(cart.find(x=>x.flaeche.includes(room.separateWalls?'Boden':room.surfaceName)).produkt,'bercy-terra');
   assert.match(a.shop.lines(cart),new RegExp('Bereich: '+room.name));assert.match(a.shop.lines(cart),/13,75 m²/);
   if(room.approval)assert.ok(a.shop.lines(cart).includes(room.approval));
-  if(id!=='bad'){assert.ok(a.draws.at(-1).split('?')[0].endsWith(`${id}-bercy-terra.webp`));assert.equal(a.get((surface==='floor'?'wall':'floor')+'-area').disabled,true);}
+  if(id!=='bad'){if(id==='wohnen')assert.equal(a.draws.at(-1).living,'bercy-terra');else assert.ok(a.draws.at(-1).split('?')[0].endsWith(`${id}-bercy-terra.webp`));assert.equal(a.get((surface==='floor'?'wall':'floor')+'-area').disabled,true);}
  }
 });
 test('Bad behält separate Formate, Fugen, Höhe und Mengen; andere Räume erben keine Bad-Einstellungen',async()=>{
@@ -68,8 +68,8 @@ test('Eine verspätete Bildantwort überschreibt niemals die zuletzt gewählte F
  for(const image of a.pending.filter(image=>image._src.includes('eingang-habitat-perla.webp')))image.onload?.();await a.settle();assert.ok(a.draws.at(-1).split('?')[0].endsWith('eingang-bercy-terra.webp'));
 });
 test('Bei einem fehlgeschlagenen Materialbild wird keine unsichtbare Konfiguration angefragt',async()=>{
- const a=app('wohnen',{defer:true});const initial=a.pending.find(image=>image._src.includes('wohnen-habitat-perla.webp'));initial.onload();await a.settle();
- a.get('floor-materials').children[1].click();const failing=a.pending.find(image=>image._src.includes('wohnen-bercy-terra.webp'));failing.onerror();await a.settle();
+ const a=app('eingang',{defer:true});const initial=a.pending.find(image=>image._src.includes('eingang-habitat-perla.webp'));initial.onload();await a.settle();
+ a.get('floor-materials').children[1].click();const failing=a.pending.find(image=>image._src.includes('eingang-bercy-terra.webp'));failing.onerror();await a.settle();
  assert.equal(a.get('add-to-cart').disabled,true);a.get('floor-area').value='10';a.get('request-selection').fire('submit');assert.equal(a.shop.getCart().length,0);assert.match(a.get('image-status').textContent,/erneut auswählen/);
 });
 test('Raumbilder mit falschen Abmessungen werden vor dem Rendern abgewiesen',async()=>{
@@ -102,4 +102,12 @@ test('Alle aktiven Raumfotos und Küchenfronten haben exakt das Badformat', {ski
  }
  for(const file of files){const im=await loadImage(path.join(root,file));assert.equal(im.width,1672,file);assert.equal(im.height,941,file);}
  assert.equal(files.size,16);
+});
+
+test('Wohnbereich behält eine gemeinsame Fotovorlage bei allen Materialwechseln und beim Wiederherstellen',async()=>{
+ const a=app('wohnen');await a.settle();a.get('floor-materials').children[1].click();await a.settle();
+ assert.equal(a.draws.at(-1).living,'bercy-terra');assert.ok(a.draws.at(-1).source.includes('wohnen-habitat-perla.webp'));
+ a.get('floor-materials').children[0].click();await a.settle();assert.equal(a.draws.at(-1).living,'habitat-perla');
+ a.get('floor-materials').children[1].click();await a.settle();const restored=app('wohnen',{saved:a.saved});await restored.settle();assert.equal(restored.draws.at(-1).living,'bercy-terra');
+ assert.ok(!a.sources.some(src=>src.includes('assets/studio/wohnen-bercy-terra.webp')),'Die abweichende KI-Verlegung wird nie geladen.');
 });
