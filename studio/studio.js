@@ -30,7 +30,7 @@
  const heightName=()=>state.wallHeight==='full'?'raumhoch':'1,20 m · Dusche raumhoch';
  function describe(){return active.map(surface=>`${room.separateWalls?(surface==='floor'?'Boden':'Wand'):room.surfaceName}: ${S.find(state[surface]).name}${room.separateWalls?' · '+state[surface+'Format'].join(' × ')+' cm · '+G.grouts[state[surface+'Grout']].label+(surface==='wall'?' · '+heightName():''):''}`).join(' / ')+(id==='kueche'?' · Fronten: '+(state.cabinetTone==='dark'?'Anthrazit':'Hell'):'');}
  async function draw(){
-  const request=++revision,selection={...state};ready=false;$('add-to-cart').disabled=true;$('save-image').disabled=true;
+  const request=++revision,selection={...state};ready=false;$('add-to-cart').disabled=true;$('save-image').disabled=true;$('enlarge-view').disabled=true;
   $('stage').setAttribute('aria-busy','true');$('image-status').hidden=false;$('image-status').textContent='Materialansicht wird geladen …';
   try{
    if(!ctx)throw Error('Die Bildvorschau wird von diesem Browser nicht unterstützt. Bitte nutzen Sie den Shop.');
@@ -48,7 +48,7 @@
    if(fade){fade.cancel();fade=null;}canvas.hidden=false;$('room-fallback').hidden=true;
    if(!motion.matches&&typeof canvas.animate==='function')fade=canvas.animate([{opacity:.8},{opacity:1}],{duration:240,easing:'ease-out'});
    canvas.setAttribute('aria-label',room.name+' · '+describe());$('combination').textContent=describe();
-   $('stage').setAttribute('aria-busy','false');$('image-status').hidden=true;ready=true;$('save-image').disabled=false;$('add-to-cart').disabled=false;save();
+   $('stage').setAttribute('aria-busy','false');$('image-status').hidden=true;ready=true;$('save-image').disabled=false;$('enlarge-view').disabled=false;$('add-to-cart').disabled=false;save();
   }catch(error){if(request!==revision)return;$('stage').setAttribute('aria-busy','false');$('image-status').textContent=error.message;$('image-status').hidden=false;}
  }
  motion.addEventListener('change',()=>{if(fade)fade.cancel();});
