@@ -1,6 +1,6 @@
 # Neue Badmaterialien vor der Freischaltung prüfen
 
-Die feste Perspektive hat die Kalibrierung `bad-og-1672x941-v7`. Alle Badbilder
+Die feste Perspektive hat die Kalibrierung `bad-og-1672x941-v8`. Alle Badbilder
 müssen **1672 × 941 Pixel** haben. Automatisches Strecken eines anderen Formats
 ist verboten: Es verschiebt Fenster, Möbel und Flächenkanten. Die Studio-Seite
 weist falsche Abmessungen deshalb ab.
@@ -79,3 +79,7 @@ der Abschlusslinie weiß gestrichen; unterhalb bleibt er konfigurierbar.
 Bei raumhoher Wandwahl wird auch dieser Streifen vollständig gefliest.
 Die weiße Fläche stammt aus der neuen Glas-Basis, nicht aus einem festen
 grauen Fliesenstreifen. Rahmen, Fensterbank und Glas bleiben feste Bauteile.
+
+Die Vorschau ist visuell auf 2,40 m Raumhöhe normalisiert: zwei vollständige
+120-cm-Reihen oder vier 60-cm-Reihen bis zur Decke. Das ist eine gemeinsame
+Gestaltungshöhe des Beispielraums, kein Aufmaß eines echten Kundenbads.

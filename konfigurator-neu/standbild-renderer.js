@@ -1,11 +1,12 @@
 /* Fixed camera calibration. Material and grout renderers share these exact faces. */
 ((root,factory)=>{const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.YabisRoomPreview=api;})(typeof window==='object'?window:this,()=>{
  'use strict';
- const width=1672,height=941,calibration='bad-og-1672x941-v7';
+ const width=1672,height=941,calibration='bad-og-1672x941-v8';
  // Photo calibration: one common room height, with floor/finish/ceiling datums.
  // The AI reference is not a surveyed projective photograph. Its three datum
  // lines must all agree with the centimetre grid before extrapolating courses.
- const wallCalibration=Object.freeze({height:249,datum:120,planes:{
+ // Visual demo height: two 120-cm courses / four 60-cm courses, no ceiling sliver.
+ const wallCalibration=Object.freeze({height:240,datum:120,planes:{
   left:{finish:[[498,366],[135,268]],ceiling:[[424,0],[498,80]]},
   back:{finish:[[498,366],[1168,366]],ceiling:[[498,80],[1168,80]]},
   right:{finish:[[1168,366],[1672,234]],ceiling:[[1168,80],[1247,0]]}
@@ -30,11 +31,11 @@
   const full=mode==='full';
   faceSets[mode]=[
    face('floor','floor','floor',floor,300),
-   face('left-wall','wall','left',[full?leftFull:left120],full?249:120),
-   face('window-wall','wall','back',backWalls[mode],full?249:120),
-   face('shower-back','wall','back',[showerBack],249),
-   face('shower-right','wall','right',[showerRight],249),
-   face('right-wall','wall','right',[full?outerRightFull:outerRight120],full?249:120)
+   face('left-wall','wall','left',[full?leftFull:left120],full?wallCalibration.height:wallCalibration.datum),
+   face('window-wall','wall','back',backWalls[mode],full?wallCalibration.height:wallCalibration.datum),
+   face('shower-back','wall','back',[showerBack],wallCalibration.height),
+   face('shower-right','wall','right',[showerRight],wallCalibration.height),
+   face('right-wall','wall','right',[full?outerRightFull:outerRight120],full?wallCalibration.height:wallCalibration.datum)
   ];
  }
  const faces=mode=>faceSets[mode==='full'?'full':'120'];

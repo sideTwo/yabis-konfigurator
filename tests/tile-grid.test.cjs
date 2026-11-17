@@ -20,7 +20,7 @@ test('Formatwechsel ändert die Fliesenteilung statt nur die Beschriftung',()=>{
   assert.equal(count([60,120]),6);assert.equal(count([60,60]),8);assert.equal(count([120,120]),4);
   const rows=(f,h)=>G.joints(G.planes.back,f,h).filter(j=>j.axis==='v').map(j=>j.position);
   assert.deepEqual(rows([60,120],120),[60]);assert.deepEqual(rows([120,120],120),[]);
-  assert.deepEqual(rows([60,120],249),[60,120,180,240]);
+  assert.deepEqual(rows([60,120],240),[60,120,180]);
 });
 test('Wandfugen treffen sich höhengleich an den Raumecken',()=>{
   for(const height of [60,120,180,240]) {
@@ -40,6 +40,16 @@ test('Oberster Anschnitt hat über beide Seiten dieselbe reale Höhe unter der D
       near(ceiling[1],actualCeiling);near((joint[1]-ceiling[1])/(finish[1]-ceiling[1]),(h-240)/(h-datum));
     }
   }
+});
+
+test('Die visuelle Raumhöhe ergibt auf jeder Wand exakt zwei oder vier vollständige Reihen',()=>{
+  const R=require('../konfigurator-neu/standbild-renderer.js');assert.equal(R.wallCalibration.height,240);
+  for(const name of ['left','back','right'])for(const format of G.formats){
+    const plane=G.planes[name],rows=G.joints(plane,format).filter(j=>j.axis==='v').map(j=>j.position);
+    assert.equal(plane.maxV,240);assert.deepEqual(rows,format[0]===120?[120]:[60,120,180]);
+    assert.ok(rows.every(h=>h<240),'Keine zusätzliche Fuge mit schmalem Deckenrest');
+  }
+  for(const mode of ['120','full'])for(const face of R.faces(mode).filter(f=>f.surface==='wall'))assert.equal(face.maxV,mode==='full'||face.id.startsWith('shower-')?240:120);
 });
 
 test('Boden und Wand teilen dieselben metrischen Rasterpunkte an allen drei Fußkanten',()=>{
