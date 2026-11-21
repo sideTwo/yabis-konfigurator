@@ -22,6 +22,25 @@ test('Formatwechsel ändert die Fliesenteilung statt nur die Beschriftung',()=>{
   assert.deepEqual(rows([60,120],120),[60]);assert.deepEqual(rows([120,120],120),[]);
   assert.deepEqual(rows([60,120],240),[60,120,180]);
 });
+test('Wohnzimmerfugen reichen über die äußersten sichtbaren Fliesenflächen',()=>{
+  const scenes=require('../js/studio-scenes.js'),living=require('../js/living-floor.js');
+  const [face]=scenes.scene('wohnen',G,living).faces;
+  const joints=G.joints(face.plane,[60,120]);
+  const across=joints.find(joint=>joint.axis==='v'&&joint.position===60);
+  assert.ok(G.project(face.plane.matrix,across.from)[0]<=0);
+  assert.ok(G.project(face.plane.matrix,across.to)[0]>=1672);
+});
+test('Küchenrückwand reicht in einer Reihe vom Regal bis zur Arbeitsplatte',()=>{
+  const [face]=require('../js/studio-scenes.js').scene('kueche',G).faces;
+  near(face.maxV,60);
+  const joints=G.joints(face.plane,[60,120]);
+  assert.deepEqual(joints.map(({axis,position})=>[axis,position]),[['u',120],['u',240]]);
+  for(const joint of joints){
+    const top=G.project(face.plane.matrix,joint.from),bottom=G.project(face.plane.matrix,joint.to);
+    near(top[0],bottom[0]);
+  }
+  assert.equal(G.joints(face.plane,[60,60]).length,4);
+});
 test('Wandfugen treffen sich höhengleich an den Raumecken',()=>{
   for(const height of [60,120,180,240]) {
     const backLeft=G.project(G.planes.back.matrix,[0,height]),left=G.project(G.planes.left.matrix,[0,height]);
@@ -68,4 +87,29 @@ test('Gespeicherte Formate werden geprüft und Farbauswahl bleibt definiert',()=
   assert.deepEqual(G.format('60,60'),[60,60]);assert.deepEqual(G.format([0,120]),[60,120]);
   assert.deepEqual(G.format(null),[60,120]);assert.equal(Object.keys(G.grouts).length,4);
   assert.notDeepEqual(G.grouts.light.rgb,G.grouts.dark.rgb);
+});
+
+const nativeCanvas=process.env.YABIS_CANVAS_PACKAGE;
+test('Hellgraue Badfugen bleiben auf hellem Boden in beiden Richtungen sichtbar',{skip:!nativeCanvas},async()=>{
+  const {createCanvas,loadImage}=require(nativeCanvas);
+  const path=require('node:path'),R=require('../konfigurator-neu/standbild-renderer.js');
+  const C=require('../js/studio-core.js'),base=await loadImage(path.join(__dirname,'..',C.bathAssets.photo));
+  const doc={createElement(){const canvas=createCanvas(1,1);canvas.ownerDocument=doc;return canvas;}};
+  const canvas=doc.createElement();canvas.width=R.width;canvas.height=R.height;
+  const ctx=canvas.getContext('2d'),tile=220;
+  const state={wallHeight:'120',floorFormat:[60,120],wallFormat:[60,120],wallGrout:'dark'};
+  const pixel=(x,y)=>ctx.getImageData(x,y,1,1).data[0];
+  const draw=floorGrout=>{
+    ctx.fillStyle=`rgb(${tile},${tile},${tile})`;ctx.fillRect(0,0,canvas.width,canvas.height);
+    G.draw(ctx,{...state,floorGrout},R,base,true);
+    assert.equal(pixel(1016,704),tile,'Die Duschwanne bleibt ausgespart');
+    return [
+      Math.min(pixel(759,667),pixel(760,667),pixel(761,667)),
+      Math.min(pixel(750,762),pixel(751,762),pixel(752,762)),
+      Math.min(pixel(857,704),pixel(857,705),pixel(857,706))
+    ];
+  };
+  const light=draw('light'),dark=draw('dark');
+  assert.ok(light.every(value=>tile-value>24),light.join(', '));
+  assert.ok(dark.every((value,i)=>light[i]-value>45),dark.join(', '));
 });

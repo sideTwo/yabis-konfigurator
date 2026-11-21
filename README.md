@@ -4,16 +4,48 @@
 
 ## Vorführstand
 
-Sechs Bereiche: Bad, Wohnen, Balkon, Küchenwand, Treppenhaus und Außenfliesen.
-Das Raumstudio startet mit **Habitat Perla** und **Bercy Terra** aus dem bereits
-erfassten WhatsApp-Katalog. Das ist ein Pilot, keine bestätigte Topseller-Liste.
-Die vier erfassten Artikel bleiben im Shop. Das endgültige Sortiment wird nach
-der Aktualisierung des Kundenkatalogs freigegeben.
+Sechs Bereiche: Bad, Wohnen, Balkon, Küchenwand, Treppenhaus und Außenbereich.
+Im Raumstudio sind **14 Bestseller** mit 15 unterscheidbaren Ausführungen belegt.
+Bad und Küche bieten die Fliesen an. Im Wohnbereich kommen Rijn, Donau und
+Ganges als Fischgrätvinyl hinzu. Balkon und Treppenhaus zeigen
+Habitat Perla und Bercy Terra. Im Außenbereich führt die Vorschau zur Naturstein-Anfrage.
+Der Shop enthält **287 Artikel**. Zu den 284 Einträgen aus dem
+WhatsApp-Katalog kommen Capitol Hueso, Cesar Pul Beige und Flavio Oxido auf Anfrage.
+
+Der Shop lädt `js/catalog-products.js` und die drei Ergänzungen aus `js/studio-core.js`.
+Rohdaten, Handyfoto-Originale, Bildbericht und PC-/Handynachweise liegen unter
+`../_material/katalog-import-2026-11-18/`.
+
+Der Shop bietet kombinierbare Filter für Produkttyp, Optik, Oberfläche und Format
+sowie eine A–Z-Sortierung. Eurobeträge erscheinen als Richtpreise pro Quadratmeter.
+Bei 18 Quellartikeln mit ZAR-Angabe gilt Preis auf Anfrage. Der Mengenrechner
+ermittelt einen Richtwert für belegte Katalogformate. Verkaufseinheiten,
+Verfügbarkeit und Lieferung klärt Yabis im Angebot.
+
+### Produktbilder
+
+50 Herstellerdekore in `js/catalog-images.js` stammen von Prissmacer,
+Roca Tiles und EKOFLOORS. Bildnutzungsrechte hat Bilal für Yabis am 18.11.2026
+bestätigt. Quellen, Zuordnungen und Vergleichsbögen liegen unter
+`../_material/herstellerbilder-2026-11-18/`.
+
+Alle 284 WhatsApp-Artikel haben eine rekonstruierte Materialansicht in
+`js/catalog-reconstructions.js`. Bei 50 Artikeln ist das Herstellerdekor die
+Hauptansicht. Im Produktdialog lässt sich dort auf „Oberfläche“ wechseln.
+Die übrigen 234 Artikel zeigen ihre Rekonstruktion als Hauptansicht.
+Handyfotos dienen als interne Bildreferenzen. Generierung und Vergleich sind
+unter `../_material/ki-produktbilder-2026-11-18/` dokumentiert.
+Die drei Bestseller-Ergänzungen verwenden Dekore aus Herstellerunterlagen.
 
 - Bad: Wand und Boden unabhängig, Wandhöhe 1,20 m oder raumhoch, Formate und Fugenfarben getrennt.
-- Küche: Rückwand wechseln. Andere Bereiche: Boden bzw. Stufen und Podeste wechseln.
-- Die fünf neuen Bereiche zeigen zunächst feste Bildvarianten in 60 × 120 cm mit heller Fuge.
-  Weitere Format- und Fugenregler folgen dort erst mit passender Vorschau.
+- Küche: Rückwand und Fronten unabhängig wechseln. Wohnen: Fliesen und
+  Fischgrätvinyl im gleichen Raum vergleichen.
+- Bad, Küche, Wohnen, Balkon und Treppenhaus projizieren Materialtexturen auf
+  feste Raumflächen. Das Treppenhaus zeigt durchgehende Tritt- und Setzstufen.
+- Stein- und Keramikflächen bieten eine natürliche Verteilung oder eine
+  durchlaufende Maserung. „Neu verteilen“ ändert die Lage der vorhandenen Dekore.
+- Je drei Kombinationen stehen für Bad und Küche bereit. Die Materialien und
+  die zugehörigen Fugenfarben beziehungsweise Fronten bleiben danach einzeln wählbar.
 - Eigene Flächen und Verschnitt je Position; gemeinsamer Anfragekorb mit Raumzuordnung.
 - PNG-Export, Originalartikel und Herstellermuster verlinkt.
 - Außeneignung, Rutschhemmung, Aufbau und Verfügbarkeit sind nicht bestätigt;
@@ -22,16 +54,16 @@ der Aktualisierung des Kundenkatalogs freigegeben.
 
 Die KI-Gestaltungsvorschauen nach Herstellermustern ersetzen weder Produktmuster
 noch Aufmaß oder technische Freigabe. Muster und Farben können abweichen.
-Das Bad behält seine kalibrierten, getrennten Flächen. Andere Räume verwenden
-vollständige fotografische Materialvarianten mit fester Perspektive.
+Die Produktvorschau zeigt eine angenäherte Verlegung. Unbestätigte Verkaufsformate
+werden im Anfragekorb als „Format auf Anfrage“ übernommen.
 
 ## Einstieg
 
-Alle sechs Haus-Buttons führen ins Raumstudio. Ein kurzer Zoom mit Überblendung
-verbindet Haus und Raum, überspringbar und bei reduzierter Bewegung oder
-Datensparmodus ausgelassen. Das ist noch kein KI-Kameraflug.
-`js/room-transition.js` enthält den Anschluss für freigegebene lokale MP4-Clips.
-Kein Video- oder KI-Dienst wird im Browser aufgerufen.
+Alle sechs Haus-Buttons führen ins Raumstudio. Beim Bad geht die Hausansicht in
+einen lokal ausgelieferten Anflug auf das Fenster über, danach erscheint die
+aktuelle Badkonfiguration. Die übrigen Bereiche verwenden einen kurzen Zoom
+mit Überblendung. Die Animation lässt sich überspringen und wird bei reduzierter
+Bewegung oder Datensparmodus ausgelassen.
 
 Der alte Link `konfigurator-neu/index.html` führt ins Bad des Raumstudios weiter.
 Nicht ausgewählte Shopartikel erscheinen nicht automatisch im Studio.

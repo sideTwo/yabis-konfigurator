@@ -41,10 +41,10 @@
   document.querySelectorAll('[data-room]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.room===id)));
   showRoomImage(room);
   $('room-title').textContent=room.title;$('room-kicker').textContent=room.kicker;$('room-copy').textContent=room.copy;
-  $('room-image-label').textContent=id==='bad'?'KI-Beispielansicht':'KI-Rauminspiration';
   $('room-action').href=window.YabisStudio.href(id);
-  $('room-action-label').textContent='Im Raumstudio gestalten';
-  $('room-availability').textContent='Zwei ausgewählte Katalogartikel im Raumstudio vergleichen. KI-Vorschau; Muster, Farben und Eignung am Original prüfen.';
+  const configurable=window.YabisStudio.materialsFor(id).length>0;
+  $('room-action-label').textContent=configurable?'Im Raumstudio gestalten':'Zum Außenbereich';
+  $('room-availability').textContent=configurable?'Muster, Farben und Eignung am Original prüfen.':'Naturstein für Ihren Außenbereich individuell anfragen.';
   form.elements.room.value=id;
  }
  document.querySelectorAll('[data-room]').forEach(b=>b.onclick=()=>showRoom(b.dataset.room));

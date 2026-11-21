@@ -25,3 +25,6 @@ _sites/
 
 # Machine-specific image-generation audit files; runtime images stay in Git.
 _quelle/*generation*.json
+
+# Local reference exports from the WhatsApp catalogue
+/bilder/katalog/whatsapp-2026-11-18/

@@ -50,6 +50,7 @@
  const tray=[[[923,641],[1008,721],[1275,721],[1275,697],[1168,633],[1008,633],[945,639]]];
  const basin=[[[331,410],[516,411],[520,417],[516,449],[506,455],[340,455],[334,448]]];
  const tap=[[[309,365],[353,365],[353,349],[404,349],[435,374],[435,394],[365,394],[363,404],[309,403]]];
+ const tapSilhouette=[[[315,365],[321,361],[329,360],[334,363],[337,368],[346,365],[354,365],[354,353],[358,351],[401,353],[411,357],[418,364],[423,373],[429,382],[422,384],[417,373],[412,365],[404,361],[361,359],[361,367],[367,365],[372,369],[372,372],[379,373],[383,377],[384,379],[393,380],[393,384],[379,382],[371,383],[365,393],[358,393],[354,388],[350,391],[343,391],[337,385],[334,389],[326,392],[320,389],[315,382],[314,374]]];
  const mirror=[[[260,5],[441,147],[441,342],[260,288]]];
  const flushplate=[[[1513,375],[1619,366],[1619,458],[1513,457]]];
  function area(points){return points.reduce((sum,p,i)=>{const q=points[(i+1)%points.length];return sum+p[0]*q[1]-q[0]*p[1];},0);}
@@ -66,6 +67,19 @@
   [[921,193],[930,190],[930,214],[921,219]],
   [[920,577],[929,573],[929,597],[920,600]]
  ];
+ const photoHardware=[
+  [[1004,0],[1010,0],[1010,714],[1004,714]],
+  [[998,22],[1005,13],[1028,13],[1030,35],[1015,37],[1000,43]],
+  [[999,619],[1007,620],[1028,620],[1030,653],[1007,655],[1000,652]],
+  [[1271,0],[1278,0],[1278,715],[1270,715]],
+  [[981,366],[990,361],[1003,365],[1005,393],[994,400],[982,398]],
+  [[1039,102],[1038,98],[1077,55],[1078,43],[1083,42],[1085,55],[1101,57],[1100,62],[1085,84],[1057,86],[1044,101]],
+  [[1089,377],[1107,373],[1230,372],[1231,382],[1107,386],[1088,385]],
+  ...[[1024,403,11],[1065,402,8],[1092,402,8]].map(p=>circle(...p)),
+  ...stroke([[1065,409],[1059,451],[1057,481],[1063,500],[1073,507],[1085,509],[1096,503],[1103,490],[1101,468],[1094,428],[1092,409]],5),
+  [[922,193],[928,189],[930,192],[929,206],[922,208]],
+  [[923,568],[929,568],[930,588],[924,591]]
+ ];
  const trim120=[
   [[0,229],[498,364],[498,368],[0,233]],
   [[498,363],[524,363],[524,368],[498,368]],
@@ -76,7 +90,9 @@
  // Its generous grout exclusion must NOT copy a grey rectangular background.
  const fixedBase=[...windowOcclusions,...reflectedWindow,...floorOcclusions,...tray,...basin,...mirror].map(positive);
  const fixedMasks=mode=>mode==='full'?fixedBase:[...fixedBase,...trim120.map(positive)];
- const groutOcclusions=mode=>[...fixedMasks(mode),...fixtureOcclusions,...basin,...tap,...hardware,...mirror,...flushplate].map(positive);
+ const surfaceOcclusions=(mode,tapMask,includePlate=true,photo=false)=>[...fixedMasks(mode),...fixtureOcclusions,...basin,...tapMask,...(photo?photoHardware:hardware),...mirror,...(includePlate?flushplate:[])].map(positive);
+ const groutOcclusions=(mode,photo)=>surfaceOcclusions(mode,tap,true,photo);
+ const materialOcclusions=(mode,includePlate,photo)=>surfaceOcclusions(mode,tapSilhouette,includePlate,photo);
  function trace(ctx,polygons){for(const raw of polygons){const points=positive(raw);ctx.moveTo(...points[0]);for(const point of points.slice(1))ctx.lineTo(...point);ctx.closePath();}}
  function layer(ctx,image,polygons,holes=[]){if(!polygons.length)return;ctx.save();ctx.beginPath();trace(ctx,polygons);ctx.clip();if(holes.length){ctx.beginPath();ctx.rect(0,0,width,height);trace(ctx,holes);ctx.clip('evenodd');}ctx.drawImage(image,0,0,width,height);ctx.restore();}
  function lineAt(points,x){let a=points[0],b=points[1];for(let i=1;i<points.length-1;i++)if(x>=points[i][0]){a=points[i];b=points[i+1];}return a[1]+(x-a[0])*(b[1]-a[1])/(b[0]-a[0]);}
@@ -104,5 +120,5 @@
   layer(ctx,base,fixedMasks(wallHeight));
   if(fixtures)layer(ctx,fixtures,fixtureOcclusions);
  }
- return {width,height,calibration,wallCalibration,showerGlassEdge,faces,floor,walls120,wallsFull,backWalls,floorOcclusions,fixtureOcclusions,windowOcclusions,reflectedWindow,fixedMasks,groutOcclusions,trace,render};
+ return {width,height,calibration,wallCalibration,showerGlassEdge,faces,floor,walls120,wallsFull,backWalls,floorOcclusions,fixtureOcclusions,windowOcclusions,reflectedWindow,flushplate,fixedMasks,groutOcclusions,materialOcclusions,trace,render};
 });

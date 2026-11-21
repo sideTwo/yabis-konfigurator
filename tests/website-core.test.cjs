@@ -22,9 +22,9 @@ test('Unvollständige Kontaktdaten erzeugen keine Anfrage',()=>{
  for(const key of ['name','contact','message'])assert.throws(()=>inquiry({...base,[key]:'  '}),/Name, Rückkontakt/);
 });
 
-test('Außenfliesen-Anfrage übernimmt die benannte Kategorie statt eines Sammelbereichs',()=>{
- const text=inquiry({...base,room:'eingang',message:'18 m² Außenfliesen für Hauseingang und Podest.'});
- assert.match(text,/Bereich: Außenfliesen/);
- assert.match(text,/18 m² Außenfliesen/);
+test('Naturstein-Anfrage übernimmt den Außenbereich',()=>{
+ const text=inquiry({...base,room:'eingang',message:'18 m² Naturstein für Hauseingang und Podest.'});
+ assert.match(text,/Bereich: Außenbereich/);
+ assert.match(text,/18 m² Naturstein/);
  assert.doesNotMatch(text,/Bereich: Mehrere Bereiche/);
 });

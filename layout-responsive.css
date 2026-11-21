@@ -74,12 +74,8 @@
 
  .shop-site .shop-header,.shop-site .service-bar,.shop-site footer{padding-inline:var(--desktop-gutter)}
  .shop-site main{width:min(var(--desktop-content),calc(100% - 96px));max-width:none;margin-inline:auto}
- .shop-site .hero{min-height:540px}
- .shop-site .hero-copy{padding:60px 56px 48px 0}
- .shop-site .hero h1{font-size:clamp(46px,3.6vw,62px)}
- .shop-site .hero-copy>p:not(.eyebrow){font-size:16px;max-width:430px}
- .shop-site .hero-actions{gap:22px}
- .shop-site .products-section,.shop-site .cart-section{padding:80px 0}
+ .shop-site .products-section,.shop-site .cart-section{padding-inline:0}
+ .shop-site .cart-section{padding-block:80px}
  .shop-site .product-grid{gap:24px}
  .shop-site .product-card{padding:16px}
  .shop-site .product-card h3{font-size:21px}
@@ -109,7 +105,6 @@
  .main-site .hero-shop h2{font-size:31px}
  .main-site .house-spot{font-size:14px}
  .main-site .contact-section{gap:48px}
- .shop-site .hero-actions{align-items:flex-start;flex-direction:column}
  .shop-site .contact-section{padding:48px}
  .bath-site main{grid-template-columns:minmax(0,1fr) 360px}
  .bath-site aside{padding:24px}

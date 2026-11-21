@@ -58,14 +58,16 @@
   };
   function joints(plane, selectedFormat, maxV=plane.maxV) {
     const [short,long]=format(selectedFormat);
-    const stepU=plane.surface==='floor'?short:long;
-    const stepV=plane.surface==='floor'?long:short;
+    const longAcross=plane.surface==='wall'||plane.longAcross;
+    const stepU=longAcross?long:short;
+    const stepV=longAcross?short:long;
+    const minU=plane.minU??0,minV=plane.minV??0;
     const result=[],half=.15; // 3 mm total joint width in this demonstration.
-    for(let u=stepU;u<plane.maxU-.01;u+=stepU) {
-      result.push({axis:'u',position:u,from:[u,0],to:[u,maxV],quad:[[u-half,0],[u+half,0],[u+half,maxV],[u-half,maxV]].map(p=>project(plane.matrix,p))});
+    for(let u=(Math.floor((minU+.01)/stepU)+1)*stepU;u<plane.maxU-.01;u+=stepU) {
+      result.push({axis:'u',position:u,from:[u,minV],to:[u,maxV],quad:[[u-half,minV],[u+half,minV],[u+half,maxV],[u-half,maxV]].map(p=>project(plane.matrix,p))});
     }
-    for(let v=stepV;v<maxV-.01;v+=stepV) {
-      result.push({axis:'v',position:v,from:[0,v],to:[plane.maxU,v],quad:[[0,v-half],[plane.maxU,v-half],[plane.maxU,v+half],[0,v+half]].map(p=>project(plane.matrix,p))});
+    for(let v=(Math.floor((minV+.01)/stepV)+1)*stepV;v<maxV-.01;v+=stepV) {
+      result.push({axis:'v',position:v,from:[minU,v],to:[plane.maxU,v],quad:[[minU,v-half],[plane.maxU,v-half],[plane.maxU,v+half],[minU,v+half]].map(p=>project(plane.matrix,p))});
     }
     return result;
   }
@@ -85,35 +87,63 @@
       lightPixels=c.getImageData(0,0,1672,941).data;lightSource=image;
     }
   }
-  function shade([x,y]) {
+  function shade([x,y],photoLighting) {
     let sum=0;
     for(const [dx,dy] of [[0,0],[-5,0],[5,0],[0,-5],[0,5]]) {
       const px=Math.min(1671,Math.max(0,Math.round(x+dx))),py=Math.min(940,Math.max(0,Math.round(y+dy))),i=(py*1672+px)*4;
       sum+=lightPixels[i]*.2126+lightPixels[i+1]*.7152+lightPixels[i+2]*.0722;
     }
-    return Math.min(1.22,Math.max(.30,Math.pow(sum/5/160,.8)));
+    return Math.min(1.22,Math.max(.30,Math.pow(sum/5/(photoLighting?190:160),photoLighting?1.1:.8)));
   }
-  function strokeJoint(ctx,plane,joint,rgb) {
+  function recessedEdge(joint,start,end,floor) {
+    const dx=end[0]-start[0],dy=end[1]-start[1],length=Math.hypot(dx,dy);
+    const nx=-dy/length,ny=dx/length;
+    const [a,b,c,d]=joint.quad;
+    const [startSide,endSide]=joint.axis==='u'?[[a,b],[d,c]]:[[a,d],[b,c]];
+    const outside=([x,y],[left,right],side)=>{
+      const width=Math.abs((right[0]-left[0])*nx+(right[1]-left[1])*ny);
+      // Keep the projected 3 mm core. The softer contact edge also covers
+      // distant joints that would otherwise disappear when scaled down.
+      const half=Math.max(width*1.45,(floor?2.2:1.55)+width*.2)/2;
+      return [x+side*half*nx,y+side*half*ny];
+    };
+    return [outside(start,startSide,1),outside(end,endSide,1),outside(end,endSide,-1),outside(start,startSide,-1)];
+  }
+  function strokeJoint(ctx,plane,joint,rgb,photoLighting) {
     const start=project(plane.matrix,joint.from),end=project(plane.matrix,joint.to);
     const gradient=ctx.createLinearGradient(...start,...end);
-    for(let i=0;i<=8;i++) {
-      const t=i/8,p=project(plane.matrix,joint.from.map((n,j)=>n+(joint.to[j]-n)*t)),light=shade(p);
-      gradient.addColorStop(t,`rgb(${rgb.map(n=>Math.round(n*light)).join(',')})`);
+    const floor=plane.surface==='floor';
+    const edge=photoLighting?ctx.createLinearGradient(...start,...end):null;
+    for(let i=0;i<=16;i++) {
+      const t=i/16,p=start.map((value,j)=>value+(end[j]-value)*t),light=shade(p,photoLighting);
+      const recess=photoLighting?Math.min(1.12,light)*(floor?.87:.93):light;
+      gradient.addColorStop(t,`rgb(${rgb.map(n=>Math.round(n*recess)).join(',')})`);
+      if(edge){
+        const channels=rgb.map(n=>Math.round(n*recess*.82)).join(',');
+        edge.addColorStop(t,`rgba(${channels},${floor?.68:.40})`);
+      }
+    }
+    if(edge){
+      path(ctx,[recessedEdge(joint,start,end,floor)]);ctx.fillStyle=edge;ctx.fill();
     }
     path(ctx,[joint.quad]);ctx.fillStyle=gradient;ctx.fill();
   }
-  function drawFace(ctx,plane,polygons,selectedFormat,grout,maxV) {
+  function drawFace(ctx,plane,polygons,selectedFormat,grout,maxV,photoLighting) {
     if(!polygons.length)return;
     ctx.save();path(ctx,polygons);ctx.clip();
-    for(const joint of joints(plane,selectedFormat,maxV))strokeJoint(ctx,plane,joint,grouts[grout]?.rgb||grouts.grey.rgb);
+    for(const joint of joints(plane,selectedFormat,maxV))strokeJoint(ctx,plane,joint,grouts[grout]?.rgb||grouts.grey.rgb,photoLighting);
     ctx.restore();
   }
-  function draw(ctx,state,room,base) {
+  function draw(ctx,state,room,base,photoLighting=false,scene=null) {
+    if(scene?.slabs)return;
     prepare(ctx,base);
     const c=overlay.getContext('2d');c.clearRect(0,0,1672,941);
-    if(typeof room.faces!=='function'||typeof room.groutOcclusions!=='function')throw Error('Badkalibrierung und Fugenrenderer passen nicht zusammen. Bitte Seite neu laden.');
-    for(const face of room.faces(state.wallHeight))drawFace(c,planes[face.plane],face.polygons,state[face.surface+'Format'],state[face.surface+'Grout'],face.maxV);
-    c.save();c.globalCompositeOperation='destination-out';c.fillStyle='#fff';c.beginPath();room.trace(c,room.groutOcclusions(state.wallHeight));c.fill();c.restore();
+    if(!scene&&(typeof room.faces!=='function'||typeof room.groutOcclusions!=='function'))throw Error('Badkalibrierung und Fugenrenderer passen nicht zusammen. Bitte Seite neu laden.');
+    const faces=scene?.faces||room.faces(state.wallHeight),holes=scene?.holes||room.groutOcclusions(state.wallHeight,photoLighting);
+    for(const face of faces)drawFace(c,scene?face.plane:planes[face.plane],face.polygons,state[face.surface+'Format'],state[face.surface+'Grout'],face.maxV,photoLighting);
+    c.save();c.globalCompositeOperation='destination-out';c.fillStyle='#fff';path(c,holes);c.fill();
+    if(scene?.matte)c.drawImage(scene.matte(ctx,base),0,0);
+    c.restore();
     ctx.drawImage(overlay,0,0);
   }
   return {formats,grouts,format,homography,project,planes,joints,draw};
