@@ -38,12 +38,15 @@ function updateDetail(){
 const mediaFrame=el('div',null,'detail-media'),mediaControls=el('div',null,'media-controls'),mediaNote=el('p',null,'source-note'),manufacturerLink=el('a','Herstellerquelle ansehen','text-link');
 $('#detail-photo').before(mediaFrame);mediaFrame.append($('#detail-photo'));
 mediaControls.setAttribute('role','group');mediaControls.setAttribute('aria-label','Produktbild auswählen');mediaNote.setAttribute('role','status');manufacturerLink.target='_blank';manufacturerLink.rel='noopener';
-$('#detail-source').before(mediaControls,mediaNote,manufacturerLink);
+$('#detail-description').before(mediaControls,mediaNote);$('#detail-description').after(manufacturerLink);
+// Beschreibung: am PC unter dem Bild, auf dem Handy direkt unter dem Produktnamen
+const narrowDialog=matchMedia('(max-width:700px)'),placeDescription=()=>{const desc=$('#detail-description');if(narrowDialog.matches)$('#detail-name').after(desc);else manufacturerLink.before(desc);};
+placeDescription();narrowDialog.addEventListener('change',placeDescription);
 function renderGallery(product){
   const views=YabisCatalogMedia.viewsFor(product),photo=$('#detail-photo');
   mediaControls.replaceChildren();
   mediaControls.hidden=views.length<2;
-  manufacturerLink.hidden=!product.manufacturerImage;manufacturerLink.href=product.manufacturerImage?.page||product.source;
+  const makerPage=product.manufacturerImage?.page||'';manufacturerLink.hidden=!makerPage;if(makerPage)manufacturerLink.href=makerPage;else manufacturerLink.removeAttribute('href');
   const clear=()=>{
     photo.onerror=null;photo.removeAttribute('src');photo.alt='';mediaFrame.hidden=true;
     mediaNote.textContent='Eine Produktansicht ist derzeit nicht verfügbar.';
@@ -66,8 +69,6 @@ function openProduct(product){
   $('#detail-description').textContent=product.description||'';
   $('#detail-finish').textContent=product.finish+' · '+S.formatLabel(product)+' · '+S.priceLabel(product);
   renderGallery(product);
-  $('#detail-source').hidden=!product.source;
-  if(product.source)$('#detail-source').href=product.source;
   const studioLink=window.YabisStudio.shoppingDestination(product.id);
   $('#detail-studio').hidden=!studioLink;
   if(studioLink)$('#detail-studio').href=studioLink;

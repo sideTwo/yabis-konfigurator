@@ -32,3 +32,7 @@
  .filter-top .search,.filter-top .search input{width:100%}
  .filter-options{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+.product-dialog-layout .detail-description{margin:18px 0 0;font-size:15px;line-height:1.65;color:var(--ink)}
+.product-dialog-layout .detail-description:empty{display:none}
+.product-dialog-layout #detail-name+.detail-description{margin:14px 0 12px}
