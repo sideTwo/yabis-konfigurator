@@ -68,7 +68,7 @@ body.main-site,body.shop-site,body.bath-site{background:var(--page);color:var(--
 .showroom-playback:disabled{opacity:.65;cursor:default}
 .showroom-playback .showroom-pause,.showroom-playback[data-playing] .showroom-play{display:none}
 .showroom-playback[data-playing] .showroom-pause{display:block}
-.main-site .contact-reception{width:100%;max-width:520px;height:auto;margin-top:28px;border-radius:5px}
+.main-site .contact-heading{display:flex;flex-direction:column;align-items:flex-start}.main-site .contact-reception{flex:1 1 0;width:100%;max-width:520px;min-height:240px;height:auto;margin-top:28px;object-fit:cover;object-position:50% 45%;border-radius:5px}
 .main-site .photo-note{background:#f4eee7ed;color:var(--muted);border-radius:3px;font-size:9px;line-height:1.4}
 .main-site .showroom-copy>.eyebrow{margin-bottom:24px}
 .main-site .showroom-copy h2{font-size:clamp(34px,3.7vw,52px);line-height:1.13}
@@ -76,7 +76,7 @@ body.main-site,body.shop-site,body.bath-site{background:var(--page);color:var(--
 .main-site .showroom-copy address{font-style:normal;font-size:13px;line-height:1.85;border-top:1px solid var(--line);padding-top:24px;margin:28px 0}
 .main-site .showroom-copy address strong{font-weight:500}
 .main-site .showroom-links{gap:20px}
-.main-site .contact-section{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:8%;background:var(--page-alt)}
+.main-site .contact-section{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:8%;align-items:stretch;background:var(--page-alt)}
 .main-site .contact-heading>.eyebrow{font-size:9px;margin-bottom:24px}
 .main-site .contact-heading h2{font-size:clamp(42px,4.8vw,64px);line-height:1.08}
 .main-site .contact-heading>p:not(.eyebrow){color:var(--muted);font-size:13px;line-height:1.9}
@@ -181,7 +181,7 @@ body.shop-site:has(dialog[open]){overflow:hidden}
  .main-site .trade-details p{max-width:560px}
  .main-site .showroom-copy h2{font-size:36px}
  .main-site .showroom-copy>p:not(.eyebrow){font-size:12px}
- .main-site .contact-section{grid-template-columns:1fr;gap:30px}
+ .main-site .contact-section{grid-template-columns:1fr;gap:30px}.main-site .contact-heading{display:block}.main-site .contact-reception{display:block;min-height:0;aspect-ratio:1280/880}
  .main-site .contact-heading h2{font-size:46px}
  .main-site .contact-heading>p:not(.eyebrow){max-width:520px}
  .main-site .contact-heading>.contact-note{max-width:480px!important;margin-top:18px!important}

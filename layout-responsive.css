@@ -59,7 +59,7 @@
  .main-site .trade-details p{font-size:14px;max-width:440px}
  .main-site .showroom-copy>p:not(.eyebrow){font-size:15px;max-width:470px}
  .main-site .showroom-copy address{font-size:15px}
- .main-site .contact-section{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:80px;align-items:start}
+ .main-site .contact-section{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:80px;align-items:stretch}
  .main-site .contact-heading>p:not(.eyebrow){font-size:15px;max-width:390px}
  .main-site .contact-heading>.contact-note{font-size:12px!important}
  .main-site #project-form{padding:36px}
