@@ -22,6 +22,13 @@ test('Unvollständige Kontaktdaten erzeugen keine Anfrage',()=>{
  for(const key of ['name','contact','message'])assert.throws(()=>inquiry({...base,[key]:'  '}),/Name, Rückkontakt/);
 });
 
+test('Neue Anfrage übernimmt Telefon, Rückweg und Vorhandenes',()=>{
+ const text=inquiry({name:'Demo',telefon:'0170 123',message:'Bad neu fliesen',room:'bad',delivery:'pickup',reply:'Rückruf',date:'So bald wie möglich',have:['Maße oder Grundriss','Fotos vom Raum']});
+ for(const expected of ['Rückkontakt: 0170 123','Rückmeldung gern per: Rückruf','Wunschtermin: So bald wie möglich','Schon vorhanden: Maße oder Grundriss, Fotos vom Raum'])
+  assert.ok(text.includes(expected),expected);
+ assert.throws(()=>inquiry({name:'Demo',message:'Bad',telefon:' ',email:''}),/Name, Rückkontakt/);
+});
+
 test('Naturstein-Anfrage übernimmt den Außenbereich',()=>{
  const text=inquiry({...base,room:'eingang',message:'18 m² Naturstein für Hauseingang und Podest.'});
  assert.match(text,/Bereich: Außenbereich/);

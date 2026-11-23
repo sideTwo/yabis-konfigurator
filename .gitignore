@@ -28,3 +28,6 @@ _quelle/*generation*.json
 
 # Local reference exports from the WhatsApp catalogue
 /bilder/katalog/whatsapp-2026-11-18/
+
+# Ratenbremse des Kontaktformulars (kontakt.php)
+.formular-tmp/

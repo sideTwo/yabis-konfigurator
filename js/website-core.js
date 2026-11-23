@@ -9,12 +9,15 @@
   eingang:{name:'Außenbereich',title:'Naturstein für Ihren Außenbereich.',kicker:'WEG, PODEST UND EINGANG',copy:'Für den Weg zur Haustür oder das Podest beraten wir Sie zu passenden Natursteinen und Oberflächen.',image:'assets/studio/eingang-foto-neutral.webp',alt:'Hauseingang mit Holzhaustür, Podest und sichtbarer Stufe'}
  };
  const clean=(v,max=2000)=>String(v??'').trim().slice(0,max);
+ const listOf=v=>(Array.isArray(v)?v:[v]).map(x=>clean(x,80)).filter(Boolean);
  function inquiry(data,cartText=''){
-  const d=Object.fromEntries(Object.entries(data).map(([k,v])=>[k,clean(v)]));
+  const have=listOf(data.have);
+  const d=Object.fromEntries(Object.entries(data).filter(([k])=>k!=='have').map(([k,v])=>[k,clean(v)]));
+  d.contact=d.contact||[d.telefon,d.email].filter(Boolean).join(' · ');
   if(!d.name||!d.contact||!d.message)throw Error('Bitte Name, Rückkontakt und Ihre Idee oder Artikelliste ausfüllen.');
   if(d.delivery==='delivery'&&(!/^\d{5}$/.test(d.postcode)||!d.city))throw Error('Bitte Liefer-PLZ und Lieferort angeben.');
   const room=rooms[d.room]?.name||'Mehrere Bereiche / Materialliste';
-  return ['Hallo Yabis Fliesenwelt,','ich möchte mein Projekt unverbindlich mit Ihnen besprechen.','',d.customerType==='trade'?'Gewerbeanfrage':'Privatanfrage',...(d.company?['Firma: '+d.company]:[]),'Bereich: '+room,'Name: '+d.name,'Rückkontakt: '+d.contact,...(d.quantity?['Menge / Fläche: '+d.quantity]:[]),...(d.date?['Wunschtermin: '+d.date]:[]),'',d.delivery==='delivery'?'Lieferung angefragt: '+d.postcode+' '+d.city+(d.address?' · '+d.address:''):'Abholung gewünscht',...(d.delivery==='delivery'?['Bitte Liefermöglichkeit und Lieferkosten individuell anbieten.']:[]),'','Meine Idee / Artikelliste:',d.message,...(cartText?['','Bereits ausgewählte Artikel:',clean(cartText,15000)]:[]),'','Bitte Verfügbarkeit, Menge, Eignung und Konditionen bestätigen. Dies ist eine Anfrage, keine Bestellung.'].join('\n');
+  return ['Hallo Yabis Fliesenwelt,','ich möchte mein Projekt unverbindlich mit Ihnen besprechen.','',d.customerType==='trade'?'Gewerbeanfrage':'Privatanfrage',...(d.company?['Firma: '+d.company]:[]),'Bereich: '+room,'Name: '+d.name,'Rückkontakt: '+d.contact,...(d.reply?['Rückmeldung gern per: '+d.reply]:[]),...(d.quantity?['Menge / Fläche: '+d.quantity]:[]),...(d.date?['Wunschtermin: '+d.date]:[]),...(have.length?['Schon vorhanden: '+have.join(', ')]:[]),'',d.delivery==='delivery'?'Lieferung angefragt: '+d.postcode+' '+d.city+(d.address?' · '+d.address:''):'Abholung gewünscht',...(d.delivery==='delivery'?['Bitte Liefermöglichkeit und Lieferkosten individuell anbieten.']:[]),'','Meine Idee / Artikelliste:',d.message,...(cartText?['','Bereits ausgewählte Artikel:',clean(cartText,15000)]:[]),'','Bitte Verfügbarkeit, Menge, Eignung und Konditionen bestätigen. Dies ist eine Anfrage, keine Bestellung.'].join('\n');
  }
  return {rooms,inquiry};
 });

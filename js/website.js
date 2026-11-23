@@ -1,10 +1,9 @@
 (()=>{
  'use strict';const $=id=>document.getElementById(id),core=window.YabisWebsite,S=window.YabisShop,form=$('project-form');
- const menu=$('mobile-menu'),preview=$('request-preview');
+ const menu=$('mobile-menu');
  $('open-menu').onclick=()=>menu.showModal();$('close-menu').onclick=()=>menu.close();
  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.close()));
- for(const d of [menu,preview])d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
- $('close-preview').onclick=()=>preview.close();
+ menu.addEventListener('click',e=>{if(e.target===menu){const r=menu.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)menu.close();}});
  const photo=$('room-photo'),picture=$('room-picture'),motion=matchMedia('(prefers-reduced-motion: reduce)');
 
  const showroomVideo = $("showroom-video");
@@ -119,13 +118,62 @@
  }
  document.querySelectorAll('[data-room]').forEach(b=>b.onclick=()=>showRoom(b.dataset.room));
  const incoming=new URLSearchParams(location.search);showRoom(core.rooms[incoming.get('raum')]?incoming.get('raum'):'bad');if(incoming.get('idee'))form.elements.message.value=incoming.get('idee').slice(0,2000);
- function customer(){const trade=form.elements.customerType.value==='trade';$('company-field').hidden=!trade;form.elements.company.disabled=!trade;}
- form.elements.customerType.addEventListener('change',customer);customer();
- $('trade-request').onclick=()=>{form.elements.customerType.value='trade';form.elements.room.value='mehrere';customer();$('kontakt').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});};
+ /* Anfrage in drei Schritten. Ohne JavaScript stehen alle Schritte untereinander und das Formular geht direkt an kontakt.php. */
+ const steps=[...form.querySelectorAll('[data-step]')],status=$('form-status'),files=$('anfrage-fotos'),fileNote=$('anfrage-dateien'),fileText=fileNote.textContent;
+ const MAX_FILES=5,MAX_BYTES=20*1024*1024,FILE_TYPES=/^(image\/(jpeg|png|webp|heic|heif)|application\/pdf)$/;
+ let step=1,sending=false;
+ form.classList.add('anfrage-js');form.noValidate=true;form.elements.ts.value=Math.floor(Date.now()/1000);
+ function showStep(n,focus=true){step=Math.max(1,Math.min(steps.length,n));steps.forEach(s=>s.hidden=Number(s.dataset.step)!==step);
+  $('anfrage-schritt').querySelector('span').textContent=step;form.querySelectorAll('.anfrage-fortschritt span').forEach((b,i)=>b.classList.toggle('aktiv',i<step));
+  $('anfrage-zurueck').hidden=step===1;$('anfrage-weiter').hidden=step===steps.length;$('anfrage-senden').hidden=step!==steps.length;$('anfrage-whatsapp').hidden=step!==steps.length;
+  form.querySelector('.anfrage-body').scrollTop=0;if(focus){const legend=steps[step-1].querySelector('legend');legend.tabIndex=-1;legend.focus({preventScroll:true});if(form.getBoundingClientRect().top<0)form.scrollIntoView({behavior:motion.matches?'instant':'smooth',block:'start'});}}
+ function contactRules(){const reply=form.elements.reply.value,phone=reply!=='E-Mail',mail=reply==='E-Mail';
+  form.elements.telefon.required=phone;form.elements.email.required=mail;
+  form.querySelector('[data-optional=telefon]').hidden=phone;form.querySelector('[data-optional=email]').hidden=mail;}
+ function filesOk(){const list=[...(files.files||[])];let error='';
+  if(list.length>MAX_FILES)error='Bitte höchstens '+MAX_FILES+' Dateien anhängen.';
+  else if(list.some(f=>f.type&&!FILE_TYPES.test(f.type)))error='Bitte nur Fotos (JPG, PNG, WebP, HEIC) oder PDF anhängen.';
+  else if(list.reduce((a,f)=>a+f.size,0)>MAX_BYTES)error='Die Dateien sind zusammen größer als 20 MB. Bitte weniger oder kleinere Fotos wählen.';
+  files.setCustomValidity(error);
+  fileNote.textContent=error||(list.length?list.length+' Datei'+(list.length>1?'en':'')+': '+list.map(f=>f.name).join(', '):fileText);
+  fileNote.classList.toggle('fehler',!!error);return !error;}
+ function stepValid(n){if(n===1&&!filesOk()){files.reportValidity?.();return false;}
+  for(const el of steps[n-1].querySelectorAll('input,textarea,select')){if(!el.disabled&&!el.checkValidity()){el.reportValidity();return false;}}return true;}
+ function allValid(){for(let n=1;n<=steps.length;n++){if(!stepValid(n)){showStep(n,false);stepValid(n);return false;}}return true;}
+ function data(){const d=Object.fromEntries(new FormData(form));d.have=new FormData(form).getAll('have[]');delete d['have[]'];delete d['fotos[]'];return d;}
+ function cartLines(){try{return S.lines(S.getCart());}catch{return '';}}
+ $('anfrage-weiter').onclick=()=>{if(stepValid(step)){status.textContent='';showStep(step+1);}};
+ $('anfrage-zurueck').onclick=()=>{status.textContent='';showStep(step-1);};
+ files.addEventListener('change',filesOk);
+ form.querySelectorAll('[name=reply]').forEach(i=>i.addEventListener('change',contactRules));contactRules();
+ $('trade-request').onclick=()=>{form.elements.customerType.value='trade';form.elements.room.value='mehrere';showStep(1,false);$('kontakt').scrollIntoView({behavior:motion.matches?'instant':'smooth'});};
  function delivery(){const yes=form.elements.delivery.value==='delivery';$('delivery-address').hidden=!yes;for(const name of ['postcode','city','address']){form.elements[name].disabled=!yes;form.elements[name].required=yes&&name!=='address';}}
  form.querySelectorAll('[name=delivery]').forEach(i=>i.addEventListener('change',delivery));delivery();
- function cart(){const n=S.getCart().length;document.querySelectorAll('[data-cart-count]').forEach(e=>e.textContent=n);$('cart-inquiry-note').hidden=!n;$('cart-inquiry-note').textContent=n+' Position(en) aus Ihrem Anfragekorb werden in die Zusammenfassung übernommen.';}
+ function cart(){const n=S.getCart().length;document.querySelectorAll('[data-cart-count]').forEach(e=>e.textContent=n);$('cart-inquiry-note').hidden=!n;$('cart-inquiry-note').textContent=n+' Position(en) aus Ihrem Anfragekorb werden mitgeschickt.';}
  cart();addEventListener('storage',e=>{if(e.key===S.key)cart();});addEventListener('pageshow',cart);
- form.onsubmit=e=>{e.preventDefault();if(!form.reportValidity())return;try{const text=core.inquiry(Object.fromEntries(new FormData(form)),S.lines(S.getCart()));$('request-text').value=text;$('request-whatsapp').href='https://wa.me/491786787724?text='+encodeURIComponent(text);$('request-email').href='mailto:info@yabisfliesenwelt.de?subject='+encodeURIComponent('Projektanfrage – Yabis Fliesenwelt')+'&body='+encodeURIComponent(text);$('form-status').textContent='Ihre Anfrage ist vorbereitet. Bitte prüfen und selbst versenden.';preview.showModal();}catch(error){$('form-status').textContent=error.message;}};
- $('save-request').onclick=()=>S.download($('request-text').value,'yabis-projektanfrage.txt');$('year').textContent=new Date().getFullYear();
+ function fail(text){status.className='anfrage-status fehler';status.textContent=text;}
+ function done(text){form.classList.add('anfrage-fertig');const box=document.createElement('div');box.className='anfrage-danke';box.tabIndex=-1;
+  const h=document.createElement('p');h.className='anfrage-danke-titel';h.textContent='Danke, Ihre Anfrage ist da.';const p=document.createElement('p');p.textContent=text||'Wir melden uns bei Ihnen.';
+  box.append(h,p);form.querySelector('.anfrage-body').replaceWith(box);form.querySelector('.anfrage-fuss').remove();status.textContent='';box.focus();}
+ form.onsubmit=async e=>{e.preventDefault();if(sending||!allValid())return;
+  let text;try{text=core.inquiry(data(),cartLines());}catch(error){fail(error.message);return;}
+  const body=new FormData(form);body.set('warenkorb',cartLines());
+  sending=true;$('anfrage-senden').disabled=true;status.className='anfrage-status';status.textContent='Anfrage wird gesendet …';
+  try{const res=await fetch(form.action,{method:'POST',body,headers:{'X-Requested-With':'fetch'},credentials:'same-origin'});
+   const answer=await res.json().catch(()=>null);
+   if(answer?.ok){done(answer.text);return;}
+   fail(answer?.text||'Die Anfrage konnte gerade nicht gesendet werden. Senden Sie sie bitte per WhatsApp oder rufen Sie uns an: +49 178 678 77 24.');
+  }catch{fail('Die Anfrage konnte gerade nicht gesendet werden. Senden Sie sie bitte per WhatsApp oder rufen Sie uns an: +49 178 678 77 24.');}
+  finally{sending=false;const button=$('anfrage-senden');if(button)button.disabled=false;}
+ };
+ $('anfrage-whatsapp').onclick=()=>{
+  if(!stepValid(1)){showStep(1,false);stepValid(1);return;}
+  if(!form.elements.name.value.trim()){form.elements.name.reportValidity();return;}
+  const d=data();if(!d.telefon&&!d.email)d.contact='per WhatsApp';
+  let text;try{text=core.inquiry(d,cartLines());}catch(error){fail(error.message);return;}
+  const n=(files.files||[]).length;
+  window.open('https://wa.me/491786787724?text='+encodeURIComponent(text),'_blank','noopener');
+  status.className='anfrage-status';status.textContent='WhatsApp ist geöffnet. Bitte dort absenden.'+(n?' Ihre '+n+' Datei'+(n>1?'en':'')+' hängen Sie im Chat direkt an.':'');};
+ showStep(1,false);
+ $('year').textContent=new Date().getFullYear();
 })();
