@@ -40,14 +40,14 @@ body.main-site,body.shop-site,body.bath-site{background:var(--page);color:var(--
 .main-site .intro-line{border-block:1px solid var(--line);background:var(--paper);padding:23px 4.4%;font-size:10px;color:var(--muted);letter-spacing:.02em}
 .main-site .intro-line span{display:flex;align-items:center;gap:10px}
 .main-site .intro-line span:before{content:"";display:block;width:4px;height:4px;margin:0;border-radius:50%;background:var(--focus)}
-.main-site .material-note{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 8%;background:var(--paper);border-block:1px solid var(--line);overflow:visible}
-.main-site .material-note h2{font-size:clamp(32px,3.6vw,49px);line-height:1.13;margin-top:18px}
-.main-site .material-note>p{grid-column:1;font-size:13px;line-height:1.9;color:var(--muted);max-width:470px}
-.main-site .material-note>.text-link{grid-column:1;justify-self:start;align-self:start}
-.main-site .material-samples{position:static;grid-column:2;grid-row:1 / span 3;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-self:center}
-.main-site .material-samples figure{margin:0;min-width:0}
-.main-site .material-samples img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--line);border-radius:4px}
-.main-site .material-samples figcaption{font-size:10px;color:var(--muted);line-height:1.5;margin-top:12px}
+.main-site .material-note{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);grid-template-rows:1fr auto auto auto 1fr;gap:0 8%;align-items:start;background:var(--paper);border-block:1px solid var(--line);overflow:visible}
+.main-site .material-note>div:first-child{grid-row:2}.main-site .material-note h2{font-size:clamp(32px,3.6vw,49px);line-height:1.13;margin-top:18px}
+.main-site .material-note>p{grid-column:1;grid-row:3;margin-top:26px;font-size:13px;line-height:1.9;color:var(--muted);max-width:470px}
+.main-site .material-note>.text-link{grid-column:1;grid-row:4;margin-top:30px;justify-self:start;align-self:start}
+.main-site .material-samples{position:static;grid-column:2;grid-row:1 / -1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start;padding-bottom:44px}
+.main-site .material-card{display:flex;flex-direction:column;min-width:0;color:var(--ink);text-decoration:none}.main-site .material-card:nth-child(2){margin-top:44px}
+.main-site .material-card img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:4px;box-shadow:0 1px 0 var(--line);transition:transform .35s ease}.main-site .material-card:hover img,.main-site .material-card:focus-visible img{transform:translateY(-4px)}
+.main-site .material-word{order:-1;margin-bottom:12px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}.main-site .material-card strong{margin-top:14px;font-size:14px;font-weight:500;line-height:1.35}.main-site .material-meta{margin-top:4px;font-size:12px;color:var(--muted);line-height:1.5}
 .main-site .trade-section{display:grid;grid-template-columns:1fr 1fr;gap:10%;background:var(--page);color:var(--ink)}
 .main-site .trade-copy .eyebrow{margin-bottom:24px;color:var(--muted)}
 .main-site .trade-copy h2{font-size:clamp(34px,3.5vw,50px);line-height:1.13}
@@ -171,8 +171,8 @@ body.shop-site:has(dialog[open]){overflow:hidden}
  .main-site .material-note{gap:18px 7%}
  .main-site .material-note h2{font-size:34px}
  .main-site .material-note>p{font-size:12px}
- .main-site .material-samples{gap:9px}
- .main-site .material-samples figcaption{font-size:9px;margin-top:9px}
+  .main-site .material-samples{gap:10px}
+  .main-site .material-card strong{font-size:13px}
  .main-site .trade-section{grid-template-columns:1fr;gap:34px}
  .main-site .trade-copy h2{font-size:38px}
  .main-site .trade-details{display:block}
@@ -220,8 +220,8 @@ body.shop-site:has(dialog[open]){overflow:hidden}
  .main-site .material-note{grid-template-columns:1fr;gap:19px}
  .main-site .material-note>p,.main-site .material-note>.text-link{grid-column:auto}
  .main-site .material-note>.text-link{max-width:none}
- .main-site .material-samples{grid-column:auto;grid-row:auto;margin-top:12px;gap:12px}
- .main-site .material-samples figcaption{font-size:10px}
+  .main-site .material-note{grid-template-rows:none}.main-site .material-note>div:first-child,.main-site .material-note>p,.main-site .material-note>.text-link{grid-row:auto;margin-top:0}.main-site .material-samples{grid-column:auto;grid-row:auto;margin:12px -20px 0;padding:0 20px 8px;display:flex;justify-content:flex-start;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 20px}.main-site .material-card{flex:0 0 62%;scroll-snap-align:start}.main-site .material-card:nth-child(2){margin-top:0}
+  .main-site .material-card strong{font-size:15px}.main-site .material-meta{font-size:13px}
  .main-site .material-note h2{font-size:34px}
  .main-site .showroom-copy h2{font-size:36px}
  .main-site .showroom-copy>p:not(.eyebrow){font-size:13px;max-width:none}

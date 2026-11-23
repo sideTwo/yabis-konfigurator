@@ -52,7 +52,7 @@
  .main-site .material-note h2{font-size:48px}
  .main-site .material-note>p{font-size:15px;max-width:520px}
  .main-site .material-samples{gap:20px}
- .main-site .material-samples figcaption{font-size:12px}
+ .main-site .material-card strong{font-size:15px}.main-site .material-meta{font-size:13px}
  .main-site .trade-section{gap:clamp(64px,7vw,112px)}
  .main-site .trade-copy>p:not(.eyebrow){font-size:15px;max-width:540px}
  .main-site .trade-details h3{font-size:18px}
