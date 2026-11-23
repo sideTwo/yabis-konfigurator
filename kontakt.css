@@ -1,7 +1,8 @@
 /* Kontakt: Anfrage in drei Schritten (Aufbau nach Bilals Vorgabe, Gestaltung in Yabis' Farben) */
 .main-site .kontakt-neu{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(40px,5vw,88px);align-items:start}
 .main-site .kontakt-info{display:block}
-.main-site .kontakt-info>.kontakt-check{display:flex;align-items:flex-start;gap:10px;margin-top:26px;max-width:none;color:var(--ink);font-size:14px;line-height:1.6}
+.main-site .kontakt-info h2{text-wrap:balance}
+.main-site .contact-heading.kontakt-info>p.kontakt-check{display:flex;align-items:flex-start;gap:10px;margin-top:26px;max-width:none;color:var(--ink);font-size:14px;line-height:1.6}
 .kontakt-check svg{flex:none;margin-top:2px;fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 
 .kontakt-direkt-titel{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
