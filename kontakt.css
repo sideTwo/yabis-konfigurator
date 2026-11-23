@@ -34,6 +34,7 @@
 .anfrage-step legend:focus{outline:none}
 .anfrage-step legend+*{clear:both}
 .anfrage-frage{margin:22px 0 10px;font-size:13px;font-weight:500;color:var(--ink)}
+.anfrage-mehrfach{margin-left:6px;font-size:11px;font-weight:400;color:var(--muted)}
 
 .main-site .chips{display:flex;flex-wrap:wrap;gap:8px}
 .main-site .chips label{position:relative;display:block;margin:0;font-size:inherit}

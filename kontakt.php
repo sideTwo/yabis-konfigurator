@@ -63,7 +63,11 @@ $firma     = feld('company', 120);
 $telefon   = feld('telefon', 50);
 $email     = feld('email', 150);
 $rueckweg  = in_array(feld('reply', 20), ['Rückruf', 'WhatsApp', 'E-Mail'], true) ? feld('reply', 20) : '';
-$bereich   = wahl('room', $BEREICHE);
+$bereiche  = [];
+foreach ((array)($_POST['room'] ?? []) as $v) {
+    if (is_string($v) && isset($BEREICHE[$v]) && !in_array($BEREICHE[$v], $bereiche, true)) { $bereiche[] = $BEREICHE[$v]; }
+}
+$bereich   = implode(', ', $bereiche);
 $kunde     = wahl('customerType', $KUNDE);
 $material  = wahl('delivery', $MATERIAL);
 $termin    = feld('date', 60);

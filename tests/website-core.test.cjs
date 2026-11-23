@@ -29,6 +29,12 @@ test('Neue Anfrage übernimmt Telefon, Rückweg und Vorhandenes',()=>{
  assert.throws(()=>inquiry({name:'Demo',message:'Bad',telefon:' ',email:''}),/Name, Rückkontakt/);
 });
 
+test('Mehrere Bereiche werden zusammen genannt',()=>{
+ const text=inquiry({...base,room:['bad','kueche','unbekannt']});
+ assert.match(text,/Bereich: Badezimmer, Küchenwand\n/);
+ assert.match(inquiry({...base,room:[]}),/Bereich: Mehrere Bereiche \/ Materialliste/);
+});
+
 test('Naturstein-Anfrage übernimmt den Außenbereich',()=>{
  const text=inquiry({...base,room:'eingang',message:'18 m² Naturstein für Hauseingang und Podest.'});
  assert.match(text,/Bereich: Außenbereich/);

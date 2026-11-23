@@ -114,8 +114,10 @@
   const configurable=window.YabisStudio.materialsFor(id).length>0;
   $('room-action-label').textContent=configurable?'Im Raumstudio gestalten':'Zum Außenbereich';
   $('room-availability').textContent=configurable?'Muster, Farben und Eignung am Original prüfen.':'Naturstein für Ihren Außenbereich individuell anfragen.';
-  form.elements.room.value=id;
+  // Raumwahl oben vorbelegen, solange der Besucher die Bereiche im Formular noch nicht selbst angeklickt hat
+  if(!form.dataset.roomsTouched)form.querySelectorAll('[name="room[]"]').forEach(box=>box.checked=box.value===id);
  }
+ form.querySelectorAll('[name="room[]"]').forEach(box=>box.addEventListener('change',()=>{form.dataset.roomsTouched='1';box.setCustomValidity('');}));
  document.querySelectorAll('[data-room]').forEach(b=>b.onclick=()=>showRoom(b.dataset.room));
  const incoming=new URLSearchParams(location.search);showRoom(core.rooms[incoming.get('raum')]?incoming.get('raum'):'bad');if(incoming.get('idee'))form.elements.message.value=incoming.get('idee').slice(0,2000);
  /* Anfrage in drei Schritten. Ohne JavaScript stehen alle Schritte untereinander und das Formular geht direkt an kontakt.php. */
@@ -137,16 +139,18 @@
   files.setCustomValidity(error);
   fileNote.textContent=error||(list.length?list.length+' Datei'+(list.length>1?'en':'')+': '+list.map(f=>f.name).join(', '):fileText);
   fileNote.classList.toggle('fehler',!!error);return !error;}
- function stepValid(n){if(n===1&&!filesOk()){files.reportValidity?.();return false;}
+ function stepValid(n){if(n===1){const boxes=[...form.querySelectorAll('[name="room[]"]')];
+   if(!boxes.some(b=>b.checked)){boxes[0].setCustomValidity('Bitte mindestens einen Bereich wählen.');boxes[0].reportValidity();return false;}
+   boxes[0].setCustomValidity('');if(!filesOk()){files.reportValidity?.();return false;}}
   for(const el of steps[n-1].querySelectorAll('input,textarea,select')){if(!el.disabled&&!el.checkValidity()){el.reportValidity();return false;}}return true;}
  function allValid(){for(let n=1;n<=steps.length;n++){if(!stepValid(n)){showStep(n,false);stepValid(n);return false;}}return true;}
- function data(){const d=Object.fromEntries(new FormData(form));d.have=new FormData(form).getAll('have[]');delete d['have[]'];delete d['fotos[]'];return d;}
+ function data(){const fd=new FormData(form),d=Object.fromEntries(fd);d.have=fd.getAll('have[]');d.room=fd.getAll('room[]');for(const k of ['have[]','room[]','fotos[]'])delete d[k];return d;}
  function cartLines(){try{return S.lines(S.getCart());}catch{return '';}}
  $('anfrage-weiter').onclick=()=>{if(stepValid(step)){status.textContent='';showStep(step+1);}};
  $('anfrage-zurueck').onclick=()=>{status.textContent='';showStep(step-1);};
  files.addEventListener('change',filesOk);
  form.querySelectorAll('[name=reply]').forEach(i=>i.addEventListener('change',contactRules));contactRules();
- $('trade-request').onclick=()=>{form.elements.customerType.value='trade';form.elements.room.value='mehrere';showStep(1,false);$('kontakt').scrollIntoView({behavior:motion.matches?'instant':'smooth'});};
+ $('trade-request').onclick=()=>{form.elements.customerType.value='trade';showStep(1,false);$('kontakt').scrollIntoView({behavior:motion.matches?'instant':'smooth'});};
  function delivery(){const yes=form.elements.delivery.value==='delivery';$('delivery-address').hidden=!yes;for(const name of ['postcode','city','address']){form.elements[name].disabled=!yes;form.elements[name].required=yes&&name!=='address';}}
  form.querySelectorAll('[name=delivery]').forEach(i=>i.addEventListener('change',delivery));delivery();
  function cart(){const n=S.getCart().length;document.querySelectorAll('[data-cart-count]').forEach(e=>e.textContent=n);$('cart-inquiry-note').hidden=!n;$('cart-inquiry-note').textContent=n+' Position(en) aus Ihrem Anfragekorb werden mitgeschickt.';}
