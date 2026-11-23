@@ -13,7 +13,8 @@
   const priceUnit=product=>product.catalogUnit==='m2'?'m²':product.catalogUnit||'m²';
   const priceLabel=product=>Number.isInteger(product.catalogPriceCents)?money(product.catalogPriceCents)+' / '+priceUnit(product):'Preis auf Anfrage';
   const money=cents=>(cents/100).toLocaleString('de-DE',{style:'currency',currency:'EUR'});
-  function estimateAssumingM2(id,area,waste,format){const p=find(id),q=calculate(area,waste,format);return p&&q&&Array.isArray(format)&&Number.isInteger(p.catalogPriceCents)&&priceUnit(p)==='m²'&&p.formats.some(f=>f.join(',')===format.join(','))?Math.round(q.total*p.catalogPriceCents):null;}
+  // Richtwert = Bedarf in m² × Katalogpreis pro m², unabhängig vom gewählten Format (Bilal, 2026-11-23)
+  function estimateAssumingM2(id,area,waste){const p=find(id),q=calculate(area,waste,null);return p&&q&&Number.isInteger(p.catalogPriceCents)&&priceUnit(p)==='m²'?Math.round(q.total*p.catalogPriceCents):null;}
   const key='yk-merkliste';
   const de=n=>Number(n).toLocaleString('de-DE',{maximumFractionDigits:2});
   const validArea=n=>Number.isFinite(Number(n))&&Number(n)>=.01&&Number(n)<=100000;

@@ -33,7 +33,7 @@ function updateDetail(){
   $('#format-note').textContent=known?'Dieses Format ist im Yabis-Katalog belegt.':format?'Formatwunsch: Verfügbarkeit für diesen Artikel bitte bestätigen.':'Das Format ist noch offen. Die Fläche kann bereits angefragt werden; wir erfinden keine Stückzahl.';
   $('#detail-quantity').textContent=$('#detail-area').value?quantityLine($('#detail-area').value,$('#detail-waste').value,format):'Geben Sie Ihre Fläche ein.';
   const cost=S.estimateAssumingM2(selected.id,$('#detail-area').value,$('#detail-waste').value,format);
-  $('#detail-cost').textContent=$('#detail-estimate').checked?(cost!==null?'Ca. '+S.money(cost)+' · ohne Kartonrundung und Lieferung.':'Richtwert nur mit Katalogformat und Europreis pro m².'):(Number.isInteger(selected.catalogPriceCents)?'Katalogrichtpreis '+S.priceLabel(selected)+(selected.catalogPriceDate?' · Stand '+selected.catalogPriceDate:'')+'. Verkaufseinheit im Angebot.':selected.catalogCurrency==='ZAR'?'Preis auf Anfrage. Die Währungsangabe im Quellkatalog wird geprüft.':'Preis auf Anfrage.');
+  $('#detail-cost').textContent=$('#detail-estimate').checked?(cost!==null?'Ca. '+S.money(cost)+' · ohne Kartonrundung und Lieferung.':'Für diesen Artikel gibt es keinen Preis pro m². Preis auf Anfrage.'):(Number.isInteger(selected.catalogPriceCents)?'Katalogrichtpreis '+S.priceLabel(selected):selected.catalogCurrency==='ZAR'?'Preis auf Anfrage. Die Währungsangabe im Quellkatalog wird geprüft.':'Preis auf Anfrage.');
 }
 const mediaFrame=el('div',null,'detail-media'),mediaControls=el('div',null,'media-controls'),mediaNote=el('p',null,'source-note'),manufacturerLink=el('a','Herstellerquelle ansehen','text-link');
 $('#detail-photo').before(mediaFrame);mediaFrame.append($('#detail-photo'));
