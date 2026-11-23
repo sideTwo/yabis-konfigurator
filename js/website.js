@@ -6,6 +6,76 @@
  for(const d of [menu,preview])d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
  $('close-preview').onclick=()=>preview.close();
  const photo=$('room-photo'),picture=$('room-picture'),motion=matchMedia('(prefers-reduced-motion: reduce)');
+
+ const showroomVideo = $("showroom-video");
+ const showroomButton = $("showroom-playback");
+ if (showroomVideo && showroomButton) {
+  let inView = false;
+  let playback = "auto";
+  const saveData = navigator.connection?.saveData;
+
+  function showPlaybackState() {
+   if (showroomVideo.error) return;
+   const playing = !showroomVideo.paused;
+   showroomButton.toggleAttribute("data-playing", playing);
+   const action = playing ? "pausieren" : "abspielen";
+   showroomButton.setAttribute("aria-label", "Video der Ausstellung " + action);
+  }
+
+  function playShowroom() {
+   if (!showroomVideo.hasAttribute("src")) showroomVideo.src = showroomVideo.dataset.src;
+   showroomVideo.muted = true;
+   showroomVideo.play().catch(showPlaybackState);
+  }
+
+  function syncShowroom() {
+   if (!inView || document.hidden || playback === "paused") {
+    showroomVideo.pause();
+   } else if (!showroomVideo.error &&
+     (playback === "manual" || (!motion.matches && !saveData))) {
+    playShowroom();
+   }
+  }
+
+  showroomButton.hidden = false;
+  showroomButton.addEventListener("click", () => {
+   if (showroomVideo.paused) {
+    playback = "manual";
+    playShowroom();
+   } else {
+    playback = "paused";
+    showroomVideo.pause();
+   }
+  });
+  for (const event of ["play", "pause"]) {
+   showroomVideo.addEventListener(event, showPlaybackState);
+  }
+  showroomVideo.addEventListener("playing", () => showroomVideo.toggleAttribute("data-ready", true));
+  showroomVideo.addEventListener("error", () => {
+   showroomVideo.removeAttribute("data-ready");
+   showroomButton.disabled = true;
+   showroomButton.setAttribute("aria-label", "Video der Ausstellung nicht verfügbar");
+  });
+  document.addEventListener("visibilitychange", () => {
+   if (document.hidden) showroomVideo.pause();
+   else if (inView) syncShowroom();
+  });
+  motion.addEventListener("change", () => {
+   if (motion.matches) {
+    if (playback === "manual") playback = "paused";
+    showroomVideo.pause();
+   } else {
+    syncShowroom();
+   }
+  });
+  if ("IntersectionObserver" in window) {
+   new IntersectionObserver(([entry]) => {
+    inView = entry.intersectionRatio >= 0.35;
+    syncShowroom();
+   }, { threshold: 0.35 }).observe($("ausstellung"));
+  }
+ }
+
  let imageRequest=0,imageFade=null,outgoingPhoto=null;
  function finishImageFade(){
   if(imageFade){imageFade.cancel();imageFade=null;}

@@ -7,7 +7,14 @@
  document.body.dataset.room=id;document.title=room.name+' · Raumstudio · Yabi’s Fliesenwelt';
  $('room-title').textContent=room.title;$('room-note').textContent=room.note;
  $('room-kicker').textContent='RAUMSTUDIO / '+room.name.toLocaleUpperCase('de-DE');
- document.querySelectorAll('[data-studio-room]').forEach(a=>{if(a.dataset.studioRoom===id)a.setAttribute('aria-current','page');});
+ document.querySelectorAll('[data-studio-room]').forEach(link=>{
+  if(link.dataset.studioRoom!==id)return;
+  link.setAttribute('aria-current','page');
+  const nav=link.parentElement;
+  if(nav.scrollWidth<=nav.clientWidth)return;
+  const viewport=nav.getBoundingClientRect(),tab=link.getBoundingClientRect();
+  if(tab.left<viewport.left||tab.right>viewport.right)nav.scrollLeft+=(tab.left+tab.right-viewport.left-viewport.right)/2;
+ });
  function basket(){$('basket-count').textContent=S.getCart().length;}
  window.addEventListener('yabis-cart-change',basket);window.addEventListener('pageshow',basket);window.addEventListener('storage',event=>{if(event.key===S.key)basket();});
  basket();
@@ -16,8 +23,13 @@
   $('auswahl').hidden=true;$('exterior-advice').hidden=false;
   $('scene-actions').hidden=true;$('scene-footer').hidden=true;$('image-status').hidden=true;
   $('stage').setAttribute('aria-busy','false');
-  $('room-fallback').alt='Hauseingang mit Podest und Stufe';
-  $('room-fallback').src='../'+room.image;
+  const image=$('room-fallback');
+  image.alt='Hauseingang mit Podest und Stufe';
+  image.src='../'+room.image;
+  if(document.documentElement?.classList.contains('room-arrival')){
+   const reveal=()=>window.dispatchEvent(new CustomEvent('yabis-room-ready'));
+   image.decode().then(reveal,reveal);
+  }
   return;
  }
  const scene=window.YabisStudioScenes.scene(id,G,W);
@@ -101,8 +113,8 @@
    if(!motion.matches&&typeof visible.animate==='function')fade=visible.animate([{opacity:.8},{opacity:1}],{duration:240,easing:'ease-out'});
    canvas.setAttribute('aria-label',room.name+' · '+describe());$('combination').textContent=describe();
    $('stage').setAttribute('aria-busy','false');$('image-status').hidden=true;ready=true;$('save-image').disabled=false;$('enlarge-view').disabled=false;$('add-to-cart').disabled=false;save();
-   if(isBath&&document.documentElement?.classList.contains('bath-arrival')){
-    window.dispatchEvent(new CustomEvent('yabis-bath-ready'));
+   if(document.documentElement?.classList.contains('room-arrival')){
+    window.dispatchEvent(new CustomEvent('yabis-room-ready'));
    }
   }catch(error){if(request!==revision)return;$('stage').setAttribute('aria-busy','false');$('image-status').textContent=error.message;$('image-status').hidden=false;}
  }
