@@ -24,6 +24,11 @@
   const glass=new Image();
   glass.src=url;
   root.style.setProperty('--room-arrival-glass',`url("${url}")`);
+  // Fenstermitte im Standbild (1440 × 810): Dort hinein fliegt die Kamera weiter.
+  const pane={bad:[.497,.447],wohnen:[.6,.48],balkon:[.5,.5],kueche:[.5,.48],treppe:[.61,.51],eingang:[.54,.42]}[id];
+  const w=innerWidth,h=innerHeight,portrait=matchMedia('(orientation: portrait)').matches;
+  const scale=portrait?Math.min(w/1440,h/810):Math.max(w/1440,h/810);
+  root.style.setProperty('--room-arrival-origin',`${Math.round(w/2+(pane[0]-.5)*1440*scale)}px ${Math.round(h/2+(pane[1]-.5)*810*scale)}px`);
  }
  const failsafe=setTimeout(reveal,2600);
  window.addEventListener('yabis-room-ready',()=>{
