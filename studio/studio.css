@@ -47,16 +47,23 @@
 @media(orientation:portrait){.room-arrival--still::after{background-size:contain}}
 .room-arrival-ready::after{opacity:0}
 /* Ankunft im Raum: Die Kamera fliegt weiter durchs Fenster, der Raum setzt sich, danach blendet die Bedienung ein. */
-.room-arrival--still.room-arrival-ready::after{animation:room-arrival-zoom .62s cubic-bezier(.5,0,.75,.7) both,room-arrival-fade .42s .14s ease-out both;transition:none}
-@keyframes room-arrival-zoom{from{transform:scale(1)}to{transform:scale(2.4)}}
+/* Durchgehend vorwärts: Schon beim Laden fährt die Kamera langsam weiter (scale), nach dem Rendern beschleunigt sie ins Glas (transform).
+   Im Glas überdeckt ein warmes Licht den Blickwechsel, dahinter kommt der Raum ebenfalls vorwärts (wächst) ins Bild. */
+.room-arrival--still::after{animation:room-arrival-drift 1.8s cubic-bezier(.25,.6,.4,1) both}
+@keyframes room-arrival-drift{from{scale:1}to{scale:1.1}}
+.room-arrival--still.room-arrival-ready::after{animation:room-arrival-drift 1.8s cubic-bezier(.25,.6,.4,1) both,room-arrival-zoom .6s cubic-bezier(.55,0,.85,.45) both,room-arrival-fade .12s .42s linear both;transition:none}
+@keyframes room-arrival-zoom{from{transform:scale(1)}to{transform:scale(4.2)}}
 @keyframes room-arrival-fade{from{opacity:1}to{opacity:0}}
-.room-arrival .image-area{overflow:clip}
+.room-arrival--still::before{content:'';position:fixed;inset:0;z-index:101;pointer-events:none;opacity:0;background:radial-gradient(circle farthest-corner at var(--room-arrival-origin,50% 50%),#fffdf8 0,#fbf6ee 45%,#f1ebe1 100%)}
+.room-arrival--still.room-arrival-ready::before{animation:room-arrival-glare .95s linear both}
+@keyframes room-arrival-glare{0%,34%{opacity:0;animation-timing-function:cubic-bezier(.4,0,.7,1)}52%{opacity:1;animation-timing-function:cubic-bezier(.3,0,.3,1)}100%{opacity:0}}
 .room-arrival #stage{will-change:transform}
-.room-arrival-ready #stage{animation:room-arrival-settle .7s .08s cubic-bezier(.2,.7,.25,1) both}
-@keyframes room-arrival-settle{from{transform:scale(1.07)}to{transform:none}}
-.room-arrival-ready :is(.studio-header,.room-nav,.scene-heading,.scene-footer,.room-note,.controls){animation:room-arrival-ui .3s .34s ease-out both}
+.room-arrival--still.room-arrival-ready #stage{animation:room-arrival-forward .85s .4s cubic-bezier(.15,.6,.3,1) both}
+@keyframes room-arrival-forward{from{transform:scale(.93)}to{transform:none}}
+.room-arrival-ready:not(.room-arrival--still) #stage{animation:room-arrival-forward .7s cubic-bezier(.15,.6,.3,1) both}
+.room-arrival-ready :is(.studio-header,.room-nav,.scene-heading,.scene-footer,.room-note,.controls){animation:room-arrival-ui .35s .6s ease-out both}
 @keyframes room-arrival-ui{from{opacity:0}to{opacity:1}}
-@media(prefers-reduced-motion:reduce){.room-arrival-ready::after,.room-arrival--still.room-arrival-ready::after,.room-arrival-ready #stage,.room-arrival-ready :is(.studio-header,.room-nav,.scene-heading,.scene-footer,.room-note,.controls){animation:none;transition:none}}
+@media(prefers-reduced-motion:reduce){.room-arrival::before,.room-arrival::after,.room-arrival-ready #stage,.room-arrival-ready :is(.studio-header,.room-nav,.scene-heading,.scene-footer,.room-note,.controls){animation:none!important;transition:none}}
 /* Handy: Raumbild bleibt oben stehen, die Auswahl läuft darunter durch. Die Kombination zeigt das Bild selbst. */
 @media(max-width:767px) and (min-height:560px){
 .workspace{display:flex;flex-direction:column}
