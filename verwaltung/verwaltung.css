@@ -17,7 +17,7 @@ h1{font-size:clamp(26px,4vw,34px);line-height:1.15;font-weight:500;letter-spacin
 .anmelden{max-width:420px;margin:40px auto}
 label{display:grid;gap:6px;margin-top:16px;font-size:14px;font-weight:500}
 label>span{font-weight:400;color:var(--muted);font-size:13px}
-input:not([type=checkbox]):not([type=file]),select,textarea{width:100%;min-height:48px;padding:11px 13px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);font:inherit;font-size:17px}
+input:not([type=checkbox]):not([type=radio]):not([type=file]),select,textarea{width:100%;min-height:48px;padding:11px 13px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);font:inherit;font-size:17px}
 textarea{resize:vertical;line-height:1.5}
 fieldset{border:1px solid var(--line);border-radius:8px;margin:18px 0 0;padding:6px 16px 16px}
 legend{padding:0 6px;font-size:14px;font-weight:500}
@@ -32,11 +32,12 @@ legend{padding:0 6px;font-size:14px;font-weight:500}
 .meldung.ok{background:#e7f1e6;color:var(--ok);border:1px solid #bfd8bd}
 .meldung.fehler{background:#f7e4df;color:var(--fehler);border:1px solid #e6bdb3}
 .leiste{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px}
-.filter{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:0 14px;margin-bottom:8px}
+.filter{display:grid;grid-template-columns:2fr repeat(4,1fr);gap:0 14px;margin-bottom:8px}
 .filter label{margin-top:0}
 .liste{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
-.liste a{display:grid;grid-template-columns:64px minmax(0,1fr) auto auto;align-items:center;gap:16px;padding:10px 14px;background:var(--paper);border:1px solid var(--line);border-radius:8px;color:var(--ink);text-decoration:none}
-.liste a:hover{border-color:var(--accent)}
+.liste>li{display:grid;grid-template-columns:minmax(0,1fr) 250px;align-items:center;gap:0 14px;padding-right:14px;background:var(--paper);border:1px solid var(--line);border-radius:8px;scroll-margin-top:20px}
+.liste>li:hover,.liste>li:target{border-color:var(--accent)}
+.liste a{display:grid;grid-template-columns:64px minmax(0,1fr) auto auto;align-items:center;gap:16px;padding:10px 14px;color:var(--ink);text-decoration:none;min-width:0}
 .liste img,.ohne-bild{width:64px;height:64px;object-fit:cover;border-radius:6px;background:var(--accent-soft);display:block}
 .liste .name{font-size:16px;font-weight:500;min-width:0}
 .liste small{display:block;font-size:13px;font-weight:400;color:var(--muted)}
@@ -62,7 +63,32 @@ legend{padding:0 6px;font-size:14px;font-weight:500}
 .tabelle thead th{font-size:13px;font-weight:500;color:var(--muted)}
 .tabelle td input{min-width:110px}
 .protokoll td{font-size:14px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.schnell{display:flex;align-items:center;gap:8px;margin:0}
+.schnell-feld{margin:0;flex:1}
+.schnell-feld select{min-height:44px;font-size:15px;padding:8px 10px;border-width:2px}
+.verf-sofort select{border-color:#7fae84;background:#eef6ec}
+.verf-bestellung select{border-color:#d2a46a;background:#fbf1e3}
+.verf-anfrage select{border-color:var(--line)}
+.verf-nicht select{border-color:#c98f84;background:#f8e9e5}
+.knopf.klein{min-height:44px;padding:0 14px;font-size:14px;background:#fff}
+.js .schnell .knopf{display:none}
+.lieferzeit-info{grid-column:2;margin:-6px 0 10px;font-size:13px;color:var(--muted)}
+.verfuegbarkeit .wahl{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.wahl-feld{display:flex;align-items:flex-start;gap:10px;margin:0;padding:12px;border:2px solid var(--line);border-radius:8px;background:#fff;font-weight:400;cursor:pointer}
+.wahl-feld input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--accent);flex:none}
+.wahl-feld span{display:grid;gap:2px;font-size:13px;color:var(--muted)}
+.wahl-feld strong{font-size:16px;font-weight:500;color:var(--ink)}
+.wahl-sofort:has(input:checked){border-color:#7fae84;background:#eef6ec}
+.wahl-bestellung:has(input:checked){border-color:#d2a46a;background:#fbf1e3}
+.wahl-anfrage:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.wahl-nicht:has(input:checked){border-color:#c98f84;background:#f8e9e5}
+.verfuegbarkeit .lieferzeit{margin-top:12px}
 @media(max-width:760px){
+ .liste>li{grid-template-columns:1fr;padding:0 0 12px}
+ .schnell{padding:0 14px}
+ .lieferzeit-info{grid-column:1;margin:6px 14px 0}
+ .verfuegbarkeit .wahl{grid-template-columns:1fr}
  .filter{grid-template-columns:1fr 1fr;gap:0 10px}
  .filter label:first-child{grid-column:1 / -1}
  .filter label{margin-top:10px}

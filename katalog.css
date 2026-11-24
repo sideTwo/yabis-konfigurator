@@ -18,7 +18,7 @@
 .filter-top .search input{width:min(100%,310px);min-width:0;min-height:44px;font-size:14px;background:var(--card,var(--paper))}
 .filter-top .search{width:min(100%,310px)}
 .filter-top .chips button{min-height:44px;font-size:14px}
-.filter-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 14px}
+.filter-options{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px 14px}
 .filter-options label{min-width:0;margin:0;color:var(--muted);font-size:12px}
 .filter-options select{display:block;width:100%;min-height:44px;margin-top:4px;padding:8px 9px;border:1px solid var(--line);border-radius:5px;background:var(--card,var(--paper));color:var(--ink);font:inherit;font-size:14px}
 .filter-summary{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -36,3 +36,12 @@
 .product-dialog-layout .detail-description{margin:18px 0 0;font-size:15px;line-height:1.65;color:var(--ink)}
 .product-dialog-layout .detail-description:empty{display:none}
 .product-dialog-layout #detail-name+.detail-description{margin:14px 0 12px}
+/* Verfügbarkeit aus der Verwaltung: Punkt + Text, Farbe nur als Zusatz */
+.availability{display:flex;align-items:center;gap:7px;margin:2px 0 0;font-size:12px;line-height:1.4;color:var(--ink)}
+.availability::before{content:"";width:8px;height:8px;border-radius:50%;flex:none;background:#b9a594}
+.availability--sofort{color:#2f6b3a}.availability--sofort::before{background:#3f8f4c}
+.availability--bestellung{color:#7a4f12}.availability--bestellung::before{background:#d08a2e}
+.availability--anfrage{color:var(--muted)}
+.availability--nicht{color:#8f3424}.availability--nicht::before{background:#c0533e}
+.product-card p.availability{margin:0 0 2px;font-size:12px}
+#detail-availability{margin:-4px 0 14px;font-size:13px}

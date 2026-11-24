@@ -12,6 +12,10 @@
   const formatLabel=product=>product.formats.length?product.formats.map(format=>format.join(' × ')+' cm').join(' / '):'Format auf Anfrage';
   const priceUnit=product=>product.catalogUnit==='m2'?'m²':product.catalogUnit||'m²';
   const priceLabel=product=>Number.isInteger(product.catalogPriceCents)?money(product.catalogPriceCents)+' / '+priceUnit(product):'Preis auf Anfrage';
+  // Verfügbarkeit aus der Verwaltung. Ohne Angabe gilt „auf Anfrage“, nie „sofort“.
+  const AVAILABILITY={sofort:'Sofort verfügbar',bestellung:'Auf Bestellung',anfrage:'Verfügbarkeit auf Anfrage',nicht:'Zurzeit nicht lieferbar'};
+  const availability=product=>Object.hasOwn(AVAILABILITY,product?.availability)?product.availability:'anfrage';
+  const availabilityLabel=product=>{const key=availability(product);return AVAILABILITY[key]+(key==='bestellung'&&product.deliveryTime?' · '+product.deliveryTime:'');};
   const money=cents=>(cents/100).toLocaleString('de-DE',{style:'currency',currency:'EUR'});
   // Formatpreise laut Yabis (WhatsApp 23./24.11.2026), Euro pro m²:
   // 120 × 120 cm poliert 52,90, matt und teilpoliert 47,90 · 60 × 120 cm poliert 44,90, matt und teilpoliert 39,90.
@@ -67,8 +71,9 @@
       quantity.pieces!==null?'Rechnerisch '+quantity.pieces+' '+(product?.kind==='Vinyl'||product?.kind==='Holzoptik'?'Stück':'Fliesen')+', Verpackungseinheiten bitte berücksichtigen.':'Verpackung und Stückzahl bitte anbieten.',
       'Verlegung: '+(position.verband||'Nach Absprache')+(position.fuge?'; Fuge: '+position.fuge:''),
       Number.isInteger(product?.catalogPriceCents)?'Richtpreis'+(priceCentsFor(product,position.format)!==product.catalogPriceCents?' für '+position.format.join(' × ')+' cm':'')+': '+priceLabelFor(product,position.format)+' inkl. MwSt.'+(product.catalogUnit?'':' (m² als Richtwert, Preiseinheit im Angebot bestätigen)')+(product.catalogPriceDate?' · Stand '+product.catalogPriceDate:'')+'.':'Preis auf Anfrage.',
+      product?'Verfügbarkeit laut Shop: '+availabilityLabel(product):'',
       position.quelle?'Yabis-Katalog: '+position.quelle:''
     ].filter(Boolean).join('\n');}).join('\n\n');}
   function download(text,name){const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);}
-  window.YabisShop={money,priceLabel,priceLabelFor,priceCentsFor,formatLabel,estimateAssumingM2,products,find,de,calculate,validArea,validWaste,validFormat,getCart,saveCart,item,add,lines,download,key,heightLabel};
+  window.YabisShop={money,availability,availabilityLabel,priceLabel,priceLabelFor,priceCentsFor,formatLabel,estimateAssumingM2,products,find,de,calculate,validArea,validWaste,validFormat,getCart,saveCart,item,add,lines,download,key,heightLabel};
 })();

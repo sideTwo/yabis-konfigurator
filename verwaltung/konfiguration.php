@@ -26,3 +26,11 @@ const ARTEN = ['Fliesen', 'Marmoroptik', 'Vinyl', 'Holzoptik'];
 const OBERFLAECHEN = ['Matt', 'Poliert', 'Lappato (Teilpoliert)', 'Seidenmatt', ''];   // '' = keine Angabe
 const STANDARDFORMATE = ['60x120', '120x120', '60x60'];
 const FORMATPREIS_OBERFLAECHEN = ['Poliert', 'Matt', 'Lappato (Teilpoliert)', 'Seidenmatt'];
+
+// Verfügbarkeit: Schlüssel => [Text im Shop, Erklärung für die Verwaltung]. Neu und unbekannt = „anfrage“.
+const VERFUEGBARKEIT = [
+    'sofort'     => ['Sofort verfügbar', 'Liegt da oder kommt sicher kurzfristig'],
+    'bestellung' => ['Auf Bestellung', 'Muss erst bestellt werden, Lieferzeit optional angeben'],
+    'anfrage'    => ['Verfügbarkeit auf Anfrage', 'Unklar, Yabis prüft bei Anfrage'],
+    'nicht'      => ['Zurzeit nicht lieferbar', 'Gerade nicht zu bekommen, bleibt aber im Shop sichtbar'],
+];

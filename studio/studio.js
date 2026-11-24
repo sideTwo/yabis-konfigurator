@@ -132,6 +132,7 @@
    sample.append(sampleImage(p,C.choiceName(p)));
    const text=document.createElement('div'),title=document.createElement('strong');
    title.textContent=C.choiceName(p);text.append(title);
+   if(S.availabilityLabel){const avail=document.createElement('small');avail.className='source-availability availability--'+S.availability(p);avail.textContent=S.availabilityLabel(p);text.append(avail);}
    block.append(sample,text);$('product-sources').append(block);
   }
  }

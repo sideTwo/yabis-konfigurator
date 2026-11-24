@@ -19,7 +19,7 @@ const catalog=S.products.filter(product=>!product.hidden).map(product=>{
   const format=product.formats.map(formatKey);
   const oberflaeche=/lappato|teilpoliert/i.test(product.finish)?'Teilpoliert':product.finish;
   const type=product.kind==='Vinyl'?'Vinyl':'Fliesen';
-  return {product,type,facets:{optik,oberflaeche:oberflaeche?[oberflaeche]:[],format},
+  return {product,type,facets:{optik,oberflaeche:oberflaeche?[oberflaeche]:[],format,verfuegbarkeit:[S.availability(product)]},
     search:searchKey([decor,type,product.finish,S.formatLabel(product),...format,...optik].filter(Boolean).join(' '))};
 });
 const alphabet=new Intl.Collator('de',{numeric:true,sensitivity:'base'});
@@ -69,6 +69,7 @@ function openProduct(product){
   $('#detail-brand').textContent=['Yabis-Katalog',product.kind].filter(Boolean).join(' · ');
   $('#detail-description').textContent=product.description||'';
   $('#detail-finish').textContent=[product.finish,S.formatLabel(product)].filter(Boolean).join(' · ')+' · '+S.priceLabel(product)+(Number.isInteger(product.catalogPriceCents)?' inkl. MwSt.':'');
+  const availability=$('#detail-availability');availability.className='availability availability--'+S.availability(product);availability.textContent=S.availabilityLabel(product);
   renderGallery(product);
   const studioLink=window.YabisStudio.shoppingDestination(product.id);
   $('#detail-studio').hidden=!studioLink;
@@ -99,7 +100,7 @@ function renderProducts(){
     const meta=el('div',null,'product-meta');meta.append(el('span','Yabis-Katalog'),el('span',S.formatLabel(product)));
     const button=el('button',null,'button');button.append(el('span','Menge & Angebot'),el('span','+'));button.setAttribute('aria-label',product.name+' anfragen');button.onclick=()=>openProduct(product);
     const priceNote=Number.isInteger(product.catalogPriceCents)?'Katalogrichtpreis · inkl. MwSt.':product.catalogCurrency==='ZAR'?'Währung im Katalog unklar':'';
-    card.append(meta,el('h3',product.name),el('p',product.finish||''),el('strong',S.priceLabel(product),'product-price'));
+    card.append(meta,el('h3',product.name),el('p',product.finish||''),el('p',S.availabilityLabel(product),'availability availability--'+S.availability(product)),el('strong',S.priceLabel(product),'product-price'));
     if(priceNote)card.append(el('p',priceNote,'price-note'));
     card.append(button);
     cards.append(card);

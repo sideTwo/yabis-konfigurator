@@ -16,7 +16,7 @@ if ($id !== '') {
 $neu = $a === null;
 $fehler = '';
 $werte = $a ?? ['name' => '', 'art' => 'Fliesen', 'oberflaeche' => '', 'beschreibung' => '', 'formate' => '', 'preis_cent' => null,
-                'waehrung' => 'EUR', 'sichtbar' => 1, 'foto' => '', 'ki_bild' => '', 'intern_hersteller' => '', 'preis_datum' => ''];
+                'waehrung' => 'EUR', 'sichtbar' => 1, 'foto' => '', 'ki_bild' => '', 'intern_hersteller' => '', 'preis_datum' => '', 'verfuegbarkeit' => 'anfrage', 'lieferzeit' => ''];
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
     token_pruefen();
@@ -40,6 +40,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
         $beschreibung = trim(str_replace("\r", '', (string)($_POST['beschreibung'] ?? '')));
         if (mb_strlen($beschreibung) > 2000) { throw new InvalidArgumentException('Die Beschreibung ist länger als 2000 Zeichen.'); }
         $sichtbar = isset($_POST['sichtbar']) ? 1 : 0;
+        [$verfuegbarkeit, $lieferzeit] = verfuegbarkeit_aus_eingabe((string)($_POST['verfuegbarkeit'] ?? ''), (string)($_POST['lieferzeit'] ?? ''));
         $hersteller = mb_substr(trim((string)($_POST['intern_hersteller'] ?? '')), 0, 120);
 
         $zielId = $neu ? neue_id($name) : $id;
@@ -52,10 +53,14 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
             'preis_cent' => $preis, 'waehrung' => $preisGeaendert && $preis !== null ? 'EUR' : $werte['waehrung'],
             'preis_datum' => $preisGeaendert ? date('d.m.Y') : $werte['preis_datum'],
             'sichtbar' => $sichtbar, 'foto' => $foto, 'intern_hersteller' => $hersteller,
+            'verfuegbarkeit' => $verfuegbarkeit, 'lieferzeit' => $lieferzeit,
             'geaendert_am' => jetzt(), 'geaendert_von' => $benutzer,
         ];
 
         $aenderungen = [];
+        if (!$neu && (($a['verfuegbarkeit'] ?? '') !== $verfuegbarkeit || ($a['lieferzeit'] ?? '') !== $lieferzeit)) {
+            $aenderungen[] = 'Verfügbarkeit: ' . verfuegbarkeit_text((string)$a['verfuegbarkeit'], (string)$a['lieferzeit']) . ' → ' . verfuegbarkeit_text($verfuegbarkeit, $lieferzeit);
+        }
         foreach (['name' => 'Name', 'art' => 'Art', 'oberflaeche' => 'Oberfläche', 'formate' => 'Formate', 'preis_cent' => 'Preis', 'sichtbar' => 'Sichtbar', 'foto' => 'Foto', 'beschreibung' => 'Beschreibung'] as $k => $label) {
             $alt = $a[$k] ?? null; $neuWert = $daten[$k];
             if ((string)$alt !== (string)$neuWert) {
@@ -67,8 +72,8 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
         sicherung();
         if ($neu) {
             $max = (int)db()->query('SELECT COALESCE(MAX(sortierung), 0) FROM artikel')->fetchColumn();
-            db()->prepare('INSERT INTO artikel (id, name, art, oberflaeche, beschreibung, formate, preis_cent, waehrung, preis_datum, sichtbar, sortierung, foto, intern_hersteller, quelle, geaendert_am, geaendert_von)
-                VALUES (:id, :name, :art, :oberflaeche, :beschreibung, :formate, :preis_cent, :waehrung, :preis_datum, :sichtbar, :sortierung, :foto, :intern_hersteller, \'\', :geaendert_am, :geaendert_von)')
+            db()->prepare('INSERT INTO artikel (id, name, art, oberflaeche, beschreibung, formate, preis_cent, waehrung, preis_datum, sichtbar, sortierung, foto, intern_hersteller, verfuegbarkeit, lieferzeit, quelle, geaendert_am, geaendert_von)
+                VALUES (:id, :name, :art, :oberflaeche, :beschreibung, :formate, :preis_cent, :waehrung, :preis_datum, :sichtbar, :sortierung, :foto, :intern_hersteller, :verfuegbarkeit, :lieferzeit, \'\', :geaendert_am, :geaendert_von)')
                 ->execute($daten + ['id' => $zielId, 'sortierung' => $max + 1]);
             protokoll($benutzer, $zielId, 'Artikel angelegt', $name);
         } else {
@@ -88,6 +93,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
             'name' => (string)($_POST['name'] ?? ''), 'art' => (string)($_POST['art'] ?? ''), 'oberflaeche' => (string)($_POST['oberflaeche'] ?? ''),
             'beschreibung' => (string)($_POST['beschreibung'] ?? ''), 'sichtbar' => isset($_POST['sichtbar']) ? 1 : 0,
             'intern_hersteller' => (string)($_POST['intern_hersteller'] ?? ''),
+            'verfuegbarkeit' => (string)($_POST['verfuegbarkeit'] ?? 'anfrage'), 'lieferzeit' => (string)($_POST['lieferzeit'] ?? ''),
         ]);
         $preisEingabe = (string)($_POST['preis'] ?? '');
     }
@@ -104,6 +110,11 @@ if ($fehler) { echo '<p class="meldung fehler" role="alert">' . h($fehler) . '</
 echo '<form class="artikel" method="post" enctype="multipart/form-data">' . token_feld();
 echo '<div class="spalten"><div class="karte">';
 echo '<label>Name<input name="name" value="' . h($werte['name']) . '" required maxlength="120"></label>';
+echo '<fieldset class="verfuegbarkeit"><legend>Verfügbarkeit</legend><div class="wahl">';
+foreach (VERFUEGBARKEIT as $k => [$text, $erklaerung]) {
+    echo '<label class="wahl-feld wahl-' . $k . '"><input type="radio" name="verfuegbarkeit" value="' . $k . '"' . ($k === ($werte['verfuegbarkeit'] ?: 'anfrage') ? ' checked' : '') . '><span><strong>' . h($text) . '</strong>' . h($erklaerung) . '</span></label>';
+}
+echo '</div><label class="lieferzeit">Lieferzeit <span>optional, nur bei „Auf Bestellung“, z. B. ca. 2 Wochen</span><input name="lieferzeit" maxlength="40" value="' . h((string)$werte['lieferzeit']) . '" placeholder="ca. 2 Wochen"></label></fieldset>';
 echo '<div class="zwei"><label>Art<select name="art">';
 $arten = in_array($werte['art'], ARTEN, true) ? ARTEN : array_merge([$werte['art']], ARTEN);
 foreach ($arten as $o) { echo '<option' . ($o === $werte['art'] ? ' selected' : '') . '>' . h($o) . '</option>'; }

@@ -1,4 +1,4 @@
-// Automatisch erzeugt von /verwaltung am 24.11.2026 09:36. Nicht von Hand ändern.
+// Automatisch erzeugt von /verwaltung am 24.11.2026 16:46. Nicht von Hand ändern.
 window.YabisCatalog = [
     {
         "id": "onice-supreme-marfil-pul",
@@ -18,6 +18,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/onice-supreme-marfil-pul.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/onice-supreme-marfil-pul.webp",
         "manufacturerImage": {
@@ -43,6 +44,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/taj-mahal-beige.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/taj-mahal-beige.webp",
         "manufacturerImage": {
@@ -68,6 +70,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/tau-mainstone.webp"
     },
     {
@@ -88,6 +91,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/byblos-gris.webp"
     },
     {
@@ -108,6 +112,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/bercy-terra.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/bercy-terra.webp",
         "manufacturerImage": {
@@ -133,6 +138,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/habitat-perla.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/habitat-perla.webp",
         "manufacturerImage": {
@@ -158,6 +164,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/alcala-blanco.webp"
     },
     {
@@ -178,6 +185,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/nordic-slate-pearl.webp"
     },
     {
@@ -198,6 +206,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/bianco-mare.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/bianco-mare.webp",
         "manufacturerImage": {
@@ -223,6 +232,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/concept-pearl.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/concept-pearl.webp",
         "manufacturerImage": {
@@ -248,6 +258,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/aeterna-crosscut.webp"
     },
     {
@@ -268,6 +279,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/sense-pearl.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/sense-pearl.webp",
         "manufacturerImage": {
@@ -293,6 +305,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/saigon-white.webp"
     },
     {
@@ -313,6 +326,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/caleternal-white.webp"
     },
     {
@@ -333,6 +347,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/sena-cream.webp"
     },
     {
@@ -348,6 +363,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/seine-kingsize-plak.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/seine-kingsize-plak.webp",
         "manufacturerImage": {
@@ -368,6 +384,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/elba.webp"
     },
     {
@@ -383,6 +400,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fischgrat-7230.webp"
     },
     {
@@ -398,6 +416,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/alcala-beige.webp"
     },
     {
@@ -413,6 +432,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/terra-beige.webp"
     },
     {
@@ -428,6 +448,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-6501.webp"
     },
     {
@@ -443,6 +464,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/nijf-visgraat.webp"
     },
     {
@@ -463,6 +485,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/halley-silver.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/halley-silver.webp",
         "manufacturerImage": {
@@ -483,6 +506,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/denver-khaki.webp"
     },
     {
@@ -498,6 +522,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/cavallina-marfil.webp"
     },
     {
@@ -513,6 +538,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/halley-light.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/halley-light.webp",
         "manufacturerImage": {
@@ -533,6 +559,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/softstone-brown.webp"
     },
     {
@@ -548,6 +575,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/natura-beige.webp"
     },
     {
@@ -563,6 +591,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/max-travatino-beige.webp"
     },
     {
@@ -578,6 +607,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/corfu.webp"
     },
     {
@@ -593,6 +623,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/motley-reading.webp"
     },
     {
@@ -613,6 +644,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/halley-white.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/halley-white.webp",
         "manufacturerImage": {
@@ -633,6 +665,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-5600.webp"
     },
     {
@@ -648,6 +681,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/velvet-c-beige.webp"
     },
     {
@@ -663,6 +697,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/vision-bone.webp"
     },
     {
@@ -678,6 +713,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/massa-anthrazit-a4.webp"
     },
     {
@@ -693,6 +729,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/habitat-gris.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/habitat-gris.webp",
         "manufacturerImage": {
@@ -713,6 +750,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/motley-liverpool.webp"
     },
     {
@@ -728,6 +766,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/puccini-blanco.webp"
     },
     {
@@ -743,6 +782,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/bergen-blanco.webp"
     },
     {
@@ -758,6 +798,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/marble-visage-weiss.webp"
     },
     {
@@ -773,6 +814,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-5006.webp"
     },
     {
@@ -788,6 +830,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/bergamo-gris.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/bergamo-gris.webp",
         "manufacturerImage": {
@@ -808,6 +851,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/nadelholz-4203.webp"
     },
     {
@@ -823,6 +867,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/tacoma-white.webp"
     },
     {
@@ -838,6 +883,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-ideal.webp"
     },
     {
@@ -858,6 +904,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/etna-gris.webp"
     },
     {
@@ -873,6 +920,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/concrete-gris.webp"
     },
     {
@@ -888,6 +936,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/serena-veincut-bone-c2.webp"
     },
     {
@@ -903,6 +952,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fiordi-bosco-sand.webp"
     },
     {
@@ -918,6 +968,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-8300.webp"
     },
     {
@@ -933,6 +984,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/alcala-gris.webp"
     },
     {
@@ -948,6 +1000,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/dec-america-beige.webp"
     },
     {
@@ -963,6 +1016,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/riviere-rigato-gris-c2.webp"
     },
     {
@@ -978,6 +1032,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/habitat-marfil.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/habitat-marfil.webp",
         "manufacturerImage": {
@@ -998,6 +1053,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/blending-gris.webp"
     },
     {
@@ -1013,6 +1069,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/soul-white-matt.webp"
     },
     {
@@ -1028,6 +1085,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/motley.webp"
     },
     {
@@ -1043,6 +1101,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/crepuscolo-pearl.webp"
     },
     {
@@ -1058,6 +1117,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/zahara-whisper.webp"
     },
     {
@@ -1078,6 +1138,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/montiver-grey.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/montiver-grey.webp",
         "manufacturerImage": {
@@ -1098,6 +1159,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/kos.webp"
     },
     {
@@ -1113,6 +1175,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/taj-mahal-beige-2.webp"
     },
     {
@@ -1128,6 +1191,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/vita-beige.webp"
     },
     {
@@ -1143,6 +1207,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/toscano-grey-digital-soft.webp"
     },
     {
@@ -1163,6 +1228,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/wonder-gris.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/wonder-gris.webp",
         "manufacturerImage": {
@@ -1183,6 +1249,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/dignity-beige.webp"
     },
     {
@@ -1203,6 +1270,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/wonder-base.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/wonder-base.webp",
         "manufacturerImage": {
@@ -1223,6 +1291,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-7240.webp"
     },
     {
@@ -1238,6 +1307,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fischgrat-8140.webp"
     },
     {
@@ -1253,6 +1323,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/materia-beige.webp"
     },
     {
@@ -1268,6 +1339,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fliese-1830.webp"
     },
     {
@@ -1283,6 +1355,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/dolce-gris.webp"
     },
     {
@@ -1298,6 +1371,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/silk-blanco.webp"
     },
     {
@@ -1318,6 +1392,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/etna-blanco.webp"
     },
     {
@@ -1338,6 +1413,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/montiver-mud.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/montiver-mud.webp",
         "manufacturerImage": {
@@ -1358,6 +1434,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/novella-dark-green.webp"
     },
     {
@@ -1373,6 +1450,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/ice-white.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/ice-white.webp",
         "manufacturerImage": {
@@ -1393,6 +1471,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/blending-marfil.webp"
     },
     {
@@ -1408,6 +1487,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fliese-1910.webp"
     },
     {
@@ -1423,6 +1503,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/ganges-visgraat.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/ganges-visgraat.webp",
         "manufacturerImage": {
@@ -1443,6 +1524,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fischgrat-4530.webp"
     },
     {
@@ -1458,6 +1540,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/sena-blanco.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/sena-blanco.webp",
         "manufacturerImage": {
@@ -1478,6 +1561,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/garfiet.webp"
     },
     {
@@ -1498,6 +1582,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/soul-light.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/soul-light.webp",
         "manufacturerImage": {
@@ -1523,6 +1608,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/proyeccion-anthrazit.webp"
     },
     {
@@ -1538,6 +1624,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/capitol-arena.webp"
     },
     {
@@ -1553,6 +1640,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/materia-blanco-digital-soft.webp"
     },
     {
@@ -1568,6 +1656,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/dolce-beige.webp"
     },
     {
@@ -1583,6 +1672,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-mud.webp"
     },
     {
@@ -1598,6 +1688,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fischgrat-7810.webp"
     },
     {
@@ -1618,6 +1709,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/halley-mud.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/halley-mud.webp",
         "manufacturerImage": {
@@ -1638,6 +1730,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/almaden.webp"
     },
     {
@@ -1653,6 +1746,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eternal-white.webp"
     },
     {
@@ -1668,6 +1762,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/restone-indian.webp"
     },
     {
@@ -1683,6 +1778,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/nadelholz-4540.webp"
     },
     {
@@ -1698,6 +1794,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/avalon-rock-arena-c29.webp"
     },
     {
@@ -1713,6 +1810,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/concrete-anthrazit.webp"
     },
     {
@@ -1728,6 +1826,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fichte-6885.webp"
     },
     {
@@ -1743,6 +1842,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/dolomiten.webp"
     },
     {
@@ -1758,6 +1858,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/luna-coolgrey.webp"
     },
     {
@@ -1773,6 +1874,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/natura-beige-2.webp"
     },
     {
@@ -1788,6 +1890,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/terrazzo-rice.webp"
     },
     {
@@ -1808,6 +1911,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/teide-anthrazit.webp"
     },
     {
@@ -1823,6 +1927,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eternal-pearl.webp"
     },
     {
@@ -1838,6 +1943,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/concrete-beige.webp"
     },
     {
@@ -1853,6 +1959,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/concept-blue.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/concept-blue.webp",
         "manufacturerImage": {
@@ -1873,6 +1980,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/materia-gris-digital-soft.webp"
     },
     {
@@ -1888,6 +1996,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/marshall-desert.webp"
     },
     {
@@ -1903,6 +2012,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/crepuscolo-cream.webp"
     },
     {
@@ -1918,6 +2028,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/lauren-negro-luke.webp"
     },
     {
@@ -1938,6 +2049,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/luxe-blue.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/luxe-blue.webp",
         "manufacturerImage": {
@@ -1958,6 +2070,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/java.webp"
     },
     {
@@ -1973,6 +2086,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-6870.webp"
     },
     {
@@ -1988,6 +2102,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/leo-beige.webp"
     },
     {
@@ -2003,6 +2118,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-chamois.webp"
     },
     {
@@ -2023,6 +2139,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fiordi-bosco-pearla.webp"
     },
     {
@@ -2038,6 +2155,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/sli-cementi-grey-matt.webp"
     },
     {
@@ -2053,6 +2171,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/donau-visgraat.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/donau-visgraat.webp",
         "manufacturerImage": {
@@ -2073,6 +2192,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/byblos-arena.webp"
     },
     {
@@ -2088,6 +2208,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/rockwell-marfil.webp"
     },
     {
@@ -2103,6 +2224,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/riviere-rigato-beige.webp"
     },
     {
@@ -2118,6 +2240,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-sugar.webp"
     },
     {
@@ -2133,6 +2256,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/concept-grey.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/concept-grey.webp",
         "manufacturerImage": {
@@ -2158,6 +2282,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/halley-taupe.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/halley-taupe.webp",
         "manufacturerImage": {
@@ -2178,6 +2303,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/concept-white.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/concept-white.webp",
         "manufacturerImage": {
@@ -2198,6 +2324,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/amazone-visgraat.webp"
     },
     {
@@ -2218,6 +2345,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/isea-pearl.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/isea-pearl.webp",
         "manufacturerImage": {
@@ -2243,6 +2371,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/sarockwell-beige.webp"
     },
     {
@@ -2258,6 +2387,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/amoer.webp"
     },
     {
@@ -2273,6 +2403,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-8150.webp"
     },
     {
@@ -2288,6 +2419,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/natura-negro.webp"
     },
     {
@@ -2303,6 +2435,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-7820.webp"
     },
     {
@@ -2318,6 +2451,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/velvet-c-beige-2.webp"
     },
     {
@@ -2333,6 +2467,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/simply-beton-ivory.webp"
     },
     {
@@ -2353,6 +2488,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/isea-sand.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/isea-sand.webp",
         "manufacturerImage": {
@@ -2373,6 +2509,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/denver-ash.webp"
     },
     {
@@ -2388,6 +2525,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/softstone-ivory.webp"
     },
     {
@@ -2403,6 +2541,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/turin-beige.webp"
     },
     {
@@ -2418,6 +2557,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/zurich-blanco.webp"
     },
     {
@@ -2438,6 +2578,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/etna-marengo.webp"
     },
     {
@@ -2453,6 +2594,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/velvet-c-terra.webp"
     },
     {
@@ -2468,6 +2610,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/geo-grey.webp"
     },
     {
@@ -2483,6 +2626,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/linues-natura-blanco.webp"
     },
     {
@@ -2503,6 +2647,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/soul-base.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/soul-base.webp",
         "manufacturerImage": {
@@ -2523,6 +2668,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/aeterna-avorio.webp"
     },
     {
@@ -2538,6 +2684,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/linues-leo-blanco.webp"
     },
     {
@@ -2553,6 +2700,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-6810.webp"
     },
     {
@@ -2568,6 +2716,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/carmarque-marron.webp"
     },
     {
@@ -2583,6 +2732,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/velvet-c-blanco.webp"
     },
     {
@@ -2598,6 +2748,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/bergen-negro.webp"
     },
     {
@@ -2618,6 +2769,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/halley-argent.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/halley-argent.webp",
         "manufacturerImage": {
@@ -2638,6 +2790,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/blending-graphit.webp"
     },
     {
@@ -2653,6 +2806,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/dec-leo-blanco.webp"
     },
     {
@@ -2668,6 +2822,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/leisteen.webp"
     },
     {
@@ -2683,6 +2838,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/blending-blanco.webp"
     },
     {
@@ -2698,6 +2854,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/vita-gris.webp"
     },
     {
@@ -2713,6 +2870,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/vision-taupe-matt.webp"
     },
     {
@@ -2728,6 +2886,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/nordic-slate-blue.webp"
     },
     {
@@ -2743,6 +2902,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/origins-white.webp"
     },
     {
@@ -2758,6 +2918,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-8340.webp"
     },
     {
@@ -2773,6 +2934,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/stonehill-anthrazit.webp"
     },
     {
@@ -2788,6 +2950,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/sense-anthrazit.webp"
     },
     {
@@ -2803,6 +2966,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/tebas-pur-blanco.webp"
     },
     {
@@ -2818,6 +2982,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/amazone.webp"
     },
     {
@@ -2833,6 +2998,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/calcatta-mate.webp"
     },
     {
@@ -2853,6 +3019,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/mazzerine-ash.webp"
     },
     {
@@ -2873,6 +3040,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/origins-beige.webp"
     },
     {
@@ -2888,6 +3056,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/kreta.webp"
     },
     {
@@ -2903,6 +3072,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/concept-anthrazit.webp"
     },
     {
@@ -2918,6 +3088,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/southwellvein-bone.webp"
     },
     {
@@ -2933,6 +3104,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/stonehill-light.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/stonehill-light.webp",
         "manufacturerImage": {
@@ -2953,6 +3125,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/motley-altamont.webp"
     },
     {
@@ -2968,6 +3141,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/origins-graphit.webp"
     },
     {
@@ -2983,6 +3157,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fliese-1810.webp"
     },
     {
@@ -2998,6 +3173,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/basat.webp"
     },
     {
@@ -3013,6 +3189,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/ronda-blanco.webp"
     },
     {
@@ -3028,6 +3205,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/puccini-blanco-2.webp"
     },
     {
@@ -3043,6 +3221,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-nebula.webp"
     },
     {
@@ -3058,6 +3237,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/motley-glastonbury.webp"
     },
     {
@@ -3073,6 +3253,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/quantz-crema.webp"
     },
     {
@@ -3088,6 +3269,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/markthal-beige.webp"
     },
     {
@@ -3103,6 +3285,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/freedom-cream.webp"
     },
     {
@@ -3118,6 +3301,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/camargue-gris.webp"
     },
     {
@@ -3133,6 +3317,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/velvet-c-blanco-2.webp"
     },
     {
@@ -3148,6 +3333,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fiji.webp"
     },
     {
@@ -3163,6 +3349,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/lombarda-massima-alpina.webp"
     },
     {
@@ -3178,6 +3365,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/southwellveine-white.webp"
     },
     {
@@ -3193,6 +3381,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/lissel-visgraat.webp"
     },
     {
@@ -3208,6 +3397,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/pietra-sand.webp"
     },
     {
@@ -3223,6 +3413,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/terrazzo-carribean.webp"
     },
     {
@@ -3238,6 +3429,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/kasbah-gris.webp"
     },
     {
@@ -3253,6 +3445,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/pune-blanco.webp"
     },
     {
@@ -3268,6 +3461,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/my-home-beige.webp"
     },
     {
@@ -3283,6 +3477,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/serena-veincut-moka-c2.webp"
     },
     {
@@ -3298,6 +3493,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/calcatta-gold.webp"
     },
     {
@@ -3313,6 +3509,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/stonehill-pearl.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/stonehill-pearl.webp",
         "manufacturerImage": {
@@ -3338,6 +3535,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/bercy-salvia.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/bercy-salvia.webp",
         "manufacturerImage": {
@@ -3363,6 +3561,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/bercy-grigio.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/bercy-grigio.webp",
         "manufacturerImage": {
@@ -3388,6 +3587,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/bianco-siberia-greige.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/bianco-siberia-greige.webp",
         "manufacturerImage": {
@@ -3408,6 +3608,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/aeterna-blanco.webp"
     },
     {
@@ -3423,6 +3624,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/omega-marfil.webp"
     },
     {
@@ -3438,6 +3640,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/aeterna-avorio-2.webp"
     },
     {
@@ -3453,6 +3656,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/tebas-pur-gris.webp"
     },
     {
@@ -3468,6 +3672,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/origins-grey.webp"
     },
     {
@@ -3483,6 +3688,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/clothy-perla.webp"
     },
     {
@@ -3503,6 +3709,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fiordi-bosco-sand-2.webp"
     },
     {
@@ -3518,6 +3725,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/isea-white.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/isea-white.webp",
         "manufacturerImage": {
@@ -3538,6 +3746,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/natura-blanco.webp"
     },
     {
@@ -3553,6 +3762,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/massa-ivory.webp"
     },
     {
@@ -3568,6 +3778,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/bergen-blanco-2.webp"
     },
     {
@@ -3583,6 +3794,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/ronda-beige.webp"
     },
     {
@@ -3598,6 +3810,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/velvet-c-gris.webp"
     },
     {
@@ -3613,6 +3826,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/veltimo-ivory.webp"
     },
     {
@@ -3628,6 +3842,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/luna-offwhite.webp"
     },
     {
@@ -3643,6 +3858,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/unes-bergen-blanco.webp"
     },
     {
@@ -3658,6 +3874,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/soul-grey.webp"
     },
     {
@@ -3673,6 +3890,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/linues-bergen-blanco.webp"
     },
     {
@@ -3688,6 +3906,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/massa-anthrazit.webp"
     },
     {
@@ -3703,6 +3922,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/royal-gold.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/royal-gold.webp",
         "manufacturerImage": {
@@ -3723,6 +3943,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/denver-grey.webp"
     },
     {
@@ -3738,6 +3959,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/freedom-white.webp"
     },
     {
@@ -3753,6 +3975,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-7220.webp"
     },
     {
@@ -3773,6 +3996,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/soul-cement.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/soul-cement.webp",
         "manufacturerImage": {
@@ -3793,6 +4017,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/denia-marron.webp"
     },
     {
@@ -3813,6 +4038,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/wonder-mud.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/wonder-mud.webp",
         "manufacturerImage": {
@@ -3833,6 +4059,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/dignity-grey.webp"
     },
     {
@@ -3853,6 +4080,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/etna-silk-gris.webp"
     },
     {
@@ -3868,6 +4096,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/kaukasus.webp"
     },
     {
@@ -3883,6 +4112,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fischgrat-1920.webp"
     },
     {
@@ -3898,6 +4128,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-7840.webp"
     },
     {
@@ -3913,6 +4144,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/leo-blanco.webp"
     },
     {
@@ -3928,6 +4160,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/materia-gris.webp"
     },
     {
@@ -3943,6 +4176,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/marble-dolomita.webp"
     },
     {
@@ -3958,6 +4192,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/linues-turin-beige.webp"
     },
     {
@@ -3973,6 +4208,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-slight.webp"
     },
     {
@@ -3988,6 +4224,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/bergen-negro-2.webp"
     },
     {
@@ -4003,6 +4240,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/kwarts.webp"
     },
     {
@@ -4018,6 +4256,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/massa-grigio.webp"
     },
     {
@@ -4033,6 +4272,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-5002.webp"
     },
     {
@@ -4048,6 +4288,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fliese-1940.webp"
     },
     {
@@ -4063,6 +4304,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fiordi-bosco-white.webp"
     },
     {
@@ -4083,6 +4325,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/halley-white-2.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/halley-white-2.webp",
         "manufacturerImage": {
@@ -4103,6 +4346,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/linues-bergen-blanco-2.webp"
     },
     {
@@ -4118,6 +4362,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/denia-gris.webp"
     },
     {
@@ -4133,6 +4378,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/teide-silver.webp"
     },
     {
@@ -4148,6 +4394,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/rijn-visgraat.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/rijn-visgraat.webp",
         "manufacturerImage": {
@@ -4168,6 +4415,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/ardennen.webp"
     },
     {
@@ -4183,6 +4431,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-once.webp"
     },
     {
@@ -4198,6 +4447,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/malta.webp"
     },
     {
@@ -4213,6 +4463,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/stonehill-greige.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/stonehill-greige.webp",
         "manufacturerImage": {
@@ -4233,6 +4484,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/concept-mud.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/concept-mud.webp",
         "manufacturerImage": {
@@ -4253,6 +4505,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/simply-beton-grau.webp"
     },
     {
@@ -4268,6 +4521,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/tiber-visgraat.webp"
     },
     {
@@ -4283,6 +4537,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/lombarda-massima-mocha.webp"
     },
     {
@@ -4303,6 +4558,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/soul-graphit.webp"
     },
     {
@@ -4323,6 +4579,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/halley-light-2.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/halley-light-2.webp",
         "manufacturerImage": {
@@ -4343,6 +4600,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/byblos-cenizia.webp"
     },
     {
@@ -4358,6 +4616,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/start-silva.webp"
     },
     {
@@ -4373,6 +4632,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/denver-weiss.webp"
     },
     {
@@ -4388,6 +4648,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/materia-savia-digital-soft.webp"
     },
     {
@@ -4403,6 +4664,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/habitat-marengo.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/habitat-marengo.webp",
         "manufacturerImage": {
@@ -4423,6 +4685,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/motley-marseille.webp"
     },
     {
@@ -4438,6 +4701,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/leo-beige-2.webp"
     },
     {
@@ -4453,6 +4717,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/eiche-6860.webp"
     },
     {
@@ -4468,6 +4733,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/tacoma-steel.webp"
     },
     {
@@ -4483,6 +4749,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/sli-cementi-grey.webp"
     },
     {
@@ -4498,6 +4765,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/clothy-gris.webp"
     },
     {
@@ -4513,6 +4781,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/tacoma-sand.webp"
     },
     {
@@ -4528,6 +4797,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/donau.webp"
     },
     {
@@ -4543,6 +4813,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/origin-beige.webp"
     },
     {
@@ -4558,6 +4829,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/camarque.webp"
     },
     {
@@ -4573,6 +4845,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/start-light.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/start-light.webp",
         "manufacturerImage": {
@@ -4593,6 +4866,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/brasilia-blue.webp"
     },
     {
@@ -4608,6 +4882,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/luna-cooper.webp"
     },
     {
@@ -4623,6 +4898,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/marbel-crema-delicato-arena-9.webp"
     },
     {
@@ -4638,6 +4914,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/fliese-1710.webp"
     },
     {
@@ -4658,6 +4935,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "photo": "bilder/katalog/hersteller-2026-11-18/montiver-pearl.webp",
         "texture": "bilder/katalog/hersteller-2026-11-18/montiver-pearl.webp",
         "manufacturerImage": {
@@ -4678,6 +4956,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/concrete-sand.webp"
     },
     {
@@ -4693,6 +4972,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/olympus.webp"
     },
     {
@@ -4708,6 +4988,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-type.webp"
     },
     {
@@ -4723,6 +5004,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/tebas-pur-beige.webp"
     },
     {
@@ -4738,6 +5020,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/nepal.webp"
     },
     {
@@ -4753,6 +5036,7 @@ window.YabisCatalog = [
         "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
+        "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/toscano-light-digital.webp"
     }
 ];

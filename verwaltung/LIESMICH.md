@@ -35,3 +35,6 @@ Der Import (`werkzeug/import.php --ersetzen`) setzt alles auf den alten WhatsApp
 
 `yabis-php` in `.claude/launch.json` (Port 4801), dann `http://localhost:4801/verwaltung/`.
 Lokaler Testzugang: `_yabis-verwaltung/ZUGANG-LOKAL.txt` (nicht im Repo).
+
+## Verfügbarkeit (seit 2026-11-24)
+Jeder Artikel hat eine von vier Stufen: Sofort verfügbar, Auf Bestellung (mit optionaler Lieferzeit), Verfügbarkeit auf Anfrage (Standard) und Zurzeit nicht lieferbar. Umstellen geht direkt in der Artikelliste (Auswahl speichert sofort) oder im Artikel. Die Spalten `verfuegbarkeit` und `lieferzeit` legt `schema()` beim ersten Aufruf selbst an, auch in einer bestehenden Datenbank.

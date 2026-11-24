@@ -71,6 +71,22 @@ CREATE TABLE IF NOT EXISTS anmeldeversuche (
 SQL);
     // 2026-11-24: „Oberfläche auf Anfrage“ wird nirgends mehr angezeigt, leer heißt jetzt „keine Angabe“
     $pdo->exec("UPDATE artikel SET oberflaeche = '' WHERE oberflaeche = 'Oberfläche auf Anfrage'");
+    // 2026-11-24: Verfügbarkeit (sofort / bestellung / anfrage / nicht) und optionale Lieferzeit
+    $spalten = array_column($pdo->query('PRAGMA table_info(artikel)')->fetchAll(), 'name');
+    if (!in_array('verfuegbarkeit', $spalten, true)) { $pdo->exec("ALTER TABLE artikel ADD COLUMN verfuegbarkeit TEXT NOT NULL DEFAULT 'anfrage'"); }
+    if (!in_array('lieferzeit', $spalten, true)) { $pdo->exec("ALTER TABLE artikel ADD COLUMN lieferzeit TEXT NOT NULL DEFAULT ''"); }
+}
+
+function verfuegbarkeit_text(string $schluessel, string $lieferzeit = ''): string {
+    $text = (VERFUEGBARKEIT[$schluessel] ?? VERFUEGBARKEIT['anfrage'])[0];
+    return $schluessel === 'bestellung' && $lieferzeit !== '' ? "$text · $lieferzeit" : $text;
+}
+
+function verfuegbarkeit_aus_eingabe(string $wert, string $lieferzeit): array {
+    if (!array_key_exists($wert, VERFUEGBARKEIT)) { throw new InvalidArgumentException('Bitte eine Verfügbarkeit auswählen.'); }
+    $lieferzeit = trim(preg_replace('~\s+~', ' ', $lieferzeit) ?? '');
+    if (mb_strlen($lieferzeit) > 40) { throw new InvalidArgumentException('Die Lieferzeit ist zu lang (höchstens 40 Zeichen, z. B. „ca. 2 Wochen“).'); }
+    return [$wert, $wert === 'bestellung' ? $lieferzeit : ''];
 }
 
 function jetzt(): string { return date('Y-m-d H:i:s'); }
@@ -209,6 +225,8 @@ function export_daten(): array {
             'source' => $a['quelle'], 'catalogPriceCents' => $a['preis_cent'] === null ? null : (int)$a['preis_cent'],
             'catalogCurrency' => $a['waehrung'], 'catalogPriceDate' => $a['preis_datum'], 'catalogUnit' => $a['einheit'],
         ];
+        $p['availability'] = array_key_exists($a['verfuegbarkeit'] ?? '', VERFUEGBARKEIT) ? $a['verfuegbarkeit'] : 'anfrage';
+        if ($p['availability'] === 'bestellung' && ($a['lieferzeit'] ?? '') !== '') { $p['deliveryTime'] = $a['lieferzeit']; }
         if (!(int)$a['sichtbar']) { $p['hidden'] = true; }
         if ($a['foto'] !== '') {
             $p['photo'] = $a['foto']; $p['texture'] = $a['foto'];
@@ -273,7 +291,7 @@ function bild_speichern(array $datei, string $id): string {
 function kopf(string $titel, ?string $benutzer = null): void {
     echo '<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
        . '<meta name="robots" content="noindex,nofollow"><title>' . h($titel) . ' · Verwaltung Yabis</title>'
-       . '<link rel="stylesheet" href="verwaltung.css?v=1"></head><body><header class="kopf"><a class="marke" href="index.php">Yabis · Verwaltung</a>';
+       . '<link rel="stylesheet" href="verwaltung.css?v=3"></head><body><header class="kopf"><a class="marke" href="index.php">Yabis · Verwaltung</a>';
     if ($benutzer) {
         echo '<nav><a href="index.php">Artikel</a><a href="formatpreise.php">Formatpreise</a><a href="protokoll.php">Protokoll</a>'
            . '<a href="../katalog.html" target="_blank" rel="noopener">Shop ansehen</a>'
@@ -282,7 +300,7 @@ function kopf(string $titel, ?string $benutzer = null): void {
     echo '</header><main class="inhalt">';
 }
 
-function fuss(): void { echo '</main><script src="verwaltung.js?v=1"></script></body></html>'; }
+function fuss(): void { echo '</main><script src="verwaltung.js?v=2"></script></body></html>'; }
 
 function meldung(): string {
     sitzung();
