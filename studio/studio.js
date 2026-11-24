@@ -132,10 +132,6 @@
    sample.append(sampleImage(p,C.choiceName(p)));
    const text=document.createElement('div'),title=document.createElement('strong');
    title.textContent=C.choiceName(p);text.append(title);
-   for(const [label,href] of [['Yabis-WhatsApp-Katalog',p.source]]){
-    if(!href)continue;
-    const link=document.createElement('a');link.textContent=label;link.href=href;link.target='_blank';link.rel='noopener';text.append(link);
-   }
    block.append(sample,text);$('product-sources').append(block);
   }
  }
