@@ -47,14 +47,15 @@
 @media(orientation:portrait){.room-arrival--still::after{background-size:contain}}
 .room-arrival-ready::after{opacity:0}
 /* Ankunft im Raum: Die Kamera fliegt weiter durchs Fenster, der Raum setzt sich, danach blendet die Bedienung ein. */
-.room-arrival--still.room-arrival-ready::after{animation:room-arrival-zoom 1.15s cubic-bezier(.45,0,.8,.6) both,room-arrival-fade .8s .3s cubic-bezier(.3,0,.4,1) both;transition:none}
-@keyframes room-arrival-zoom{from{transform:scale(1)}to{transform:scale(3.2)}}
-@keyframes room-arrival-fade{from{opacity:1;filter:blur(0)}to{opacity:0;filter:blur(8px)}}
+.room-arrival--still.room-arrival-ready::after{animation:room-arrival-zoom .62s cubic-bezier(.5,0,.75,.7) both,room-arrival-fade .42s .14s ease-out both;transition:none}
+@keyframes room-arrival-zoom{from{transform:scale(1)}to{transform:scale(2.4)}}
+@keyframes room-arrival-fade{from{opacity:1}to{opacity:0}}
 .room-arrival .image-area{overflow:clip}
-.room-arrival-ready #stage{animation:room-arrival-settle 1.3s .15s cubic-bezier(.2,.7,.2,1) both}
-@keyframes room-arrival-settle{from{transform:scale(1.14)}to{transform:none}}
-.room-arrival-ready :is(.studio-header,.room-nav,.scene-heading,.scene-footer,.room-note,.controls){animation:room-arrival-ui .6s .7s ease-out both}
-@keyframes room-arrival-ui{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.room-arrival #stage{will-change:transform}
+.room-arrival-ready #stage{animation:room-arrival-settle .7s .08s cubic-bezier(.2,.7,.25,1) both}
+@keyframes room-arrival-settle{from{transform:scale(1.07)}to{transform:none}}
+.room-arrival-ready :is(.studio-header,.room-nav,.scene-heading,.scene-footer,.room-note,.controls){animation:room-arrival-ui .3s .34s ease-out both}
+@keyframes room-arrival-ui{from{opacity:0}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.room-arrival-ready::after,.room-arrival--still.room-arrival-ready::after,.room-arrival-ready #stage,.room-arrival-ready :is(.studio-header,.room-nav,.scene-heading,.scene-footer,.room-note,.controls){animation:none;transition:none}}
 /* Handy: Raumbild bleibt oben stehen, die Auswahl läuft darunter durch. Die Kombination zeigt das Bild selbst. */
 @media(max-width:767px) and (min-height:560px){
