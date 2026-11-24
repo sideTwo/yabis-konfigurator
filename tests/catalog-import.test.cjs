@@ -38,10 +38,16 @@ test('50 geprüfte Herstellerbilder ergänzen die Produktdaten ohne Herstellerna
   for(const id of ['nordic-slate-blue','etna-gris','teide-silver'])assert.equal(shop.find(id).manufacturerImage,undefined);
   assert.equal(shop.find('ganges-visgraat').formats.length,0);
 });
-test('Fremdwährungsfehler werden nicht als Europreise oder Nullpreise berechnet',()=>{
-  const shop=setup(),unclear=shop.products.filter(product=>product.catalogCurrency==='ZAR');
-  assert.equal(unclear.length,18);
-  for(const product of unclear){assert.equal(product.catalogPriceCents,null);assert.equal(shop.priceLabel(product),'Preis auf Anfrage');assert.equal(shop.estimateAssumingM2(product.id,10,0,[60,120]),null);}
+test('Die 18 Rand-Preise aus dem WhatsApp-Katalog sind als Euro übernommen (Bilal, 2026-11-24)',()=>{
+  const shop=setup();
+  assert.equal(shop.products.filter(product=>product.catalogCurrency!=='EUR').length,0);
+  for(const id of ['motley-reading','glocal-ideal','terrazzo-rice'])assert.equal(shop.find(id).catalogPriceCents,3990,id);
+  assert.equal(shop.find('zahara-whisper').catalogPriceCents,4490);
+  assert.equal(shop.estimateAssumingM2('motley-reading',10,0,[60,120]),39900);
+});
+test('Artikel ohne Europreis bleiben „Preis auf Anfrage“ ohne Richtwert',()=>{
+  const shop=setup(),ohne={...shop.find('motley-reading'),catalogPriceCents:null};
+  assert.equal(shop.priceLabel(ohne),'Preis auf Anfrage');assert.equal(shop.priceCentsFor(ohne,[60,120]),null);
 });
 test('Offene Formate bleiben über Speichern und Anfragetext ohne erfundene Stückzahl erhalten',()=>{
   const shop=setup(),product=shop.products.find(value=>value.kind==='Vinyl'&&!value.formats.length);

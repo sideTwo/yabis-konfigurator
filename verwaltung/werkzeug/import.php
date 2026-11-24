@@ -32,6 +32,11 @@ $ins = db()->prepare('INSERT INTO artikel (id, name, art, oberflaeche, farbe, be
 db()->beginTransaction();
 foreach ($produkte as $i => $p) {
     $b = $bildNach[$p['id']] ?? null;
+    // 18 Artikel standen im WhatsApp-Katalog in Rand statt Euro. Bilal am 2026-11-24: Beträge als Euro übernehmen.
+    if (($p['catalogCurrency'] ?? 'EUR') !== 'EUR' && $p['catalogPriceCents'] === null && preg_match('~(\d{1,4}),(\d{2})~', (string)($p['catalogSourcePrice'] ?? ''), $pm)) {
+        $p['catalogPriceCents'] = (int)$pm[1] * 100 + (int)$pm[2];
+        $p['catalogCurrency'] = 'EUR';
+    }
     $ins->execute([
         'id' => $p['id'], 'name' => $p['name'], 'art' => $p['kind'] ?: 'Fliesen', 'oberflaeche' => ($p['finish'] ?? '') === 'Oberfläche auf Anfrage' ? '' : ($p['finish'] ?? ''),
         'farbe' => $p['color'] ?? '', 'beschreibung' => $p['description'] ?? '', 'formate' => formate_text($p['formats'] ?? []),

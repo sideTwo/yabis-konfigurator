@@ -1,4 +1,4 @@
-// Automatisch erzeugt von /verwaltung am 24.11.2026 09:30. Nicht von Hand ändern.
+// Automatisch erzeugt von /verwaltung am 24.11.2026 09:36. Nicht von Hand ändern.
 window.YabisCatalog = [
     {
         "id": "onice-supreme-marfil-pul",
@@ -589,8 +589,8 @@ window.YabisCatalog = [
         "description": "Edle Fliese in einem modernen Dunkelgrau mit dezenter Natursteinoptik. Die feinen Strukturen und sanften Farbnuancen verleihen der Oberfläche eine natürliche und hochwertige Wirkung. Ideal für elegante Badezimmer, moderne Wohnbereiche und stilvolle Wand- und Bodengestaltungen",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/motley-reading.webp"
@@ -709,8 +709,8 @@ window.YabisCatalog = [
         "description": "Elegante Fliese in einem edlen Dunkelgrau mit natürlicher Steinoptik. Die feinen Maserungen und dezenten Farbverläufe verleihen ihr eine ausdrucksstarke und hochwertige Optik. Perfekt für moderne Badezimmer, Wohnbereiche und stilvolle Akzentwände",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/motley-liverpool.webp"
@@ -834,8 +834,8 @@ window.YabisCatalog = [
         "description": "Moderne Fliese in einem eleganten Mittelgrau mit dezenter Betonoptik. Die natürliche, leicht wolkige Oberflächenstruktur verleiht ihr eine zeitlose und hochwertige Ausstrahlung. Ideal für stilvolle Badezimmer, Wohnräume und moderne Boden- und Wandgestaltungen",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-ideal.webp"
@@ -1024,8 +1024,8 @@ window.YabisCatalog = [
         "description": "Stilvolle Fliese in einem modernen Mittelgrau mit dezenter, natürlicher Steinoptik. Feine Maserungen und leichte Farbnuancen sorgen für eine elegante und zeitlose Ausstrahlung. Perfekt für moderne Badezimmer, Wohnbereiche und hochwertige Wand- und Bodengestaltungen",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/motley.webp"
@@ -1054,8 +1054,8 @@ window.YabisCatalog = [
         "description": "Elegante Fliese in einem edlen Beige-Greige-Ton mit ausdrucksstarker Naturstein- und Marmoroptik. Die feinen, natürlichen Maserungen sorgen für Tiefe und eine luxuriöse Ausstrahlung. Ideal für exklusive Badezimmer, stilvolle Wohnbereiche und moderne Wand- und Bodengestaltungen",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 4490,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/zahara-whisper.webp"
@@ -1579,8 +1579,8 @@ window.YabisCatalog = [
         "description": "Moderne Fliese in einem warmen Erdton mit dezenter, natürlicher Steinoptik. Die feine Oberflächenstruktur verleiht jedem Raum eine elegante und zugleich gemütliche Atmosphäre. Ideal für Badezimmer, Wohnbereiche und stilvolle Raumkonzepte",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-mud.webp"
@@ -1664,8 +1664,8 @@ window.YabisCatalog = [
         "description": "Charakterstarke Fliese in einem natürlichen Grau-Beige-Ton mit einer markanten, lebendigen Steinoptik. Die feinen Strukturen und natürlichen Farbnuancen verleihen jedem Raum einen rustikalen und zugleich modernen Charakter. Ideal für Badezimmer, Wohnbereiche und stilvolle Raumgestaltungen",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/restone-indian.webp"
@@ -1784,8 +1784,8 @@ window.YabisCatalog = [
         "description": "Moderne Terrazzo-Optik in einem eleganten Beige-Greige-Ton. Die feinen Naturstein-Splitter in verschiedenen Grau-, Braun- und Beigetönen sorgen für ein lebendiges, harmonisches Gesamtbild. Ideal für zeitlose Wohnräume und stilvolle Badezimmer. Ein echter Hingucker für moderne Raumkonzepte!",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/terrazzo-rice.webp"
@@ -1999,8 +1999,8 @@ window.YabisCatalog = [
         "description": "Elegante Fliese in einem modernen Taupe-Grau-Ton mit dezenter, natürlicher Betonoptik. Die feine Struktur und der warme Farbton schaffen eine harmonische und hochwertige Atmosphäre. Ideal für Badezimmer, Wohnbereiche und moderne Raumgestaltungen",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-chamois.webp"
@@ -2114,8 +2114,8 @@ window.YabisCatalog = [
         "description": "Zeitlose Fliese in einem modernen Greige-Grauton mit dezenter Betonoptik. Die feine, gleichmäßige Oberflächenstruktur sorgt für eine elegante und natürliche Ausstrahlung. Perfekt für moderne Badezimmer, Wohnbereiche und stilvolle Wand- und Bodengestaltungen",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-sugar.webp"
@@ -2949,8 +2949,8 @@ window.YabisCatalog = [
         "description": "Edle Fliese in einem hellen Grau mit ausdrucksstarker, natürlicher Steinoptik. Feine Maserungen und dezente Farbnuancen verleihen der Oberfläche eine elegante und hochwertige Ausstrahlung. Ideal für moderne Badezimmer, Wohnbereiche und stilvolle Akzentwände",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/motley-altamont.webp"
@@ -3039,8 +3039,8 @@ window.YabisCatalog = [
         "description": "Moderne Fliese in einem eleganten Anthrazit-Grau mit dezenter, gleichmäßiger Oberflächenstruktur. Die schlichte Betonoptik sorgt für einen zeitlosen, urbanen Look und lässt sich vielseitig kombinieren. Ideal für Badezimmer, Wohnräume und moderne Raumkonzepte",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-nebula.webp"
@@ -3054,8 +3054,8 @@ window.YabisCatalog = [
         "description": "Elegante Fliese in einem modernen Anthrazit-Grau mit dezenter Natursteinoptik. Die feine Struktur und die leicht wolkige Oberfläche verleihen jedem Raum eine edle und zeitlose Ausstrahlung. Ideal für moderne Badezimmer, Wohnbereiche und stilvolle Boden- und Wandgestaltungen",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/motley-glastonbury.webp"
@@ -3219,8 +3219,8 @@ window.YabisCatalog = [
         "description": "Moderne Fliese in einem hellen Beige-Ton mit auffälliger Terrazzo-Optik. Die unterschiedlich großen Steinelemente in warmen Naturfarben verleihen der Oberfläche einen lebendigen und einzigartigen Charakter. Ideal für moderne Badezimmer, Wohnbereiche und stilvolle Akzentflächen",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/terrazzo-carribean.webp"
@@ -3969,8 +3969,8 @@ window.YabisCatalog = [
         "description": "Elegante Fliese in einem warmen Beige-Greige-Ton mit einer dezenten, natürlichen Steinoptik. Die feine Struktur sorgt für eine moderne und zeitlose Ausstrahlung. Ideal für stilvolle Badezimmer, Wohnbereiche und großzügige Raumkonzepte",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-slight.webp"
@@ -4179,8 +4179,8 @@ window.YabisCatalog = [
         "description": "Zeitlose Fliese in einem eleganten Taupe-Greige-Ton mit dezenter Betonoptik. Die feine, gleichmäßige Struktur und die natürliche Farbgebung sorgen für eine ruhige und moderne Atmosphäre. Ideal für stilvolle Badezimmer, Wohnbereiche und harmonische Wand- und Bodengestaltungen",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-once.webp"
@@ -4419,8 +4419,8 @@ window.YabisCatalog = [
         "description": "Zeitlose Fliese in einem warmen Sand-Beige-Ton mit natürlicher Steinoptik. Die feine Struktur und die dezenten Maserungen verleihen ihr eine elegante und harmonische Ausstrahlung. Ideal für Badezimmer, Wohnbereiche und moderne Wand- und Bodengestaltungen",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/motley-marseille.webp"
@@ -4704,8 +4704,8 @@ window.YabisCatalog = [
         "description": "Moderne Fliese in einem stilvollen Grau mit dezenter Betonoptik. Die feine, natürliche Oberflächenstruktur und die harmonischen Farbnuancen sorgen für ein schlichtes, elegantes Gesamtbild. Perfekt für moderne Badezimmer, Wohnräume und zeitlose Wand- und Bodengestaltungen",
         "formats": [],
         "source": "https://wa.me/c/491786787724",
-        "catalogPriceCents": null,
-        "catalogCurrency": "ZAR",
+        "catalogPriceCents": 3990,
+        "catalogCurrency": "EUR",
         "catalogPriceDate": "18.11.2026",
         "catalogUnit": null,
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/glocal-type.webp"
