@@ -65,7 +65,7 @@
       'Fläche: '+de(position.m2)+' m² + '+position.waste+' % Verschnitt = '+de(quantity.total)+' m² Bedarf',
       quantity.pieces!==null?'Rechnerisch '+quantity.pieces+' '+(product?.kind==='Vinyl'||product?.kind==='Holzoptik'?'Stück':'Fliesen')+', Verpackungseinheiten bitte berücksichtigen.':'Verpackung und Stückzahl bitte anbieten.',
       'Verlegung: '+(position.verband||'Nach Absprache')+(position.fuge?'; Fuge: '+position.fuge:''),
-      Number.isInteger(product?.catalogPriceCents)?'Richtpreis'+(priceCentsFor(product,position.format)!==product.catalogPriceCents?' für '+position.format.join(' × ')+' cm':'')+': '+priceLabelFor(product,position.format)+(product.catalogUnit?'':' (m² als Richtwert, Preiseinheit im Angebot bestätigen)')+(product.catalogPriceDate?' · Stand '+product.catalogPriceDate:'')+'.':'Preis auf Anfrage.',
+      Number.isInteger(product?.catalogPriceCents)?'Richtpreis'+(priceCentsFor(product,position.format)!==product.catalogPriceCents?' für '+position.format.join(' × ')+' cm':'')+': '+priceLabelFor(product,position.format)+' inkl. MwSt.'+(product.catalogUnit?'':' (m² als Richtwert, Preiseinheit im Angebot bestätigen)')+(product.catalogPriceDate?' · Stand '+product.catalogPriceDate:'')+'.':'Preis auf Anfrage.',
       position.quelle?'Yabis-Katalog: '+position.quelle:''
     ].filter(Boolean).join('\n');}).join('\n\n');}
   function download(text,name){const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);}
