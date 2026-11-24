@@ -150,7 +150,11 @@
  $('anfrage-zurueck').onclick=()=>{status.textContent='';showStep(step-1);};
  files.addEventListener('change',filesOk);
  form.querySelectorAll('[name=reply]').forEach(i=>i.addEventListener('change',contactRules));contactRules();
- $('trade-request').onclick=()=>{form.elements.customerType.value='trade';showStep(1,false);$('kontakt').scrollIntoView({behavior:motion.matches?'instant':'smooth'});};
+ // Firma nur bei Gewerbe abfragen.
+ const firma=$('firma-feld');
+ function firmaRule(){const trade=form.elements.customerType.value==='trade';firma.hidden=!trade;if(!trade)form.elements.company.value='';}
+ form.querySelectorAll('[name=customerType]').forEach(i=>i.addEventListener('change',firmaRule));firmaRule();
+ $('trade-request').onclick=()=>{form.elements.customerType.value='trade';firmaRule();showStep(1,false);$('kontakt').scrollIntoView({behavior:motion.matches?'instant':'smooth'});};
  function delivery(){const yes=form.elements.delivery.value==='delivery';$('delivery-address').hidden=!yes;for(const name of ['postcode','city','address']){form.elements[name].disabled=!yes;form.elements[name].required=yes&&name!=='address';}}
  form.querySelectorAll('[name=delivery]').forEach(i=>i.addEventListener('change',delivery));delivery();
  function cart(){const n=S.getCart().length;document.querySelectorAll('[data-cart-count]').forEach(e=>e.textContent=n);$('cart-inquiry-note').hidden=!n;$('cart-inquiry-note').textContent=n+' Position(en) aus Ihrem Anfragekorb werden mitgeschickt.';}

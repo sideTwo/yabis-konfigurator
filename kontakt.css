@@ -98,3 +98,6 @@
  .anfrage-unverbindlich{order:4;flex-basis:100%}
  .kontakt-direkt a{grid-template-columns:84px minmax(0,1fr) auto;font-size:14px}
 }
+/* Firma erscheint nur bei Gewerbe; sonst nimmt der Name die ganze Breite. */
+.anfrage-feld[hidden]{display:none}
+.anfrage-grid:has(#firma-feld[hidden]) .anfrage-feld{grid-column:1 / -1}
