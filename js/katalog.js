@@ -19,7 +19,7 @@ const catalog=S.products.map(product=>{
   const oberflaeche=/lappato|teilpoliert/i.test(product.finish)?'Teilpoliert':product.finish;
   const type=product.kind==='Vinyl'?'Vinyl':'Fliesen';
   return {product,type,facets:{optik,oberflaeche:[oberflaeche],format},
-    search:searchKey([decor,type,product.brand||product.manufacturerImage?.brand,product.finish,S.formatLabel(product),...format,...optik].filter(Boolean).join(' '))};
+    search:searchKey([decor,type,product.finish,S.formatLabel(product),...format,...optik].filter(Boolean).join(' '))};
 });
 const alphabet=new Intl.Collator('de',{numeric:true,sensitivity:'base'});
 let filter='alle',selected=null,toastTimer;
@@ -35,18 +35,18 @@ function updateDetail(){
   const cost=S.estimateAssumingM2(selected.id,$('#detail-area').value,$('#detail-waste').value,format);
   $('#detail-cost').textContent=$('#detail-estimate').checked?(cost!==null?'Ca. '+S.money(cost)+' · ohne Kartonrundung und Lieferung.':'Für diesen Artikel gibt es keinen Preis pro m². Preis auf Anfrage.'):(Number.isInteger(selected.catalogPriceCents)?(S.priceCentsFor(selected,format)!==selected.catalogPriceCents?'Richtpreis für '+format.join(' × ')+' cm: ':'Katalogrichtpreis ')+S.priceLabelFor(selected,format):selected.catalogCurrency==='ZAR'?'Preis auf Anfrage. Die Währungsangabe im Quellkatalog wird geprüft.':'Preis auf Anfrage.');
 }
-const mediaFrame=el('div',null,'detail-media'),mediaControls=el('div',null,'media-controls'),mediaNote=el('p',null,'source-note'),manufacturerLink=el('a','Herstellerquelle ansehen','text-link');
+const mediaFrame=el('div',null,'detail-media'),mediaControls=el('div',null,'media-controls'),mediaNote=el('p',null,'source-note');
 $('#detail-photo').before(mediaFrame);mediaFrame.append($('#detail-photo'));
-mediaControls.setAttribute('role','group');mediaControls.setAttribute('aria-label','Produktbild auswählen');mediaNote.setAttribute('role','status');manufacturerLink.target='_blank';manufacturerLink.rel='noopener';
-$('#detail-description').before(mediaControls,mediaNote);$('#detail-description').after(manufacturerLink);
+mediaControls.setAttribute('role','group');mediaControls.setAttribute('aria-label','Produktbild auswählen');mediaNote.setAttribute('role','status');
+$('#detail-description').before(mediaControls,mediaNote);
 // Beschreibung: am PC unter dem Bild, auf dem Handy direkt unter dem Produktnamen
-const narrowDialog=matchMedia('(max-width:700px)'),placeDescription=()=>{const desc=$('#detail-description');if(narrowDialog.matches)$('#detail-name').after(desc);else manufacturerLink.before(desc);};
+const narrowDialog=matchMedia('(max-width:700px)'),placeDescription=()=>{const desc=$('#detail-description');if(narrowDialog.matches)$('#detail-name').after(desc);else mediaNote.after(desc);};
 placeDescription();narrowDialog.addEventListener('change',placeDescription);
 function renderGallery(product){
   const views=YabisCatalogMedia.viewsFor(product),photo=$('#detail-photo');
   mediaControls.replaceChildren();
   mediaControls.hidden=views.length<2;
-  const makerPage=product.manufacturerImage?.page||'';manufacturerLink.hidden=!makerPage;if(makerPage)manufacturerLink.href=makerPage;else manufacturerLink.removeAttribute('href');
+  
   const clear=()=>{
     photo.onerror=null;photo.removeAttribute('src');photo.alt='';mediaFrame.hidden=true;
     mediaNote.textContent='Eine Produktansicht ist derzeit nicht verfügbar.';
@@ -65,7 +65,7 @@ function renderGallery(product){
 function openProduct(product){
   selected=product;
   $('#detail-name').textContent=product.name;
-  $('#detail-brand').textContent=[product.brand||product.manufacturerImage?.brand,product.kind].filter(Boolean).join(' · ');
+  $('#detail-brand').textContent=['Yabis-Katalog',product.kind].filter(Boolean).join(' · ');
   $('#detail-description').textContent=product.description||'';
   $('#detail-finish').textContent=product.finish+' · '+S.formatLabel(product)+' · '+S.priceLabel(product);
   renderGallery(product);
@@ -95,7 +95,7 @@ function renderProducts(){
       image.setAttribute('aria-label',product.name+' ansehen');image.onclick=()=>openProduct(product);
       card.append(image);
     }
-    const meta=el('div',null,'product-meta');meta.append(el('span',product.brand||product.manufacturerImage?.brand||'Yabis-Katalog'),el('span',S.formatLabel(product)));
+    const meta=el('div',null,'product-meta');meta.append(el('span','Yabis-Katalog'),el('span',S.formatLabel(product)));
     const button=el('button',null,'button');button.append(el('span','Menge & Angebot'),el('span','+'));button.setAttribute('aria-label',product.name+' anfragen');button.onclick=()=>openProduct(product);
     const priceNote=Number.isInteger(product.catalogPriceCents)?'Katalogrichtpreis':product.catalogCurrency==='ZAR'?'Währung im Katalog unklar':'';
     card.append(meta,el('h3',product.name),el('p',product.finish),el('strong',S.priceLabel(product),'product-price'));
