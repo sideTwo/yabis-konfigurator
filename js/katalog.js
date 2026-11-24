@@ -12,7 +12,8 @@ const looks=[
   ['Holzoptik',/holz[- ]?(?:optik|struktur|maserung|look)|eichenoptik|fischgr[äa]t/i],
   ['Terrazzo',/terrazzo/i]
 ];
-const catalog=S.products.map(product=>{
+// Ausgeblendete Artikel (z. B. ausverkauft) bleiben für Raumstudio und alte Anfragekörbe in den Daten, erscheinen aber nicht im Shop
+const catalog=S.products.filter(product=>!product.hidden).map(product=>{
   const decor=[product.kind,product.name,product.description].filter(Boolean).join(' ');
   const optik=looks.filter(([,pattern])=>pattern.test(decor)).map(([name])=>name);
   const format=product.formats.map(formatKey);

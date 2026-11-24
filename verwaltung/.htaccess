@@ -1,0 +1,9 @@
+# Verwaltung: nicht in Suchmaschinen, Hilfsdateien nicht direkt aufrufbar
+Header set X-Robots-Tag "noindex, nofollow"
+<FilesMatch "^(lib|konfiguration)\.php$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^werkzeug/ - [F,L]
+</IfModule>

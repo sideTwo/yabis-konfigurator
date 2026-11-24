@@ -1,0 +1,4 @@
+# Wird von /verwaltung bei jedem Speichern neu geschrieben: Browser sollen immer nachfragen
+<IfModule mod_headers.c>
+  Header set Cache-Control "no-cache"
+</IfModule>

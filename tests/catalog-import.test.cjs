@@ -8,7 +8,7 @@ const root=path.join(__dirname,'..');
 function setup(){
   let stored='[]';
   const context={window:{dispatchEvent(){}},localStorage:{getItem(){return stored;},setItem(key,value){stored=value;}},CustomEvent:class {},crypto:crypto.webcrypto};
-  for(const file of ['catalog-products.js','catalog-images.js','catalog-reconstructions.js','shop-core.js'])vm.runInNewContext(fs.readFileSync(path.join(root,'js',file),'utf8'),context);
+  for(const file of ['daten/katalog.js','js/shop-core.js'])vm.runInNewContext(fs.readFileSync(path.join(root,file),'utf8'),context);
   return context.window.YabisShop;
 }
 test('Alle 284 erfassten Einträge haben eindeutige IDs und Quellen ohne Handyfoto-Pfade',()=>{
@@ -17,7 +17,7 @@ test('Alle 284 erfassten Einträge haben eindeutige IDs und Quellen ohne Handyfo
     assert.ok(product.name);assert.ok(product.description);assert.match(product.source,/^https:\/\/wa.me\/[pc]\//);
     assert.equal(product.originalPhoto,undefined);
     if(product.photo){
-      assert.match(product.photo,/^bilder\/katalog\/hersteller-2026-11-18\/[a-z0-9-]+\.webp$/);
+      assert.match(product.photo,/^bilder\/katalog\/(hersteller-2026-11-18|eigene)\/[a-z0-9-]+\.webp$/);
       assert.ok(fs.statSync(path.join(root,product.photo)).size>1000);
     }
     if(product.reconstruction){
@@ -28,10 +28,13 @@ test('Alle 284 erfassten Einträge haben eindeutige IDs und Quellen ohne Handyfo
     assert.ok(product.formats.every(shop.validFormat));
   }
 });
-test('50 geprüfte Herstellerbilder ergänzen die Produktdaten ohne Verkaufsdaten umzudeuten',()=>{
+test('50 geprüfte Herstellerbilder ergänzen die Produktdaten ohne Herstellernamen oder -links',()=>{
   const shop=setup(),matched=shop.products.filter(product=>product.manufacturerImage);
   assert.equal(matched.length,50);
-  for(const product of matched){assert.match(product.manufacturerImage.page,/^https:\/\//);assert.ok(product.manufacturerImage.source);}
+  for(const product of matched){assert.ok(product.manufacturerImage.photo);for(const key of ['brand','page','source'])assert.equal(product.manufacturerImage[key],undefined);}
+  for(const product of shop.products)assert.equal(product.brand,undefined);
+  const text=fs.readFileSync(path.join(root,'daten/katalog.js'),'utf8');
+  for(const name of ['Prissmacer','Roca Tiles','EKOFLOORS','prissmacer.es','ekofloors.nl'])assert.ok(!text.includes(name),name);
   for(const id of ['nordic-slate-blue','etna-gris','teide-silver'])assert.equal(shop.find(id).manufacturerImage,undefined);
   assert.equal(shop.find('ganges-visgraat').formats.length,0);
 });

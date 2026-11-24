@@ -54,7 +54,7 @@ function app(room='bad',{saved=new Map(),defer=false,product='',fronts=''}={}){
  const window={YabisLivingFloor:livingFloor,YabisStudioScenes:scenes,YabisStudio:C,YabisRoomPreview:{width:1672,height:941},YabisTileGrid:{...grid,draw(){}},YabisStudioTextures:{render(ctx,{room,base,selection,assets}){draws.push({room,base:base.src,...selection,assets});}},addEventListener(type,fn){events[type]=fn;},dispatchEvent(e){events[e.type]?.(e);}};
  class Image extends Element{set src(src){this._src=src;sources.push(src);if(defer)pending.push(this);else queueMicrotask(()=>this.onload?.());}get src(){return this._src;}}
  const context={window,document:{body:{dataset:{}},title:'',getElementById:get,createElement:tag=>new Element(tag),querySelectorAll(){return [];}},matchMedia:()=>({matches:false,addEventListener(){}}),localStorage:{getItem:k=>saved.get(k)||null,setItem:(k,v)=>saved.set(k,v)},location:{search:'?raum='+room+(product?'&product='+product:'')+(fronts?'&fronten='+fronts:'')},Image,URLSearchParams,URL:{createObjectURL:()=> 'blob:preview',revokeObjectURL(){}},setTimeout(){},CustomEvent:class{constructor(type){this.type=type;}},crypto:crypto.webcrypto};
- for(const file of ['catalog-products','catalog-images','catalog-reconstructions','shop-core'])vm.runInNewContext(fs.readFileSync(path.join(root,'js',file+'.js'),'utf8'),context);
+ for(const file of ['daten/katalog.js','js/shop-core.js'])vm.runInNewContext(fs.readFileSync(path.join(root,file),'utf8'),context);
  vm.runInNewContext(fs.readFileSync(path.join(root,'studio/studio.js'),'utf8'),context);
  return {get,window,sources,pending,draws,saved,shop:window.YabisShop,settle:()=>new Promise(resolve=>setImmediate(resolve))};
 }

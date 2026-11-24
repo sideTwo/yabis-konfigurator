@@ -31,3 +31,6 @@ _quelle/*generation*.json
 
 # Ratenbremse des Kontaktformulars (kontakt.php)
 .formular-tmp/
+
+# Von der Verwaltung hochgeladene Fotos (liegen nur auf dem Server)
+/bilder/katalog/eigene/

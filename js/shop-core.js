@@ -17,7 +17,8 @@
   // 120 × 120 cm poliert 52,90, matt und teilpoliert 47,90 · 60 × 120 cm poliert 44,90, matt und teilpoliert 39,90.
   // 60 × 60 cm folgt. Gilt für Fliesen, wenn das gewählte Format nicht das Katalogformat des Artikels ist.
   // Sonst und ohne Formatpreis bleibt der Katalogpreis der Richtwert.
-  const FORMAT_PREISE={
+  // Gepflegt in /verwaltung (daten/katalog.js). Die Werte hier gelten nur, wenn die Datei fehlt.
+  const FORMAT_PREISE=window.YabisFormatPrices||{
    '120,120':{'Poliert':5290,'Matt':4790,'Lappato (Teilpoliert)':4790},
    '60,120':{'Poliert':4490,'Matt':3990,'Lappato (Teilpoliert)':3990}
   };
