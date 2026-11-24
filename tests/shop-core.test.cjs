@@ -36,3 +36,14 @@ test('120 × 120 cm nutzt Yabis Formatpreise je Oberfläche, sonst den Katalogpr
   const text=s.lines([s.item({product:matt.id,area:10,waste:0,format:[120,120]})]);
   assert.match(text,/Richtpreis für 120 × 120 cm: 47,90/);
 });
+
+test('60 × 120 cm nutzt Yabis Formatpreise, wenn es nicht das Katalogformat ist',()=>{
+  const s=setup();
+  const artikel=(finish,formats,cents)=>({kind:'Fliesen',finish,formats,catalogPriceCents:cents});
+  assert.equal(s.priceCentsFor(artikel('Poliert',[[120,120]],5290),[60,120]),4490);
+  assert.equal(s.priceCentsFor(artikel('Matt',[],4790),[60,120]),3990);
+  assert.equal(s.priceCentsFor(artikel('Lappato (Teilpoliert)',[],4790),[60,120]),3990);
+  assert.equal(s.priceCentsFor(artikel('Matt',[[60,120]],3449),[60,120]),3449);
+  assert.equal(s.priceCentsFor(artikel('Seidenmatt',[],4790),[60,120]),4790);
+  assert.equal(s.priceCentsFor(artikel('Matt',[],4790),[60,60]),4790);
+});

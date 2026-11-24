@@ -13,9 +13,14 @@
   const priceUnit=product=>product.catalogUnit==='m2'?'m²':product.catalogUnit||'m²';
   const priceLabel=product=>Number.isInteger(product.catalogPriceCents)?money(product.catalogPriceCents)+' / '+priceUnit(product):'Preis auf Anfrage';
   const money=cents=>(cents/100).toLocaleString('de-DE',{style:'currency',currency:'EUR'});
-  // Formatpreise laut Yabis (WhatsApp 23.11.2026): 120 × 120 cm poliert 52,90 €, matt und teilpoliert 47,90 € pro m².
-  // Gilt für Fliesen, wenn 120 × 120 nicht ohnehin das Katalogformat ist. Sonst bleibt der Katalogpreis der Richtwert.
-  const FORMAT_PREISE={'120,120':{'Poliert':5290,'Matt':4790,'Lappato (Teilpoliert)':4790}};
+  // Formatpreise laut Yabis (WhatsApp 23./24.11.2026), Euro pro m²:
+  // 120 × 120 cm poliert 52,90, matt und teilpoliert 47,90 · 60 × 120 cm poliert 44,90, matt und teilpoliert 39,90.
+  // 60 × 60 cm folgt. Gilt für Fliesen, wenn das gewählte Format nicht das Katalogformat des Artikels ist.
+  // Sonst und ohne Formatpreis bleibt der Katalogpreis der Richtwert.
+  const FORMAT_PREISE={
+   '120,120':{'Poliert':5290,'Matt':4790,'Lappato (Teilpoliert)':4790},
+   '60,120':{'Poliert':4490,'Matt':3990,'Lappato (Teilpoliert)':3990}
+  };
   function priceCentsFor(product,format){
    if(!product||!Number.isInteger(product.catalogPriceCents))return null;
    const key=Array.isArray(format)?format.join(','):'',catalogFormat=product.formats.some(f=>f.join(',')===key);
