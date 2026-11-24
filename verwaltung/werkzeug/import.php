@@ -33,7 +33,7 @@ db()->beginTransaction();
 foreach ($produkte as $i => $p) {
     $b = $bildNach[$p['id']] ?? null;
     $ins->execute([
-        'id' => $p['id'], 'name' => $p['name'], 'art' => $p['kind'] ?: 'Fliesen', 'oberflaeche' => $p['finish'] ?: 'Oberfläche auf Anfrage',
+        'id' => $p['id'], 'name' => $p['name'], 'art' => $p['kind'] ?: 'Fliesen', 'oberflaeche' => ($p['finish'] ?? '') === 'Oberfläche auf Anfrage' ? '' : ($p['finish'] ?? ''),
         'farbe' => $p['color'] ?? '', 'beschreibung' => $p['description'] ?? '', 'formate' => formate_text($p['formats'] ?? []),
         'preis_cent' => $p['catalogPriceCents'], 'waehrung' => $p['catalogCurrency'] ?? 'EUR', 'preis_datum' => $p['catalogPriceDate'] ?? '',
         'einheit' => $p['catalogUnit'], 'sortierung' => $i,

@@ -1,4 +1,4 @@
-// Automatisch erzeugt von /verwaltung am 24.11.2026 09:22. Nicht von Hand ändern.
+// Automatisch erzeugt von /verwaltung am 24.11.2026 09:30. Nicht von Hand ändern.
 window.YabisCatalog = [
     {
         "id": "onice-supreme-marfil-pul",
@@ -338,7 +338,7 @@ window.YabisCatalog = [
     {
         "id": "seine-kingsize-plak",
         "name": "Seine Kingsize Plak",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit seiner hellen, modernen Holzstruktur und schafft eine warme, freundliche Atmosphäre in jedem Raum. Die natürliche Maserung sorgt für eine authentische Optik, während die dezenten Farbtöne vielseitig kombinierbar sind. Ideal für Wohnräume, Küchen oder Büros – pflegeleicht, robust und zeitlos schön",
@@ -358,7 +358,7 @@ window.YabisCatalog = [
     {
         "id": "elba",
         "name": "Elba",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Helle Holzoptik mit sanften Grau- und Beigetönen für eine natürliche und moderne Raumwirkung. Die authentische Maserung sorgt für eine warme Atmosphäre und passt ideal zu skandinavischen sowie zeitlosen Wohnkonzepten. Robust, pflegeleicht und vielseitig einsetzbar",
@@ -373,7 +373,7 @@ window.YabisCatalog = [
     {
         "id": "fischgrat-7230",
         "name": "Fischgrät 7230",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit einem klassischen Fischgrätmuster und einer warmen, natürlichen Holzoptik. Die feine Maserung und die harmonischen Braun- und Beigetöne verleihen jedem Raum eine elegante und wohnliche Atmosphäre. Das zeitlose Design sorgt für einen hochwertigen Look und passt perfekt zu modernen, klassischen oder skandinavischen Einrichtungsstilen. Pflegeleicht, langlebig und ideal für Wohn- und Gewerberäume",
@@ -388,7 +388,7 @@ window.YabisCatalog = [
     {
         "id": "alcala-beige",
         "name": "Alcala beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug mit lebendiger, leicht strukturierter Steinoptik.\nSanfter Beige-/Sandton mit dezenten Wolken und feinen Einschlüssen – wirkt ruhig, natürlich und hochwertig.\nIdeal für Wohnräume, Bad, Küche oder als durchgehender Boden- und Wandbelag. Pflegeleicht, robust und zeitlos.\nPerfekt für moderne, warme und natürliche Raumkonzepte",
@@ -418,7 +418,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-6501",
         "name": "Eiche 6501",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt durch seine helle, natürliche Holzoptik mit feiner Maserung und dezenten Aststrukturen. Die sanften Beige- und Holztöne schaffen eine freundliche, warme Atmosphäre und lassen Räume offen und einladend wirken. Dank seines zeitlosen Designs passt der Boden perfekt zu modernen, klassischen und skandinavischen Wohnstilen. Pflegeleicht, strapazierfähig und vielseitig einsetzbar in Wohn- und Gewerberäumen",
@@ -433,7 +433,7 @@ window.YabisCatalog = [
     {
         "id": "nijf-visgraat",
         "name": "Nijf visgraat",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser hochwertige Vinylboden vereint die zeitlose Eleganz eines Fischgrätmusters mit einer hellen, natürlichen Holzoptik. Die feine Maserung und die sanften Farbtöne verleihen Räumen eine freundliche, stilvolle Ausstrahlung. Pflegeleicht, strapazierfähig und ideal für alle Wohnbereiche – für ein modernes Wohngefühl mit besonderem Charakter",
@@ -448,7 +448,7 @@ window.YabisCatalog = [
     {
         "id": "halley-silver",
         "name": "Halley silver",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in kühlem Hellgrau mit natürlicher Steinoptik. Feine, fließende Adern und eine ruhige Oberfläche. Modern und zeitlos. Ideal für Boden und Wand – wirkt clean und lässt Räume größer erscheinen",
@@ -473,7 +473,7 @@ window.YabisCatalog = [
     {
         "id": "denver-khaki",
         "name": "Denver Khaki",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Großformatige Fliese in ruhigem, hellbeige-cremefarbenem Ton. Sehr dezente Oberfläche ohne starke Zeichnung – schlicht, modern und zeitlos. Ideal als ruhige Basis für Wohnraum, Bad oder Küche. Pflegeleicht und vielseitig kombinierbar",
@@ -503,7 +503,7 @@ window.YabisCatalog = [
     {
         "id": "halley-light",
         "name": "Halley light",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Warmes Beige mit feiner Steinoptik und dezenten, natürlichen Adern. Großformatig und ruhig. Wirkt natürlich, modern und wohnlich – ideal für Wohnräume, Bad und Flur",
@@ -538,7 +538,7 @@ window.YabisCatalog = [
     {
         "id": "natura-beige",
         "name": "Natura beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Kühles Hellgrau mit feiner, gleichmäßiger Sprenkelung. Wirkt eher wie feiner Beton oder Terrazzo-Light. Cleaner und moderner",
@@ -568,7 +568,7 @@ window.YabisCatalog = [
     {
         "id": "corfu",
         "name": "Corfu",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Holzoptik",
         "color": "",
         "description": "Natürliche Holzoptik mit hellen Beige- und Sandtönen für eine freundliche und zeitlose Raumgestaltung. Die feine Maserung und dezenten Aststrukturen verleihen dem Boden einen authentischen Charakter und schaffen eine warme, einladende Atmosphäre. Robust, pflegeleicht und vielseitig kombinierbar",
@@ -583,7 +583,7 @@ window.YabisCatalog = [
     {
         "id": "motley-reading",
         "name": "Motley Reading",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Edle Fliese in einem modernen Dunkelgrau mit dezenter Natursteinoptik. Die feinen Strukturen und sanften Farbnuancen verleihen der Oberfläche eine natürliche und hochwertige Wirkung. Ideal für elegante Badezimmer, moderne Wohnbereiche und stilvolle Wand- und Bodengestaltungen",
@@ -598,7 +598,7 @@ window.YabisCatalog = [
     {
         "id": "halley-white",
         "name": "Halley white",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in kühlem Weiß mit zarter Marmorzeichnung. Ruhige Adern und eine klare, moderne Oberfläche. Perfekt für Bad, Wohnbereich oder große Flächen – clean, zeitlos und sehr hell",
@@ -623,7 +623,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-5600",
         "name": "Eiche 5600",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit seiner markanten Holzstruktur und den stilvollen Grau- und Taupetönen. Die authentische Maserung verleiht dem Boden einen natürlichen Charakter, während die moderne Farbgebung für eine elegante und zeitlose Optik sorgt. Ideal für moderne Wohnkonzepte und stilvolle Geschäftsräume. Pflegeleicht, strapazierfähig und vielseitig kombinierbar mit verschiedensten Einrichtungsstilen",
@@ -638,7 +638,7 @@ window.YabisCatalog = [
     {
         "id": "velvet-c-beige",
         "name": "Velvet-C Beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Sehr ruhige, fast einfarbige Fläche in warmem Hellbeige. Soft, modern und zeitlos – ideal, wenn die Fliese nicht dominieren soll",
@@ -668,7 +668,7 @@ window.YabisCatalog = [
     {
         "id": "massa-anthrazit-a4",
         "name": "Massa Anthrazit A4",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Großformatige Fliese mit warmer Natursteinoptik. Heller Creme-Ton mit dezenten, natürlichen Adern und wolkenartiger Struktur – elegant, ruhig und zeitlos. Ideal für Wohnraum, Bad oder Küche. Pflegeleicht und modern",
@@ -703,7 +703,7 @@ window.YabisCatalog = [
     {
         "id": "motley-liverpool",
         "name": "Motley Liverpool",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Elegante Fliese in einem edlen Dunkelgrau mit natürlicher Steinoptik. Die feinen Maserungen und dezenten Farbverläufe verleihen ihr eine ausdrucksstarke und hochwertige Optik. Perfekt für moderne Badezimmer, Wohnbereiche und stilvolle Akzentwände",
@@ -733,7 +733,7 @@ window.YabisCatalog = [
     {
         "id": "bergen-blanco",
         "name": "Bergen Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Fast reines Weiß. Sehr gleichmäßig, clean, maximal hell. Macht Räume größer und klarer",
@@ -748,7 +748,7 @@ window.YabisCatalog = [
     {
         "id": "marble-visage-weiss",
         "name": "Marble visage Weiss",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Großformatige Fliese mit edler Calacatta-Optik. Heller Grundton mit markanten beige-goldenen und grauen Adern – luxuriös, hell und zeitlos. Ideal für Bad, Wohnbereich oder als eleganter Blickfang. Pflegeleicht und modern",
@@ -763,7 +763,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-5006",
         "name": "Eiche 5006",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit seiner ruhigen, natürlichen Holzmaserung und einer freundlichen, hellen Farbgebung. Die harmonischen Beige- und Honigtöne schaffen eine warme und einladende Atmosphäre und lassen Räume großzügig und modern wirken. Dank seines zeitlosen Designs passt der Boden zu unterschiedlichsten Einrichtungsstilen und sorgt für ein wohnliches Gesamtbild. Pflegeleicht, strapazierfähig und ideal für Wohn- und Gewerberäume",
@@ -778,7 +778,7 @@ window.YabisCatalog = [
     {
         "id": "bergamo-gris",
         "name": "Bergamo Gris",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Heller Grauton mit natürlicher Terrazzo-Optik und unterschiedlich großen Steinsplittern. Großes Format, lebendig und modern. Ideal für Böden und Wände mit urbanem, zeitgemäßem Charakter",
@@ -798,7 +798,7 @@ window.YabisCatalog = [
     {
         "id": "nadelholz-4203",
         "name": "Nadelholz 4203",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Der Vinylboden Nadelholz 4203 überzeugt mit seiner authentischen Holzoptik und warmen Naturtönen. Die markante Maserung und die rustikalen Details verleihen jedem Raum eine gemütliche und einladende Atmosphäre. Ideal für Wohnbereiche, in denen Natürlichkeit und Behaglichkeit im Mittelpunkt stehen",
@@ -828,7 +828,7 @@ window.YabisCatalog = [
     {
         "id": "glocal-ideal",
         "name": "Glocal Ideal",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Moderne Fliese in einem eleganten Mittelgrau mit dezenter Betonoptik. Die natürliche, leicht wolkige Oberflächenstruktur verleiht ihr eine zeitlose und hochwertige Ausstrahlung. Ideal für stilvolle Badezimmer, Wohnräume und moderne Boden- und Wandgestaltungen",
@@ -843,7 +843,7 @@ window.YabisCatalog = [
     {
         "id": "etna-gris",
         "name": "Etna Gris",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in kühlem Grau mit sehr gleichmäßiger Betonoptik. Klar, zurückhaltend und zeitlos. Perfekt für große Flächen, Bad oder Wohnbereich – clean, modern und unaufdringlich",
@@ -878,7 +878,7 @@ window.YabisCatalog = [
     {
         "id": "serena-veincut-bone-c2",
         "name": "Serena veincut Bone C2",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Natürliche Steinoptik in warmem Hellbeige mit feiner Schichtzeichnung. Unaufgeregt und modern, gut für große Boden- und Wandflächen",
@@ -908,7 +908,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-8300",
         "name": "Eiche 8300",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden begeistert mit seiner natürlichen Holzmaserung und den warmen, erdigen Farbtönen. Die lebendige Struktur verleiht dem Boden eine authentische und hochwertige Ausstrahlung, während die harmonische Farbgebung für ein gemütliches Wohnambiente sorgt. Vielseitig kombinierbar mit modernen, klassischen oder rustikalen Einrichtungsstilen. Pflegeleicht, robust und ideal für Wohn- und Gewerberäume",
@@ -923,7 +923,7 @@ window.YabisCatalog = [
     {
         "id": "alcala-gris",
         "name": "Alcala gris",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug mit natürlicher Steinoptik.\nHelles Grau-Beige mit feiner Körnung und dezenten Wolken – wirkt ruhig, modern und zeitlos.\nIdeal für Wohnräume, Bad, Küche oder als durchgehender Boden- und Wandbelag. Pflegeleicht, robust und langlebig.\nPerfekt für helle, natürliche und moderne Raumkonzepte",
@@ -938,7 +938,7 @@ window.YabisCatalog = [
     {
         "id": "dec-america-beige",
         "name": "Dec. America beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Hochwertige Fliese mit erhabenem Stein-/Mosaikrelief.\nHelles Cremeweiß mit lebendiger 3D-Struktur aus kleinen rechteckigen Blöcken – wirkt natürlich, modern und hochwertig.\nIdeal als Akzentwand im Bad, Wohnzimmer oder Flur. Pflegeleicht und langlebig.\nPerfekt für Räume, die Struktur und Tiefe brauchen",
@@ -953,7 +953,7 @@ window.YabisCatalog = [
     {
         "id": "riviere-rigato-gris-c2",
         "name": "Riviere Rigato Gris C2",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helles Grau mit dezenten, weichen Adern. Modern und ruhig, leicht lebendig – gut für große Flächen in Bad, Küche oder Wohnen",
@@ -988,7 +988,7 @@ window.YabisCatalog = [
     {
         "id": "blending-gris",
         "name": "Blending Gris",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Etwas dunkleres, lebendigeres Hellgrau. Mehr Flecken, mehr Körnung, etwas rauer. Wirkt natürlicher und weniger „neu“",
@@ -1018,7 +1018,7 @@ window.YabisCatalog = [
     {
         "id": "motley",
         "name": "Motley",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Stilvolle Fliese in einem modernen Mittelgrau mit dezenter, natürlicher Steinoptik. Feine Maserungen und leichte Farbnuancen sorgen für eine elegante und zeitlose Ausstrahlung. Perfekt für moderne Badezimmer, Wohnbereiche und hochwertige Wand- und Bodengestaltungen",
@@ -1048,7 +1048,7 @@ window.YabisCatalog = [
     {
         "id": "zahara-whisper",
         "name": "Zahara Whisper",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Elegante Fliese in einem edlen Beige-Greige-Ton mit ausdrucksstarker Naturstein- und Marmoroptik. Die feinen, natürlichen Maserungen sorgen für Tiefe und eine luxuriöse Ausstrahlung. Ideal für exklusive Badezimmer, stilvolle Wohnbereiche und moderne Wand- und Bodengestaltungen",
@@ -1063,7 +1063,7 @@ window.YabisCatalog = [
     {
         "id": "montiver-grey",
         "name": "Montiver grey",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in mittlerem Grau mit feiner Betonoptik. Dezente Sprenkel und eine ruhige, moderne Oberfläche. Robust, pflegeleicht und zeitlos. Ideal für Boden und Wand – wirkt urban und lässt sich sehr gut kombinieren",
@@ -1088,7 +1088,7 @@ window.YabisCatalog = [
     {
         "id": "kos",
         "name": "Kos",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Holzoptik",
         "color": "",
         "description": "Helle Eichenoptik mit markanten Aststrukturen und natürlicher Maserung. Der freundliche Farbton verleiht Räumen eine warme, moderne Ausstrahlung und lässt sich vielseitig mit unterschiedlichen Einrichtungsstilen kombinieren. Pflegeleicht, strapazierfähig und ideal für ein gemütliches Wohnambiente",
@@ -1103,7 +1103,7 @@ window.YabisCatalog = [
     {
         "id": "taj-mahal-beige-2",
         "name": "Taj mahal beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Warme Beige-Fliese mit sanfter, horizontaler Maserung. Natürliche Steinoptik, ruhig und elegant – gut für große Flächen, wirkt weich und hochwertig",
@@ -1118,7 +1118,7 @@ window.YabisCatalog = [
     {
         "id": "vita-beige",
         "name": "Vita beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helle Terrazzo-Optik mit feinen, unregelmäßigen Steinsplittern in Beige, Braun und Grau. Lebendig, aber nicht laut – modern und pflegeleicht für Küche, Bad oder Wohnbereich",
@@ -1133,7 +1133,7 @@ window.YabisCatalog = [
     {
         "id": "toscano-grey-digital-soft",
         "name": "Toscano grey digital soft",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Warmes Hellbeige mit wolkenartiger, unregelmäßiger Struktur. Wirklich wie Naturstein oder weicher Marmor. Mehr Leben, mehr Zeichnung",
@@ -1148,7 +1148,7 @@ window.YabisCatalog = [
     {
         "id": "wonder-gris",
         "name": "Wonder Gris",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in warmem Hellgrau mit feiner Betonoptik. Dezente Wolken und eine ruhige, natürliche Oberfläche. Modern und alltagstauglich. Ideal für Boden und Wand – wirkt clean und lässt sich sehr gut kombinieren",
@@ -1188,7 +1188,7 @@ window.YabisCatalog = [
     {
         "id": "wonder-base",
         "name": "Wonder Base",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in hellem Cremeweiß mit sehr dezenter, wolkenartiger Oberfläche. Hell, freundlich und ruhig. Perfekt für Bad, Wohnbereich oder große Flächen – macht Räume lichtdurchflutet und zeitlos elegant",
@@ -1213,7 +1213,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-7240",
         "name": "Eiche 7240",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit einer warmen, natürlichen Holzoptik und einer feinen, authentischen Maserung. Die ausgewogenen Braun- und Honigtöne schaffen eine gemütliche Wohnatmosphäre und verleihen jedem Raum eine zeitlose Eleganz. Durch seine natürliche Ausstrahlung lässt sich der Boden vielseitig mit modernen, klassischen oder rustikalen Einrichtungsstilen kombinieren. Pflegeleicht, langlebig und ideal für Wohn- und Gewerberäume",
@@ -1228,7 +1228,7 @@ window.YabisCatalog = [
     {
         "id": "fischgrat-8140",
         "name": "Fischgrät 8140",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden vereint das elegante Fischgrätmuster mit einer modernen, hellen Holzoptik. Die natürliche Maserung und die dezenten Farbnuancen verleihen dem Boden eine hochwertige und stilvolle Ausstrahlung. Die helle Farbgebung sorgt für ein freundliches Raumgefühl und lässt sich vielseitig mit verschiedenen Einrichtungsstilen kombinieren. Pflegeleicht, strapazierfähig und ideal für Wohn- und Gewerberäume mit anspruchsvollem Design",
@@ -1243,7 +1243,7 @@ window.YabisCatalog = [
     {
         "id": "materia-beige",
         "name": "Materia beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Warmes, gleichmäßiges Creme-Beige. Feine Körnung, ruhig, weich",
@@ -1258,7 +1258,7 @@ window.YabisCatalog = [
     {
         "id": "fliese-1830",
         "name": "Fliese 1830",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Vinylboden in heller Natursteinoptik – Dezente Beige- und Sandtöne verleihen dieser Oberfläche eine warme und freundliche Ausstrahlung. Die natürliche Steinstruktur sorgt für eine zeitlose Optik und schafft ein harmonisches Raumgefühl. Perfekt für moderne Wohnräume sowie stilvolle Gewerbeflächen",
@@ -1273,7 +1273,7 @@ window.YabisCatalog = [
     {
         "id": "dolce-gris",
         "name": "Dolce Gris",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Gleichmäßige, feinkörnige Oberfläche in hellem Grau-Beige. Schlicht und modern, kaum Zeichnung – ideal als ruhiger Boden oder große Wandfläche",
@@ -1288,7 +1288,7 @@ window.YabisCatalog = [
     {
         "id": "silk-blanco",
         "name": "Silk blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Heller, weicher Beton-/Steinlook in Creme-Grau mit dezent wolkenartiger Oberfläche. Großformatig und sehr ruhig. Wirkt modern, hell und zeitlos – ideal für Wohnräume, Bad und Küche",
@@ -1323,7 +1323,7 @@ window.YabisCatalog = [
     {
         "id": "montiver-mud",
         "name": "Montiver mud",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in hellgrauer Betonoptik. Feine, gleichmäßige Struktur mit dezenten Sprenkeln. Modern, ruhig und sehr alltagstauglich. Ideal für Boden und Wand – wirkt clean, zeitlos und lässt Räume größer erscheinen",
@@ -1348,7 +1348,7 @@ window.YabisCatalog = [
     {
         "id": "novella-dark-green",
         "name": "Novella dark green",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Grauer Marmor-Look mit kräftigen, fließenden weißen Adern. Viel Bewegung, Tiefe und natürlicher Charakter. Wirkt edel, lebendig und etwas wilder als reines Schwarz-Gold",
@@ -1363,7 +1363,7 @@ window.YabisCatalog = [
     {
         "id": "ice-white",
         "name": "Ice White",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Klarer, unifarbener Weißton ohne Muster. Großformatig und schlicht. Wirkt modern, hell und zeitlos – perfekt für minimalistische Räume, Bad und Küche",
@@ -1383,7 +1383,7 @@ window.YabisCatalog = [
     {
         "id": "blending-marfil",
         "name": "Blending marfil",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Etwas kühleres, leicht wolkigeres Hellbeige. Ein Hauch mehr Bewegung, etwas luftiger",
@@ -1398,7 +1398,7 @@ window.YabisCatalog = [
     {
         "id": "fliese-1910",
         "name": "Fliese 1910",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Vinylboden in dunkler Schieferoptik – Edle, tiefdunkle Oberfläche mit feiner Steinstruktur für eine moderne und elegante Raumgestaltung. Die anthrazitfarbenen Nuancen verleihen dem Boden eine hochwertige Ausstrahlung und setzen stilvolle Akzente. Ideal für moderne Wohnräume, Büros und Gewerbeflächen",
@@ -1413,7 +1413,7 @@ window.YabisCatalog = [
     {
         "id": "ganges-visgraat",
         "name": "Ganges Visgraat",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit seiner natürlichen Holzmaserung und den sanften, hellen Farbtönen. Das elegante Fischgrätmuster verleiht Räumen eine zeitlose und hochwertige Ausstrahlung, während die authentische Optik für ein warmes und einladendes Ambiente sorgt. Pflegeleicht, strapazierfähig und ideal für moderne Wohnräume mit stilvollem Charakter",
@@ -1433,7 +1433,7 @@ window.YabisCatalog = [
     {
         "id": "fischgrat-4530",
         "name": "Fischgrät 4530",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Der Vinylboden Fischgrät 4530 vereint das klassische Fischgrätmuster mit einer edlen, dunkelbraunen Holzoptik. Die markante Verlegung und die tiefen Farbtöne schaffen eine luxuriöse Atmosphäre und setzen stilvolle Akzente in jedem Raum. Perfekt für anspruchsvolle Wohnkonzepte mit zeitloser Eleganz",
@@ -1448,7 +1448,7 @@ window.YabisCatalog = [
     {
         "id": "sena-blanco",
         "name": "Sena Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helle Creme-Weiß-Fliese mit sanfter, wolkenartiger Zeichnung. Sehr licht und elegant, ohne starke Aderung – ideal für helle Bäder, Küchen und große Flächen",
@@ -1468,7 +1468,7 @@ window.YabisCatalog = [
     {
         "id": "garfiet",
         "name": "Garfiet",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Elegante Bodenfliese in dunkler Betonoptik mit moderner, urbaner Ausstrahlung. Die anthrazitfarbene Oberfläche verleiht Räumen einen hochwertigen Charakter und harmoniert perfekt mit Holz, Metall und modernen Einrichtungskonzepten. Ideal für stilvolle Wohn- und Gewerberäume",
@@ -1483,7 +1483,7 @@ window.YabisCatalog = [
     {
         "id": "soul-light",
         "name": "Soul light",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in hellem Beige-Grau mit feiner Marmorzeichnung. Warme, lichtdurchflutete Oberfläche mit dezenten Adern. Elegant und wohnlich. Perfekt für Bad, Wohnbereich oder große Flächen – hell, natürlich und zeitlos",
@@ -1543,7 +1543,7 @@ window.YabisCatalog = [
     {
         "id": "materia-blanco-digital-soft",
         "name": "Materia Blanco digital soft",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Kühleres, helleres Grau-Weiß. Heller, cleaner, moderner. Macht Räume größer",
@@ -1558,7 +1558,7 @@ window.YabisCatalog = [
     {
         "id": "dolce-beige",
         "name": "Dolce beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Sehr gleichmäßige, feinkörnige Oberfläche in Hellbeige. Schlicht, pflegeleicht und zeitlos – gut als ruhiger Boden oder als Hintergrundfläche",
@@ -1573,7 +1573,7 @@ window.YabisCatalog = [
     {
         "id": "glocal-mud",
         "name": "Glocal Mud",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Moderne Fliese in einem warmen Erdton mit dezenter, natürlicher Steinoptik. Die feine Oberflächenstruktur verleiht jedem Raum eine elegante und zugleich gemütliche Atmosphäre. Ideal für Badezimmer, Wohnbereiche und stilvolle Raumkonzepte",
@@ -1588,7 +1588,7 @@ window.YabisCatalog = [
     {
         "id": "fischgrat-7810",
         "name": "Fischgrät 7810",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden verbindet die zeitlose Eleganz des Fischgrätmusters mit einer warmen, natürlichen Holzoptik. Die feine Maserung und die harmonischen Holztöne verleihen Räumen eine hochwertige und stilvolle Ausstrahlung. Das klassische Verlegemuster setzt besondere Akzente und sorgt für ein exklusives Wohnambiente. Pflegeleicht, robust und ideal für Wohn- und Gewerberäume, die einen eleganten Charakter erhalten sollen",
@@ -1603,7 +1603,7 @@ window.YabisCatalog = [
     {
         "id": "halley-mud",
         "name": "Halley mud",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in warmem Beige-Grau mit weicher Steinzeichnung. Dezente Adern und eine natürliche, wohnliche Oberfläche. Elegant und einladend. Perfekt für Wohnbereiche, Bad oder große Flächen – hell, harmonisch und mit Charakter",
@@ -1643,7 +1643,7 @@ window.YabisCatalog = [
     {
         "id": "eternal-white",
         "name": "Eternal white",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Große Fliese in hellem Weiß-Creme mit weicher Onyxoptik. Die Oberfläche zeigt sanfte, fließende Verläufe und dezente Adern – hell, ruhig und elegant",
@@ -1658,7 +1658,7 @@ window.YabisCatalog = [
     {
         "id": "restone-indian",
         "name": "ReStone Indian",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Charakterstarke Fliese in einem natürlichen Grau-Beige-Ton mit einer markanten, lebendigen Steinoptik. Die feinen Strukturen und natürlichen Farbnuancen verleihen jedem Raum einen rustikalen und zugleich modernen Charakter. Ideal für Badezimmer, Wohnbereiche und stilvolle Raumgestaltungen",
@@ -1673,7 +1673,7 @@ window.YabisCatalog = [
     {
         "id": "nadelholz-4540",
         "name": "Nadelholz 4540",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Der Vinylboden Nadelholz 4540 überzeugt mit seiner tiefen, dunklen Holzoptik und markanten Maserung. Die edle Farbgebung verleiht Wohn- und Geschäftsräumen eine elegante, hochwertige Atmosphäre und sorgt für ein modernes Ambiente mit Charakter",
@@ -1688,7 +1688,7 @@ window.YabisCatalog = [
     {
         "id": "avalon-rock-arena-c29",
         "name": "Avalon Rock Arena C29",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Warme Beige-Fliese mit weicher, wolkenartiger Aderung. Natürlich und edel, ohne zu dominant zu wirken – gut für Bad, Wohnen und Küche",
@@ -1718,7 +1718,7 @@ window.YabisCatalog = [
     {
         "id": "fichte-6885",
         "name": "Fichte 6885",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Der Vinylboden in Fichtenoptik überzeugt mit seiner markanten Maserung, natürlichen Aststrukturen und warmen Braun-Grautönen. Der rustikale Holzcharakter sorgt für eine gemütliche Atmosphäre und verleiht jedem Raum eine authentische, wohnliche Ausstrahlung. Perfekt für moderne Landhausstile und natürliche Wohnkonzepte",
@@ -1733,7 +1733,7 @@ window.YabisCatalog = [
     {
         "id": "dolomiten",
         "name": "Dolomiten",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit seiner stilvollen, hellgrauen Holzoptik und einer authentischen Maserung, die für eine moderne und elegante Raumwirkung sorgt. Die dezenten Farbtöne lassen sich vielseitig kombinieren und schaffen ein ruhiges, zeitloses Ambiente. Strapazierfähig, pflegeleicht und ideal für Wohn- und Geschäftsräume mit modernem Charakter",
@@ -1763,7 +1763,7 @@ window.YabisCatalog = [
     {
         "id": "natura-beige-2",
         "name": "Natura beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug in warmem Beige mit feiner, körniger Natursteinoptik. Leicht texturierte Oberfläche, natürlich und unaufgeregt",
@@ -1778,7 +1778,7 @@ window.YabisCatalog = [
     {
         "id": "terrazzo-rice",
         "name": "Terrazzo Rice",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Moderne Terrazzo-Optik in einem eleganten Beige-Greige-Ton. Die feinen Naturstein-Splitter in verschiedenen Grau-, Braun- und Beigetönen sorgen für ein lebendiges, harmonisches Gesamtbild. Ideal für zeitlose Wohnräume und stilvolle Badezimmer. Ein echter Hingucker für moderne Raumkonzepte!",
@@ -1793,7 +1793,7 @@ window.YabisCatalog = [
     {
         "id": "teide-anthrazit",
         "name": "Teide Anthrazit",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in hellem Grau mit weicher, welliger Steinzeichnung. Dezente Adern und eine lebendige, natürliche Oberfläche. Elegant und wohnlich. Perfekt für große Flächen, Bad oder Wohnbereich – hell, zeitlos und mit natürlichem Charakter",
@@ -1813,7 +1813,7 @@ window.YabisCatalog = [
     {
         "id": "eternal-pearl",
         "name": "Eternal Pearl",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Große Fliese in Weiß-Creme mit fließender Onyxoptik. Die Oberfläche zeigt weiche, organische Bänder und Adern in Grau und warmem Beige – hell, lebendig und elegant",
@@ -1863,7 +1863,7 @@ window.YabisCatalog = [
     {
         "id": "materia-gris-digital-soft",
         "name": "Materia Gris digital soft",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Kühleres, gleichmäßiges Hellgrau mit feiner Körnung. Beton- oder Feinstein-Look. Ruhig, modern, unaufgeregt",
@@ -1908,7 +1908,7 @@ window.YabisCatalog = [
     {
         "id": "lauren-negro-luke",
         "name": "Lauren negro Luke",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Tiefes Schwarz mit kräftigen goldenen und weißen Adern. Klassischer Luxus-Look (Portoro-/Black-Gold-Marmor-Optik). Dramatisch, edel, statementstark. Zieht sofort den Blick",
@@ -1923,7 +1923,7 @@ window.YabisCatalog = [
     {
         "id": "luxe-blue",
         "name": "Luxe blue",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in hellem Marmor-Look. Weiß mit feinen, lebendigen Grauveinen. Elegant, lichtdurchflutet und hochwertig. Perfekt für Bad, Wohnbereich oder große Flächen – sorgt für ein helles, luxuriöses Ambiente",
@@ -1948,7 +1948,7 @@ window.YabisCatalog = [
     {
         "id": "java",
         "name": "Java",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit einer freundlichen, hellen Holzstruktur und einer dezenten Maserung. Die natürliche Optik sorgt für ein modernes, zeitloses Wohngefühl und lässt Räume größer und heller wirken. Dank der ruhigen Farbgebung lässt sich der Boden vielseitig mit unterschiedlichen Einrichtungsstilen kombinieren – von modern bis skandinavisch. Pflegeleicht, strapazierfähig und ideal für Wohn- und Gewerberäume",
@@ -1963,7 +1963,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-6870",
         "name": "Eiche 6870",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Der Vinylboden Eiche 6870 begeistert mit seiner warmen Eichenoptik und natürlichen Holzstruktur. Die harmonischen Braun- und Honigtöne sorgen für eine wohnliche Atmosphäre und verleihen jedem Raum eine zeitlose Eleganz. Die authentische Maserung mit dezenten Astansätzen unterstreicht den natürlichen Charakter des Bodens",
@@ -1993,7 +1993,7 @@ window.YabisCatalog = [
     {
         "id": "glocal-chamois",
         "name": "Glocal Chamois",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Elegante Fliese in einem modernen Taupe-Grau-Ton mit dezenter, natürlicher Betonoptik. Die feine Struktur und der warme Farbton schaffen eine harmonische und hochwertige Atmosphäre. Ideal für Badezimmer, Wohnbereiche und moderne Raumgestaltungen",
@@ -2008,7 +2008,7 @@ window.YabisCatalog = [
     {
         "id": "fiordi-bosco-pearla",
         "name": "Fiordi bosco pearla",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in mittelgrauer Marmoroptik. Deutliche weiße Adern und eine elegante, leicht glänzende Oberfläche. Modern und charakterstark. Ideal für Boden und Wand – wirkt edel und bringt Tiefe in den Raum",
@@ -2028,7 +2028,7 @@ window.YabisCatalog = [
     {
         "id": "sli-cementi-grey-matt",
         "name": "Sli cementi grey Matt",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Sehr helles, fast weißes Grau. Glatter, gleichmäßiger, cleaner. Macht den Raum größer und heller",
@@ -2043,7 +2043,7 @@ window.YabisCatalog = [
     {
         "id": "donau-visgraat",
         "name": "Donau visgraat",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit seiner warmen, harmonischen Holzoptik und einer dezenten, natürlichen Maserung. Das elegante Fischgrätmuster verleiht jedem Raum eine hochwertige und zeitlose Ausstrahlung. Dank seiner robusten und pflegeleichten Oberfläche eignet er sich ideal für Wohn- und Geschäftsräume und schafft ein stilvolles, wohnliches Ambiente",
@@ -2063,7 +2063,7 @@ window.YabisCatalog = [
     {
         "id": "byblos-arena",
         "name": "Byblos Arena",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Helles Grau-Weiß mit sanften, fließenden Adern. Klassischer heller Marmor-Look. Mehr Bewegung als oben, aber trotzdem hell und luftig",
@@ -2078,7 +2078,7 @@ window.YabisCatalog = [
     {
         "id": "rockwell-marfil",
         "name": "Rockwell marfil",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Gleichmäßigeres, etwas wärmeres Beige. Ruhiger, homogener, weicher. Weniger Muster, mehr Fläche",
@@ -2093,7 +2093,7 @@ window.YabisCatalog = [
     {
         "id": "riviere-rigato-beige",
         "name": "Riviere Rigato beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Warme Beige-Fliese mit sanfter, wolkenartiger Zeichnung. Weich und natürlich, ohne starke Aderung – ideal für ruhige, moderne Räume",
@@ -2108,7 +2108,7 @@ window.YabisCatalog = [
     {
         "id": "glocal-sugar",
         "name": "Glocal Sugar",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Zeitlose Fliese in einem modernen Greige-Grauton mit dezenter Betonoptik. Die feine, gleichmäßige Oberflächenstruktur sorgt für eine elegante und natürliche Ausstrahlung. Perfekt für moderne Badezimmer, Wohnbereiche und stilvolle Wand- und Bodengestaltungen",
@@ -2143,7 +2143,7 @@ window.YabisCatalog = [
     {
         "id": "halley-taupe",
         "name": "Halley taupe",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in warmem Beige-Taupe mit natürlicher Marmoroptik. Fließende Adern und dezenter Glanz. Elegant, wohnlich und hochwertig. Ideal für Boden und Wand – bringt Wärme und ein luxuriöses Stein-Feeling ins Zimmer",
@@ -2188,7 +2188,7 @@ window.YabisCatalog = [
     {
         "id": "amazone-visgraat",
         "name": "Amazone visgraat",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden kombiniert eine natürliche Holzoptik mit einem klassischen Fischgrät-Design und sorgt für eine stilvolle, zeitlose Raumwirkung. Die warmen Beigetöne und die authentische Maserung verleihen jedem Raum eine gemütliche und hochwertige Atmosphäre. Pflegeleicht, langlebig und vielseitig einsetzbar – ideal für modernes Wohnen mit besonderem Charme",
@@ -2203,7 +2203,7 @@ window.YabisCatalog = [
     {
         "id": "isea-pearl",
         "name": "Isea Pearl",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in hellem Perlweiß-Grau mit zarter Marmorzeichnung. Sehr feine Adern und eine ruhige, lichtdurchflutete Oberfläche. Perfekt für Bad, Wohnbereich oder große Flächen – hell, clean und zeitlos elegant",
@@ -2228,7 +2228,7 @@ window.YabisCatalog = [
     {
         "id": "sarockwell-beige",
         "name": "Sarockwell beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in warmem Beige mit feiner Stein- und Betonoptik. Dezente Sprenkel und eine natürliche, wohnliche Oberfläche. Hell, freundlich und alltagstauglich. Perfekt für Wohnbereiche, Bad oder große Flächen",
@@ -2248,7 +2248,7 @@ window.YabisCatalog = [
     {
         "id": "amoer",
         "name": "Amoer",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit seiner natürlichen, hellen Holzoptik und einer feinen, authentischen Maserung. Die freundlichen Beigetöne sorgen für eine warme und einladende Atmosphäre und lassen Räume offen und großzügig wirken. Pflegeleicht, langlebig und vielseitig kombinierbar – ideal für moderne Wohnräume mit zeitloser Eleganz",
@@ -2263,7 +2263,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-8150",
         "name": "Eiche 8150",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit einer eleganten Holzstruktur und dezenten Grau-Braun-Nuancen. Die authentische Maserung verleiht dem Boden eine natürliche und hochwertige Ausstrahlung, während die moderne Farbgebung für ein stilvolles und zeitloses Ambiente sorgt. Ideal für moderne Wohnräume, Büros oder gewerbliche Bereiche. Pflegeleicht, robust und vielseitig kombinierbar mit unterschiedlichsten Einrichtungsstilen",
@@ -2278,7 +2278,7 @@ window.YabisCatalog = [
     {
         "id": "natura-negro",
         "name": "Natura negro",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug mit lebendiger Terrazzo- und Granitoptik.\nDunkles Grau mit feinen hellen Einschlüssen – wirkt modern, kraftvoll und zeitlos.\nIdeal für Wohnräume, Bad, Küche oder als durchgehender Boden- und Wandbelag. Pflegeleicht, robust und langlebig.\nPerfekt für moderne und industrielle Raumkonzepte",
@@ -2293,7 +2293,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-7820",
         "name": "Eiche 7820",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Der Vinylboden Eiche 7820 besticht durch seine warme Eichenoptik und die dezente, natürliche Maserung. Die harmonische Farbgebung schafft eine gemütliche Wohnatmosphäre und lässt sich vielseitig mit modernen sowie klassischen Einrichtungsstilen kombinieren",
@@ -2308,7 +2308,7 @@ window.YabisCatalog = [
     {
         "id": "velvet-c-beige-2",
         "name": "Velvet-C beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Warmes Beige/Sand mit feiner, leicht linearer Steinoptik. Erdiger, natürlicher, etwas mehr Textur",
@@ -2338,7 +2338,7 @@ window.YabisCatalog = [
     {
         "id": "isea-sand",
         "name": "Isea Sand",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in sandfarbenem Beige mit zarter Marmorzeichnung. Warme Nuancen und ruhige Adern. Elegant und einladend. Perfekt für Wohnbereiche, Bad oder große Flächen – wirkt natürlich, hell und zeitlos",
@@ -2363,7 +2363,7 @@ window.YabisCatalog = [
     {
         "id": "denver-ash",
         "name": "Denver ash",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Großformatige Fliese mit authentischer Betonoptik. Ruhiger Grauton mit dezent wolkenartiger Struktur – modern, urban und zeitlos. Ideal für Wohnraum, Bad oder als schlichte Wand- und Bodenfläche. Pflegeleicht und vielseitig",
@@ -2393,7 +2393,7 @@ window.YabisCatalog = [
     {
         "id": "turin-beige",
         "name": "Turin beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug mit natürlicher Travertin-/Steinoptik.\nWarmes Beige mit feinen, horizontalen Schichten und dezenten Hell-Dunkel-Nuancen – wirkt lebendig, elegant und zeitlos.\nIdeal für Wohnräume, Bad, Küche oder als durchgehender Boden- und Wandbelag. Pflegeleicht, robust und langlebig.\nPerfekt für moderne und mediterrane Raumkonzepte mit natürlichem Charakter",
@@ -2408,7 +2408,7 @@ window.YabisCatalog = [
     {
         "id": "zurich-blanco",
         "name": "Zürich Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug mit edler Marmoroptik.\nReines Weiß mit feinen, natürlichen grauen Adern – wirkt elegant, hell und zeitlos.\nIdeal für Wohnräume, Bad, Küche oder als durchgehender Boden- und Wandbelag. Pflegeleicht, robust und langlebig.\nPerfekt für moderne, helle und hochwertige Raumkonzepte",
@@ -2443,7 +2443,7 @@ window.YabisCatalog = [
     {
         "id": "velvet-c-terra",
         "name": "Velvet-C Terra",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Warmes Taupe / Beige-Braun. Erdiger Ton, gleichmäßig, gemütlich. Eher Lehm- oder warmer Beton-Look",
@@ -2473,7 +2473,7 @@ window.YabisCatalog = [
     {
         "id": "linues-natura-blanco",
         "name": "Linues natura Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helle Großformat-Fliese mit vertikaler Rillenstruktur. Modern, ruhig und hochwertig.\nIdeal als Wandfliese im Bad, Wohnbereich oder als Akzentwand.\nPasst sehr gut zu Schwarz, Holz und Betonoptik",
@@ -2488,7 +2488,7 @@ window.YabisCatalog = [
     {
         "id": "soul-base",
         "name": "Soul base",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in warmem Taupe-Grau mit feiner Marmoroptik. Dezente weiße Adern und eine ruhige, natürliche Oberfläche. Elegant und wohnlich. Ideal für Boden und Wand – wirkt modern und lässt sich sehr gut kombinieren",
@@ -2528,7 +2528,7 @@ window.YabisCatalog = [
     {
         "id": "linues-leo-blanco",
         "name": "Linues leo Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helle, fast weiße Großformat-Fliese mit feiner vertikaler Rillenstruktur. Wirkt hell, modern und hochwertig.\nPerfekt als Wandfliese im Bad, Wohnbereich oder als ruhige Akzentfläche.\nPasst super zur schwarzen Variante oder zu Holz und Betonoptik",
@@ -2543,7 +2543,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-6810",
         "name": "Eiche 6810",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden besticht durch seine warme, natürliche Holzoptik mit authentischer Maserung und harmonischen Farbtönen. Die dezente Struktur verleiht jedem Raum eine gemütliche und einladende Atmosphäre. Durch sein zeitloses Design lässt sich der Boden vielseitig mit modernen, klassischen oder rustikalen Einrichtungsstilen kombinieren. Pflegeleicht, robust und ideal für Wohn- und Gewerberäume",
@@ -2558,7 +2558,7 @@ window.YabisCatalog = [
     {
         "id": "carmarque-marron",
         "name": "Carmarque Marron",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Großformatige Fliese mit natürlicher, leicht rustikaler Steinoptik. Wolkige Beige- und Grautöne mit lebendiger Struktur – modern, unempfindlich und vielseitig. Perfekt für Wohnraum, Bad oder als ruhiger Boden- und Wandbelag",
@@ -2573,7 +2573,7 @@ window.YabisCatalog = [
     {
         "id": "velvet-c-blanco",
         "name": "Velvet-C Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Kühleres Hellgrau, gleichmäßiger, betonartiger. Ruhiger und moderner",
@@ -2588,7 +2588,7 @@ window.YabisCatalog = [
     {
         "id": "bergen-negro",
         "name": "Bergen negro",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Großformatige Fliese in tiefem Anthrazit-Schwarz. Glatter, leicht glänzender Look – modern, klar und kontrastreich. Gut als Akzent oder durchgängig in Bad, Küche und Wohnraum. Pflegeleicht und hochwertig",
@@ -2603,7 +2603,7 @@ window.YabisCatalog = [
     {
         "id": "halley-argent",
         "name": "Halley Argent",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in dunklem Grau mit markanter Steinoptik. Kräftige, fließende Adern und eine natürliche Schieferstruktur. Modern und charakterstark. Ideal für Boden und Wand – wirkt edel und setzt klare Akzente",
@@ -2628,7 +2628,7 @@ window.YabisCatalog = [
     {
         "id": "blending-graphit",
         "name": "Blending Graphit",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Mittleres Grau in Beton-/Steinoptik. Wolkig, körnig, relativ gleichmäßig. Industriell, ruhig, alltagstauglich",
@@ -2643,7 +2643,7 @@ window.YabisCatalog = [
     {
         "id": "dec-leo-blanco",
         "name": "Dec leo Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helle Großformat-Fliese mit abwechselnden horizontalen Streifen und unterschiedlichen Strukturen. Wirkt modern und lebendig.\nIdeal als Akzentwand im Bad, Wohnbereich oder Flur.\nPasst gut zu glatten Fliesen, Holz und Betonoptik",
@@ -2658,7 +2658,7 @@ window.YabisCatalog = [
     {
         "id": "leisteen",
         "name": "Leisteen",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Diese moderne Designboden-Fliese in eleganter Betonoptik verleiht jedem Raum eine ruhige und hochwertige Ausstrahlung. Der helle Grauton sorgt für ein offenes, freundliches Raumgefühl und lässt sich hervorragend mit Holz, Schwarz, Weiß oder modernen Einrichtungselementen kombinieren",
@@ -2673,7 +2673,7 @@ window.YabisCatalog = [
     {
         "id": "blending-blanco",
         "name": "Blending blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helleres, gleichmäßigeres Grau-Weiß. Cleaner, ruhiger, größer wirkend",
@@ -2688,7 +2688,7 @@ window.YabisCatalog = [
     {
         "id": "vita-gris",
         "name": "Vita Gris",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Klassische Terrazzo-Optik in Grau mit hellen und dunklen Steinsplittern. Charakterstark, aber nicht grell – modern und alltagstauglich",
@@ -2718,7 +2718,7 @@ window.YabisCatalog = [
     {
         "id": "nordic-slate-blue",
         "name": "Nordic slate blue",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug in authentischer Schieferoptik mit kühlen Blau-Grau-Tönen und natürlicher Aderung. Modern, nordisch und charakterstark. Ideal für Boden und Wand, innen wie außen. Robust, pflegeleicht und mit starker Ausstrahlung",
@@ -2733,7 +2733,7 @@ window.YabisCatalog = [
     {
         "id": "origins-white",
         "name": "Origins white",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Warmes Hellbeige mit weicher Steinzeichnung. Etwas mehr Leben, natürlicher, freundlicher",
@@ -2748,7 +2748,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-8340",
         "name": "Eiche 8340",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit einer harmonischen Kombination aus warmen Beige- und Brauntönen sowie einer authentischen Holzmaserung. Die natürliche Struktur verleiht dem Boden eine elegante und zugleich wohnliche Ausstrahlung. Durch seine zeitlose Optik passt er perfekt zu modernen, klassischen und skandinavischen Einrichtungsstilen. Pflegeleicht, langlebig und ideal für Wohn- und Gewerberäume",
@@ -2793,7 +2793,7 @@ window.YabisCatalog = [
     {
         "id": "tebas-pur-blanco",
         "name": "Tebas pur Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug mit edler Marmoroptik.\nWarmes Cremeweiß mit dezenten, natürlichen Adern in Beige – wirkt elegant, hell und zeitlos.\nIdeal für Wohnräume, Bad, Küche oder als durchgehender Boden- und Wandbelag. Pflegeleicht, robust und langlebig.\nPerfekt für moderne, helle und hochwertige Raumkonzepte",
@@ -2808,7 +2808,7 @@ window.YabisCatalog = [
     {
         "id": "amazone",
         "name": "Amazone",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit seiner harmonischen Holzmaserung und einem warmen, natürlichen Farbton. Die authentische Optik sorgt für eine gemütliche und zugleich moderne Atmosphäre in jedem Raum. Dank seines zeitlosen Designs lässt sich der Boden vielseitig kombinieren und eignet sich ideal für Wohn- und Arbeitsbereiche mit stilvollem Charakter",
@@ -2838,7 +2838,7 @@ window.YabisCatalog = [
     {
         "id": "mazzerine-ash",
         "name": "Mazzerine ASH",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in tiefem Anthrazit mit markanter Marmoroptik. Kräftige weiße und goldene Adern auf dunklem Grund. Luxuriös, kontrastreich und charakterstark. Perfekt als Blickfang für Boden, Wand oder Akzentflächen",
@@ -2858,7 +2858,7 @@ window.YabisCatalog = [
     {
         "id": "origins-beige",
         "name": "Origins beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in hellem Cremeweiß mit feiner, leicht strukturierter Steinoptik. Ruhig, natürlich und lichtdurchflutet. Ideal für Boden und Wand – macht Räume größer und wirkt modern sowie wohnlich",
@@ -2878,7 +2878,7 @@ window.YabisCatalog = [
     {
         "id": "kreta",
         "name": "Kreta",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Holzoptik",
         "color": "",
         "description": "Warme, natürliche Holzoptik mit dezenten Maserungen für ein wohnliches und zeitloses Ambiente. Der harmonische Farbton lässt Räume freundlich und einladend wirken und passt perfekt zu modernen sowie klassischen Einrichtungsstilen. Pflegeleicht, robust und vielseitig einsetzbar",
@@ -2943,7 +2943,7 @@ window.YabisCatalog = [
     {
         "id": "motley-altamont",
         "name": "Motley Altamont",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Edle Fliese in einem hellen Grau mit ausdrucksstarker, natürlicher Steinoptik. Feine Maserungen und dezente Farbnuancen verleihen der Oberfläche eine elegante und hochwertige Ausstrahlung. Ideal für moderne Badezimmer, Wohnbereiche und stilvolle Akzentwände",
@@ -2958,7 +2958,7 @@ window.YabisCatalog = [
     {
         "id": "origins-graphit",
         "name": "Origins Graphit",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Dunkleres Grau mit deutlichen hellen Adern. Mehr Marmor- oder Schiefer-Charakter. Lebendiger, graphischer, markanter",
@@ -2973,7 +2973,7 @@ window.YabisCatalog = [
     {
         "id": "fliese-1810",
         "name": "Fliese 1810",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Vinylboden in moderner Steinoptik – Natürliche, fein strukturierte Oberfläche in warmen Grautönen für ein modernes und harmonisches Wohngefühl. Die dezente Steinoptik verleiht Räumen eine zeitlose Eleganz und lässt sich vielseitig mit unterschiedlichen Einrichtungsstilen kombinieren. Ideal für Wohn- und Gewerberäume",
@@ -2988,7 +2988,7 @@ window.YabisCatalog = [
     {
         "id": "basat",
         "name": "Basat",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Zeitlose Bodenfliese in eleganter Betonoptik mit dezenten Strukturen und natürlicher Ausstrahlung. Der helle Grauton sorgt für ein modernes, großzügiges Raumgefühl und passt perfekt zu minimalistischen sowie industriellen Wohnstilen",
@@ -3003,7 +3003,7 @@ window.YabisCatalog = [
     {
         "id": "ronda-blanco",
         "name": "Ronda Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Warmes Hellbeige mit weicher, leicht wolkiger Steinoptik. Natürlich, freundlich, etwas lebendiger",
@@ -3033,7 +3033,7 @@ window.YabisCatalog = [
     {
         "id": "glocal-nebula",
         "name": "Glocal Nebula",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Moderne Fliese in einem eleganten Anthrazit-Grau mit dezenter, gleichmäßiger Oberflächenstruktur. Die schlichte Betonoptik sorgt für einen zeitlosen, urbanen Look und lässt sich vielseitig kombinieren. Ideal für Badezimmer, Wohnräume und moderne Raumkonzepte",
@@ -3048,7 +3048,7 @@ window.YabisCatalog = [
     {
         "id": "motley-glastonbury",
         "name": "Motley Glastonbury",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Elegante Fliese in einem modernen Anthrazit-Grau mit dezenter Natursteinoptik. Die feine Struktur und die leicht wolkige Oberfläche verleihen jedem Raum eine edle und zeitlose Ausstrahlung. Ideal für moderne Badezimmer, Wohnbereiche und stilvolle Boden- und Wandgestaltungen",
@@ -3063,7 +3063,7 @@ window.YabisCatalog = [
     {
         "id": "quantz-crema",
         "name": "Quantz crema",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Warmes Creme/Beige, stark glänzend. Die Oberfläche spiegelt, wirkt fast wie polierter Stein oder Onyx-Look. Sehr einheitlich, weich und luxuriös. Macht Räume hell und edel",
@@ -3078,7 +3078,7 @@ window.YabisCatalog = [
     {
         "id": "markthal-beige",
         "name": "Markthal beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helle Beige-Fliese mit feiner, unregelmäßiger Steinzeichnung. Natürlich und lebendig, aber zurückhaltend – gut für Boden und Wand",
@@ -3093,7 +3093,7 @@ window.YabisCatalog = [
     {
         "id": "freedom-cream",
         "name": "Freedom cream",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Warme Onyx-/Marmoroptik in Beige und Creme. Lebendige Adern und weiche Farbverläufe – elegant und etwas glänzender als Steinoptik. Für Boden und Wand",
@@ -3123,7 +3123,7 @@ window.YabisCatalog = [
     {
         "id": "velvet-c-blanco-2",
         "name": "Velvet-C Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Große, ruhige Fläche in warmem Creme-/Sandton. Sehr dezente, wolkige Steinoptik, fast wie Kalkstein oder feiner Beton. Wirkt hell, weit, ruhig und modern. Perfekt, wenn der Raum atmen soll",
@@ -3138,7 +3138,7 @@ window.YabisCatalog = [
     {
         "id": "fiji",
         "name": "Fiji",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Holzoptik",
         "color": "",
         "description": "Zeitlose Bodenfliese mit authentischer Holzstruktur und warmer, heller Ausstrahlung. Die natürliche Eichenoptik sorgt für ein freundliches Raumgefühl und passt perfekt zu modernen, skandinavischen oder klassischen Einrichtungsstilen. Ideal für Wohnräume, Küchen und Flure",
@@ -3183,7 +3183,7 @@ window.YabisCatalog = [
     {
         "id": "lissel-visgraat",
         "name": "Lissel visgraat",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden besticht durch seine warme Eichenoptik und die ausdrucksstarke Holzmaserung. Das klassische Fischgrätmuster verleiht jedem Raum eine elegante und hochwertige Ausstrahlung, während die natürlichen Farbtöne für eine gemütliche Wohnatmosphäre sorgen. Robust, pflegeleicht und vielseitig einsetzbar – ideal für stilvolle Wohn- und Geschäftsräume",
@@ -3213,7 +3213,7 @@ window.YabisCatalog = [
     {
         "id": "terrazzo-carribean",
         "name": "Terrazzo Carribean",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Moderne Fliese in einem hellen Beige-Ton mit auffälliger Terrazzo-Optik. Die unterschiedlich großen Steinelemente in warmen Naturfarben verleihen der Oberfläche einen lebendigen und einzigartigen Charakter. Ideal für moderne Badezimmer, Wohnbereiche und stilvolle Akzentflächen",
@@ -3243,7 +3243,7 @@ window.YabisCatalog = [
     {
         "id": "pune-blanco",
         "name": "Pune Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Klare Weißfläche mit einer markanten, grauen Ader. Modern und reduziert – hell, elegant und sehr wirkungsvoll auf großen Flächen",
@@ -3348,7 +3348,7 @@ window.YabisCatalog = [
     {
         "id": "bercy-grigio",
         "name": "Bercy Grigio",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in hellem Silbergrau mit lebendiger, wolkenartiger Oberfläche. Dezente Struktur und natürliche Nuancen. Elegant und wohnlich. Perfekt für große Flächen, Bad oder Wohnbereich – hell, modern und mit Charakter",
@@ -3373,7 +3373,7 @@ window.YabisCatalog = [
     {
         "id": "bianco-siberia-greige",
         "name": "Bianco siberia greige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in warmer Beige-Grau-Steinoptik. Lebendige, wolkenartige Oberfläche mit natürlicher Maserung. Elegant und wohnlich. Perfekt für Wohnbereiche, Bad oder große Flächen – verbindet natürlichen Charakter mit einem hellen, modernen Look",
@@ -3443,7 +3443,7 @@ window.YabisCatalog = [
     {
         "id": "tebas-pur-gris",
         "name": "Tebas pur Gris",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug mit edler Marmoroptik.\nWarmes Hellgrau mit markanten, natürlichen Adern – wirkt elegant, modern und zeitlos.\nIdeal für Wohnräume, Bad, Küche oder als durchgehender Boden- und Wandbelag. Pflegeleicht, robust und langlebig.\nPerfekt für moderne und hochwertige Raumkonzepte",
@@ -3458,7 +3458,7 @@ window.YabisCatalog = [
     {
         "id": "origins-grey",
         "name": "Origins grey",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helles Grau mit weichen, fließenden Steinadern. Etwas mehr Zeichnung, kühler, natürlicher",
@@ -3488,7 +3488,7 @@ window.YabisCatalog = [
     {
         "id": "fiordi-bosco-sand-2",
         "name": "Fiordi bosco Sand",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in warmem Beige-Grau mit natürlicher Marmoroptik. Feine weiße Adern und eine elegante, leicht glänzende Oberfläche. Hochwertig und wohnlich. Ideal für Boden und Wand – verbindet Steincharakter mit einem hellen, modernen Look",
@@ -3508,7 +3508,7 @@ window.YabisCatalog = [
     {
         "id": "isea-white",
         "name": "Isea white",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helles Beige-Weiß mit sehr dezenter Steinoptik und weichen, natürlichen Adern. Großformatig und ruhig. Wirkt hell, modern und zeitlos – ideal für Wohnräume, Bad und Küche",
@@ -3528,7 +3528,7 @@ window.YabisCatalog = [
     {
         "id": "natura-blanco",
         "name": "Natura blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Kühleres Hellgrau mit feiner, gleichmäßiger Sprenkelung. Cleaner, moderner, flächiger",
@@ -3543,7 +3543,7 @@ window.YabisCatalog = [
     {
         "id": "massa-ivory",
         "name": "Massa ivory",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Großformatige Fliese in hellem Elfenbein-Beige mit sehr dezenten Adern und wolkenartiger Struktur. Ruhig, elegant und zeitlos – ideal für Wohnraum, Bad oder Küche. Pflegeleicht und modern",
@@ -3558,7 +3558,7 @@ window.YabisCatalog = [
     {
         "id": "bergen-blanco-2",
         "name": "Bergen Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug in reinem Weiß mit leicht schimmernder, gleichmäßiger Oberfläche.\nHelle, moderne Optik mit dezentem Glanz – wirkt frisch, clean und zeitlos.\nIdeal für Bad, Küche, Wohnräume oder als Wand- und Bodenbelag. Pflegeleicht, robust und langlebig.\nPerfekt für helle, minimalistische und moderne Raumkonzepte",
@@ -3573,7 +3573,7 @@ window.YabisCatalog = [
     {
         "id": "ronda-beige",
         "name": "Ronda beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Warmes Beige mit wolkenartiger, natürlicher Steinoptik. Weich, erdig, etwas unregelmäßig",
@@ -3588,7 +3588,7 @@ window.YabisCatalog = [
     {
         "id": "velvet-c-gris",
         "name": "Velvet-C gris",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Kühles Hellgrau. Klassische Betonoptik, modern, nüchtern, hell",
@@ -3633,7 +3633,7 @@ window.YabisCatalog = [
     {
         "id": "unes-bergen-blanco",
         "name": "Unes Bergen Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug in reinem Weiß mit feiner, horizontaler Rillenstruktur.\nHelle, gleichmäßige Oberfläche mit dezentem Relief – wirkt modern, frisch und zeitlos.\nIdeal für Bad, Küche, Wohnräume oder als Wand- und Bodenbelag. Pflegeleicht, robust und langlebig.\nPerfekt für helle, minimalistische und moderne Raumkonzepte",
@@ -3663,7 +3663,7 @@ window.YabisCatalog = [
     {
         "id": "linues-bergen-blanco",
         "name": "Linues Bergen Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helle Großformat-Fliese mit vertikaler Rillenstruktur. Wirkt modern, ruhig und hochwertig.\nIdeal als Wandfliese im Bad, Wohnbereich oder als Akzentwand.\nPasst sehr gut zu Schwarz, Holz und Betonoptik",
@@ -3678,7 +3678,7 @@ window.YabisCatalog = [
     {
         "id": "massa-anthrazit",
         "name": "Massa Anthrazit",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Großformatige Fliese mit natürlicher Steinoptik. Ruhiger Grau-Beige-Ton mit dezenten Adern und wolkenartiger Struktur – modern, unauffällig und zeitlos. Ideal für Wohnraum, Bad oder als schlichte Boden- und Wandfläche. Pflegeleicht und vielseitig",
@@ -3743,7 +3743,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-7220",
         "name": "Eiche 7220",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit einer authentischen Holzstruktur und einer harmonischen, warmen Farbgebung. Die natürlichen Ast- und Maserungsdetails verleihen dem Boden einen besonders lebendigen und hochwertigen Charakter. Durch seine zeitlose Optik schafft er eine gemütliche Atmosphäre und lässt sich vielseitig mit modernen, klassischen oder rustikalen Einrichtungsstilen kombinieren. Pflegeleicht, strapazierfähig und ideal für Wohn- und Gewerberäume",
@@ -3758,7 +3758,7 @@ window.YabisCatalog = [
     {
         "id": "soul-cement",
         "name": "Soul cement",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in kühlem Mittelgrau mit markanter Marmorzeichnung. Kräftigere Adern und eine lebendige Steinoptik. Charakterstark und zeitlos. Perfekt für große Flächen, Bad oder Wohnbereich – bringt Tiefe und einen edlen Look",
@@ -3783,7 +3783,7 @@ window.YabisCatalog = [
     {
         "id": "denia-marron",
         "name": "Denia marron",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug mit natürlicher Terrazzo- und Steinoptik.\nWarmes Beige-Grau mit lebendigen Einschlüssen und dezenten Farbnuancen – wirkt natürlich, modern und zeitlos.\nIdeal für Wohnräume, Bad, Küche oder als durchgehender Boden- und Wandbelag. Pflegeleicht, robust und langlebig.\nPerfekt für moderne und natürliche Raumkonzepte",
@@ -3858,7 +3858,7 @@ window.YabisCatalog = [
     {
         "id": "kaukasus",
         "name": "Kaukasus",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden begeistert mit seiner warmen, authentischen Holzstruktur und einer ausgewogenen Maserung. Die natürlichen Farbtöne schaffen eine freundliche und wohnliche Atmosphäre und passen sowohl zu modernen als auch zu klassischen Einrichtungsstilen. Pflegeleicht, langlebig und vielseitig einsetzbar – für ein zeitlos schönes Wohnambiente",
@@ -3888,7 +3888,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-7840",
         "name": "Eiche 7840",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Mit seinen warmen Braun- und Beigetönen sorgt dieser Vinylboden für eine wohnliche und harmonische Atmosphäre. Die natürliche Maserung und die authentische Holzstruktur verleihen dem Boden eine hochwertige Ausstrahlung. Durch die ausgewogene Farbgebung passt er sowohl zu modernen als auch zu klassischen Einrichtungsstilen. Pflegeleicht, strapazierfähig und ideal für Wohn- und Gewerberäume",
@@ -3903,7 +3903,7 @@ window.YabisCatalog = [
     {
         "id": "leo-blanco",
         "name": "Leo Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Kühleres Off-White mit noch dezenteren Adern. Heller, cleaner, luftiger",
@@ -3918,7 +3918,7 @@ window.YabisCatalog = [
     {
         "id": "materia-gris",
         "name": "Materia Gris",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Sehr helles, fast weißes Grau mit feiner, gleichmäßiger Körnung. Ruhig, clean, modern. Kaum Muster, dafür viel Fläche und Licht. Perfekt für minimalistische oder skandinavische Räume",
@@ -3933,7 +3933,7 @@ window.YabisCatalog = [
     {
         "id": "marble-dolomita",
         "name": "Marble Dolomita",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Große Fliese in reinem Weiß mit feiner Marmoroptik. Die Oberfläche zeigt zarte, unregelmäßige Adern in Beige und Hellgrau – hell, elegant und dezent",
@@ -3948,7 +3948,7 @@ window.YabisCatalog = [
     {
         "id": "linues-turin-beige",
         "name": "Linues Turin beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug mit feiner, linearer Steinoptik.\nWarmes Beige mit dezenten horizontalen Strukturen und natürlichen Nuancen – wirkt ruhig, modern und zeitlos.\nIdeal für Wohnräume, Bad, Küche oder als durchgehender Boden- und Wandbelag. Pflegeleicht, robust und langlebig.\nPerfekt für moderne und natürliche Raumkonzepte",
@@ -3963,7 +3963,7 @@ window.YabisCatalog = [
     {
         "id": "glocal-slight",
         "name": "Glocal Slight",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Elegante Fliese in einem warmen Beige-Greige-Ton mit einer dezenten, natürlichen Steinoptik. Die feine Struktur sorgt für eine moderne und zeitlose Ausstrahlung. Ideal für stilvolle Badezimmer, Wohnbereiche und großzügige Raumkonzepte",
@@ -3978,7 +3978,7 @@ window.YabisCatalog = [
     {
         "id": "bergen-negro-2",
         "name": "Bergen negro",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug mit edler, leicht schimmernder Metalloptik.\nTiefes Anthrazit mit feiner, gleichmäßiger Struktur – wirkt modern, hochwertig und zeitlos.\nIdeal für Wohnräume, Bad, Küche oder als Akzentfläche an Wand und Boden. Pflegeleicht, robust und langlebig.\nPerfekt für moderne und industrielle Raumkonzepte",
@@ -3993,7 +3993,7 @@ window.YabisCatalog = [
     {
         "id": "kwarts",
         "name": "Kwarts",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Diese hochwertige Designboden-Fliese überzeugt mit einer natürlichen Steinoptik in einem warmen Beige-Ton. Die dezente Struktur verleiht dem Boden eine edle und moderne Ausstrahlung, während die helle Farbgebung Räume größer, freundlicher und einladender wirken lässt",
@@ -4008,7 +4008,7 @@ window.YabisCatalog = [
     {
         "id": "massa-grigio",
         "name": "Massa Grigio",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Großformatige Fliese mit sehr dezenten, natürlichen Farbnuancen. Heller Creme-Beige-Ton mit feiner, wolkenartiger Struktur – ruhig, modern und zeitlos. Ideal für Wohnraum, Bad oder als helle Basisfläche. Pflegeleicht und vielseitig",
@@ -4023,7 +4023,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-5002",
         "name": "Eiche 5002",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden besticht durch seine kräftige Holzstruktur, markante Maserungen und natürliche Astdetails. Die warmen, dunkleren Brauntöne verleihen Räumen eine besonders gemütliche und charaktervolle Ausstrahlung. Die authentische Optik sorgt für einen hochwertigen Landhaus-Charme und passt sowohl zu modernen als auch zu klassischen Einrichtungsstilen. Pflegeleicht, strapazierfähig und ideal für Wohn- und Gewerberäume mit besonderem Ambiente",
@@ -4038,7 +4038,7 @@ window.YabisCatalog = [
     {
         "id": "fliese-1940",
         "name": "Fliese 1940",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Vinylboden in warmer Steinoptik – Dezente Grau- und Erdtöne mit feiner, natürlicher Struktur sorgen für eine elegante und zeitlose Optik. Die harmonische Oberfläche verleiht Räumen eine moderne, wohnliche Atmosphäre und lässt sich vielseitig mit unterschiedlichen Einrichtungsstilen kombinieren. Ideal für Wohn- und Gewerberäume",
@@ -4068,7 +4068,7 @@ window.YabisCatalog = [
     {
         "id": "halley-white-2",
         "name": "Halley white",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in hellem Marmor-Look. Weiß mit feinen, dezenten Grauveinen und leichtem Glanz. Elegant, lichtdurchflutet und hochwertig. Ideal für Boden und Wand – wirkt edel und lässt Räume größer und heller erscheinen",
@@ -4093,7 +4093,7 @@ window.YabisCatalog = [
     {
         "id": "linues-bergen-blanco-2",
         "name": "Linues Bergen Blanco",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Tiefschwarze Großformat-Fliese mit markanter, vertikaler Rillenstruktur. Die Oberfläche wirkt modern, edel und leicht 3D – Licht und Schatten spielen schön mit",
@@ -4108,7 +4108,7 @@ window.YabisCatalog = [
     {
         "id": "denia-gris",
         "name": "Denia Gris",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug mit lebendiger Marmor- und Steinoptik.\nHelles Grau mit natürlichen Adern und Einschlüssen – wirkt elegant, modern und zeitlos.\nIdeal für Wohnräume, Bad, Küche oder als durchgehender Boden- und Wandbelag. Pflegeleicht, robust und langlebig.\nPerfekt für helle, moderne und natürliche Raumkonzepte",
@@ -4123,7 +4123,7 @@ window.YabisCatalog = [
     {
         "id": "teide-silver",
         "name": "Teide Silver",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helles Beige-Grau mit weicher, fließender Steinzeichnung. Großes Format, dezent und elegant. Schafft eine helle, zeitlose Atmosphäre und passt zu vielen Einrichtungsstilen",
@@ -4138,7 +4138,7 @@ window.YabisCatalog = [
     {
         "id": "rijn-visgraat",
         "name": "Rijn visgraat",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Mit seiner warmen Holzoptik und den natürlichen Maserungen bringt dieser Vinylboden Gemütlichkeit und Eleganz in jeden Raum. Das klassische Fischgrätmuster verleiht dem Boden eine hochwertige Ausstrahlung und setzt stilvolle Akzente. Robust, pflegeleicht und vielseitig einsetzbar – die perfekte Wahl für modernes Wohnen mit zeitlosem Charakter",
@@ -4158,7 +4158,7 @@ window.YabisCatalog = [
     {
         "id": "ardennen",
         "name": "Ardennen",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit seiner dezenten, natürlichen Holzmaserung und einem hellen, freundlichen Farbton. Die authentische Eichenoptik verleiht Räumen eine moderne und zugleich gemütliche Atmosphäre. Dank seiner zeitlosen Ausstrahlung lässt sich der Boden vielseitig kombinieren und eignet sich ideal für stilvolle Wohn- und Geschäftsräume",
@@ -4173,7 +4173,7 @@ window.YabisCatalog = [
     {
         "id": "glocal-once",
         "name": "Glocal Once",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Zeitlose Fliese in einem eleganten Taupe-Greige-Ton mit dezenter Betonoptik. Die feine, gleichmäßige Struktur und die natürliche Farbgebung sorgen für eine ruhige und moderne Atmosphäre. Ideal für stilvolle Badezimmer, Wohnbereiche und harmonische Wand- und Bodengestaltungen",
@@ -4188,7 +4188,7 @@ window.YabisCatalog = [
     {
         "id": "malta",
         "name": "Malta",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Holzoptik",
         "color": "",
         "description": "Moderne Holzoptik in dezenten Grau-Beige-Tönen mit natürlicher Maserung. Die ruhige Farbgebung verleiht Räumen eine elegante und zeitlose Ausstrahlung und lässt sich vielseitig mit modernen Einrichtungsstilen kombinieren. Pflegeleicht, robust und ideal für ein harmonisches Wohnambiente",
@@ -4243,7 +4243,7 @@ window.YabisCatalog = [
     {
         "id": "simply-beton-grau",
         "name": "Simply Beton grau",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Großformatige Fliese mit ruhiger Betonoptik. Heller Grau-Beige-Ton mit dezent wolkenartiger Struktur – modern, schlicht und zeitlos. Ideal für Wohnraum, Bad oder als unauffällige Basisfläche. Pflegeleicht und vielseitig kombinierbar",
@@ -4258,7 +4258,7 @@ window.YabisCatalog = [
     {
         "id": "tiber-visgraat",
         "name": "Tiber visgraat",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden begeistert mit seiner eleganten, hellen Holzoptik und einer feinen, natürlichen Maserung. Das klassische Fischgrätmuster sorgt für eine hochwertige und zeitlose Ausstrahlung, die Räume größer und freundlicher wirken lässt. Strapazierfähig, pflegeleicht und ideal für moderne Wohnkonzepte mit stilvollem Ambiente",
@@ -4288,7 +4288,7 @@ window.YabisCatalog = [
     {
         "id": "soul-graphit",
         "name": "Soul Graphit",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in dunklem Grau mit markanter Marmoroptik. Kräftige weiße Adern auf anthrazitgrauem Grund. Modern, charakterstark und edel. Ideal für Boden und Wand – setzt Akzente und wirkt hochwertig",
@@ -4308,7 +4308,7 @@ window.YabisCatalog = [
     {
         "id": "halley-light-2",
         "name": "Halley light",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in hellem Grau mit feiner Marmorzeichnung. Kühle, elegante Adern und eine ruhige Oberfläche. Modern und lichtdurchflutet. Perfekt für Bad, Wohnbereich oder große Flächen – wirkt edel und lässt Räume größer erscheinen",
@@ -4333,7 +4333,7 @@ window.YabisCatalog = [
     {
         "id": "byblos-cenizia",
         "name": "Byblos cenizia",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Wärmeres Beige-Grau mit weicheren, verschwommeneren Adern. Ruhiger, wärmer, etwas cremiger",
@@ -4378,7 +4378,7 @@ window.YabisCatalog = [
     {
         "id": "materia-savia-digital-soft",
         "name": "Materia savia digital soft",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Warmes Greige / Taupe. Feine Körnung, erdig, etwas dunkler. Wirkt gemütlich und natürlich",
@@ -4413,7 +4413,7 @@ window.YabisCatalog = [
     {
         "id": "motley-marseille",
         "name": "Motley Marseille",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Zeitlose Fliese in einem warmen Sand-Beige-Ton mit natürlicher Steinoptik. Die feine Struktur und die dezenten Maserungen verleihen ihr eine elegante und harmonische Ausstrahlung. Ideal für Badezimmer, Wohnbereiche und moderne Wand- und Bodengestaltungen",
@@ -4428,7 +4428,7 @@ window.YabisCatalog = [
     {
         "id": "leo-beige-2",
         "name": "Leo beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Warmes Creme/Elfenbein mit ganz feiner, weicher Zeichnung. Gemütlich, weich, etwas cremiger",
@@ -4443,7 +4443,7 @@ window.YabisCatalog = [
     {
         "id": "eiche-6860",
         "name": "Eiche 6860",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Der Vinylboden Eiche 6860 überzeugt mit seiner warmen, natürlichen Eichenoptik und einer harmonischen Holzstruktur. Die ausgewogene Farbgebung verleiht Räumen eine gemütliche Atmosphäre und lässt sich vielseitig mit modernen sowie klassischen Einrichtungsstilen kombinieren. Ein Boden für zeitlose Wohnkonzepte mit natürlichem Charme",
@@ -4473,7 +4473,7 @@ window.YabisCatalog = [
     {
         "id": "sli-cementi-grey",
         "name": "Sli cementi grey",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Mittleres Hellgrau mit feiner, leicht körniger Oberfläche. Wirkt wie Beton, Mikrozement oder feiner Naturstein. Etwas rauer, erdiger, alltagstauglicher",
@@ -4518,7 +4518,7 @@ window.YabisCatalog = [
     {
         "id": "donau",
         "name": "Donau",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden besticht durch seine freundliche, helle Holzoptik und eine natürliche Maserung, die für ein modernes und einladendes Wohngefühl sorgt. Die harmonischen Farbtöne verleihen Räumen mehr Helligkeit und eine zeitlose Eleganz. Pflegeleicht, strapazierfähig und vielseitig einsetzbar – ideal für stilvolle Wohn- und Arbeitsbereiche",
@@ -4548,7 +4548,7 @@ window.YabisCatalog = [
     {
         "id": "camarque",
         "name": "Camarque",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Großformatige Fliese mit weicher, natürlicher Steinoptik. Warmer Sandton mit dezent wolkenartiger Struktur – hell, ruhig und zeitlos. Ideal für Wohnraum, Bad oder Küche. Pflegeleicht und modern",
@@ -4613,7 +4613,7 @@ window.YabisCatalog = [
     {
         "id": "marbel-crema-delicato-arena-9",
         "name": "Marbel crema delicato Arena 9",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helle, elegante Fliese mit dezenter Gold-/Beigeaderung. Ruhige Fläche, edel und hell – ideal für Bad, Küche oder als dezentes Highlight",
@@ -4628,7 +4628,7 @@ window.YabisCatalog = [
     {
         "id": "fliese-1710",
         "name": "Fliese 1710",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Vinylboden in heller Betonoptik – Moderne und dezente Oberfläche mit authentischer Betonstruktur. Die hellgrauen Farbtöne sorgen für eine offene, freundliche Raumwirkung und lassen sich vielseitig mit verschiedenen Einrichtungsstilen kombinieren. Ideal für zeitgemäße Wohn- und Gewerberäume",
@@ -4643,7 +4643,7 @@ window.YabisCatalog = [
     {
         "id": "montiver-pearl",
         "name": "Montiver Pearl",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Feinsteinzeug 60x120 cm in hellem Perlweiß mit feiner, gleichmäßiger Struktur. Sehr hell, clean und lichtdurchflutet. Perfekt für Bad, Wohnbereich oder große Flächen – macht Räume größer und freundlicher",
@@ -4683,7 +4683,7 @@ window.YabisCatalog = [
     {
         "id": "olympus",
         "name": "Olympus",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Vinyl",
         "color": "",
         "description": "Dieser Vinylboden überzeugt mit seiner markanten Holzstruktur und authentischen Maserung, die den natürlichen Charakter von verwittertem Holz widerspiegelt. Die warmen Grau- und Beigetöne verleihen Räumen eine moderne, gemütliche Atmosphäre und sorgen für einen besonderen Blickfang. Robust, pflegeleicht und vielseitig einsetzbar – ideal für Wohnräume mit natürlichem und zeitlosem Charme",
@@ -4698,7 +4698,7 @@ window.YabisCatalog = [
     {
         "id": "glocal-type",
         "name": "Glocal Type",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Moderne Fliese in einem stilvollen Grau mit dezenter Betonoptik. Die feine, natürliche Oberflächenstruktur und die harmonischen Farbnuancen sorgen für ein schlichtes, elegantes Gesamtbild. Perfekt für moderne Badezimmer, Wohnräume und zeitlose Wand- und Bodengestaltungen",
@@ -4713,7 +4713,7 @@ window.YabisCatalog = [
     {
         "id": "tebas-pur-beige",
         "name": "Tebas pur beige",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Marmoroptik",
         "color": "",
         "description": "Hochwertiges Feinsteinzeug in großem Format mit edler, natürlicher Marmoroptik.\nSanfter Creme-/Elfenbeinton mit dezenten, lebendigen Adern in Beige- und warmen Goldtönen – wirkt hochwertig und zeitlos.\nIdeal für Wohnzimmer, Bad, Küche oder als Wand- und Bodenbelag. Pflegeleicht, kratzfest und langlebig.\nPerfekt für moderne, helle Räume mit natürlichem Charakter",
@@ -4728,7 +4728,7 @@ window.YabisCatalog = [
     {
         "id": "nepal",
         "name": "Nepal",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Warme Elfenbein-Fliese mit sanften Beige- und Goldadern. Hell, weich und edel – ideal für ein luxuriöses, helles Bad oder die Küche",
@@ -4743,7 +4743,7 @@ window.YabisCatalog = [
     {
         "id": "toscano-light-digital",
         "name": "Toscano light digital",
-        "finish": "Oberfläche auf Anfrage",
+        "finish": "",
         "kind": "Fliesen",
         "color": "",
         "description": "Helleres Creme-Beige mit wolkenartiger, leicht unruhiger Struktur. Erinnert an Travertin oder Kalkstein. Mehr Bewegung und natürliche Flecken",

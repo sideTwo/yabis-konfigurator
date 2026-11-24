@@ -48,7 +48,7 @@ foreach ($artikel as $a) {
     echo '<li data-text="' . h(mb_strtolower($a['name'] . ' ' . $a['art'] . ' ' . $a['oberflaeche'] . ' ' . $a['id'])) . '" data-art="' . h($a['art']) . '" data-sichtbar="' . (int)$a['sichtbar'] . '" data-preis="' . ($a['preis_cent'] === null ? 'ohne' : 'mit') . '">'
        . '<a href="artikel.php?id=' . rawurlencode($a['id']) . '">'
        . ($bild ? '<img src="../' . h($bild) . '" alt="" loading="lazy" width="64" height="64">' : '<span class="ohne-bild" aria-hidden="true"></span>')
-       . '<span class="name">' . h($a['name']) . '<small>' . h($a['art'] . ' · ' . $a['oberflaeche'] . ' · ' . $formate) . '</small></span>'
+       . '<span class="name">' . h($a['name']) . '<small>' . h(implode(' · ', array_filter([$a['art'], $a['oberflaeche'], $formate]))) . '</small></span>'
        . '<span class="preis">' . h($preis) . '</span>'
        . ((int)$a['sichtbar'] ? '' : '<span class="marke-aus">Ausgeblendet</span>')
        . '</a></li>';

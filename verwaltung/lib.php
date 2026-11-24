@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS artikel (
   id TEXT PRIMARY KEY,
   name TEXT NOT NULL,
   art TEXT NOT NULL DEFAULT 'Fliesen',
-  oberflaeche TEXT NOT NULL DEFAULT 'Oberfläche auf Anfrage',
+  oberflaeche TEXT NOT NULL DEFAULT '',
   farbe TEXT NOT NULL DEFAULT '',
   beschreibung TEXT NOT NULL DEFAULT '',
   formate TEXT NOT NULL DEFAULT '',
@@ -69,6 +69,8 @@ CREATE TABLE IF NOT EXISTS anmeldeversuche (
   zeit INTEGER NOT NULL
 );
 SQL);
+    // 2026-11-24: „Oberfläche auf Anfrage“ wird nirgends mehr angezeigt, leer heißt jetzt „keine Angabe“
+    $pdo->exec("UPDATE artikel SET oberflaeche = '' WHERE oberflaeche = 'Oberfläche auf Anfrage'");
 }
 
 function jetzt(): string { return date('Y-m-d H:i:s'); }

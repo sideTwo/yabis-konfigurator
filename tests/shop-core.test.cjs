@@ -22,7 +22,7 @@ test('Wandhöhe bleibt je Position erhalten und erscheint in der Anfrage',()=>{c
 test('120 × 120 cm nutzt Yabis Formatpreise je Oberfläche, sonst den Katalogpreis',()=>{
   const s=setup();
   const fliese=finish=>s.products.find(p=>p.kind!=='Vinyl'&&p.kind!=='Holzoptik'&&p.finish===finish&&Number.isInteger(p.catalogPriceCents)&&!p.formats.some(f=>f.join(',')==='120,120'));
-  const poliert=fliese('Poliert'),matt=fliese('Matt'),offen=fliese('Oberfläche auf Anfrage');
+  const poliert=fliese('Poliert'),matt=fliese('Matt'),offen=fliese('');
   const lappato={kind:'Fliesen',finish:'Lappato (Teilpoliert)',formats:[[60,120]],catalogPriceCents:3990};
   assert.equal(s.priceCentsFor(poliert,[120,120]),5290);
   assert.equal(s.priceCentsFor(matt,[120,120]),4790);

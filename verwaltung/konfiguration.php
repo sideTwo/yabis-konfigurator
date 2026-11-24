@@ -23,6 +23,6 @@ const SPERRE_MINUTEN = 15;
 
 // Auswahllisten
 const ARTEN = ['Fliesen', 'Marmoroptik', 'Vinyl', 'Holzoptik'];
-const OBERFLAECHEN = ['Matt', 'Poliert', 'Lappato (Teilpoliert)', 'Seidenmatt', 'Oberfläche auf Anfrage'];
+const OBERFLAECHEN = ['Matt', 'Poliert', 'Lappato (Teilpoliert)', 'Seidenmatt', ''];   // '' = keine Angabe
 const STANDARDFORMATE = ['60x120', '120x120', '60x60'];
 const FORMATPREIS_OBERFLAECHEN = ['Poliert', 'Matt', 'Lappato (Teilpoliert)', 'Seidenmatt'];

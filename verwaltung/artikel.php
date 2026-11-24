@@ -15,7 +15,7 @@ if ($id !== '') {
 }
 $neu = $a === null;
 $fehler = '';
-$werte = $a ?? ['name' => '', 'art' => 'Fliesen', 'oberflaeche' => 'Oberfläche auf Anfrage', 'beschreibung' => '', 'formate' => '', 'preis_cent' => null,
+$werte = $a ?? ['name' => '', 'art' => 'Fliesen', 'oberflaeche' => '', 'beschreibung' => '', 'formate' => '', 'preis_cent' => null,
                 'waehrung' => 'EUR', 'sichtbar' => 1, 'foto' => '', 'ki_bild' => '', 'intern_hersteller' => '', 'preis_datum' => ''];
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
@@ -109,7 +109,7 @@ $arten = in_array($werte['art'], ARTEN, true) ? ARTEN : array_merge([$werte['art
 foreach ($arten as $o) { echo '<option' . ($o === $werte['art'] ? ' selected' : '') . '>' . h($o) . '</option>'; }
 echo '</select></label><label>Oberfläche<select name="oberflaeche">';
 $ofl = in_array($werte['oberflaeche'], OBERFLAECHEN, true) ? OBERFLAECHEN : array_merge([$werte['oberflaeche']], OBERFLAECHEN);
-foreach ($ofl as $o) { echo '<option' . ($o === $werte['oberflaeche'] ? ' selected' : '') . '>' . h($o) . '</option>'; }
+foreach ($ofl as $o) { echo '<option value="' . h($o) . '"' . ($o === $werte['oberflaeche'] ? ' selected' : '') . '>' . ($o === '' ? 'Keine Angabe' : h($o)) . '</option>'; }
 echo '</select></label></div>';
 echo '<fieldset><legend>Formate im Katalog</legend><div class="haken">';
 foreach (STANDARDFORMATE as $f) { echo '<label class="haken-feld"><input type="checkbox" name="formate[]" value="' . $f . '"' . (in_array($f, $formate, true) ? ' checked' : '') . '>' . str_replace('x', ' × ', $f) . ' cm</label>'; }
