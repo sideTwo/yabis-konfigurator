@@ -18,3 +18,21 @@ test('Ungültige Flächen, Formate und Verschnitt werden abgewiesen',()=>{const 
 test('Wand und Boden bleiben getrennte Positionen mit eigenen Formatwünschen',()=>{const s=setup();s.add([s.item({product:'bercy-terra',area:12.5,waste:10,format:[60,120],surface:'Badboden'}),s.item({product:'bianco-mare',area:25,waste:15,format:[120,120],surface:'Badwand'})]);const cart=s.getCart();assert.equal(cart.length,2);assert.equal(cart[1].requested,true);const text=s.lines(cart);assert.match(text,/13,75 m²/);assert.match(text,/Formatwunsch/);assert.match(text,/Badwand/);assert.match(text,/wa.me\/p\//);assert.match(text,/39,90\s*€ \/ m²/);assert.match(text,/Preiseinheit im Angebot bestätigen/);});
 test('Richtpreise rechnen mit dem m²-Preis, unabhängig vom Format',()=>{const s=setup();assert.equal(s.find('bercy-terra').catalogUnit,null);assert.equal(s.estimateAssumingM2('bercy-terra',12.5,10,[60,120]),54863);assert.equal(s.estimateAssumingM2('taj-mahal-beige',10,0,[60,120]),44900);assert.equal(s.estimateAssumingM2('bercy-terra',12.5,10,[60,60]),54863);assert.equal(s.estimateAssumingM2('bercy-terra',12.5,10,null),54863);assert.equal(s.estimateAssumingM2('unknown',12,10,[60,120]),null);});
 test('Wandhöhe bleibt je Position erhalten und erscheint in der Anfrage',()=>{const s=setup();s.add([s.item({product:'habitat-perla',area:12,surface:'Boden'}),s.item({product:'bercy-terra',area:18,surface:'Wand',wallHeight:'120'}),s.item({product:'bianco-mare',area:27,surface:'Wand',wallHeight:'full'})]);const cart=s.getCart();assert.equal(cart[0].wallHeight,undefined);assert.equal(cart[1].wallHeight,'120');assert.equal(cart[2].wallHeight,'full');const text=s.lines(cart);assert.match(text,/Wandhöhe: Bis 1,20 m, mit Abschlussprofil; Dusche raumhoch/);assert.match(text,/Wandhöhe: Raumhoch gefliest/);assert.throws(()=>s.item({product:'bercy-terra',area:12,wallHeight:'300'}),/Fliesenhöhe/);});
+
+test('120 × 120 cm nutzt Yabis Formatpreise je Oberfläche, sonst den Katalogpreis',()=>{
+  const s=setup();
+  const fliese=finish=>s.products.find(p=>p.kind!=='Vinyl'&&p.kind!=='Holzoptik'&&p.finish===finish&&Number.isInteger(p.catalogPriceCents)&&!p.formats.some(f=>f.join(',')==='120,120'));
+  const poliert=fliese('Poliert'),matt=fliese('Matt'),offen=fliese('Oberfläche auf Anfrage');
+  const lappato={kind:'Fliesen',finish:'Lappato (Teilpoliert)',formats:[[60,120]],catalogPriceCents:3990};
+  assert.equal(s.priceCentsFor(poliert,[120,120]),5290);
+  assert.equal(s.priceCentsFor(matt,[120,120]),4790);
+  assert.equal(s.priceCentsFor(lappato,[120,120]),4790);
+  assert.equal(s.priceCentsFor(offen,[120,120]),offen.catalogPriceCents);
+  assert.equal(s.priceCentsFor(matt,[60,60]),matt.catalogPriceCents);
+  assert.equal(s.priceCentsFor(matt,null),matt.catalogPriceCents);
+  assert.equal(s.estimateAssumingM2(matt.id,12.5,10,[120,120]),Math.round(13.75*4790));
+  assert.equal(s.priceCentsFor({kind:'Vinyl',finish:'Matt',formats:[],catalogPriceCents:3495},[120,120]),3495);
+  assert.equal(s.priceCentsFor({kind:'Fliesen',finish:'Matt',formats:[[120,120]],catalogPriceCents:4790},[120,120]),4790);
+  const text=s.lines([s.item({product:matt.id,area:10,waste:0,format:[120,120]})]);
+  assert.match(text,/Richtpreis für 120 × 120 cm: 47,90/);
+});

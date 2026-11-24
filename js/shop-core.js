@@ -13,8 +13,18 @@
   const priceUnit=product=>product.catalogUnit==='m2'?'m²':product.catalogUnit||'m²';
   const priceLabel=product=>Number.isInteger(product.catalogPriceCents)?money(product.catalogPriceCents)+' / '+priceUnit(product):'Preis auf Anfrage';
   const money=cents=>(cents/100).toLocaleString('de-DE',{style:'currency',currency:'EUR'});
-  // Richtwert = Bedarf in m² × Katalogpreis pro m², unabhängig vom gewählten Format (Bilal, 2026-11-23)
-  function estimateAssumingM2(id,area,waste){const p=find(id),q=calculate(area,waste,null);return p&&q&&Number.isInteger(p.catalogPriceCents)&&priceUnit(p)==='m²'?Math.round(q.total*p.catalogPriceCents):null;}
+  // Formatpreise laut Yabis (WhatsApp 23.11.2026): 120 × 120 cm poliert 52,90 €, matt und teilpoliert 47,90 € pro m².
+  // Gilt für Fliesen, wenn 120 × 120 nicht ohnehin das Katalogformat ist. Sonst bleibt der Katalogpreis der Richtwert.
+  const FORMAT_PREISE={'120,120':{'Poliert':5290,'Matt':4790,'Lappato (Teilpoliert)':4790}};
+  function priceCentsFor(product,format){
+   if(!product||!Number.isInteger(product.catalogPriceCents))return null;
+   const key=Array.isArray(format)?format.join(','):'',catalogFormat=product.formats.some(f=>f.join(',')===key);
+   const tile=product.kind!=='Vinyl'&&product.kind!=='Holzoptik';
+   return (!catalogFormat&&tile&&FORMAT_PREISE[key]?.[product.finish])||product.catalogPriceCents;
+  }
+  const priceLabelFor=(product,format)=>{const cents=priceCentsFor(product,format);return cents===null?'Preis auf Anfrage':money(cents)+' / '+priceUnit(product);};
+  // Richtwert = Bedarf in m² × Preis pro m² für das gewählte Format (Katalogpreis, wenn es keinen Formatpreis gibt)
+  function estimateAssumingM2(id,area,waste,format){const p=find(id),q=calculate(area,waste,null),cents=priceCentsFor(p,format);return q&&cents!==null&&priceUnit(p)==='m²'?Math.round(q.total*cents):null;}
   const key='yk-merkliste';
   const de=n=>Number(n).toLocaleString('de-DE',{maximumFractionDigits:2});
   const validArea=n=>Number.isFinite(Number(n))&&Number(n)>=.01&&Number(n)<=100000;
@@ -50,9 +60,9 @@
       'Fläche: '+de(position.m2)+' m² + '+position.waste+' % Verschnitt = '+de(quantity.total)+' m² Bedarf',
       quantity.pieces!==null?'Rechnerisch '+quantity.pieces+' '+(product?.kind==='Vinyl'||product?.kind==='Holzoptik'?'Stück':'Fliesen')+', Verpackungseinheiten bitte berücksichtigen.':'Verpackung und Stückzahl bitte anbieten.',
       'Verlegung: '+(position.verband||'Nach Absprache')+(position.fuge?'; Fuge: '+position.fuge:''),
-      Number.isInteger(product?.catalogPriceCents)?'Katalogrichtpreis: '+priceLabel(product)+(product.catalogUnit?'':' (m² als Richtwert, Preiseinheit im Angebot bestätigen)')+(product.catalogPriceDate?' · Stand '+product.catalogPriceDate:'')+'.':'Preis auf Anfrage.',
+      Number.isInteger(product?.catalogPriceCents)?'Richtpreis'+(priceCentsFor(product,position.format)!==product.catalogPriceCents?' für '+position.format.join(' × ')+' cm':'')+': '+priceLabelFor(product,position.format)+(product.catalogUnit?'':' (m² als Richtwert, Preiseinheit im Angebot bestätigen)')+(product.catalogPriceDate?' · Stand '+product.catalogPriceDate:'')+'.':'Preis auf Anfrage.',
       position.quelle?'Yabis-Katalog: '+position.quelle:''
     ].filter(Boolean).join('\n');}).join('\n\n');}
   function download(text,name){const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);}
-  window.YabisShop={money,priceLabel,formatLabel,estimateAssumingM2,products,find,de,calculate,validArea,validWaste,validFormat,getCart,saveCart,item,add,lines,download,key,heightLabel};
+  window.YabisShop={money,priceLabel,priceLabelFor,priceCentsFor,formatLabel,estimateAssumingM2,products,find,de,calculate,validArea,validWaste,validFormat,getCart,saveCart,item,add,lines,download,key,heightLabel};
 })();

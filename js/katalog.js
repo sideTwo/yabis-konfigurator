@@ -33,7 +33,7 @@ function updateDetail(){
   $('#format-note').textContent=known?'Dieses Format ist im Yabis-Katalog belegt.':format?'Formatwunsch: Verfügbarkeit für diesen Artikel bitte bestätigen.':'Das Format ist noch offen. Die Fläche kann bereits angefragt werden; wir erfinden keine Stückzahl.';
   $('#detail-quantity').textContent=$('#detail-area').value?quantityLine($('#detail-area').value,$('#detail-waste').value,format):'Geben Sie Ihre Fläche ein.';
   const cost=S.estimateAssumingM2(selected.id,$('#detail-area').value,$('#detail-waste').value,format);
-  $('#detail-cost').textContent=$('#detail-estimate').checked?(cost!==null?'Ca. '+S.money(cost)+' · ohne Kartonrundung und Lieferung.':'Für diesen Artikel gibt es keinen Preis pro m². Preis auf Anfrage.'):(Number.isInteger(selected.catalogPriceCents)?'Katalogrichtpreis '+S.priceLabel(selected):selected.catalogCurrency==='ZAR'?'Preis auf Anfrage. Die Währungsangabe im Quellkatalog wird geprüft.':'Preis auf Anfrage.');
+  $('#detail-cost').textContent=$('#detail-estimate').checked?(cost!==null?'Ca. '+S.money(cost)+' · ohne Kartonrundung und Lieferung.':'Für diesen Artikel gibt es keinen Preis pro m². Preis auf Anfrage.'):(Number.isInteger(selected.catalogPriceCents)?(S.priceCentsFor(selected,format)!==selected.catalogPriceCents?'Richtpreis für '+format.join(' × ')+' cm: ':'Katalogrichtpreis ')+S.priceLabelFor(selected,format):selected.catalogCurrency==='ZAR'?'Preis auf Anfrage. Die Währungsangabe im Quellkatalog wird geprüft.':'Preis auf Anfrage.');
 }
 const mediaFrame=el('div',null,'detail-media'),mediaControls=el('div',null,'media-controls'),mediaNote=el('p',null,'source-note'),manufacturerLink=el('a','Herstellerquelle ansehen','text-link');
 $('#detail-photo').before(mediaFrame);mediaFrame.append($('#detail-photo'));
@@ -135,8 +135,8 @@ function renderCart(){
     format.onchange=()=>{position.format=format.value==='unknown'?null:format.value.split(',').map(Number);position.requested=!position.format||!product?.formats.some(value=>value.join(',')===position.format.join(','));change();};
     controls.append(field('Format',format),field('Fläche in m²',area),field('Verschnitt',waste));
     const remove=el('button','Position entfernen','remove');remove.setAttribute('aria-label',position.name+' entfernen');remove.onclick=()=>{persist(S.getCart().filter(value=>value.id!==position.id));renderCart();$('#korb-status').textContent='Position aus dem Anfragekorb entfernt.';};
-    const price=product?S.priceLabel(product):'Preis auf Anfrage';
-    body.append(el('h3',position.name),el('p',(position.raum?position.raum+' · ':'')+(position.flaeche||'Projektfläche')+(S.heightLabel(position.wallHeight)?' · '+S.heightLabel(position.wallHeight):'')),el('p',Number.isInteger(product?.catalogPriceCents)?price+' · Katalogrichtpreis':price,'price-note'),controls,result,costLine,note,remove);row.append(body);$('#korb').append(row);refresh();
+    const price=product?S.priceLabelFor(product,position.format):'Preis auf Anfrage';
+    body.append(el('h3',position.name),el('p',(position.raum?position.raum+' · ':'')+(position.flaeche||'Projektfläche')+(S.heightLabel(position.wallHeight)?' · '+S.heightLabel(position.wallHeight):'')),el('p',Number.isInteger(product?.catalogPriceCents)?price+' · Richtpreis':price,'price-note'),controls,result,costLine,note,remove);row.append(body);$('#korb').append(row);refresh();
   }
   updateTotals();
 }
