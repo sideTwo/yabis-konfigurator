@@ -18,7 +18,7 @@
  const reveal=()=>{
   root.classList.add('room-arrival-ready');
   // Nach der Ankunft Ebenen und will-change freigeben.
-  setTimeout(()=>root.classList.remove('room-arrival','room-arrival--still','room-arrival-ready'),1400);
+  setTimeout(()=>root.classList.remove('room-arrival','room-arrival--still','room-arrival-ready'),1000);
  };
  root.classList.add('room-arrival');
  if(Number.isInteger(arrival.still)&&arrival.still>0){
