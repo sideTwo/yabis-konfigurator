@@ -7,7 +7,7 @@
 .cart-media{position:relative;align-self:start}
 .cart-media img{width:100%;height:95px;object-fit:cover;border-radius:4px}
 @media(max-width:700px){.cart-media img{height:75px}}
-.product-image--material img{object-fit:cover}.surface-tag{position:absolute;right:10px;bottom:10px;z-index:1;background:#fffaf4eb;padding:6px 9px;border-radius:3px;font-size:11px}.detail-media{height:360px;overflow:hidden;border-radius:5px;background:#e9e8df}.detail-media img{height:100%;width:100%;object-fit:cover;border-radius:0}.detail-media.is-original img{object-fit:contain}.detail-media.is-surface img{transform:scale(2.5)}.media-controls{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 10px}.media-controls button{min-height:44px;padding:10px 18px;border:1px solid var(--accent-line);border-radius:4px;background:var(--paper)}.media-controls [aria-pressed=true]{background:var(--accent);color:var(--paper);border-color:var(--accent)}.detail-image .media-controls~.source-note{margin:0 0 12px}.detail-image a{overflow-wrap:anywhere}@media(max-width:700px){.detail-media{height:240px}.detail-media img{height:100%}}
+.product-image--material img{object-fit:cover}.surface-tag{position:absolute;right:10px;bottom:10px;z-index:1;background:#fffaf4eb;padding:6px 9px;border-radius:3px;font-size:11px}.detail-media{height:360px;overflow:hidden;border-radius:5px;background:#e9e8df}.detail-media img{height:100%;width:100%;object-fit:cover;border-radius:0}.detail-media.is-original img{object-fit:contain}.media-controls{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 10px}.media-controls button{min-height:44px;padding:10px 18px;border:1px solid var(--accent-line);border-radius:4px;background:var(--paper)}.media-controls [aria-pressed=true]{background:var(--accent);color:var(--paper);border-color:var(--accent)}.detail-image .source-note{margin:12px 0}.detail-image a{overflow-wrap:anywhere}@media(max-width:700px){.detail-media{height:240px}.detail-media img{height:100%}}
 
 /* The shop starts with its product heading, filters and grid. */
 .products-section{padding-block-start:clamp(20px,3vw,44px)}
@@ -29,6 +29,7 @@
  .products-section .section-heading{gap:8px;margin-bottom:16px}
  .products-section .filters{margin-bottom:16px}
  .filter-top{align-items:stretch;flex-direction:column}
+ .filter-top .chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
  .filter-top .search,.filter-top .search input{width:100%}
  .filter-options{grid-template-columns:repeat(2,minmax(0,1fr))}
 }

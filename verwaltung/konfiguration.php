@@ -22,7 +22,7 @@ const MAX_FEHLVERSUCHE = 5;
 const SPERRE_MINUTEN = 15;
 
 // Auswahllisten
-const ARTEN = ['Fliesen', 'Marmoroptik', 'Vinyl', 'Holzoptik'];
+const ARTEN = ['Fliesen', 'Marmoroptik', 'Vinyl', 'Holzoptik', 'Terrassenplatten'];
 const OBERFLAECHEN = ['Matt', 'Poliert', 'Lappato (Teilpoliert)', 'Seidenmatt', ''];   // '' = keine Angabe
 const STANDARDFORMATE = ['60x120', '120x120', '60x60'];
 const FORMATPREIS_OBERFLAECHEN = ['Poliert', 'Matt', 'Lappato (Teilpoliert)', 'Seidenmatt'];

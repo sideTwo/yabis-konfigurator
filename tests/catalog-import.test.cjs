@@ -11,9 +11,10 @@ function setup(){
   for(const file of ['daten/katalog.js','js/shop-core.js'])vm.runInNewContext(fs.readFileSync(path.join(root,file),'utf8'),context);
   return context.window.YabisShop;
 }
-test('Alle 284 erfassten Einträge haben eindeutige IDs und Quellen ohne Handyfoto-Pfade',()=>{
-  const shop=setup();assert.equal(shop.products.length,284);assert.equal(new Set(shop.products.map(product=>product.id)).size,284);
-  for(const product of shop.products){
+test('Der WhatsApp-Bestand und die Terrassenplatten haben eindeutige Produkt-IDs',()=>{
+  const shop=setup(),original=shop.products.filter(product=>product.kind!=='Terrassenplatten');
+  assert.equal(original.length,284);assert.equal(new Set(shop.products.map(product=>product.id)).size,shop.products.length);
+  for(const product of original){
     assert.ok(product.name);assert.ok(product.description);assert.match(product.source,/^https:\/\/wa.me\/[pc]\//);
     assert.equal(product.originalPhoto,undefined);
     if(product.photo){
@@ -28,8 +29,8 @@ test('Alle 284 erfassten Einträge haben eindeutige IDs und Quellen ohne Handyfo
     assert.ok(product.formats.every(shop.validFormat));
   }
 });
-test('50 geprüfte Herstellerbilder ergänzen die Produktdaten ohne Herstellernamen oder -links',()=>{
-  const shop=setup(),matched=shop.products.filter(product=>product.manufacturerImage);
+test('50 geprüfte Herstellerbilder ergänzen den Altbestand ohne Herstellernamen oder -links',()=>{
+  const shop=setup(),matched=shop.products.filter(product=>product.kind!=='Terrassenplatten'&&product.manufacturerImage);
   assert.equal(matched.length,50);
   for(const product of matched){assert.ok(product.manufacturerImage.photo);for(const key of ['brand','page','source'])assert.equal(product.manufacturerImage[key],undefined);}
   for(const product of shop.products)assert.equal(product.brand,undefined);
@@ -37,6 +38,42 @@ test('50 geprüfte Herstellerbilder ergänzen die Produktdaten ohne Herstellerna
   for(const name of ['Prissmacer','Roca Tiles','EKOFLOORS','prissmacer.es','ekofloors.nl'])assert.ok(!text.includes(name),name);
   for(const id of ['nordic-slate-blue','etna-gris','teide-silver'])assert.equal(shop.find(id).manufacturerImage,undefined);
   assert.equal(shop.find('ganges-visgraat').formats.length,0);
+});
+test('Der öffentliche Terrassenplattenkatalog enthält nur freigegebene Oberflächenansichten',()=>{
+  const shop=setup(),terrace=shop.products.filter(product=>product.kind==='Terrassenplatten');
+  const {viewsFor}=require('../js/catalog-media.js');
+  assert.equal(terrace.length,29);
+  for(const product of terrace){
+    assert.equal(product.photo,undefined);
+    assert.equal(product.texture,undefined);
+    assert.equal(product.manufacturerImage,undefined);
+    assert.equal(product.source,'');
+    assert.equal(product.catalogUnit,'m2');
+    const views=viewsFor(product);
+    assert.equal(views.length,1);
+    assert.equal(views[0].src,`bilder/katalog/ki-terrassenplatten-2026-11-25/${product.id}.webp`);
+    assert.ok(fs.statSync(path.join(root,views[0].src)).size>10000);
+    assert.equal(views[0].label,'Oberflächenansicht');
+    assert.equal(views[0].alt,product.name+' – Oberflächenansicht');
+    assert.equal(product.formats.length,1);
+    assert.ok(shop.validFormat(product.formats[0]));
+    assert.match(product.description,/2 cm stark/);
+  }
+  const miami=shop.find('terrassenplatte-miami');
+  assert.equal(shop.formatLabel(miami),'80 × 80 cm');
+  assert.equal(shop.priceCentsFor({...miami,catalogPriceCents:5990,finish:'Matt'},[60,120]),5990);
+  const berlin=shop.find('terrassenplatte-berlin');
+  assert.equal(shop.formatLabel(berlin),'50 × 100 cm');
+  assert.match(berlin.description,/Presskante/);
+  const pizarra=shop.find('terrassenplatte-pizarra');
+  assert.equal(shop.formatLabel(pizarra),'25 × 90 cm');
+  assert.equal(shop.calculate(10,10,pizarra.formats[0]).pieces,49);
+  const radeburg=shop.find('terrassenplatte-radeburg');
+  assert.equal(shop.formatLabel(radeburg),'120 × 40 cm');
+  assert.match(radeburg.description,/Rutschhemmung R11\./);
+  const unpriced={...miami,catalogPriceCents:null};
+  assert.equal(shop.priceLabel(unpriced),'Preis auf Anfrage');
+  assert.equal(shop.priceCentsFor(unpriced,[80,80]),null);
 });
 test('Die 18 Rand-Preise aus dem WhatsApp-Katalog sind als Euro übernommen (Bilal, 2026-11-24)',()=>{
   const shop=setup();

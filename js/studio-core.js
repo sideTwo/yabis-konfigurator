@@ -9,7 +9,11 @@
  ]);
  const vinyl=Object.freeze(['rijn-visgraat','donau-visgraat','ganges-visgraat']);
  const ceramics=Object.freeze(bestsellers.filter(id=>!vinyl.includes(id)));
- const roomMaterials=Object.freeze({bad:ceramics,wohnen:bestsellers,kueche:ceramics,eingang:Object.freeze([])});
+ const exteriorMaterials=Object.freeze(['cambridge','miami','lissabon','porto','radeburg'].map(id=>'terrassenplatte-'+id));
+ const isTerracePlate=id=>exteriorMaterials.includes(id);
+ const stairMaterials=Object.freeze([...materials,'luna-offwhite','habitat-marfil','origin-beige','fiordi-bosco-sand','marshall-desert']);
+ const balconyMaterials=Object.freeze([...materials,...exteriorMaterials.filter(id=>id!=='terrassenplatte-radeburg')]);
+ const roomMaterials=Object.freeze({bad:ceramics,wohnen:bestsellers,balkon:balconyMaterials,kueche:ceramics,treppe:stairMaterials,eingang:exteriorMaterials});
  const presets=Object.freeze({
   bad:[
    {id:'warm',name:'Warm und ruhig',floor:'marshall-desert',wall:'habitat-marfil',floorGrout:'sand',wallGrout:'light'},
@@ -56,12 +60,13 @@
   'fiordi-bosco-sand':fiorSample,'fiordi-bosco-sand-2':fiorSample,
   'marshall-desert':{photo:'assets/studio/texturen/marshall-desert.webp',page:'https://drevexceramics.com/colecciones/marshall/'}
  };
- const materialSample=p=>p.studioSample?.photo||studioSamples[p.id]?.photo||p.manufacturerImage?.photo||p.reconstruction||p.photo;
+ const materialSample=p=>isTerracePlate(p.id)?'assets/studio/texturen/'+p.id+'.webp':
+  p.studioSample?.photo||studioSamples[p.id]?.photo||p.manufacturerImage?.photo||p.reconstruction||p.photo;
  const sampleSource=p=>studioSamples[p.id]?.page||p.manufacturerImage?.page||p.manufacturerSource;
  const demoFormat=id=>id==='capitol-hueso'?[60,60]:[60,120];
  const usesTextures=room=>Object.hasOwn(rooms,room);
  const presetsFor=room=>Object.hasOwn(presets,room)?presets[room]:[];
- const grainMode=value=>value==='continuous'?'continuous':'natural';
+ const grainMode=value=>value==='natural'?'natural':'continuous';
  const grainSeed=value=>Number.isInteger(value)&&value>=0&&value<=0x7fffffff?value:0;
  const bathAssets=Object.freeze({base:'assets/studio/bad-og-basis-glas.webp',fixtures:'assets/studio/bad-og-basis-glas.webp',poster:'assets/studio/bad-og-vorschau-glas.webp',photo:'assets/studio/bad-foto-neutral.webp'});
  // Photograph registration is separate from the metric tile grid. These are
@@ -78,7 +83,7 @@
   balkon:{name:'Balkon',title:'Ihr Platz unter freiem Himmel.',surface:'floor',surfaceName:'Balkon · Boden',image:'assets/website/balkon.webp',approval:'Außeneignung, Rutschhemmung und Aufbau durch Yabis bestätigen lassen.',note:'Gestaltungsvorschau. Ob der gewählte Artikel für Ihren Balkon geeignet ist, klären wir vor dem Angebot.'},
   kueche:{name:'Küche',title:'Die Küche weiterdenken.',surface:'wall',surfaceName:'Küchenrückwand',image:'assets/website/kueche.webp',note:'Kombinieren Sie die Rückwand mit hellen oder anthrazitfarbenen Küchenfronten. Die Fronten dienen der Raumansicht; Ihre Anfrage umfasst die Fliesen.'},
   treppe:{name:'Treppenhaus',title:'Schritt für Schritt stimmig.',surface:'floor',surfaceName:'Treppe · Stufen & Podest',image:'assets/studio/treppe-foto-neutral.webp',approval:'Stufenkanten, Zuschnitte, Aufbau und Rutschhemmung durch Yabis bestätigen lassen.',note:'Die Fläche umfasst Trittflächen, Setzstufen und Podeste. Stufenmaße und Kanten stimmen wir im Angebot ab.'},
-  eingang:{name:'Außenbereich',title:'Naturstein für Ihren Außenbereich.',image:'assets/studio/eingang-foto-neutral.webp',note:'Beispielansicht für Weg und Podest.'}
+  eingang:{name:'Außenbereich',title:'Terrassenplatten für draußen.',surface:'floor',surfaceName:'Außenbereich · Weg und Podest',image:'assets/studio/eingang-foto-neutral.webp',approval:'Aufbau, Frostbeständigkeit und Eignung am Einbauort bestätigt Yabis im Angebot.',note:'Vergleichen Sie Terrassenplatten auf Weg und Podest.'}
  });
  function roomId(value){return Object.hasOwn(rooms,value)?value:'bad';}
  function scenePhoto(room,cabinetTone){
@@ -89,9 +94,9 @@
  function materialsFor(room){return roomMaterials[roomId(room)]||materials;}
  function materialId(value,room){const choices=room===undefined?materials:materialsFor(room);return choices.includes(value)?value:choices[0];}
  function href(room='bad',product){const params=new URLSearchParams({raum:roomId(room)});if(materialsFor(room).includes(product))params.set('product',product);return 'studio/index.html?'+params;}
- function shoppingDestination(product){return bestsellers.includes(product)?href(isVinyl(product)?'wohnen':'bad',product):null;}
+ function shoppingDestination(product){if(isTerracePlate(product))return href('eingang',product);return bestsellers.includes(product)?href(isVinyl(product)?'wohnen':'bad',product):null;}
  function plate(room,product,cabinetTone='light'){room=roomId(room);if(room==='bad')throw Error('Das Bad verwendet getrennte Flächen.');return `assets/studio/${room}-${materialId(product)}${room==='kueche'&&cabinetTone==='dark'?'-dunkel':''}.webp`;}
  function initial(room,saved={},product){room=roomId(room);const r=rooms[room],state={floor:materialId(saved.floor,room),wall:materialId(saved.wall,room),wallHeight:saved.wallHeight==='full'?'full':'120'};if(room==='kueche')state.cabinetTone=saved.cabinetTone==='dark'?'dark':'light';if(materialsFor(room).includes(product))state[r.surface]=product;return state;}
  function motionAllowed({reduced=false,saveData=false}={}){return !reduced&&!saveData;}
- return {materials,bestsellers,additionalProducts,isVinyl,choiceName,materialSample,sampleSource,demoFormat,usesTextures,materialsFor,shoppingDestination,presetsFor,grainMode,grainSeed,bathAssets,bathPlate,bathRegistration,rooms,roomId,materialId,href,plate,scenePhoto,initial,motionAllowed};
+ return {materials,bestsellers,additionalProducts,isVinyl,isTerracePlate,choiceName,materialSample,sampleSource,demoFormat,usesTextures,materialsFor,shoppingDestination,presetsFor,grainMode,grainSeed,bathAssets,bathPlate,bathRegistration,rooms,roomId,materialId,href,plate,scenePhoto,initial,motionAllowed};
 });

@@ -16,8 +16,12 @@ test('Wandtexturen und Fugen teilen dieselbe Projektion ober- und unterhalb von 
 test('Studio-Auswahl bleibt unabhängig vom Shop und ungültige Links bleiben im Bad',()=>{
  assert.deepEqual(C.materials,['habitat-perla','bercy-terra']);assert.equal(C.roomId('__proto__'),'bad');assert.equal(C.roomId('unknown'),'bad');assert.equal(C.materialId('bianco-mare'),'habitat-perla');
  assert.equal(C.href('eingang','bercy-terra'),'studio/index.html?raum=eingang');assert.equal(C.href('unknown','bianco-mare'),'studio/index.html?raum=bad');
- assert.deepEqual(C.materialsFor('eingang'),[]);
- for(const id of ['balkon','treppe'])assert.deepEqual(C.materialsFor(id),C.materials);
+ assert.deepEqual(C.materialsFor('eingang'),['cambridge','miami','lissabon','porto','radeburg'].map(id=>'terrassenplatte-'+id));
+ assert.equal(C.shoppingDestination('terrassenplatte-porto'),'studio/index.html?raum=eingang&product=terrassenplatte-porto');
+ assert.deepEqual(C.materialsFor('balkon'),[...C.materials,...['cambridge','miami','lissabon','porto'].map(id=>'terrassenplatte-'+id)]);
+ assert.equal(C.initial('balkon',{floor:'terrassenplatte-radeburg'},'terrassenplatte-radeburg').floor,'habitat-perla');
+ assert.equal(C.materialsFor('treppe').length,7);
+ assert.ok(C.materialsFor('treppe').includes('fiordi-bosco-sand'));
  assert.equal(C.initial('kueche',{},'flavio-oxido').wall,'flavio-oxido');
  assert.equal(C.initial('wohnen',{},'ganges-visgraat').floor,'ganges-visgraat');
  assert.equal(C.initial('bad',{},'ganges-visgraat').floor,'wonder-base');
@@ -31,9 +35,10 @@ test('Alle sechs Einstiege, Bilder und lokalen Studio-Assets sind vorhanden',()=
   assert.ok(fs.existsSync(path.join(root,C.rooms[id].image)),C.rooms[id].image);
   if(id!=='bad')for(const material of C.materials)assert.ok(fs.existsSync(path.join(root,C.plate(id,material))));
  }
+ for(const product of C.materialsFor('eingang'))assert.ok(fs.existsSync(path.join(root,'assets/studio/aussenansichten',product+'.webp')));
  assert.equal(C.motionAllowed({reduced:true}),false);assert.equal(C.motionAllowed({saveData:true}),false);assert.equal(C.motionAllowed(),true);
 });
-function app(room='bad',{saved=new Map(),defer=false,product='',fronts=''}={}){
+function app(room='bad',{saved=new Map(),defer=false,product='',fronts='',withoutCatalog=false}={}){
  const elements=new Map(),events={},sources=[],pending=[],draws=[];
  class Element{
   constructor(id=''){this.id=id;this.value='';this.checked=true;this.disabled=false;this.hidden=false;this.dataset={};this.children=[];this.attributes={};this.events={};this.style={};this.naturalWidth=1672;this.naturalHeight=941;this.offsetLeft=0;this.classList={toggle(){}};}
@@ -45,7 +50,7 @@ function app(room='bad',{saved=new Map(),defer=false,product='',fronts=''}={}){
   querySelector(selector){return this.children.find(el=>selector.includes('"'+el.dataset.product+'"'));}
   get firstElementChild(){return this.children[0];}
   fire(type){for(const fn of this.events[type]||[])fn({preventDefault(){}});}
-  getContext(){return {drawImage(image){draws.push(image._src);}};}
+  getContext(){return {drawImage(image){draws.push(image._src);},save(){},restore(){},beginPath(){},moveTo(){},lineTo(){},closePath(){},clip(){}};}
   toBlob(fn){fn({});}
   click(){this.fire('click');}
  }
@@ -54,7 +59,7 @@ function app(room='bad',{saved=new Map(),defer=false,product='',fronts=''}={}){
  const window={YabisLivingFloor:livingFloor,YabisStudioScenes:scenes,YabisStudio:C,YabisRoomPreview:{width:1672,height:941},YabisTileGrid:{...grid,draw(){}},YabisStudioTextures:{render(ctx,{room,base,selection,assets}){draws.push({room,base:base.src,...selection,assets});}},addEventListener(type,fn){events[type]=fn;},dispatchEvent(e){events[e.type]?.(e);}};
  class Image extends Element{set src(src){this._src=src;sources.push(src);if(defer)pending.push(this);else queueMicrotask(()=>this.onload?.());}get src(){return this._src;}}
  const context={window,document:{body:{dataset:{}},title:'',getElementById:get,createElement:tag=>new Element(tag),querySelectorAll(){return [];}},matchMedia:()=>({matches:false,addEventListener(){}}),localStorage:{getItem:k=>saved.get(k)||null,setItem:(k,v)=>saved.set(k,v)},location:{search:'?raum='+room+(product?'&product='+product:'')+(fronts?'&fronten='+fronts:'')},Image,URLSearchParams,URL:{createObjectURL:()=> 'blob:preview',revokeObjectURL(){}},setTimeout(){},CustomEvent:class{constructor(type){this.type=type;}},crypto:crypto.webcrypto};
- for(const file of ['daten/katalog.js','js/shop-core.js'])vm.runInNewContext(fs.readFileSync(path.join(root,file),'utf8'),context);
+ for(const file of withoutCatalog?['js/shop-core.js']:['daten/katalog.js','js/shop-core.js'])vm.runInNewContext(fs.readFileSync(path.join(root,file),'utf8'),context);
  vm.runInNewContext(fs.readFileSync(path.join(root,'studio/studio.js'),'utf8'),context);
  return {get,window,sources,pending,draws,saved,shop:window.YabisShop,settle:()=>new Promise(resolve=>setImmediate(resolve))};
 }
@@ -71,26 +76,75 @@ test('Räume mit Materialauswahl wechseln das Bild und übernehmen nur ihre tats
   assert.match(a.shop.lines(cart),new RegExp('Bereich: '+room.name));assert.match(a.shop.lines(cart),/13,75 m²/);
   if(room.approval)assert.ok(a.shop.lines(cart).includes(room.approval));
   if(id!=='bad'){
-   assert.equal(a.draws.at(-1)[surface],C.materialsFor(id)[1]);
-   assert.ok(a.draws.at(-1).base.includes(C.scenePhoto(id)));
+   if(id==='eingang'){
+    assert.equal(a.get('room-preview').dataset.renderer,'photo');
+    assert.ok(a.draws.at(-1).includes('aussenansichten/'+C.materialsFor(id)[1]+'.webp'));
+    assert.ok(a.draws.at(-2).includes(C.scenePhoto(id)));
+   }else{
+    assert.equal(a.draws.at(-1)[surface],C.materialsFor(id)[1]);
+    assert.ok(a.draws.at(-1).base.includes(C.scenePhoto(id)));
+   }
    assert.equal(a.get((surface==='floor'?'wall':'floor')+'-area').disabled,true);
   }
  }
 });
-test('Außenbereich führt auch bei alten Produktlinks zur Naturstein-Anfrage',()=>{
- const a=app('eingang',{product:'bercy-terra'});
+test('Bei fehlenden Katalogartikeln zeigt der Außenbereich die Projektanfrage',()=>{
+ const a=app('eingang',{withoutCatalog:true});
  assert.equal(a.get('auswahl').hidden,true);
  assert.equal(a.get('exterior-advice').hidden,false);
  assert.equal(a.get('skip-to-controls').href,'#exterior-advice');
  assert.equal(a.get('room-fallback').src,'../'+C.rooms.eingang.image);
  assert.equal(a.draws.length,0);
 });
+test('Außenplatten verwenden feste Verlegebilder und das Katalogformat für die Anfrage',async()=>{
+ const saved=new Map([['yabis-studio-v1-eingang',JSON.stringify({floorGrout:'dark',floorGrain:'natural',floorGrainChosen:true})]]);
+ const a=app('eingang',{product:'terrassenplatte-radeburg',saved});
+ await a.settle();
+ assert.equal(a.get('floor-materials').children.length,5);
+ assert.equal(a.get('floor-format-label').hidden,true);
+ assert.equal(a.get('floor-options').hidden,true);
+ assert.equal(a.get('floor-grain-options').hidden,true);
+ assert.match(a.draws.at(-1),/aussenansichten\/terrassenplatte-radeburg\.webp/);
+ const button=a.get('floor-materials').children.find(element=>element.dataset.product==='terrassenplatte-radeburg');
+ assert.equal(button.children[0].src,'../'+a.shop.find('terrassenplatte-radeburg').reconstruction);
+ assert.match(a.get('combination').textContent,/Radeburg.*120 × 40 cm/);
+ const [landing]=scenes.scene('eingang',grid,livingFloor).faces;
+ const joints=grid.joints(landing.plane,[40,120]);
+ assert.equal(joints.find(joint=>joint.axis==='u'&&joint.position>0).position,120);
+ assert.equal(joints.find(joint=>joint.axis==='v'&&joint.position>0).position,40);
+ a.get('floor-area').value='10';a.get('request-selection').fire('submit');
+ assert.equal(a.shop.getCart()[0].format.join(','),'120,40');
+ assert.equal(a.shop.getCart()[0].fuge,'');
+ assert.equal(a.shop.getCart()[0].verband,'');
+ assert.match(a.shop.lines(a.shop.getCart()),/23 Fliesen/);
+ const restored=app('eingang',{saved:a.saved});await restored.settle();
+ assert.equal(restored.get('floor-options').hidden,true);
+ assert.match(restored.draws.at(-1),/aussenansichten\/terrassenplatte-radeburg\.webp/);
+});
+test('Balkon übernimmt für Terrassenplatten Format, Fugenraster und Stückzahl aus dem Katalog',async()=>{
+ const saved=new Map([['yabis-studio-v1-balkon',JSON.stringify({floor:'terrassenplatte-porto',floorFormat:[60,120],floorFormatChosen:true})]]);
+ const a=app('balkon',{saved});await a.settle();
+ assert.equal(a.get('floor-materials').children.length,6);
+ assert.equal(a.get('floor-format-label').hidden,true);
+ assert.equal(a.get('floor-grout').disabled,false);
+ assert.equal(a.draws.at(-1).floorFormat.join(','),'60,90');
+ assert.equal(a.draws.at(-1).assets.floor.terrace,true);
+ const [floor]=scenes.scene('balkon',grid,livingFloor).faces;
+ assert.equal(grid.joints(floor.plane,[60,90]).find(joint=>joint.axis==='u'&&joint.position>0).position,60);
+ a.get('floor-area').value='10';a.get('request-selection').fire('submit');
+ assert.equal(a.shop.getCart()[0].format.join(','),'60,90');
+ assert.match(a.shop.lines(a.shop.getCart()),/21 Fliesen/);
+ a.get('floor-materials').children[0].click();await a.settle();
+ assert.equal(a.get('floor-format-label').hidden,false);
+ assert.equal(a.draws.at(-1).floorFormat.join(','),'60,120');
+});
 test('Bad behält separate Formate, Fugen, Höhe und Mengen; andere Räume erben keine Bad-Einstellungen',async()=>{
  const a=app();await a.settle();a.get('floor-format').value='60,60';a.get('floor-format').fire('change');a.get('floor-grout').value='dark';a.get('floor-grout').fire('change');a.get('wall-height').value='full';a.get('wall-height').fire('change');await a.settle();
  a.get('floor-area').value='12';a.get('wall-area').value='25';a.get('request-selection').fire('submit');const cart=a.shop.getCart();assert.equal(cart[0].fuge,'Anthrazit');assert.equal(cart[0].format.join(','),'60,60');assert.equal(cart[0].requested,true);assert.equal(cart[1].wallHeight,'full');assert.match(a.shop.lines(cart),/37 Fliesen/);
  const restored=app('bad',{saved:a.saved});await restored.settle();assert.equal(restored.get('floor-format').value,'60,60');assert.equal(restored.get('wall-height').value,'full');
  const kitchen=app('kueche',{saved:a.saved,product:'flavio-oxido'});await kitchen.settle();assert.equal(kitchen.get('wall-format').value,'60,120');assert.equal(kitchen.get('height-control').hidden,true);
- assert.ok(a.sources.filter(src=>src.includes('assets/studio/bad-')).length<=4,'Es werden nur benötigte Bad-Platten geladen');assert.equal(a.shop.products.length,287,'Shopimport und drei Bestseller-Ergänzungen');
+ assert.ok(a.sources.filter(src=>src.includes('assets/studio/bad-')).length<=4,'Es werden nur benötigte Bad-Platten geladen');assert.equal(a.shop.products.filter(product=>product.kind!=='Terrassenplatten').length,287,'Shopimport und drei Bestseller-Ergänzungen');
+ assert.equal(a.shop.products.filter(product=>product.kind==='Terrassenplatten').length,29);
 });
 function pendingLoad(a,src){
  return a.pending.find(image=>image.onload&&image.src.split('?')[0]==='../'+src);
@@ -232,6 +286,21 @@ test('Presets übernehmen passende Materialien und Fugen. Die Maserung bleibt pr
  assert.equal(kitchen.get('fronts-dark').attributes['aria-pressed'],'true');
  const vinyl=app('wohnen',{product:'rijn-visgraat'});await vinyl.settle();
  assert.equal(vinyl.get('floor-grain-options').hidden,true);
+});
+
+test('Durchlaufende Maserung ist Standard und neue manuelle Einstellungen werden pro Fläche gespeichert',async()=>{
+ const saved=new Map([['yabis-studio-v1-bad',JSON.stringify({floorGrain:'natural',wallGrain:'natural'})]]);
+ const a=app('bad',{saved});await a.settle();
+ assert.equal(a.get('floor-grain').value,'continuous');
+ assert.equal(a.get('wall-grain').value,'continuous');
+ assert.equal(a.draws.at(-1).floorGrain,'continuous');
+ a.get('wall-grain').value='natural';a.get('wall-grain').fire('change');
+ const restored=app('bad',{saved});await restored.settle();
+ assert.equal(restored.get('floor-grain').value,'continuous');
+ assert.equal(restored.get('wall-grain').value,'natural');
+ assert.equal(restored.draws.at(-1).wallGrain,'natural');
+ const outdoor=app('eingang');await outdoor.settle();
+ assert.equal(outdoor.get('floor-grain').value,'continuous');
 });
 
 test('Maserung ändert nur die Materialpixel und schützt die Armaturkontur',{skip:!nativeCanvas},async()=>{

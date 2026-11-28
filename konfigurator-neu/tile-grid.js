@@ -13,7 +13,10 @@
     dark: {label:'Anthrazit', rgb:[65,70,69]},
     sand: {label:'Sand', rgb:[183,171,151]}
   };
-  const format = value => {
+  const format = (value,catalog=false) => {
+    if(catalog&&Array.isArray(value)&&value.length===2&&value.every(n=>Number.isFinite(n)&&n>=10&&n<=320)){
+      return value.slice().sort((a,b)=>a-b);
+    }
     const key = Array.isArray(value) ? value.join(',') : String(value);
     return (formats.find(f => f.join(',') === key) || formats[0]).slice();
   };
@@ -57,7 +60,7 @@
     left:wallPlane('left',380),back:wallPlane('back',300),right:wallPlane('right',300)
   };
   function joints(plane, selectedFormat, maxV=plane.maxV) {
-    const [short,long]=format(selectedFormat);
+    const [short,long]=format(selectedFormat,plane.catalogFormat);
     const longAcross=plane.surface==='wall'||plane.longAcross;
     const stepU=longAcross?long:short;
     const stepV=longAcross?short:long;

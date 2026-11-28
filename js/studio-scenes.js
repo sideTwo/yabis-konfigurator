@@ -58,12 +58,20 @@
     return {faces:[livingFloor],holes:living.occlusions};
    }
    case 'kueche':return {faces:[face(grid,'backsplash','wall',kitchenCorners,[260,60],[kitchenWall])],holes:kitchenFixtures};
-   case 'balkon':return {faces:[floor('balcony-floor',balconyCorners,[320,280],[balconyFloor])],holes:balconyFixtures,matte:balconyMatte};
-   case 'eingang':return {faces:[
+   case 'balkon':{
+    const balcony=floor('balcony-floor',balconyCorners,[320,280],[balconyFloor]);
+    balcony.plane.catalogFormat=true;
+    return {faces:[balcony],holes:balconyFixtures,matte:balconyMatte};
+   }
+   case 'eingang':{
+    const faces=[
     floor('entry-landing',[[469,534],[1380,533],[1672,682],[80,683]],[480,190],[entranceLanding]),
-    floor('entry-riser',entranceRiser,[480,17]),
-    floor('entry-path',[[80,735],[1672,733],[1990,941],[-238,941]],[480,205],[entrancePath])
-   ],holes:[]};
+    {...floor('entry-riser',entranceRiser,[480,17]),progress:190},
+    {...floor('entry-path',[[80,735],[1672,733],[1990,941],[-238,941]],[480,205],[entrancePath]),progress:207}
+    ];
+    for(const {plane} of faces){plane.catalogFormat=true;plane.longAcross=true;}
+    return {faces,holes:[]};
+   }
    case 'treppe':{
     let distance=0;
     const faces=stairs.flatMap(([back,lip,foot],i)=>{

@@ -6,7 +6,7 @@
   balkon:{name:'Balkon',title:'Ihr Lieblingsplatz. Draußen.',kicker:'EIN STÜCK MEHR ZUHAUSE',copy:'Ein neuer Boden für Ihren Platz im Freien. Wir besprechen Material, Aufbau und Eignung mit Ihnen.',image:'assets/website/balkon.webp',alt:'Balkon mit Steinoptik-Boden und Holzmöbeln'},
   kueche:{name:'Küchenwand',title:'Eine Wand. Viel Charakter.',kicker:'DIE KÜCHE WEITERDENKEN',copy:'Eine passende Rückwand verbindet Arbeitsfläche und Raum. Spielen Sie mit Farbe, Format und Oberfläche.',image:'assets/website/kueche.webp',alt:'Küche mit heller gefliester Rückwand und Arbeitsfläche in Holzoptik'},
   treppe:{name:'Treppenhaus',title:'Schritt für Schritt stimmig.',kicker:'MATERIAL MIT VERBINDUNG',copy:'Von der ersten Stufe bis zum Podest. Finden Sie eine Gestaltung, die Ihr Zuhause zusammenbringt.',image:'assets/studio/treppe-foto-neutral.webp',alt:'Treppenhaus mit hellen, durchgehenden Stufen'},
-  eingang:{name:'Außenbereich',title:'Naturstein für Ihren Außenbereich.',kicker:'WEG, PODEST UND EINGANG',copy:'Für den Weg zur Haustür oder das Podest beraten wir Sie zu passenden Natursteinen und Oberflächen.',image:'assets/studio/eingang-foto-neutral.webp',alt:'Hauseingang mit Holzhaustür, Podest und sichtbarer Stufe'}
+  eingang:{name:'Außenbereich',title:'Terrassenplatten für draußen.',kicker:'WEG, PODEST UND EINGANG',copy:'Vergleichen Sie unterschiedliche Terrassenplatten am Hauseingang. Zur passenden Verlegung und zum Aufbau beraten wir Sie persönlich.',image:'assets/studio/eingang-foto-neutral.webp',alt:'Hauseingang mit Holzhaustür, Podest und sichtbarer Stufe'}
  };
  const clean=(v,max=2000)=>String(v??'').trim().slice(0,max);
  const listOf=v=>(Array.isArray(v)?v:[v]).map(x=>clean(x,80)).filter(Boolean);

@@ -1,4 +1,4 @@
-// Automatisch erzeugt von /verwaltung am 24.11.2026 16:46. Nicht von Hand ändern.
+// Automatisch erzeugt von /verwaltung am 28.11.2026 13:24. Nicht von Hand ändern.
 window.YabisCatalog = [
     {
         "id": "onice-supreme-marfil-pul",
@@ -5038,6 +5038,615 @@ window.YabisCatalog = [
         "catalogUnit": null,
         "availability": "anfrage",
         "reconstruction": "bilder/katalog/ki-produktbilder-2026-11-18/toscano-light-digital.webp"
+    },
+    {
+        "id": "terrassenplatte-miami",
+        "name": "Terrassenplatte Miami",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Beige",
+        "description": "Farbe Beige. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                80,
+                80
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-miami.webp"
+    },
+    {
+        "id": "terrassenplatte-roswell",
+        "name": "Terrassenplatte Roswell",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Grigio Corten",
+        "description": "Farbe Grigio Corten. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                80,
+                80
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-roswell.webp"
+    },
+    {
+        "id": "terrassenplatte-atlanta",
+        "name": "Terrassenplatte Atlanta",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Anthrazit",
+        "description": "Farbe Anthrazit. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                80,
+                80
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-atlanta.webp"
+    },
+    {
+        "id": "terrassenplatte-salzburg",
+        "name": "Terrassenplatte Salzburg",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Taupe",
+        "description": "Farbe Taupe. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                60,
+                60
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-salzburg.webp"
+    },
+    {
+        "id": "terrassenplatte-genua",
+        "name": "Terrassenplatte Genua",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Dark Grey",
+        "description": "Farbe Dark Grey. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                60,
+                60
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-genua.webp"
+    },
+    {
+        "id": "terrassenplatte-kopenhagen",
+        "name": "Terrassenplatte Kopenhagen",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Cappuccino",
+        "description": "Farbe Cappuccino. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                90,
+                90
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-kopenhagen.webp"
+    },
+    {
+        "id": "terrassenplatte-pizarra",
+        "name": "Terrassenplatte Pizarra",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Dunkelgrau",
+        "description": "Farbe Dunkelgrau. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                25,
+                90
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-pizarra.webp"
+    },
+    {
+        "id": "terrassenplatte-berlin",
+        "name": "Terrassenplatte Berlin",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Hudson",
+        "description": "Farbe Hudson. 2 cm stark. Rutschhemmung R11. Presskante.",
+        "formats": [
+            [
+                50,
+                100
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-berlin.webp"
+    },
+    {
+        "id": "terrassenplatte-tampa",
+        "name": "Terrassenplatte Tampa",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Dunkelgrau",
+        "description": "Farbe Dunkelgrau. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                80,
+                80
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-tampa.webp"
+    },
+    {
+        "id": "terrassenplatte-amsterdam",
+        "name": "Terrassenplatte Amsterdam",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Graphite",
+        "description": "Farbe Graphite. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                60,
+                90
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-amsterdam.webp"
+    },
+    {
+        "id": "terrassenplatte-den-haag",
+        "name": "Terrassenplatte Den Haag",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Natural",
+        "description": "Farbe Natural. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                60,
+                90
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-den-haag.webp"
+    },
+    {
+        "id": "terrassenplatte-andorra",
+        "name": "Terrassenplatte Andorra",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Fog",
+        "description": "Farbe Fog. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                90,
+                60
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-andorra.webp"
+    },
+    {
+        "id": "terrassenplatte-bilbao",
+        "name": "Terrassenplatte Bilbao",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Beige",
+        "description": "Farbe Beige. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                90,
+                60
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-bilbao.webp"
+    },
+    {
+        "id": "terrassenplatte-rotterdam",
+        "name": "Terrassenplatte Rotterdam",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Grey",
+        "description": "Farbe Grey. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                60,
+                90
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-rotterdam.webp"
+    },
+    {
+        "id": "terrassenplatte-southampton",
+        "name": "Terrassenplatte Southampton",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Taupe",
+        "description": "Betonoptik in Taupe. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                60,
+                60
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-southampton.webp"
+    },
+    {
+        "id": "terrassenplatte-cambridge",
+        "name": "Terrassenplatte Cambridge",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Cream",
+        "description": "Sandsteinoptik in Cream. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                60,
+                60
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-cambridge.webp"
+    },
+    {
+        "id": "terrassenplatte-massa",
+        "name": "Terrassenplatte Massa",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Beige",
+        "description": "Farbe Beige. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                60,
+                60
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-massa.webp"
+    },
+    {
+        "id": "terrassenplatte-rom",
+        "name": "Terrassenplatte Rom",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Beige",
+        "description": "Farbe Beige. 2 cm stark. Rutschhemmung R11/C. Rektifizierte Kanten.",
+        "formats": [
+            [
+                60,
+                60
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-rom.webp"
+    },
+    {
+        "id": "terrassenplatte-prato",
+        "name": "Terrassenplatte Prato",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Grey",
+        "description": "Farbe Grey. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                60,
+                60
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-prato.webp"
+    },
+    {
+        "id": "terrassenplatte-siena",
+        "name": "Terrassenplatte Siena",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Taupe",
+        "description": "Farbe Taupe. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                60,
+                60
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-siena.webp"
+    },
+    {
+        "id": "terrassenplatte-goeteborg",
+        "name": "Terrassenplatte Göteburg",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Mud",
+        "description": "Farbe Mud. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                90,
+                90
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-goeteborg.webp"
+    },
+    {
+        "id": "terrassenplatte-toledo",
+        "name": "Terrassenplatte Toledo",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Beige",
+        "description": "Farbe Beige. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                100,
+                100
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-toledo.webp"
+    },
+    {
+        "id": "terrassenplatte-brage",
+        "name": "Terrassenplatte Brage",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Greige",
+        "description": "Farbe Greige. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                100,
+                100
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-brage.webp"
+    },
+    {
+        "id": "terrassenplatte-porto",
+        "name": "Terrassenplatte Porto",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Natural",
+        "description": "Farbe Natural. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                60,
+                90
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-porto.webp"
+    },
+    {
+        "id": "terrassenplatte-malmoe",
+        "name": "Terrassenplatte Malmö",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Grey",
+        "description": "Farbe Grey. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                90,
+                90
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-malmoe.webp"
+    },
+    {
+        "id": "terrassenplatte-mostar",
+        "name": "Terrassenplatte Mostar",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Ivory",
+        "description": "Farbe Ivory. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                120,
+                60
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-mostar.webp"
+    },
+    {
+        "id": "terrassenplatte-stockholm",
+        "name": "Terrassenplatte Stockholm",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Graphite",
+        "description": "Farbe Graphite. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                90,
+                90
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-stockholm.webp"
+    },
+    {
+        "id": "terrassenplatte-radeburg",
+        "name": "Terrassenplatte Radeburg",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Graz",
+        "description": "Holzoptik in Graz. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                120,
+                40
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-radeburg.webp"
+    },
+    {
+        "id": "terrassenplatte-lissabon",
+        "name": "Terrassenplatte Lissabon",
+        "finish": "",
+        "kind": "Terrassenplatten",
+        "color": "Light",
+        "description": "Farbe Light. 2 cm stark. Rutschhemmung R11. Rektifizierte Kanten.",
+        "formats": [
+            [
+                60,
+                90
+            ]
+        ],
+        "source": "",
+        "catalogPriceCents": null,
+        "catalogCurrency": "EUR",
+        "catalogPriceDate": "",
+        "catalogUnit": "m2",
+        "availability": "anfrage",
+        "reconstruction": "bilder/katalog/ki-terrassenplatten-2026-11-25/terrassenplatte-lissabon.webp"
     }
 ];
 window.YabisFormatPrices = {

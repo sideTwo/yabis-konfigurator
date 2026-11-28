@@ -1,18 +1,19 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const {viewsFor}=require('../js/catalog-media.js');
-test('Herstellerdekor und Oberflächenansicht nutzen getrennte Bilder',()=>{
+test('Die Galerie zeigt passende Hersteller- und generierte Oberflächenbilder',()=>{
   const product={name:'Testfliese',photo:'hersteller.webp',originalPhoto:'original.webp',reconstruction:'rekonstruktion.webp',manufacturerImage:{page:'https://example.com'}};
   const views=viewsFor(product);
-  assert.equal(views.length,2);assert.equal(views[0].id,'decor');assert.equal(views[0].src,product.photo);
-  assert.equal(views[1].id,'reconstruction');assert.equal(views[1].src,product.reconstruction);
+  assert.deepEqual(views.map(view=>view.id),['decor','reconstruction']);
+  assert.equal(views[0].src,product.photo);
+  assert.equal(views[1].src,product.reconstruction);
   assert.equal(views[1].alt,'Testfliese – Oberflächenansicht');
 });
 test('Noch unbearbeitete Handyfotos gelangen nicht in die Shopgalerie',()=>{
-  const views=viewsFor({name:'Ungeklärter Artikel',photo:'original.webp'});
+  const views=viewsFor({name:'Ungeklärter Artikel',manufacturerImage:{photo:'bilder/katalog/eigene/original.webp'}});
   assert.deepEqual(views,[]);
 });
-test('Flavio Oxido zeigt Streiflicht, Dekor und Hersteller-Verlegebeispiel aus lokalen Dateien',()=>{
+test('Flavio Oxido hat Herstellerbilder und eine lokale Raumtextur',()=>{
   const fs=require('node:fs'),path=require('node:path');
   const studio=require('../js/studio-core.js'),product=studio.additionalProducts['flavio-oxido'];
   const views=viewsFor(product);

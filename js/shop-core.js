@@ -29,7 +29,7 @@
   function priceCentsFor(product,format){
    if(!product||!Number.isInteger(product.catalogPriceCents))return null;
    const key=Array.isArray(format)?format.join(','):'',catalogFormat=product.formats.some(f=>f.join(',')===key);
-   const tile=product.kind!=='Vinyl'&&product.kind!=='Holzoptik';
+   const tile=!['Vinyl','Holzoptik','Terrassenplatten'].includes(product.kind);
    return (!catalogFormat&&tile&&FORMAT_PREISE[key]?.[product.finish])||product.catalogPriceCents;
   }
   const priceLabelFor=(product,format)=>{const cents=priceCentsFor(product,format);return cents===null?'Preis auf Anfrage':money(cents)+' / '+priceUnit(product);};

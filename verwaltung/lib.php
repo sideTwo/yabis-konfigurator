@@ -228,7 +228,8 @@ function export_daten(): array {
         $p['availability'] = array_key_exists($a['verfuegbarkeit'] ?? '', VERFUEGBARKEIT) ? $a['verfuegbarkeit'] : 'anfrage';
         if ($p['availability'] === 'bestellung' && ($a['lieferzeit'] ?? '') !== '') { $p['deliveryTime'] = $a['lieferzeit']; }
         if (!(int)$a['sichtbar']) { $p['hidden'] = true; }
-        if ($a['foto'] !== '') {
+        $privatesMuster = str_starts_with($a['foto'], 'bilder/katalog/eigene/terrassenplatten/');
+        if ($a['foto'] !== '' && !$privatesMuster) {
             $p['photo'] = $a['foto']; $p['texture'] = $a['foto'];
             $bild = ['photo' => $a['foto']];
             if ($a['foto_oberflaeche'] !== '') { $bild['surface'] = $a['foto_oberflaeche']; }

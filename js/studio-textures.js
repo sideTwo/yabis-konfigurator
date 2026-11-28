@@ -5,7 +5,7 @@
  else root.YabisStudioTextures=api;
 })(typeof window==='object'?window:this,scenes=>{
  'use strict';
- const geometryCache=new WeakMap(), swatchCache=new WeakMap();
+ const geometryCache=new WeakMap(), swatchCache=new WeakMap(), detailSwatchCache=new WeakMap();
  const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
  const mod=(v,n)=>((v%n)+n)%n;
  const luminance=(r,g,b)=>r*.2126+g*.7152+b*.0722;
@@ -178,11 +178,17 @@
   }
   return result;
  }
- function swatch(ctx,image){
-  if(!swatchCache.has(image)){
-   const width=Math.min(720,image.width),height=Math.round(image.height*width/image.width);
+ function swatch(ctx,image,alternate,detail){
+  const cache=detail?detailSwatchCache:swatchCache;
+  if(!cache.has(image)){
+   // Keep more source detail for the close-up without storing oversized rasters.
+   const limit=detail?Math.max(1,Math.min(1400,Math.floor(Math.sqrt(1_050_000*image.width/image.height)))):720;
+   const width=Math.min(limit,image.width),faceHeight=Math.round(image.height*width/image.width);
+   const height=faceHeight*(alternate?2:1);
    const c=canvasFor(ctx,width,height),g=c.getContext('2d',{willReadFrequently:true});
-   g.drawImage(image,0,0,width,height);
+   if(detail)g.imageSmoothingQuality='high';
+   g.drawImage(image,0,0,width,faceHeight);
+   if(alternate)g.drawImage(alternate,0,faceHeight,width,faceHeight);
    const bitmap=g.getImageData(0,0,width,height);
    const small=canvasFor(ctx,Math.max(2,Math.round(width/64)),Math.max(2,Math.round(height/64)));
    small.getContext('2d').drawImage(c,0,0,small.width,small.height);
@@ -195,9 +201,9 @@
    }
    const mean=total/low.length;
    for(let p=0;p<low.length;p++)low[p]-=mean;
-   swatchCache.set(image,{bitmap,low,mean});
+   cache.set(image,{bitmap,low,mean});
   }
-  return swatchCache.get(image);
+  return cache.get(image);
  }
  function patch(art,x,y){
   const key=x*65536+y;
@@ -208,18 +214,29 @@
    h=Math.imul(h^(h>>>16),2146121005);
    h=Math.imul(h^(h>>>15),2221713035);
    h=(h^(h>>>16))>>>0;
-   const scale=.76+((h>>>2)&63)*.0025;
+   const scale=art.terrace ? .92+((h>>>2)&63)*.001 : .76+((h>>>2)&63)*.0025;
    p={scale,x:((h>>>8)&255)*(1-scale)/255,y:((h>>>16)&255)*(1-scale)/255,
-    rotate:!art.continuous&&Boolean(h&1),turn:h&3,farX:(h>>3)&1,farY:(h>>4)&1};
+    rotate:(!art.continuous||art.terrace)&&Boolean(h&1),turn:h&3,farX:(h>>3)&1,farY:(h>>4)&1};
    art.patches.set(key,p);
   }
   return p;
  }
- function sampleIndex(bitmap,x,y){
+ function sampleIndex(bitmap,x,y,point){
+  // Close-up walls blend the four surrounding texels at their projected position.
+  if(point){
+   const sx=clamp(x*bitmap.width-.5,0,bitmap.width-1);
+   const sy=clamp(y*bitmap.height-.5,0,bitmap.height-1);
+   const left=Math.floor(sx),top=Math.floor(sy);
+   point.index=4*(top*bitmap.width+left);
+   point.column=left<bitmap.width-1?4:0;
+   point.row=top<bitmap.height-1?4*bitmap.width:0;
+   point.x=sx-left;point.y=sy-top;
+   return point;
+  }
   return 4*(clamp(Math.floor(y*bitmap.height),0,bitmap.height-1)*bitmap.width+
    clamp(Math.floor(x*bitmap.width),0,bitmap.width-1));
  }
- function samplePatch(art,px,py,s,t){
+ function samplePatch(art,px,py,s,t,point){
   const p=patch(art,px,py);
   if(art.sampleSize){
    // Rectangular tiles use matching portions of the 120 cm reference face.
@@ -228,20 +245,20 @@
    const height=art.continuous?1:art.format[0]/art.sampleSize;
    const x=s*width+(1-width)*p.farX,y=t*height+(1-height)*p.farY;
    switch(p.turn){
-    case 1:return sampleIndex(art.bitmap,y,1-x);
-    case 2:return sampleIndex(art.bitmap,1-x,1-y);
-    case 3:return sampleIndex(art.bitmap,1-y,x);
-    default:return sampleIndex(art.bitmap,x,y);
+    case 1:return sampleIndex(art.bitmap,y,1-x,point);
+    case 2:return sampleIndex(art.bitmap,1-x,1-y,point);
+    case 3:return sampleIndex(art.bitmap,1-y,x,point);
+    default:return sampleIndex(art.bitmap,x,y,point);
    }
   }
   const u=p.x+(p.rotate?1-s:s)*p.scale,v=p.y+(p.rotate?1-t:t)*p.scale;
   const x=art.portrait?v:u,y=art.portrait?1-u:v;
-  return sampleIndex(art.bitmap,x,y);
+  return sampleIndex(art.bitmap,x,art.alternate?(p.farY+y)/2:y,point);
  }
- function sampleTile(art,u,v,longAcross){
+ function sampleTile(art,u,v,longAcross,point){
   const [short,long]=art.format,s=(longAcross?u:v)/long,t=(longAcross?v:u)/short;
   const x=Math.floor(s),y=Math.floor(t);
-  return samplePatch(art,x,y,s-x,t-y);
+  return samplePatch(art,x,y,s-x,t-y,point);
  }
  function sampleSlab(art,u,v,face){
   const {bitmap}=art,{maxU,maxV}=face.plane;
@@ -257,16 +274,19 @@
   const t=Math.max(0,1-Math.min(x,1-x)/overlap);
   return .5*t*t*(3-2*t);
  }
- function sampleContinuous(art,u,v,longAcross,rgb){
+ function sampleContinuous(art,u,v,longAcross,rgb,points){
   // Large overlapping patches are in room coordinates, so joints do not reset the artwork.
-  const [short,long]=art.format,step=art.sampleSize?art.sampleSize/(1+2*overlap):0;
-  const s=(longAcross?u:v)/(step||long*1.8),t=(longAcross?v:u)/(step||short*1.8);
+  const [short,long]=art.format;
+  const step=art.sampleSize?art.sampleSize/(1+2*overlap):0;
+  // Up close, keep a plate-sized sample near its actual scale.
+  const spacing=art.detail||art.terrace?1/(1+2*overlap):1.8;
+  const s=(longAcross?u:v)/(step||long*spacing),t=(longAcross?v:u)/(step||short*spacing);
   const x=Math.floor(s),y=Math.floor(t),a=s-x,b=t-y;
   const wx=edgeWeight(a),wy=edgeWeight(b),dx=a<.5?-1:1,dy=b<.5?-1:1;
-  const here=samplePatch(art,x,y,patchUV(a),patchUV(b));
-  const across=wx?samplePatch(art,x+dx,y,patchUV(a-dx),patchUV(b)):here;
-  const above=wy?samplePatch(art,x,y+dy,patchUV(a),patchUV(b-dy)):here;
-  const diagonal=wx&&wy?samplePatch(art,x+dx,y+dy,patchUV(a-dx),patchUV(b-dy)):above;
+  const here=samplePatch(art,x,y,patchUV(a),patchUV(b),points?.[0]);
+  const across=wx?samplePatch(art,x+dx,y,patchUV(a-dx),patchUV(b),points?.[1]):here;
+  const above=wy?samplePatch(art,x,y+dy,patchUV(a),patchUV(b-dy),points?.[2]):here;
+  const diagonal=wx&&wy?samplePatch(art,x+dx,y+dy,patchUV(a-dx),patchUV(b-dy),points?.[3]):above;
   for(let c=0;c<3;c++){
    const center=materialChannel(art,here,c),upper=materialChannel(art,above,c);
    const row=center+(materialChannel(art,across,c)-center)*wx;
@@ -274,8 +294,17 @@
    rgb[c]=row+(adjacent-row)*wy;
   }
  }
- function materialChannel(art,pos,channel){
-  return art.bitmap.data[pos+channel]-art.low[pos>>2]*art.balance;
+ function materialChannel(art,pos,channel,balance=art.balance){
+  const {data}=art.bitmap,low=art.low;
+  if(typeof pos==='number')return data[pos+channel]-low[pos>>2]*balance;
+  const {index,column,row,x,y}=pos;
+  const right=index+column,bottom=index+row,corner=bottom+column;
+  const a=data[index+channel]-low[index>>2]*balance;
+  const b=data[right+channel]-low[right>>2]*balance;
+  const c=data[bottom+channel]-low[bottom>>2]*balance;
+  const d=data[corner+channel]-low[corner>>2]*balance;
+  const top=a+(b-a)*x,base=c+(d-c)*x;
+  return top+(base-top)*y;
  }
  function groutAlpha(art,u,v,p,longAcross,width,coverage){
   const [short,long]=art.format,x=mod(u[p],longAcross?long:short),y=mod(v[p],longAcross?short:long);
@@ -315,32 +344,34 @@
   ctx.drawImage(base,0,0,width,height);
   const {coverage,u,v,faceIds,faces,light,plate,slabs}=geometry(ctx,base,room,selection.wallHeight,geometryApis,photoLighting,scene);
   const imageData=ctx.getImageData(0,0,width,height),out=imageData.data;
+  const detail=room==='kueche';
   const art=Object.fromEntries(Object.entries(assets).map(([surface,asset])=>{
-   const {bitmap,low,mean}=swatch(ctx,asset.image),format=plankFormats[asset.id]||selection[surface+'Format'];
-   return [surface,{...asset,bitmap,low,mean,format,patches:new Map(),
-    balance:asset.vinyl ? .18 : 1-(contrast[asset.id]??.85),
+   const terrace=room==='eingang'||asset.terrace;
+   const {bitmap,low,mean}=swatch(ctx,asset.image,asset.alternate,detail),format=plankFormats[asset.id]||selection[surface+'Format'];
+   return [surface,{...asset,bitmap,low,mean,format,terrace,detail,patches:new Map(),
+    balance:terrace ? 0 : asset.vinyl ? .18 : 1-(contrast[asset.id]??.85),
     grout:mean+(mean>185?-16:18),
-    portrait:bitmap.height>bitmap.width&&format[1]>format[0],
+    portrait:asset.image.height>asset.image.width&&format[1]>format[0],
     seed:selection[surface+'GrainSeed']||0,continuous:!asset.vinyl&&selection[surface+'Grain']==='continuous'}];
   }));
-  const rgbSample=[0,0,0],plank={};
+  const rgbSample=[0,0,0],plank={},points=detail?[{},{},{},{}]:null;
   for(let p=0;p<coverage.length;p++){
    if(!coverage[p])continue;
    const i=p*4,a=coverage[p]/255,face=faces[faceIds[p]-1],wall=face.surface==='wall',tile=wall?art.wall:art.floor;
    const longAcross=slabs||wall||face.plane?.longAcross;
    const tone=light[p];
-   const shade=photoLighting?clamp(tone/184,.25,1.4):clamp(1+(tone-(room==='wohnen'?176:190))*.0038,.65,1.12);
+   const shade=photoLighting?clamp(tone/(tile.terrace?194:184),.25,1.4):clamp(1+(tone-(room==='wohnen'?176:190))*.0038,.65,1.12);
    const glare=tile.gloss*clamp((tone-(photoLighting?188:182))/52,0,1);
    const photoTone=photoLighting?luminance(out[i],out[i+1],out[i+2]):0;
    // Reproduce shallow edges and button joints from the photographic relief.
    const relief=!photoLighting&&plate?.[p]?1+plate[p]/255*(clamp(.985+(luminance(out[i],out[i+1],out[i+2])-tone)*.010,.43,1.14)-1):1;
    let pos=0;
-   if(tile.continuous)sampleContinuous(tile,u[p],v[p]+(face.progress||0),longAcross,rgbSample);
+   if(tile.continuous)sampleContinuous(tile,u[p],v[p]+(face.progress||0),longAcross,rgbSample,points);
    else if(slabs)pos=sampleSlab(tile,u[p],v[p],face);
-   else pos=tile.vinyl?sampleVinyl(tile,u[p],v[p],plank):sampleTile(tile,u[p],v[p],longAcross);
+   else pos=tile.vinyl?sampleVinyl(tile,u[p],v[p],plank):sampleTile(tile,u[p],v[p],longAcross,points?.[0]);
    const lappato=tile.finish==='Lappato'&&tile.sampleSize;
    const decorTone=lappato?(tile.continuous?luminance(...rgbSample):
-    luminance(tile.bitmap.data[pos],tile.bitmap.data[pos+1],tile.bitmap.data[pos+2])):0;
+    luminance(materialChannel(tile,pos,0,0),materialChannel(tile,pos,1,0),materialChannel(tile,pos,2,0))):0;
    const localGlare=lappato?glare*clamp(.55+(decorTone-tile.mean)*.022,.28,1.2):glare;
    const joint=room!=='bad'&&!photoLighting&&!tile.vinyl&&!slabs?groutAlpha(tile,u,v,p,longAcross,width,coverage):0;
    const vinylSeam=tile.vinyl ? .09*clamp(1-plank.edge/.16,0,1) : 0;
