@@ -24,7 +24,8 @@ const catalog=S.products.filter(product=>!product.hidden).map(product=>{
 });
 const alphabet=new Intl.Collator('de',{numeric:true,sensitivity:'base'});
 let filter='alle',selected=null,toastTimer;
-function toast(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,4000);}
+const isShop=Boolean($('#produktliste')),isCart=Boolean($('#korb'));
+function toast(message,link){const box=$('#toast');if(!box)return;box.replaceChildren(el('span',message));if(link){const a=el('a',link.text,'toast-link');a.href=link.href;box.append(a);}box.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>box.hidden=true,link?7000:4000);}
 function persist(cart){try{S.saveCart(cart);return true;}catch{$('#korb-status').textContent='Speichern im Browser nicht möglich. Bitte Browser-Speicher freigeben.';return false;}}
 function selectedFormat(){return $('#detail-format').value==='unknown'?null:$('#detail-format').value.split(',').map(Number);}
 function formatOptions(product){
@@ -43,13 +44,13 @@ function updateDetail(){
   $('#detail-cost').textContent=$('#detail-estimate').checked?(cost!==null?'Ca. '+S.money(cost)+' inkl. MwSt. · ohne Kartonrundung und Lieferung.':'Für diesen Artikel gibt es keinen Preis pro m². Preis auf Anfrage.'):(Number.isInteger(selected.catalogPriceCents)?(S.priceCentsFor(selected,format)!==selected.catalogPriceCents?'Richtpreis für '+format.join(' × ')+' cm: ':'Katalogrichtpreis ')+S.priceLabelFor(selected,format)+' inkl. MwSt.':selected.catalogCurrency==='ZAR'?'Preis auf Anfrage. Die Währungsangabe im Quellkatalog wird geprüft.':'Preis auf Anfrage.');
 }
 const mediaFrame=el('div',null,'detail-media'),mediaControls=el('div',null,'media-controls'),mediaNote=el('p',null,'source-note');
-$('#detail-photo').before(mediaFrame);mediaFrame.append($('#detail-photo'));
+if(isShop){$('#detail-photo').before(mediaFrame);mediaFrame.append($('#detail-photo'));}
 mediaControls.setAttribute('role','group');mediaControls.setAttribute('aria-label','Produktbild auswählen');
 mediaNote.setAttribute('role','status');
-$('#detail-description').before(mediaControls,mediaNote);
+if(isShop)$('#detail-description').before(mediaControls,mediaNote);
 // Beschreibung: am PC unter dem Bild, auf dem Handy direkt unter dem Produktnamen
 const narrowDialog=matchMedia('(max-width:700px)'),placeDescription=()=>{const desc=$('#detail-description');if(narrowDialog.matches)$('#detail-name').after(desc);else mediaNote.after(desc);};
-placeDescription();narrowDialog.addEventListener('change',placeDescription);
+if(isShop){placeDescription();narrowDialog.addEventListener('change',placeDescription);}
 function renderGallery(product){
   const views=YabisCatalogMedia.viewsFor(product),photo=$('#detail-photo');
   mediaControls.replaceChildren();
@@ -119,10 +120,11 @@ function renderProducts(){
 }
 function makeSelect(values,current,label){const select=el('select');select.setAttribute('aria-label',label);for(const [value,text]of values){const o=el('option',text);o.value=value;select.append(o);}select.value=current;return select;}
 function field(text,control){const label=el('label',text);label.append(control);return label;}
-function updateTotals(){const cart=S.getCart(),quantities=cart.map(p=>S.calculate(p.m2,p.waste,p.format)),sum=k=>S.de(quantities.filter(Boolean).reduce((a,q)=>a+q[k],0));$('#cart-totals').replaceChildren();for(const [a,b]of [['Positionen',cart.length],['Fläche gesamt',sum('area')+' m²'],['Bedarf inkl. Verschnitt',quantities.every(Boolean)?sum('total')+' m²':'Mengen prüfen'],['Preis','Angebot auf Anfrage']]){const r=el('div',null,'cart-total');r.append(el('span',a),el('strong',String(b)));$('#cart-totals').append(r);}if(cart.length&&$('#estimate-toggle').checked){const known=cart.map(p=>S.estimateAssumingM2(p.produkt,p.m2,p.waste,p.format)).filter(x=>x!==null),r=el('div',null,'cart-total estimate-total');r.append(el('span',known.length===cart.length?'Richtwert':'Teilrichtwert'),el('strong',known.length?'ca. '+S.money(known.reduce((a,b)=>a+b,0))+' inkl. MwSt.':'Auf Anfrage'));$('#cart-totals').append(r);if(known.length<cart.length)$('#cart-totals').append(el('p','Weitere Positionen und Wunschformate auf Anfrage.','price-note'));}for(const e of document.querySelectorAll('[data-anzahl]'))e.textContent=cart.length;}
+function updateTotals(){if(!isCart){for(const e of document.querySelectorAll('[data-anzahl]'))e.textContent=S.getCart().length;return;}const cart=S.getCart(),quantities=cart.map(p=>S.calculate(p.m2,p.waste,p.format)),sum=k=>S.de(quantities.filter(Boolean).reduce((a,q)=>a+q[k],0));$('#cart-totals').replaceChildren();for(const [a,b]of [['Positionen',cart.length],['Fläche gesamt',sum('area')+' m²'],['Bedarf inkl. Verschnitt',quantities.every(Boolean)?sum('total')+' m²':'Mengen prüfen'],['Preis','Angebot auf Anfrage']]){const r=el('div',null,'cart-total');r.append(el('span',a),el('strong',String(b)));$('#cart-totals').append(r);}if(cart.length&&$('#estimate-toggle').checked){const known=cart.map(p=>S.estimateAssumingM2(p.produkt,p.m2,p.waste,p.format)).filter(x=>x!==null),r=el('div',null,'cart-total estimate-total');r.append(el('span',known.length===cart.length?'Richtwert':'Teilrichtwert'),el('strong',known.length?'ca. '+S.money(known.reduce((a,b)=>a+b,0))+' inkl. MwSt.':'Auf Anfrage'));$('#cart-totals').append(r);if(known.length<cart.length)$('#cart-totals').append(el('p','Weitere Positionen und Wunschformate auf Anfrage.','price-note'));}for(const e of document.querySelectorAll('[data-anzahl]'))e.textContent=cart.length;}
 function renderCart(){
+  if(!isCart){updateTotals();return;}
   const cart=S.getCart();$('#korb').replaceChildren();
-  if(!cart.length)$('#korb').append(el('p','Ihr Anfragekorb ist noch leer. Wählen Sie einen Artikel oder stellen Sie unten eine Schnellanfrage.','empty-cart'));
+  if(!cart.length){const empty=el('div',null,'empty-cart'),link=el('a','Zum Shop','text-link');link.href='katalog.html#produkte';empty.append(el('p','Ihr Anfragekorb ist noch leer. Wählen Sie Fliesen im Shop oder stellen Sie unten eine Schnellanfrage.'),link);$('#korb').append(empty);}
   for(const position of cart){
     const product=S.find(position.produkt),row=el('article',null,'cart-row'),body=el('div'),controls=el('div',null,'cart-controls');
     const preview=product&&YabisCatalogMedia.viewsFor(product)[0];
@@ -156,6 +158,7 @@ function selectType(type){
   for(const button of kindButtons)button.setAttribute('aria-pressed',String(button.dataset.filter===type));
   renderProducts();
 }
+if(isShop){
 const knownFormats=[...new Set(catalog.flatMap(item=>item.facets.format))].sort(alphabet.compare);
 for(const format of knownFormats)$('#filter-format').add(new Option(format.replace('x',' × ')+' cm',format));
 for(const button of kindButtons)button.onclick=()=>selectType(button.dataset.filter);
@@ -167,11 +170,15 @@ $('#filter-reset').onclick=()=>{
   selectType('alle');
 };
 $('#product-close').onclick=()=>$('#product-dialog').close();for(const id of ['detail-format','detail-waste','detail-area','detail-estimate'])$('#'+id).addEventListener('input',updateDetail);
-$('#product-form').onsubmit=e=>{e.preventDefault();try{S.add([S.item({product:selected.id,area:$('#detail-area').value,waste:$('#detail-waste').value,format:selectedFormat(),surface:$('#detail-surface').value.trim()||'Projektfläche'})]);renderCart();$('#product-dialog').close();toast(`${selected.name} liegt in Ihrem Anfragekorb.`);}catch(error){$('#product-error').textContent=error.message;}};
+$('#product-form').onsubmit=e=>{e.preventDefault();try{S.add([S.item({product:selected.id,area:$('#detail-area').value,waste:$('#detail-waste').value,format:selectedFormat(),surface:$('#detail-surface').value.trim()||'Projektfläche'})]);renderCart();$('#product-dialog').close();toast(`${selected.name} liegt in Ihrem Anfragekorb.`,{text:'Zum Anfragekorb →',href:'anfragekorb.html'});}catch(error){$('#product-error').textContent=error.message;}};
+}
+if(isCart){
 const form=$('#kontaktformular');form.elements.weg.onchange=()=>{const delivery=form.elements.weg.value==='Lieferung';form.elements.plz.required=delivery;$('#zip-note').textContent=delivery?'(erforderlich)':'(optional)';};
 form.onsubmit=e=>{e.preventDefault();$('#kontakt-fehler').textContent='';if(!form.reportValidity())return;const data=new FormData(form),cart=S.getCart();if(!cart.length&&!data.get('nachricht').trim()){$('#kontakt-fehler').textContent='Bitte wählen Sie mindestens einen Artikel oder beschreiben Sie Ihre Anfrage.';return;}let items;try{items=S.lines(cart);}catch(error){$('#kontakt-fehler').textContent=error.message;return;}const estimates=cart.map(p=>S.estimateAssumingM2(p.produkt,p.m2,p.waste,p.format)),known=estimates.filter(x=>x!==null),estimateText=$('#estimate-toggle').checked&&known.length?'\n\n'+(known.length===cart.length?'Richtwert':'Teilrichtwert')+' nach Quadratmeterpreisen: ca. '+S.money(known.reduce((a,b)=>a+b,0))+' inkl. MwSt. Kartoneinheiten, Lieferung und abweichende Formate bitte im Angebot berücksichtigen.':'';const text=`Hallo Yabi’s Fliesenwelt,\nbitte erstellen Sie mir ein unverbindliches Angebot.\n\n${items||'Schnellanfrage ohne Produktauswahl'}${estimateText}\n\nNachricht: ${data.get('nachricht')||'–'}\n\n${data.get('kundentyp')}\nFirma: ${data.get('firma')||'–'}\nName: ${data.get('name')}\nRückkontakt: ${data.get('rueckkontakt')}\n${data.get('weg')}${data.get('plz')?' · PLZ '+data.get('plz'):''}\n\nBitte Oberfläche, gewünschte Formate, Eignung, Verfügbarkeit, Verpackungseinheiten und Preise bestätigen. Dies ist eine Anfrage, keine Bestellung.`;if(e.submitter?.value==='download'){S.download(text,'yabis-produktanfrage.txt');$('#form-status').textContent='Anfrage als Textdatei vorbereitet. Es wurde nichts versendet.';}else if(e.submitter?.value==='mail'){location.href=`mailto:info@yabisfliesenwelt.de?subject=${encodeURIComponent('Fliesenanfrage – Yabi’s')}&body=${encodeURIComponent(text)}`;$('#form-status').textContent='E-Mail-Entwurf vorbereitet. Bitte selbst prüfen und absenden.';}else{window.open(`https://wa.me/491786787724?text=${encodeURIComponent(text)}`,'_blank','noopener');$('#form-status').textContent='WhatsApp-Entwurf vorbereitet. Bitte selbst prüfen und absenden.';}};
-$('#estimate-toggle').onchange=renderCart;addEventListener('storage',e=>{if(e.key===S.key)renderCart();});addEventListener('pageshow',renderCart);
-const requestedType=new URLSearchParams(location.search).get('typ');
-selectType(kindButtons.some(button=>button.dataset.filter===requestedType)?requestedType:'alle');
+$('#estimate-toggle').onchange=renderCart;
+}
+addEventListener('storage',e=>{if(e.key===S.key)renderCart();});addEventListener('pageshow',renderCart);
+if(isShop){const requestedType=new URLSearchParams(location.search).get('typ');
+selectType(kindButtons.some(button=>button.dataset.filter===requestedType)?requestedType:'alle');}
 renderCart();
 })();

@@ -41,8 +41,17 @@
 .availability{display:flex;align-items:center;gap:7px;margin:2px 0 0;font-size:12px;line-height:1.4;color:var(--ink)}
 .availability::before{content:"";width:8px;height:8px;border-radius:50%;flex:none;background:#b9a594}
 .availability--sofort{color:#2f6b3a}.availability--sofort::before{background:#3f8f4c}
-.availability--bestellung{color:#7a4f12}.availability--bestellung::before{background:#d08a2e}
+.availability--bestellung{color:#2f6b3a}.availability--bestellung::before{background:#3f8f4c}
 .availability--anfrage{color:var(--muted)}
 .availability--nicht{color:#8f3424}.availability--nicht::before{background:#c0533e}
 .product-card p.availability{margin:0 0 2px;font-size:12px}
 #detail-availability{margin:-4px 0 14px;font-size:13px}
+/* Anfragekorb als eigene Seite */
+.cart-section h1{font-size:clamp(34px,3.4vw,50px);line-height:1.08;font-weight:400;letter-spacing:-.04em;margin:0}
+.korb-site .cart-section{min-height:50vh}
+.korb-zurueck{display:inline-flex;align-items:center;min-height:44px;margin-bottom:14px}
+.empty-cart .text-link{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;color:var(--accent)}
+.empty-cart p{margin:0}
+#toast{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center}
+#toast[hidden]{display:none!important}
+.toast-link{color:inherit;text-decoration:underline;text-underline-offset:4px;font-weight:500;min-height:32px;display:inline-flex;align-items:center}
